@@ -11,6 +11,7 @@
         ResizeMode="NoResize"
         Height="700" 
         Width="1300">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -29,39 +30,105 @@
             Background="#000000"
             Grid.ColumnSpan="2"
             >
-            <Image
-                Name="salir"
+            <Button
+                x:Name="btnSalir"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Margin="0,0,10,0"
-                Source="Resource/image/exit.png"
-                Height="25"
-                Width="25" 
-                />
-            <Image
-                Name="minimizar"
+                Background="Black"
+                Click="btnSalir_Click"
+                Style="{DynamicResource btnSalirTheme}"
+                >
+                <Image Source="Resource/image/exit.png" Height="25" Width="25"/>
+            </Button>
+            <Button
+                x:Name="btnMinimizar"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
                 Margin="0,0,45,0"
-                Source="Resource/image/min.png"
-                Height="25"
-                Width="25" 
-                />
+                Background="Black"
+                Click="btnMinimizar_Click"
+                >
+                <Image Source="Resource/image/min.png" Height="25" Width="25"/>
+            </Button>
+
         </Grid>
 
         <DockPanel
             x:Name="menuLateral"
             Grid.Row="2"
             Background="#082032">
-            
+
         </DockPanel>
         <DockPanel
             Grid.Column="2"
             Grid.Row="2"
             Background="#334756"
             >
-            
+
         </DockPanel>
 
     </Grid>
+    <Window.Resources>
+        <!--Region de enfoque visual-->
+        <Style x:Key="FocusVisual">
+            <Setter Property="Control.Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Fin de región-->
+
+        <!--btnSalirTheme-->
+        <SolidColorBrush x:Key="Button.Static.Background"    Color = "#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Static.Border"        Color = "#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color = "#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border"     Color = "#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background"   Color = "#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border"       Color = "#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background"  Color = "#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border"      Color = "#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground"  Color = "#FF838383"/>
+        <Style x:Key="btnSalirTheme" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Red"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Fin de btnSalirTheme-->
+    </Window.Resources>
 </Window>
