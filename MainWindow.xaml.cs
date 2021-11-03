@@ -23,6 +23,13 @@ namespace CentroNaturistaMasaya
         public MainWindow()
         {
             InitializeComponent();
+
+            /*Sentencias que maximizan la pantalla*/
+            this.Width = SystemParameters.WorkArea.Width;
+            this.Height = SystemParameters.WorkArea.Height;
+            this.Top = SystemParameters.WorkArea.Bottom - this.Height;
+            this.Left = SystemParameters.PrimaryScreenWidth - this.Width;
         }
+
     }
 }
