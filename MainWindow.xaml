@@ -58,7 +58,66 @@
             x:Name="menuLateral"
             Grid.Row="2"
             Background="#082032">
+            <Image Source="Resource/image/Libreo1.jpg" Width="80" DockPanel.Dock="Top"/>
+            <StackPanel 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="7,0,0,0"
+                    DockPanel.Dock="Left">
 
+                <Button
+                        x:Name="btnAñadir"
+                        Height="60"
+                        Margin="0,0,0,20"
+                        Style="{DynamicResource btnMenuLateral}"
+                        Click="btnAñadir_Click"
+                    >
+                    <WrapPanel>
+                        <Image Source="Resource/image/plus.png" Width="50" Margin="0,0,5,0"/>
+                        <TextBlock Text="Añadir" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </WrapPanel>
+                </Button>
+
+                <Button
+                    x:Name="btnMostar"
+                        Height="60"
+                        Margin="0,0,0,20"
+                        Style="{DynamicResource btnMenuLateral}"
+                    Click="btnMostar_Click"
+                    >
+                    <WrapPanel>
+                        <Image Source="Resource/image/record.png" Width="50" Margin="0,0,5,0"/>
+                        <TextBlock Text="Mostrar" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </WrapPanel>
+                </Button>
+
+                <Button
+                    x:Name="btnModificar"
+                        Height="60"
+                        Margin="0,0,0,0"
+                        Style="{DynamicResource btnMenuLateral}"
+                    Click="btnModificar_Click"
+                    >
+                    <WrapPanel>
+                        <Image Source="Resource/image/edit.png" Width="50" Margin="0,0,5,0"/>
+                        <TextBlock Text="Modificar" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </WrapPanel>
+                </Button>
+
+            </StackPanel>
+            <Button 
+                x:Name="btnAyuda"
+                Height="60"
+                DockPanel.Dock="Bottom"
+                VerticalAlignment="Bottom"
+                Style="{DynamicResource btnMenuLateral}"
+                Margin="-185,0,8,30"
+                >
+                <WrapPanel>
+                    <Image Source="Resource/image/help.png" Width="50" Margin="0,0,5,0"/>
+                    <TextBlock Text="Ayuda" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                </WrapPanel>
+            </Button>
         </DockPanel>
         <DockPanel
             Grid.Column="2"
@@ -130,5 +189,46 @@
             </Setter>
         </Style>
         <!--Fin de btnSalirTheme-->
+
+        <!--btnMenuLateral Inicio-->
+        <Style x:Key="btnMenuLateral" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle"           Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background"                 Value="#F0A500"/>
+            <Setter Property="BorderBrush"                Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground"                 Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness"            Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="VerticalContentAlignment"   Value="Center"/>
+            <Setter Property="Padding"                    Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#FFC947"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="Transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+        </Style>
+        <!--Fin del btnMenuLateral-->
     </Window.Resources>
 </Window>

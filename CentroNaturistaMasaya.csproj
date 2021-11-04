@@ -105,5 +105,20 @@
   <ItemGroup>
     <Resource Include="Resource\Image\min.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\Libreo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\record.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\help.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -20,13 +20,24 @@ namespace CentroNaturistaMasaya
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+        {this.Close();}
 
         private void btnMinimizar_Click(object sender, RoutedEventArgs e)
+        { WindowState = WindowState.Minimized;}
+
+        private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
-            WindowState = WindowState.Minimized;
+
+        }
+
+        private void btnMostar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnModificar_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
