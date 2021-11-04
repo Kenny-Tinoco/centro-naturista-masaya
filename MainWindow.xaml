@@ -5,6 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CentroNaturistaMasaya"
+        xmlns:viewmodels="clr-namespace:CentroNaturistaMasaya.UI"
         mc:Ignorable="d"
         Background="#334756" 
         WindowStyle="None"
@@ -119,13 +120,14 @@
                 </WrapPanel>
             </Button>
         </DockPanel>
-        <DockPanel
+        <Grid
+            x:Name="contenido"
             Grid.Column="2"
             Grid.Row="2"
             Background="#334756"
             >
-
-        </DockPanel>
+            <ContentControl Content="{Binding}"/>
+        </Grid>
 
     </Grid>
     <Window.Resources>
@@ -230,5 +232,29 @@
 
         </Style>
         <!--Fin del btnMenuLateral-->
+        
+        <!--#region DataTemplate ucAñadir-->
+        <DataTemplate
+            x:Name="Añadir"
+            DataType ="{x:Type viewmodels:ucAñadir}">
+            <viewmodels:ucAñadir DataContext="{Binding}"/>
+        </DataTemplate>
+        <!--#endregion DataTemplate ucAñadir-->
+        
+        <!--#region DataTemplate ucMostrar-->
+        <DataTemplate
+            x:Name="Mostar"
+            DataType ="{x:Type viewmodels:ucMostrar}">
+            <viewmodels:ucMostrar DataContext="{Binding}"/>
+        </DataTemplate>
+        <!--#endregion DataTemplate ucMostrar-->
+        
+        <!--#region DataTemplate ucModificar-->
+        <DataTemplate
+            x:Name="Modificar"
+            DataType ="{x:Type viewmodels:ucModificar}">
+            <viewmodels:ucModificar DataContext="{Binding}"/>
+        </DataTemplate>
+        <!--#endregion DataTemplate ucModificar-->
     </Window.Resources>
 </Window>

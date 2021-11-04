@@ -1,8 +1,5 @@
-﻿using System;
+﻿using CentroNaturistaMasaya.UI;
 using System.Windows;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace CentroNaturistaMasaya
 {
@@ -27,17 +24,17 @@ namespace CentroNaturistaMasaya
 
         private void btnAñadir_Click(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new ucAñadir();
         }
 
         private void btnMostar_Click(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new ucMostrar();
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
-
+            DataContext = new ucModificar();
         }
     }
 }
