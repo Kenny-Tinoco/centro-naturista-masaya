@@ -7,13 +7,14 @@
         xmlns:local="clr-namespace:CentroNaturistaMasaya"
         xmlns:viewmodels="clr-namespace:CentroNaturistaMasaya.UI"
         mc:Ignorable="d"
-        Background="#334756" 
+        Background="#5089C6" 
         WindowStyle="None"
         ResizeMode="NoResize"
         Height="700" 
         Width="1300">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="40"/>
@@ -25,18 +26,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!--Barra de titulos-->
         <Grid
             VerticalAlignment="Top"
             Height="40"
-            Background="#000000"
+            Background="#126E82"
+            Grid.Column="1"
             Grid.ColumnSpan="2"
             >
             <Button
                 x:Name="btnSalir"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Center"
+                BorderBrush="White"
                 Margin="0,0,10,0"
-                Background="Black"
+                Background="#126E82"
                 Click="btnSalir_Click"
                 Style="{DynamicResource btnSalirTheme}"
                 >
@@ -44,10 +48,11 @@
             </Button>
             <Button
                 x:Name="btnMinimizar"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Center"
+                HorizontalAlignment = "Right"
+                VerticalAlignment   = "Center"
                 Margin="0,0,45,0"
-                Background="Black"
+                Background  = "#126E82"
+                BorderBrush = "White"
                 Click="btnMinimizar_Click"
                 >
                 <Image Source="Resource/image/min.png" Height="25" Width="25"/>
@@ -55,16 +60,25 @@
 
         </Grid>
 
-        <DockPanel
-            x:Name="menuLateral"
-            Grid.Row="2"
-            Background="#082032">
-            <Image Source="Resource/image/Libreo1.jpg" Width="80" DockPanel.Dock="Top"/>
+        <DockPanel x:Name = "menuLateral"  Background = "#132C33" Grid.Row = "0" Grid.RowSpan="2">
+            <Image Source = "Resource/image/logo CNM2.png" Width = "170" DockPanel.Dock = "Top" Margin="0,40,0,0"/>
             <StackPanel 
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Bottom"
                     HorizontalAlignment="Center"
-                    Margin="7,0,0,0"
+                    Margin="7,0,0,172"
                     DockPanel.Dock="Left">
+
+                <Button
+                        x:Name="btnHome"
+                        Height="50"
+                        Width="50"
+                        Margin="0,0,0,20"
+                        Style="{DynamicResource btnMenuLateral}"
+                        Visibility="Collapsed"
+                        Click="btnHome_Click"
+                    >
+                    <Image Source = "Resource/image/home.png"/>
+                </Button>
 
                 <Button
                         x:Name="btnAñadir"
@@ -75,7 +89,7 @@
                     >
                     <WrapPanel>
                         <Image Source="Resource/image/plus.png" Width="50" Margin="0,0,5,0"/>
-                        <TextBlock Text="Añadir" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Añadir" Foreground="White" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
                     </WrapPanel>
                 </Button>
 
@@ -88,7 +102,7 @@
                     >
                     <WrapPanel>
                         <Image Source="Resource/image/record.png" Width="50" Margin="0,0,5,0"/>
-                        <TextBlock Text="Mostrar" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Mostrar" FontSize="26" Foreground="White" FontWeight="Bold" VerticalAlignment="Center"/>
                     </WrapPanel>
                 </Button>
 
@@ -101,7 +115,7 @@
                     >
                     <WrapPanel>
                         <Image Source="Resource/image/edit.png" Width="50" Margin="0,0,5,0"/>
-                        <TextBlock Text="Modificar" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                        <TextBlock Text="Modificar" Foreground="White" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
                     </WrapPanel>
                 </Button>
 
@@ -116,15 +130,17 @@
                 >
                 <WrapPanel>
                     <Image Source="Resource/image/help.png" Width="50" Margin="0,0,5,0"/>
-                    <TextBlock Text="Ayuda" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
+                    <TextBlock Foreground="White" Text="Ayuda" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
                 </WrapPanel>
             </Button>
         </DockPanel>
+        
+        
         <Grid
-            x:Name="contenido"
+            x:Name="Contenido"
             Grid.Column="2"
             Grid.Row="2"
-            Background="#334756"
+            Background="#126E82"
             >
             <ContentControl Content="{Binding}"/>
         </Grid>
@@ -173,15 +189,15 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="Red"/>
+                                <Setter Property="Background"  TargetName="border" Value="Red"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="Background"  TargetName="border" Value="transparent"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="transparent"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
-                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="Background"  TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
                                 <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
                             </Trigger>
@@ -195,7 +211,7 @@
         <!--btnMenuLateral Inicio-->
         <Style x:Key="btnMenuLateral" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle"           Value="{StaticResource FocusVisual}"/>
-            <Setter Property="Background"                 Value="#F0A500"/>
+            <Setter Property="Background"                 Value="Transparent"/>
             <Setter Property="BorderBrush"                Value="{StaticResource Button.Static.Border}"/>
             <Setter Property="Foreground"                 Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
             <Setter Property="BorderThickness"            Value="1"/>
@@ -205,7 +221,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border CornerRadius="5" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -213,12 +229,12 @@
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="true">
-                                <Setter Property="Background" TargetName="border" Value="#FFC947"/>
+                                <Setter Property="Background" TargetName="border" Value="#126E82"/>
                                 <Setter Property="BorderBrush" TargetName="border" Value="black"/>
                             </Trigger>
                             <Trigger Property="IsPressed" Value="true">
                                 <Setter Property="Background" TargetName="border" Value="Transparent"/>
-                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="white"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="false">
                                 <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
@@ -232,7 +248,15 @@
 
         </Style>
         <!--Fin del btnMenuLateral-->
-        
+
+        <!--#region DataTemplate ucHome-->
+        <DataTemplate
+            x:Name="Home"
+            DataType ="{x:Type viewmodels:ucHome}">
+            <viewmodels:ucHome DataContext="{Binding}"/>
+        </DataTemplate>
+        <!--#endregion DataTemplate ucHome-->
+
         <!--#region DataTemplate ucAñadir-->
         <DataTemplate
             x:Name="Añadir"
@@ -240,7 +264,7 @@
             <viewmodels:ucAñadir DataContext="{Binding}"/>
         </DataTemplate>
         <!--#endregion DataTemplate ucAñadir-->
-        
+
         <!--#region DataTemplate ucMostrar-->
         <DataTemplate
             x:Name="Mostar"
@@ -248,7 +272,7 @@
             <viewmodels:ucMostrar DataContext="{Binding}"/>
         </DataTemplate>
         <!--#endregion DataTemplate ucMostrar-->
-        
+
         <!--#region DataTemplate ucModificar-->
         <DataTemplate
             x:Name="Modificar"
