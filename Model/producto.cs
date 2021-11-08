@@ -8,9 +8,11 @@ namespace CentroNaturistaMasaya.Model
 {
     public class producto
     {
+        #region Region de atributos
         private string _nombre;
         private string _descripcion;
         private int _precio;
+        #endregion
 
         public string nombre
         {

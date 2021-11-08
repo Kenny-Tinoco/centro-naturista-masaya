@@ -15,14 +15,18 @@ using System.Windows.Shapes;
 
 namespace CentroNaturistaMasaya.UI
 {
-    /// <summary>
-    /// Lógica de interacción para ucCompra.xaml
-    /// </summary>
     public partial class ucCompra : UserControl
     {
+        public event EventHandler btnAtrasCompraClick;
         public ucCompra()
         {
             InitializeComponent();
+        }
+
+        private void btnAtrasCompra_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnAtrasCompraClick != null)
+                btnAtrasCompraClick(sender, e);
         }
     }
 }

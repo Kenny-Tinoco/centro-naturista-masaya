@@ -91,16 +91,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\producto.cs" />
+    <Compile Include="Model\proveedor.cs" />
+    <Compile Include="UI\Añadir\ucAProducto.xaml.cs">
+      <DependentUpon>ucAProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\cardView.xaml.cs">
       <DependentUpon>cardView.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ucAñadir.xaml.cs">
       <DependentUpon>ucAñadir.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ucCompra.xaml.cs">
+    <Compile Include="UI\Home\ucCompra.xaml.cs">
       <DependentUpon>ucCompra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ucConsulta.xaml.cs">
+    <Compile Include="UI\Home\ucConsulta.xaml.cs">
       <DependentUpon>ucConsulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\ucHome.xaml.cs">
@@ -112,7 +116,7 @@
     <Compile Include="UI\ucMostrar.xaml.cs">
       <DependentUpon>ucMostrar.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\ucVenta.xaml.cs">
+    <Compile Include="UI\Home\ucVenta.xaml.cs">
       <DependentUpon>ucVenta.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\viewmodel.cs" />
@@ -128,6 +132,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\Añadir\ucAProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\cardView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -136,11 +144,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ucCompra.xaml">
+    <Page Include="UI\Home\ucCompra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ucConsulta.xaml">
+    <Page Include="UI\Home\ucConsulta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,7 +164,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\ucVenta.xaml">
+    <Page Include="UI\Home\ucVenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +230,16 @@
   <ItemGroup>
     <Resource Include="Resource\Image\logo CNM1.png" />
     <Resource Include="Resource\Image\logo CNM2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\Image\empleado.png" />
+    <Resource Include="Resource\Image\paciente.png" />
+    <Resource Include="Resource\Image\presentacion.png" />
+    <Resource Include="Resource\Image\producto.png" />
+    <Resource Include="Resource\Image\proveedor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

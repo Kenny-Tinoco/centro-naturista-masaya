@@ -13,20 +13,20 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CentroNaturistaMasaya.UI
+namespace CentroNaturistaMasaya.UI.Añadir
 {
-    public partial class ucAñadir : UserControl
+    public partial class ucAProducto : UserControl
     {
-        public event EventHandler btnAgregarProductoClick;
-        public ucAñadir()
+        public event EventHandler btnAtrasAgregarProductoClick;
+        public ucAProducto()
         {
             InitializeComponent();
         }
 
-        private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
+        private void btnAtrasAgregarProducto_Click(object sender, RoutedEventArgs e)
         {
-            if (btnAgregarProductoClick != null)
-                btnAgregarProductoClick(sender, e);
+            if (btnAtrasAgregarProductoClick != null)
+                btnAtrasAgregarProductoClick(sender, e);
         }
     }
 }

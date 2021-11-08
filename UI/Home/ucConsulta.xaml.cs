@@ -20,9 +20,16 @@ namespace CentroNaturistaMasaya.UI
     /// </summary>
     public partial class ucConsulta : UserControl
     {
+        public event EventHandler btnAtrasConsultaClick;
         public ucConsulta()
         {
             InitializeComponent();
+        }
+
+        private void btnAtrasConsulta_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnAtrasConsultaClick != null)
+                btnAtrasConsultaClick(sender, e);
         }
     }
 }

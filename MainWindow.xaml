@@ -14,7 +14,7 @@
         Width="1300">
 
     <Grid>
-        
+        <!--#region DEFINICIÓN DE LAS COLUMNAS Y FILAS-->
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="40"/>
@@ -25,8 +25,9 @@
                 Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        <!--#endregion DEFINICIÓN DE LAS COLUMNAS Y FILAS-->
 
-        <!--Barra de titulos-->
+        <!--#region BARRA DE TITULOS-->
         <Grid
             VerticalAlignment="Top"
             Height="40"
@@ -53,13 +54,15 @@
                 Margin="0,0,45,0"
                 Background  = "#126E82"
                 BorderBrush = "White"
-                Click="btnMinimizar_Click"
+                Click="btnMinimizar_Click" Style="{DynamicResource btnMinimizarStyle}"
                 >
                 <Image Source="Resource/image/min.png" Height="25" Width="25"/>
             </Button>
 
         </Grid>
+        <!--#endregion BARRA DE TITULOS-->
 
+        <!--#region MENU LATERAL-->
         <DockPanel x:Name = "menuLateral"  Background = "#132C33" Grid.Row = "0" Grid.RowSpan="2">
             <Image Source = "Resource/image/logo CNM2.png" Width = "170" DockPanel.Dock = "Top" Margin="0,40,0,0"/>
             <StackPanel 
@@ -134,8 +137,9 @@
                 </WrapPanel>
             </Button>
         </DockPanel>
-        
-        
+        <!--#endregion MENU LATERAL-->
+
+        <!--#region AREA DE CONTENIDO-->
         <Grid
             x:Name="Contenido"
             Grid.Column="2"
@@ -144,10 +148,11 @@
             >
             <ContentControl Content="{Binding}"/>
         </Grid>
+        <!--#endregion AREA DE CONTENIDO-->
 
     </Grid>
     <Window.Resources>
-        <!--Region de enfoque visual-->
+        <!--#Region Región de enfoque visual-->
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
@@ -157,9 +162,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!--Fin de región-->
+        <!--#endregion-->
 
-        <!--btnSalirTheme-->
+        <!--#region btnBOTONSALIR theme-->
         <SolidColorBrush x:Key="Button.Static.Background"    Color = "#FFDDDDDD"/>
         <SolidColorBrush x:Key="Button.Static.Border"        Color = "#FF707070"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color = "#FFBEE6FD"/>
@@ -206,9 +211,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        <!--Fin de btnSalirTheme-->
+        <!--#endregion de btnSalirTheme-->
 
-        <!--btnMenuLateral Inicio-->
+        <!--#region btnMenuLateral theme-->
         <Style x:Key="btnMenuLateral" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle"           Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background"                 Value="Transparent"/>
@@ -247,8 +252,49 @@
             </Setter>
 
         </Style>
-        <!--Fin del btnMenuLateral-->
+        <!--#endregion btnMenuLateral-->
 
+        <!--#region btnMINIMIZAR theme-->
+        <Style x:Key="btnMinimizarStyle" TargetType="{x:Type Button}">
+            <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsDefaulted" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#132C33"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="transparent"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="white"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--#endregion-->
+        
+        
         <!--#region DataTemplate ucHome-->
         <DataTemplate
             x:Name="Home"
@@ -256,7 +302,6 @@
             <viewmodels:ucHome DataContext="{Binding}"/>
         </DataTemplate>
         <!--#endregion DataTemplate ucHome-->
-
         <!--#region DataTemplate ucAñadir-->
         <DataTemplate
             x:Name="Añadir"
@@ -264,7 +309,6 @@
             <viewmodels:ucAñadir DataContext="{Binding}"/>
         </DataTemplate>
         <!--#endregion DataTemplate ucAñadir-->
-
         <!--#region DataTemplate ucMostrar-->
         <DataTemplate
             x:Name="Mostar"
@@ -272,13 +316,14 @@
             <viewmodels:ucMostrar DataContext="{Binding}"/>
         </DataTemplate>
         <!--#endregion DataTemplate ucMostrar-->
-
+        
         <!--#region DataTemplate ucModificar-->
         <DataTemplate
             x:Name="Modificar"
             DataType ="{x:Type viewmodels:ucModificar}">
             <viewmodels:ucModificar DataContext="{Binding}"/>
-        </DataTemplate>
-        <!--#endregion DataTemplate ucModificar-->
+        </DataTemplate> <!--#endregion DataTemplate ucModificar-->
+
+
     </Window.Resources>
 </Window>

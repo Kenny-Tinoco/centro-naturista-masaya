@@ -5,24 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace CentroNaturistaMasaya.UI
 {
-    /// <summary>
-    /// Lógica de interacción para ucVenta.xaml
-    /// </summary>
     public partial class ucVenta : UserControl
     {
+
+        public event EventHandler btnAtrasVentaClick;
+
         public ucVenta()
         {
             InitializeComponent();
+        }
+
+        private void btnAtrasVenta_Click(object sender, RoutedEventArgs e)
+        {
+            if (btnAtrasVentaClick != null)
+                btnAtrasVentaClick(sender, e);
         }
     }
 }

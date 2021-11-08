@@ -1,14 +1,15 @@
-﻿<UserControl x:Class="CentroNaturistaMasaya.UI.ucHome"
+﻿<UserControl x:Class="CentroNaturistaMasaya.UI.ucCompra"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CentroNaturistaMasaya.UI"
              mc:Ignorable="d" 
-             d:DesignHeight="450"
-             d:DesignWidth="800"
-             Background="Transparent">
+             Background="Transparent"
+             d:DesignHeight="450" 
+             d:DesignWidth="800">
     <Grid>
+
         <!--#region Definición de las columnas y filas-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8"/>
@@ -18,6 +19,7 @@
             <ColumnDefinition Width="8"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="8"/>
             <RowDefinition/>
             <RowDefinition/>
@@ -25,83 +27,44 @@
         </Grid.RowDefinitions>
         <!--#endregion-->
 
-        <Image
-            Source="/CentroNaturistaMasaya;component/Resource/Image/logo CNM1.png"
-            Height="100"
-            Grid.Row="1"
-            Grid.Column="2"
-            />
-
-        <DockPanel
-            Background="Transparent"
+        <Button
+            x:Name="btnAtrasCompra"
             Grid.Column="1"
             Grid.ColumnSpan="3"
-            Grid.Row="2"            
+            Grid.Row="0"
+            HorizontalAlignment="Left"
+            Height="40"
+            Width="40"
+            Margin="10,0"
+            Style="{DynamicResource btnAtrasStyle}"
+            Click="btnAtrasCompra_Click"
             >
-            <WrapPanel
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
+            <Image 
+                Source="/CentroNaturistaMasaya;component/Resource/Image/back.png"/>
+        </Button>
 
-                <Button
-                x:Name="btnVenta"
-                Height="140"
-                Width="140"
-                Style="{DynamicResource btnBotonesPantallaHome}" Click="btnVenta_Click">
-                    <StackPanel>
-                        <Image Height="50" Width="50" Margin="0,0,5,0" Source="/CentroNaturistaMasaya;component/Resource/Image/sale.png"/>
-                        <TextBlock Text="Venta" Foreground="White" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-                <Button
-                x:Name="btnConsulta"
-                Height="140"
-                Width="140"
-                Margin="70,0,70,0"
-                HorizontalAlignment="Center"
-                
-                Style="{DynamicResource btnBotonesPantallaHome}" Click="btnConsulta_Click">
-                    <StackPanel>
-                        <Image Height="50" Width="50" Margin="0,0,5,0" Source="/CentroNaturistaMasaya;component/Resource/Image/consult.png"/>
-                        <TextBlock Text="Consulta" Foreground="White" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-                <Button
-                x:Name="btnCompra"
-                Height="140"
-                Width="140"
-                Style="{DynamicResource btnBotonesPantallaHome}" Click="btnCompra_Click">
-                    <StackPanel>
-                        <Image Height="50" Width="50" Margin="0,0,5,0" Source="/CentroNaturistaMasaya;component/Resource/Image/buy.png"/>
-                        <TextBlock Text="Compra" Foreground="White" FontSize="26" FontWeight="Bold" VerticalAlignment="Center"/>
-                    </StackPanel>
-                </Button>
-            </WrapPanel>
-        </DockPanel>
+
     </Grid>
-
     <UserControl.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
                 <Setter.Value>
                     <ControlTemplate>
-                        <Rectangle
-                            Width="100"
-                            Height="100"
-                            Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                        <Rectangle Margin="2" SnapsToDevicePixels="true" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
         <SolidColorBrush x:Key="Button.Static.Background"    Color="#126E82"/>
-        <SolidColorBrush x:Key="Button.Static.Border"        Color="White"/>
+        <SolidColorBrush x:Key="Button.Static.Border"        Color="Transparent"/>
         <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#132C33"/>
-        <SolidColorBrush x:Key="Button.MouseOver.Border"     Color="Black"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border"     Color="White"/>
         <SolidColorBrush x:Key="Button.Pressed.Background"   Color="Transparent"/>
         <SolidColorBrush x:Key="Button.Pressed.Border"       Color="White"/>
         <SolidColorBrush x:Key="Button.Disabled.Background"  Color="#FFF4F4F4"/>
         <SolidColorBrush x:Key="Button.Disabled.Border"      Color="#FFADB2B5"/>
         <SolidColorBrush x:Key="Button.Disabled.Foreground"  Color="#FF838383"/>
-        <Style x:Key="btnBotonesPantallaHome" TargetType="{x:Type Button}">
+        <Style x:Key="btnAtrasStyle" TargetType="{x:Type Button}">
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
             <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}"/>
@@ -113,7 +76,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="10" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <Border CornerRadius="3" x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                         <ControlTemplate.Triggers>
@@ -139,5 +102,4 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-
 </UserControl>
