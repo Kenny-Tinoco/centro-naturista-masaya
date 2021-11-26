@@ -10,6 +10,11 @@
     <!--#region Tamaño fuente titulos de ventana-->
     <System:Double x:Key="fontSizeTituloVentana">25</System:Double>
     <!--#endregion-->
+    <System:Double x:Key="fontSizeTituloTabla">22.5</System:Double>
+    <System:Double x:Key="fontSizeBotonVolver">15</System:Double>
+    <System:Double x:Key="fontSizeVEmergente">22</System:Double>
+    <System:Double x:Key="fontSizeTextBox">17</System:Double>
+    <System:Double x:Key="fontSizeTextBlock">16.5</System:Double>
     <!--#region Tamaño fuente - Data Grid Header-->
     <System:Double x:Key="fontSizeDataGridHeader">15</System:Double>
     <!--#endregion-->

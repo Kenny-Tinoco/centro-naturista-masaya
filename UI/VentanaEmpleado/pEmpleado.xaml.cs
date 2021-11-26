@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CentroNaturistaMasaya.UI.Proveedor
+namespace CentroNaturistaMasaya.UI.VentanaEmpleado
 {
     /// <summary>
-    /// Lógica de interacción para pProveedor.xaml
+    /// Lógica de interacción para pEmpleado.xaml
     /// </summary>
-    public partial class pProveedor : Page
+    public partial class pEmpleado : Page
     {
-        public pProveedor()
+        public pEmpleado()
         {
             InitializeComponent();
         }

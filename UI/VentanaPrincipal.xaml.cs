@@ -1,7 +1,5 @@
-﻿using System.Windows;
-using System;
-using CentroNaturistaMasaya.UI.Producto;
-using CentroNaturistaMasaya.UI.Inicio;
+﻿using System;
+using System.Windows;
 
 namespace CentroNaturistaMasaya
 {
@@ -20,7 +18,7 @@ namespace CentroNaturistaMasaya
             #endregion
 
             /*Se inicia en la ventana de Inicio*/
-            PagesNavigation.Navigate(new Uri("UI/Inicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 
@@ -34,19 +32,19 @@ namespace CentroNaturistaMasaya
         #region Eventos de click en los botones del menú lateral
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/Inicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
         }
         private void btnProducto_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/Producto/pProducto.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
         }
         private void btnProveedor_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/Proveedor/pProveedor.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaProveedor/pProveedor.xaml", UriKind.RelativeOrAbsolute));
         }
         private void btnEmpleado_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/Empleado/pEmpleado.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaEmpleado/pEmpleado.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
     }

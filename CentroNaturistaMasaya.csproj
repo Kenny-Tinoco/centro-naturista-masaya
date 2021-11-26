@@ -27,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,11 +48,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Toolkit.Mvvm, Version=7.1.0.0, Culture=neutral, PublicKeyToken=4aff67a105548ee2, processorArchitecture=MSIL">
-      <HintPath>packages\Microsoft.Toolkit.Mvvm.7.1.1\lib\netstandard2.0\Microsoft.Toolkit.Mvvm.dll</HintPath>
+      <HintPath>packages\Microsoft.Toolkit.Mvvm.7.1.2\lib\netstandard2.0\Microsoft.Toolkit.Mvvm.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
@@ -63,6 +64,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -70,8 +72,8 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Runtime.Serialization.Primitives, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -143,10 +145,14 @@
     <Compile Include="Model\Producto.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ivProducto.cs" />
+    <Compile Include="Model\existenciaProducto.cs" />
+    <Compile Include="Model\productoRecord.cs" />
     <Compile Include="Model\Proveedor.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Repository\existenciaRepository.cs" />
+    <Compile Include="Model\Repository\presentacionRepository.cs" />
+    <Compile Include="Model\Repository\productoRepository.cs" />
     <Compile Include="Model\Suministro.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
@@ -156,29 +162,38 @@
     <Compile Include="Model\Venta.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="UI\Empleado\pEmpleado.xaml.cs">
+    <Compile Include="UI\VentanaEmpleado\pEmpleado.xaml.cs">
       <DependentUpon>pEmpleado.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Inicio\pCompra.xaml.cs">
+    <Compile Include="UI\VentanaInicio\pCompra.xaml.cs">
       <DependentUpon>pCompra.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Inicio\pConsulta.xaml.cs">
+    <Compile Include="UI\VentanaInicio\pConsulta.xaml.cs">
       <DependentUpon>pConsulta.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Inicio\pInicio.xaml.cs">
+    <Compile Include="UI\VentanaInicio\pInicio.xaml.cs">
       <DependentUpon>pInicio.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Inicio\pVenta.xaml.cs">
+    <Compile Include="UI\VentanaInicio\pVenta.xaml.cs">
       <DependentUpon>pVenta.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Producto\pProducto.xaml.cs">
+    <Compile Include="UI\VentanaProducto\agregarProducto.xaml.cs">
+      <DependentUpon>agregarProducto.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VentanaProducto\pExistencia.xaml.cs">
+      <DependentUpon>pExistencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VentanaProducto\pProducto.xaml.cs">
       <DependentUpon>pProducto.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\Proveedor\pProveedor.xaml.cs">
+    <Compile Include="UI\VentanaProveedor\pProveedor.xaml.cs">
       <DependentUpon>pProveedor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\CentroNaturistaMasayaContext.cs" />
+    <Compile Include="ViewModel\existenciaViewModel.cs" />
+    <Compile Include="ViewModel\presentacionViewModel.cs" />
     <Compile Include="ViewModel\productoViewModel.cs" />
+    <Compile Include="ViewModel\pViewModel.cs" />
+    <Compile Include="ViewModel\Command\RelayCommand.cs" />
     <Page Include="Resource\Values\Styles\ventanaPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,31 +206,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Empleado\pEmpleado.xaml">
+    <Page Include="UI\VentanaEmpleado\pEmpleado.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Inicio\pCompra.xaml">
+    <Page Include="UI\VentanaInicio\pCompra.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Inicio\pConsulta.xaml">
+    <Page Include="UI\VentanaInicio\pConsulta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Inicio\pInicio.xaml">
+    <Page Include="UI\VentanaInicio\pInicio.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UI\Inicio\pVenta.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Producto\pProducto.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Proveedor\pProveedor.xaml">
+    <Page Include="UI\VentanaInicio\pVenta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,6 +251,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resource\Values\strings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProducto\agregarProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProducto\pExistencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProducto\pProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProveedor\pProveedor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -334,6 +357,9 @@
       <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
       <LastGenOutput>CentroNaturistaMasaya.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resource\Drawable\Image\guardar.png" />
+    <Resource Include="Resource\Drawable\Image\guardar-negro.png" />
+    <Resource Include="Resource\Drawable\Image\back-black.png" />
     <Resource Include="Resource\Drawable\Image\logo-cnm.png" />
     <Resource Include="Resource\Drawable\Image\empleado-negro.png" />
     <Resource Include="Resource\Drawable\Image\home-black.png" />

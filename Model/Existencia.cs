@@ -11,6 +11,8 @@ namespace CentroNaturistaMasaya.Model
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
@@ -23,6 +25,8 @@ namespace CentroNaturistaMasaya.Model
         private double precio;
         private DateTime? caducidad;
         private DateTime? fechaEntrada1;
+        private Presentacion presentacion;
+        private Producto producto;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Existencia()
@@ -43,8 +47,8 @@ namespace CentroNaturistaMasaya.Model
         public virtual ICollection<Contenido> ContenidoS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContenidoV> ContenidoVs { get; set; }
-        public virtual Presentacion Presentacion { get; set; }
-        public virtual Producto Producto { get; set; }
+        public virtual Presentacion Presentacion { get => presentacion; set => presentacion = value; }
+        public virtual Producto Producto { get => producto; set => producto = value; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -52,5 +56,24 @@ namespace CentroNaturistaMasaya.Model
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #region Lista de existencias
+        private ObservableCollection<Existencia> _registrosExistencia;
+        public ObservableCollection<Existencia> registrosExistencia
+        {
+            get
+            {
+                return _registrosExistencia;
+            }
+            set
+            {
+                _registrosExistencia = value;
+                OnPropertyChanged("registrosExistencia");
+            }
+        }
+        public void RegistrosExistencia_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("registrosExistencia");
+        }
+        #endregion
     }
 }

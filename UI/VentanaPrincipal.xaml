@@ -29,7 +29,7 @@
         <Grid
             VerticalAlignment="Top"
             Height="40"
-            Background="#132c33"
+            Background="{DynamicResource colorPrimary}"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             >

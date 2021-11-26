@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
-namespace CentroNaturistaMasaya.UI.Inicio
+namespace CentroNaturistaMasaya.UI.VentanaInicio
 {
     public partial class pVenta : Page
     {
@@ -12,7 +13,7 @@ namespace CentroNaturistaMasaya.UI.Inicio
 
         private void btnAtras_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("UI/Inicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }

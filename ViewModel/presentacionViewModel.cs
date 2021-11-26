@@ -8,7 +8,7 @@ using System.Collections.Specialized;
 
 namespace CentroNaturistaMasaya.ViewModel
 {
-    public class productoViewModel
+    public class presentacionViewModel
     {
 
         #region Definición de los atributos
@@ -16,21 +16,21 @@ namespace CentroNaturistaMasaya.ViewModel
         private ICommand _resetCommand;
         private ICommand _editCommand;
         private ICommand _deleteCommand;
-        public Producto productoSelected { get; set; } /*Almacena al producto selecionado en el datagrid*/
-        private productoRepository _repository;
-        private Producto _productoEntity = null;
-        public Producto productoRecord { get; set; }
-        public CNMEntities productoEntities { get; set; }
+        public Presentacion presentacionSelected { get; set; } /*Almacena al producto selecionado en el datagrid*/
+        private presentacionRepository _repository;
+        private Presentacion _presentacionEntity = null;
+        public Presentacion presentacionRecord { get; set; }
+        public CNMEntities presentacionEntities { get; set; }
         #endregion
 
         #region Constructor de la clase
-        public productoViewModel()
+        public presentacionViewModel()
         {
-            productoRecord = new Producto();
-            _productoEntity = new Producto();
-            _repository = new productoRepository();
+            presentacionRecord = new Presentacion();
+            _presentacionEntity = new Presentacion();
+            _repository = new presentacionRepository();
             getAll();
-            productoRecord.registrosProducto.CollectionChanged += new NotifyCollectionChangedEventHandler(productoRecord.RegistrosProducto_CollectionChanged);
+            presentacionRecord.registrosPresentacion.CollectionChanged += new NotifyCollectionChangedEventHandler(presentacionRecord.RegistrosPresentacion_CollectionChanged);
         }
         #endregion
 
@@ -83,23 +83,21 @@ namespace CentroNaturistaMasaya.ViewModel
         #region Métodos del CRUD
         public void saveData()
         {
-            if (productoRecord != null)
+            if (presentacionRecord != null)
             {
-                _productoEntity.Nombre = productoRecord.Nombre;
-                _productoEntity.Descripcion = productoRecord.Descripcion;
-                _productoEntity.Cantidad = productoRecord.Cantidad;
+                _presentacionEntity.Nombre = _presentacionEntity.Nombre;
 
                 try
                 {
-                    if (productoRecord.idProducto == 0)
+                    if (_presentacionEntity.idPresentacion == 0)
                     {
-                        _repository.addProducto(_productoEntity);
+                        _repository.addPresentacion(_presentacionEntity);
                         //MessageBox.Show("Nuevo producto guardado existosamente.");
                     }
                     else
                     {
-                        _productoEntity.idProducto = productoRecord.idProducto;
-                        _repository.updateProducto(_productoEntity);
+                        _presentacionEntity.idPresentacion = _presentacionEntity.idPresentacion;
+                        _repository.updatePresentacion(_presentacionEntity);
                         //MessageBox.Show("Producto acutualizado existosamente.");
                     }
                 }
@@ -116,20 +114,14 @@ namespace CentroNaturistaMasaya.ViewModel
         }
         public void resetData()
         {
-            productoRecord.idProducto = 0;
-            productoRecord.Nombre = string.Empty;
-            productoRecord.Descripcion = string.Empty;
-            productoRecord.Cantidad = -1;
-            productoRecord.Existencias = null;
-            productoRecord.PRecetadoes = null;
+            presentacionRecord.idPresentacion = 0;
+            presentacionRecord.Nombre = string.Empty;
         }
         public void editData(int id)
         {
             var model = _repository.get(id);
-            productoRecord.idProducto = model.idProducto;
-            productoRecord.Nombre = model.Nombre;
-            productoRecord.Descripcion = model.Descripcion;
-            productoRecord.Cantidad = model.Cantidad;
+            presentacionRecord.idPresentacion = model.idPresentacion;
+            presentacionRecord.Nombre = model.Nombre;
         }
         public void deleteProducto(int id)
         {
@@ -156,17 +148,15 @@ namespace CentroNaturistaMasaya.ViewModel
         #region Método para obtener todos los registros (El ObservableCollection)
         public void getAll()
         {
-            productoRecord.registrosProducto = new ObservableCollection<Producto>();
+            presentacionRecord.registrosPresentacion = new ObservableCollection<Presentacion>();
             _repository.getAll().ForEach
             (
-                data => productoRecord.registrosProducto.Add
+                data => presentacionRecord.registrosPresentacion.Add
                 (
-                    new productoRecord()
+                    new Presentacion()
                     {
-                        idProducto = data.idProducto,
-                        Nombre = data.Nombre,
-                        Descripcion = data.Descripcion,
-                        Cantidad = data.Cantidad
+                        idPresentacion = data.idPresentacion,
+                        Nombre = data.Nombre
                     }
                 )
             );
@@ -176,18 +166,16 @@ namespace CentroNaturistaMasaya.ViewModel
         #region Métodos de búsqueda
         public void buscarRegistro(string cadena)
         {
-            productoRecord.registrosProducto = new ObservableCollection<Producto>();
+            presentacionRecord.registrosPresentacion = new ObservableCollection<Presentacion>();
             _repository.getWhere(cadena).ForEach
             (
-                data => productoRecord.registrosProducto.Add
+                data => presentacionRecord.registrosPresentacion.Add
                 (
-                    new productoRecord()
+                    new Presentacion()
                     {
-                        idProducto = data.idProducto,
-                        Nombre = data.Nombre,
-                        Descripcion = data.Descripcion,
-                        Cantidad = data.Cantidad
-                    }
+                        idPresentacion = data.idPresentacion,
+                        Nombre = data.Nombre
+                   }
                 )
             );
         }

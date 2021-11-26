@@ -6,10 +6,10 @@ using System;
 
 namespace CentroNaturistaMasaya.Model
 {
-    public class ivProducto
+    public class existenciaProducto
     {
         #region Definición de los atributos
-        private int       _idProducto;
+        private int       _idExistencia;
         private string    _nombreProducto;
         private string    _descripcionProducto;
         private string    _nombrePresentacion;
@@ -19,10 +19,10 @@ namespace CentroNaturistaMasaya.Model
         private DateTime? _fechaEntradaExistencia;
         #endregion
         #region Metodos Set-Get
-        public int idProducto
+        public int idExistencia
         {
-            get => _idProducto;
-            set => _idProducto = value;
+            get => _idExistencia;
+            set => _idExistencia = value;
         }
         public string nombreProducto
         {

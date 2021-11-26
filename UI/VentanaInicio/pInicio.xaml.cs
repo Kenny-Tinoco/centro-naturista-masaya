@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
-namespace CentroNaturistaMasaya.UI.Inicio
+namespace CentroNaturistaMasaya.UI.VentanaInicio
 {
     public partial class pInicio : Page
-    {        
+    {
         public pInicio()
         {
             InitializeComponent();
@@ -13,17 +14,17 @@ namespace CentroNaturistaMasaya.UI.Inicio
 
         private void btnVenta_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("UI/Inicio/pVenta.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("UI/VentanaInicio/pVenta.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnConsulta_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("UI/Inicio/pConsulta.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("UI/VentanaInicio/pConsulta.xaml", UriKind.RelativeOrAbsolute));
         }
 
         private void btnCompra_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Uri("UI/Inicio/pCompra.xaml", UriKind.RelativeOrAbsolute));
+            NavigationService.Navigate(new Uri("UI/VentanaInicio/pCompra.xaml", UriKind.RelativeOrAbsolute));
         }
     }
 }
