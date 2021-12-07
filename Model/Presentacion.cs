@@ -16,23 +16,47 @@ namespace CentroNaturistaMasaya.Model
     using System.ComponentModel;
     using System.Runtime.CompilerServices;
 
-    public partial class Presentacion
+    public partial class Presentacion : INotifyPropertyChanged
     {
-        private int idPresentacion1;
-        private string nombre;
+        #region Definición de los atributos de la clase
+        private int _idPresentacion;
+        private string _nombre;
+        #endregion
 
+        #region Constructor de la clase modelo
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Presentacion()
         {
-            this.Existencias = new HashSet<Existencia>();
+            this.Existencia = new HashSet<Existencia>();
         }
+        #endregion
 
-        public int idPresentacion { get => idPresentacion1; set => idPresentacion1 = value; }
-        public string Nombre { get => nombre; set => nombre = value; }
+        #region Métodos Set-Get de los atributos
+        public int idPresentacion
+        {
+            get => _idPresentacion;
+            set
+            {
+                _idPresentacion = value;
+                OnPropertyChanged(nameof(idPresentacion));
+            }
+        }
+        public string Nombre
+        {
+            get => _nombre;
+            set
+            {
+                _nombre = value;
+                OnPropertyChanged(nameof(Nombre));
+            }
+        }
+        #endregion
 
+        #region Entidades que tiene como llave foranea a Presentación
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Existencia> Existencias { get; set; }
-        
+        public virtual ICollection<Existencia> Existencia { get; set; }
+        #endregion
+
         #region Elementos del PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -40,23 +64,38 @@ namespace CentroNaturistaMasaya.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        
         #region Lista de productos
         private ObservableCollection<Presentacion> _registrosPresentacion;
         public ObservableCollection<Presentacion> registrosPresentacion
         {
-            get
-            {
-                return _registrosPresentacion;
-            }
+            get => _registrosPresentacion;
             set
             {
                 _registrosPresentacion = value;
-                OnPropertyChanged("registrosPresentacion");
+                OnPropertyChanged(nameof(registrosPresentacion));
             }
         }
         public void RegistrosPresentacion_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnPropertyChanged("registrosPresentacion");
+            OnPropertyChanged(nameof(registrosPresentacion));
+        }
+        #endregion
+
+        #region Lista de nombre de los productos
+        private ObservableCollection<String> _nombresPresentacion;
+        public ObservableCollection<String> nombresPresentacion
+        {
+            get => _nombresPresentacion;
+            set
+            {
+                _nombresPresentacion = value;
+                OnPropertyChanged(nameof(nombresPresentacion));
+            }
+        }
+        public void NombresProducto_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(nombresPresentacion));
         }
         #endregion
     }

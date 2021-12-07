@@ -121,7 +121,7 @@
     <Compile Include="Model\Consulta.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Contenido.cs">
+    <Compile Include="Model\ContenidoS.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ContenidoV.cs">
@@ -133,6 +133,7 @@
     <Compile Include="Model\Existencia.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\existenciaProducto.cs" />
     <Compile Include="Model\Paciente.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
@@ -145,8 +146,6 @@
     <Compile Include="Model\Producto.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\existenciaProducto.cs" />
-    <Compile Include="Model\productoRecord.cs" />
     <Compile Include="Model\Proveedor.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
@@ -177,11 +176,20 @@
     <Compile Include="UI\VentanaInicio\pVenta.xaml.cs">
       <DependentUpon>pVenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\VentanaProducto\agregarExistencia.xaml.cs">
+      <DependentUpon>agregarExistencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VentanaProducto\agregarPresentacion.xaml.cs">
+      <DependentUpon>agregarPresentacion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\VentanaProducto\agregarProducto.xaml.cs">
       <DependentUpon>agregarProducto.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\VentanaProducto\pExistencia.xaml.cs">
       <DependentUpon>pExistencia.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\VentanaProducto\pPresentacion.xaml.cs">
+      <DependentUpon>pPresentacion.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\VentanaProducto\pProducto.xaml.cs">
       <DependentUpon>pProducto.xaml</DependentUpon>
@@ -189,11 +197,16 @@
     <Compile Include="UI\VentanaProveedor\pProveedor.xaml.cs">
       <DependentUpon>pProveedor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\existenciaProductoViewModel.cs" />
     <Compile Include="ViewModel\existenciaViewModel.cs" />
     <Compile Include="ViewModel\presentacionViewModel.cs" />
     <Compile Include="ViewModel\productoViewModel.cs" />
     <Compile Include="ViewModel\pViewModel.cs" />
     <Compile Include="ViewModel\Command\RelayCommand.cs" />
+    <Page Include="Resource\Values\Styles\ventanaAgregarExistencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resource\Values\Styles\ventanaPrincipal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -254,11 +267,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\VentanaProducto\agregarExistencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProducto\agregarPresentacion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\VentanaProducto\agregarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\VentanaProducto\pExistencia.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\VentanaProducto\pPresentacion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -347,16 +372,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\CentroNaturistaMasaya.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
-      <LastGenOutput>CentroNaturistaMasaya.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Model\CentroNaturistaMasaya.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
-      <LastGenOutput>CentroNaturistaMasaya.cs</LastGenOutput>
-    </Content>
     <Resource Include="Resource\Drawable\Image\guardar.png" />
     <Resource Include="Resource\Drawable\Image\guardar-negro.png" />
     <Resource Include="Resource\Drawable\Image\back-black.png" />
@@ -370,7 +385,19 @@
     <Resource Include="Resource\Drawable\Image\eliminar-rojo.png" />
     <Resource Include="Resource\Drawable\Image\edit.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model\CentroNaturistaMasaya.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
+      <LastGenOutput>CentroNaturistaMasaya.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\CentroNaturistaMasaya.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
+      <LastGenOutput>CentroNaturistaMasaya.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Resource\Drawable\Image\presentacion-negro.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

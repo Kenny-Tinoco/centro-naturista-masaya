@@ -17,7 +17,7 @@ namespace CentroNaturistaMasaya.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Suministro()
         {
-            this.ContenidoS = new HashSet<Contenido>();
+            this.ContenidoS = new HashSet<ContenidoS>();
         }
     
         public int idSuministro { get; set; }
@@ -26,7 +26,7 @@ namespace CentroNaturistaMasaya.Model
         public double Total { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contenido> ContenidoS { get; set; }
+        public virtual ICollection<ContenidoS> ContenidoS { get; set; }
         public virtual Proveedor Proveedor { get; set; }
     }
 }

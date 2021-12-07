@@ -1,25 +1,25 @@
-﻿using CentroNaturistaMasaya.Model;
-using CentroNaturistaMasaya.ViewModel;
+﻿using CentroNaturistaMasaya.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace CentroNaturistaMasaya.UI.VentanaProducto
 {
-    public partial class pProducto : Page
+    public partial class pPresentacion : Page
     {
-        #region Definición de las variables
-        productoViewModel pVM;
+        #region Definición de variables
+        presentacionViewModel ptVM; 
         #endregion
-        #region Constructor de la clase
-        public pProducto()
+
+        #region Constructor de la pagina
+        public pPresentacion()
         {
             InitializeComponent();
-            pVM = new productoViewModel();
-            DataContext = pVM;
+            ptVM = new presentacionViewModel();
+            DataContext = ptVM;
         }
         #endregion
+        
         #region Métodos de los botones
         private void btnAtras_Click(object sender, RoutedEventArgs e)
         {
@@ -35,42 +35,43 @@ namespace CentroNaturistaMasaya.UI.VentanaProducto
             mostrarSubVentana(true);
         }
         private void SalirVAP(object sender, EventArgs e)
-        {/*Salir de la ventana agregar producto*/
-            pVM.resetData();
-            pVM.getAll();
-            dgProducto.SelectedItem = null;
+        {/*Salir de la ventana agregar presentación*/
+            ptVM.resetData();
+            ptVM.getAll();
+            ptVM.presentacionSelected = null;
         }
         private void mostrarSubVentana(bool modificar)
         {
-            agregarProducto subVentana = new agregarProducto(pVM, modificar);
+            agregarPresentacion subVentana = new agregarPresentacion(ptVM, modificar);
             subVentana.Salir += new EventHandler(SalirVAP);
             subVentana.ShowDialog();
         }
         #endregion
-        #region Estilo del text para el cuadro de búsqueda
+
+        #region Métodos para el estilo del textbox de búsqueda
         private void txtBusqueda_GotFocus(object sender, RoutedEventArgs e)
         {
-            dgProducto.SelectedItem = null;
-            if (txtBusqueda.Text == "Buscar") txtBusqueda.Text = ""; 
+            dgPresentacion.SelectedItem = null;
+            if (txtBusqueda.Text == "Buscar") txtBusqueda.Text = "";
         }
-
         private void txtBusqueda_LostFocus(object sender, RoutedEventArgs e)
         {
             if (txtBusqueda.Text.Trim().Equals("")) txtBusqueda.Text = "Buscar";
         }
         #endregion
-        #region Métodos buscar del viewModel
+        
+        #region Método buscar del viewModel
         public void Buscar(string dato, bool bandera)
         {
             if (bandera)
-                pVM.buscarRegistro(dato);
+                ptVM.buscarRegistro(dato);
             else
-                if(pVM != null)
-                pVM.getAll();
+                if (ptVM != null)
+                ptVM.getAll();
 
         }
         #endregion
-        
+
         #region Métodos auxialires
         private bool validadorBarraDeBusqueda()
         {
@@ -88,7 +89,7 @@ namespace CentroNaturistaMasaya.UI.VentanaProducto
         }
         private void HabilitarBotones(object sender, RoutedEventArgs e)
         {
-            if (dgProducto.SelectedItem != null)
+            if (ptVM.presentacionSelected != null)
                 enabledBotones(true);
             else
                 enabledBotones(false);

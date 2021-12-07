@@ -18,7 +18,7 @@ namespace CentroNaturistaMasaya
             #endregion
 
             /*Se inicia en la ventana de Inicio*/
-            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
         }
         #endregion
 
@@ -32,7 +32,7 @@ namespace CentroNaturistaMasaya
         #region Eventos de click en los botones del menú lateral
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
         }
         private void btnProducto_Click(object sender, RoutedEventArgs e)
         {

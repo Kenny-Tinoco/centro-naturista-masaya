@@ -237,9 +237,10 @@
         <TextBlock
             Grid.Row="3"
             Grid.Column="2"
-            Text="{DynamicResource tituloVPP}"
+            Text="{DynamicResource tituloVPPd}"
             FontSize="{DynamicResource fontSizeTituloTabla}"
             HorizontalAlignment="Center"
+            VerticalAlignment="Top"
             FontWeight="SemiBold"
             Margin="0,5,0,0"/>
         <!--#endregion-->

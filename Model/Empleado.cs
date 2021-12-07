@@ -17,8 +17,8 @@ namespace CentroNaturistaMasaya.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Empleado()
         {
-            this.Consultas = new HashSet<Consulta>();
-            this.Ventas = new HashSet<Venta>();
+            this.Consulta = new HashSet<Consulta>();
+            this.Venta = new HashSet<Venta>();
         }
     
         public int idEmpleado { get; set; }
@@ -27,8 +27,8 @@ namespace CentroNaturistaMasaya.Model
         public string Direccion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Consulta> Consultas { get; set; }
+        public virtual ICollection<Consulta> Consulta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Venta> Ventas { get; set; }
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }

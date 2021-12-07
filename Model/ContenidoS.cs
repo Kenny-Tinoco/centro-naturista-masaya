@@ -12,7 +12,7 @@ namespace CentroNaturistaMasaya.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Contenido
+    public partial class ContenidoS
     {
         public int idContenidoS { get; set; }
         public int idSuministro { get; set; }

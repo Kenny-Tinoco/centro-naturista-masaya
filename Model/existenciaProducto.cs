@@ -8,6 +8,13 @@ namespace CentroNaturistaMasaya.Model
 {
     public class existenciaProducto
     {
+        /*
+         * Existencia de Producto es el modelo de datos que optiene la
+         * información completa (o la información util) de la tabla Existencia,
+         * es decir el nombre del producto, la descripción y el nombre de la 
+         * presentación de las existencias.
+         */
+
         #region Definición de los atributos
         private int       _idExistencia;
         private string    _nombreProducto;

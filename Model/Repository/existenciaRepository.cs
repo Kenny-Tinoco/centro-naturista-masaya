@@ -7,75 +7,87 @@ namespace CentroNaturistaMasaya.Model.Repository
     {
 
         #region Definicón de variables
-        private CNMEntities existenciaContext = null;
+        private CNMEntities context = null;
         #endregion
+
         #region Constructor de la clase
         public existenciaRepository()
         {
-            existenciaContext = new CNMEntities();
+            context = new CNMEntities();
         }
         #endregion
+
         #region Método para obtener una existencia por id
         public Existencia get(int id)
         {
-            return existenciaContext.Existencias.Find(id);
+            return context.Existencia.Find(id);
         }
         #endregion
-        #region Método para obtener una lista de todas las existencias de productos
+
+        #region Método para obtener una lista de todas las existencias
         public List<Existencia> getAll()
         {
-            return existenciaContext.Existencias.ToList();
+            return context.Existencia.ToList();
         }
-        #endregion        
+        #endregion
+
         #region Método para obtener una lista de todas las existencias que cumplen una condición (Busqueda)
         public List<Existencia> getWhere(string cadena)
         {
-            return existenciaContext
-                .Existencias
+            return context
+                .Existencia
                 .Where
                 (
-                    PD => PD.idExistencia.ToString().Contains(cadena) 
-                    //|| PD.Nombre.ToLower().StartsWith(cadena.ToLower())
+                    objeto =>
+                    objeto.idExistencia.ToString().Contains(cadena) ||
+                    objeto.Producto.Nombre.ToLower().StartsWith(cadena.ToLower()) ||
+                    objeto.Presentacion.Nombre.ToLower().StartsWith(cadena.ToLower())
                 ).ToList();
         }
         #endregion
-        #region Método para añadir un producto a la tabla
-        public void addExistencia(Existencia existencia)
+
+        #region Método para añadir una existencia a la tabla
+        public void addExistencia(Existencia objeto)
         {
-            if (existencia != null)
+            if (objeto != null)
             {
-                existenciaContext.Existencias.Add(existencia);
-                existenciaContext.SaveChanges();
+                context.Existencia.Add(objeto);
+                context.SaveChanges();
             }
         }
         #endregion
-        #region Método para modificar un producto de la tabla
-        public void updateExistencia(Existencia existencia)
+
+        #region Método para modificar una existencia de la tabla
+        public void updateExistencia(Existencia objeto)
         {
-            var findExistencia = get(existencia.idExistencia);
-            if (findExistencia != null)
+            var findObjeto = get(objeto.idExistencia);
+            if (findObjeto != null)
             {
-                findExistencia.idProducto = existencia.idProducto;
-                findExistencia.idPresentacion = existencia.idPresentacion;
-                findExistencia.Cantidad = existencia.Cantidad;
-                findExistencia.Precio = existencia.Precio;
-                findExistencia.fechaEntrada = existencia.fechaEntrada;
-                findExistencia.Caducidad = existencia.Caducidad;
-                existenciaContext.SaveChanges();
+                findObjeto.idPresentacion = objeto.idPresentacion;
+                findObjeto.idProducto = objeto.idProducto;
+                findObjeto.Precio = objeto.Precio;
+                findObjeto.Cantidad = objeto.Cantidad;
+                findObjeto.Caducidad = objeto.Caducidad;
+                findObjeto.fechaEntrada = objeto.fechaEntrada;
+                findObjeto.Producto = objeto.Producto;
+                findObjeto.Presentacion = objeto.Presentacion;
+                context.SaveChanges();
             }
         }
         #endregion
+
         #region Método para remover una existencia de la tabla
         public void removeExistencia(int id)
         {
-            var objectExistencia = existenciaContext.Existencias.Find(id);
-            if (objectExistencia != null)
+            var objeto = context.Existencia.Find(id);
+            if (objeto != null)
             {
-                existenciaContext.Existencias.Remove(objectExistencia);
-                existenciaContext.SaveChanges();
+                context.Existencia.Remove(objeto);
+                context.SaveChanges();
             }
         }
         #endregion
+
 
     }
 }

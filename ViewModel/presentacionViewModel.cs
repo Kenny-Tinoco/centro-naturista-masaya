@@ -16,11 +16,14 @@ namespace CentroNaturistaMasaya.ViewModel
         private ICommand _resetCommand;
         private ICommand _editCommand;
         private ICommand _deleteCommand;
-        public Presentacion presentacionSelected { get; set; } /*Almacena al producto selecionado en el datagrid*/
-        private presentacionRepository _repository;
+
         private Presentacion _presentacionEntity = null;
+                /*Esta variable es auxiliar, sólo para el método agregar*/
         public Presentacion presentacionRecord { get; set; }
+        public Presentacion presentacionSelected { get; set; }
         public CNMEntities presentacionEntities { get; set; }
+
+        private presentacionRepository _repository;
         #endregion
 
         #region Constructor de la clase
@@ -34,7 +37,7 @@ namespace CentroNaturistaMasaya.ViewModel
         }
         #endregion
 
-        #region Defición del los métodos de command
+        #region Definición del los métodos de command
         public ICommand ResetCommand
         {
             get
@@ -45,7 +48,6 @@ namespace CentroNaturistaMasaya.ViewModel
                 return _resetCommand;
             }
         }
-
         public ICommand SaveCommand
         {
             get
@@ -56,7 +58,6 @@ namespace CentroNaturistaMasaya.ViewModel
                 return _saveCommand;
             }
         }
-
         public ICommand EditCommand
         {
             get
@@ -67,13 +68,12 @@ namespace CentroNaturistaMasaya.ViewModel
                 return _editCommand;
             }
         }
-
         public ICommand DeleteCommand
         {
             get
             {
                 if (_deleteCommand == null)
-                    _deleteCommand = new RelayCommand(parametro =>deleteProducto((int)parametro), null);
+                    _deleteCommand = new RelayCommand(parametro =>deletePresentacion((int)parametro), null);
 
                 return _deleteCommand;
             }
@@ -85,25 +85,24 @@ namespace CentroNaturistaMasaya.ViewModel
         {
             if (presentacionRecord != null)
             {
-                _presentacionEntity.Nombre = _presentacionEntity.Nombre;
-
+                _presentacionEntity.Nombre = presentacionRecord.Nombre;
                 try
                 {
-                    if (_presentacionEntity.idPresentacion == 0)
+                    if (presentacionRecord.idPresentacion == 0)
                     {
                         _repository.addPresentacion(_presentacionEntity);
                         //MessageBox.Show("Nuevo producto guardado existosamente.");
                     }
                     else
                     {
-                        _presentacionEntity.idPresentacion = _presentacionEntity.idPresentacion;
+                        _presentacionEntity.idPresentacion = presentacionRecord.idPresentacion;
                         _repository.updatePresentacion(_presentacionEntity);
                         //MessageBox.Show("Producto acutualizado existosamente.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Ocurrió un error al guardar los datos. Error: " + ex.InnerException);
+                    MessageBox.Show("Ocurrió un error al guardar los datos. \nError: " + ex.Message);
                 }
                 finally
                 {
@@ -123,14 +122,14 @@ namespace CentroNaturistaMasaya.ViewModel
             presentacionRecord.idPresentacion = model.idPresentacion;
             presentacionRecord.Nombre = model.Nombre;
         }
-        public void deleteProducto(int id)
+        public void deletePresentacion(int id)
         {
-            if (MessageBox.Show("Confirmación de eliminación de producto.\n¿Desea eliminar este producto?", "Eliminar producto", MessageBoxButton.YesNo)
+            if (MessageBox.Show("Confirmación de eliminación de producto.\n¿Desea eliminar este producto?", "Eliminar presentación", MessageBoxButton.YesNo)
                 == MessageBoxResult.Yes)
             {
                 try
                 {
-                    _repository.removeProducto(id);
+                    _repository.removePresentacion(id);
                 }
                 catch (Exception ex)
                 {

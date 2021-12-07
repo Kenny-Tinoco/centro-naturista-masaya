@@ -17,7 +17,7 @@ namespace CentroNaturistaMasaya.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Consulta()
         {
-            this.PRecetadoes = new HashSet<PRecetado>();
+            this.PRecetado = new HashSet<PRecetado>();
         }
     
         public int idConsulta { get; set; }
@@ -29,6 +29,6 @@ namespace CentroNaturistaMasaya.Model
         public virtual Empleado Empleado { get; set; }
         public virtual Paciente Paciente { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRecetado> PRecetadoes { get; set; }
+        public virtual ICollection<PRecetado> PRecetado { get; set; }
     }
 }

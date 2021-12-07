@@ -24,19 +24,19 @@ namespace CentroNaturistaMasaya.Model
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        public virtual DbSet<Consulta> Consultas { get; set; }
-        public virtual DbSet<Contenido> ContenidoS { get; set; }
-        public virtual DbSet<ContenidoV> ContenidoVs { get; set; }
-        public virtual DbSet<Empleado> Empleadoes { get; set; }
-        public virtual DbSet<Existencia> Existencias { get; set; }
-        public virtual DbSet<Paciente> Pacientes { get; set; }
-        public virtual DbSet<PRecetado> PRecetadoes { get; set; }
-        public virtual DbSet<Presentacion> Presentacions { get; set; }
-        public virtual DbSet<Producto> Productoes { get; set; }
-        public virtual DbSet<Proveedor> Proveedors { get; set; }
-        public virtual DbSet<Suministro> Suministroes { get; set; }
-        public virtual DbSet<TelefonoP> TelefonoPs { get; set; }
-        public virtual DbSet<Venta> Ventas { get; set; }
+    
+        public virtual DbSet<Consulta> Consulta { get; set; }
+        public virtual DbSet<ContenidoS> ContenidoS { get; set; }
+        public virtual DbSet<ContenidoV> ContenidoV { get; set; }
+        public virtual DbSet<Empleado> Empleado { get; set; }
+        public virtual DbSet<Existencia> Existencia { get; set; }
+        public virtual DbSet<Paciente> Paciente { get; set; }
+        public virtual DbSet<PRecetado> PRecetado { get; set; }
+        public virtual DbSet<Presentacion> Presentacion { get; set; }
+        public virtual DbSet<Producto> Producto { get; set; }
+        public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Suministro> Suministro { get; set; }
+        public virtual DbSet<TelefonoP> TelefonoP { get; set; }
+        public virtual DbSet<Venta> Venta { get; set; }
     }
 }

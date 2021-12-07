@@ -113,8 +113,8 @@ namespace CentroNaturistaMasaya.ViewModel
             productoRecord.Nombre = string.Empty;
             productoRecord.Descripcion = string.Empty;
             productoRecord.Cantidad = -1;
-            productoRecord.Existencias = null;
-            productoRecord.PRecetadoes = null;
+            productoRecord.Existencia = null;
+            productoRecord.PRecetado = null;
         }
         public void editData(int id)
         {
@@ -154,7 +154,7 @@ namespace CentroNaturistaMasaya.ViewModel
             (
                 data => productoRecord.registrosProducto.Add
                 (
-                    new productoRecord()
+                    new Producto()
                     {
                         idProducto = data.idProducto,
                         Nombre = data.Nombre,

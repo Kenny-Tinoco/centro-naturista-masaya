@@ -12,6 +12,7 @@
                 <ResourceDictionary Source="Resource/Values/Styles/ventanaPrincipal.xaml"/>
                 <ResourceDictionary Source="Resource/Values/Styles/ventanaProducto.xaml"/>
                 <ResourceDictionary Source="Resource/Values/Styles/ventanaProveedor.xaml"/>
+                <ResourceDictionary Source="Resource/Values/Styles/ventanaAgregarExistencia.xaml"/>
                 <ResourceDictionary Source="Resource/Drawable/Icono/IconosVP.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

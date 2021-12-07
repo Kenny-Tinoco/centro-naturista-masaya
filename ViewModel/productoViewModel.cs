@@ -16,11 +16,13 @@ namespace CentroNaturistaMasaya.ViewModel
         private ICommand _resetCommand;
         private ICommand _editCommand;
         private ICommand _deleteCommand;
-        public Producto productoSelected { get; set; } /*Almacena al producto selecionado en el datagrid*/
-        private productoRepository _repository;
+
         private Producto _productoEntity = null;
         public Producto productoRecord { get; set; }
+        public Producto productoSelected { get; set; }
         public CNMEntities productoEntities { get; set; }
+        
+        private productoRepository _repository;
         #endregion
 
         #region Constructor de la clase
@@ -30,7 +32,8 @@ namespace CentroNaturistaMasaya.ViewModel
             _productoEntity = new Producto();
             _repository = new productoRepository();
             getAll();
-            productoRecord.registrosProducto.CollectionChanged += new NotifyCollectionChangedEventHandler(productoRecord.RegistrosProducto_CollectionChanged);
+            productoRecord.registrosProducto.CollectionChanged += 
+                new NotifyCollectionChangedEventHandler(productoRecord.RegistrosProducto_CollectionChanged);
         }
         #endregion
 
@@ -120,8 +123,8 @@ namespace CentroNaturistaMasaya.ViewModel
             productoRecord.Nombre = string.Empty;
             productoRecord.Descripcion = string.Empty;
             productoRecord.Cantidad = -1;
-            productoRecord.Existencias = null;
-            productoRecord.PRecetadoes = null;
+            productoRecord.Existencia = null;
+            productoRecord.PRecetado = null;
         }
         public void editData(int id)
         {
@@ -161,7 +164,7 @@ namespace CentroNaturistaMasaya.ViewModel
             (
                 data => productoRecord.registrosProducto.Add
                 (
-                    new productoRecord()
+                    new Producto()
                     {
                         idProducto = data.idProducto,
                         Nombre = data.Nombre,
@@ -181,7 +184,7 @@ namespace CentroNaturistaMasaya.ViewModel
             (
                 data => productoRecord.registrosProducto.Add
                 (
-                    new productoRecord()
+                    new Producto()
                     {
                         idProducto = data.idProducto,
                         Nombre = data.Nombre,

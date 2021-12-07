@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CentroNaturistaMasayaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CNM_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Consulta">
           <Key>
             <PropertyRef Name="idConsulta" />
@@ -283,7 +283,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CentroNaturistaMasayaModelStoreContainer">
+        <EntityContainer Name="CNM_ModelStoreContainer">
           <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContenidoS" EntityType="Self.ContenidoS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ContenidoV" EntityType="Self.ContenidoV" Schema="dbo" store:Type="Tables" />
@@ -354,7 +354,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CentroNaturistaMasayaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="CNM_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Consulta">
           <Key>
             <PropertyRef Name="idConsulta" />
@@ -366,9 +366,9 @@
           <Property Name="Fecha" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__Consulta__idEmpl__4222D4EF" FromRole="Consulta" ToRole="Empleado" />
           <NavigationProperty Name="Paciente" Relationship="Self.FK__Consulta__idPaci__4316F928" FromRole="Consulta" ToRole="Paciente" />
-          <NavigationProperty Name="PRecetadoes" Relationship="Self.FK__PRecetado__idCon__45F365D3" FromRole="Consulta" ToRole="PRecetado" />
+          <NavigationProperty Name="PRecetado" Relationship="Self.FK__PRecetado__idCon__45F365D3" FromRole="Consulta" ToRole="PRecetado" />
         </EntityType>
-        <EntityType Name="Contenido">
+        <EntityType Name="ContenidoS">
           <Key>
             <PropertyRef Name="idContenidoS" />
           </Key>
@@ -402,8 +402,8 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Consultas" Relationship="Self.FK__Consulta__idEmpl__4222D4EF" FromRole="Empleado" ToRole="Consulta" />
-          <NavigationProperty Name="Ventas" Relationship="Self.FK__Venta__idEmplead__2E1BDC42" FromRole="Empleado" ToRole="Venta" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK__Consulta__idEmpl__4222D4EF" FromRole="Empleado" ToRole="Consulta" />
+          <NavigationProperty Name="Venta" Relationship="Self.FK__Venta__idEmplead__2E1BDC42" FromRole="Empleado" ToRole="Venta" />
         </EntityType>
         <EntityType Name="Existencia">
           <Key>
@@ -417,7 +417,7 @@
           <Property Name="Caducidad" Type="DateTime" Precision="0" />
           <Property Name="fechaEntrada" Type="DateTime" Precision="0" />
           <NavigationProperty Name="ContenidoS" Relationship="Self.FK__Contenido__idExi__3F466844" FromRole="Existencia" ToRole="ContenidoS" />
-          <NavigationProperty Name="ContenidoVs" Relationship="Self.FK__Contenido__idExi__3B75D760" FromRole="Existencia" ToRole="ContenidoV" />
+          <NavigationProperty Name="ContenidoV" Relationship="Self.FK__Contenido__idExi__3B75D760" FromRole="Existencia" ToRole="ContenidoV" />
           <NavigationProperty Name="Presentacion" Relationship="Self.FK__Existenci__idPre__36B12243" FromRole="Existencia" ToRole="Presentacion" />
           <NavigationProperty Name="Producto" Relationship="Self.FK__Existenci__idPro__37A5467C" FromRole="Existencia" ToRole="Producto" />
         </EntityType>
@@ -430,7 +430,7 @@
           <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Edad" Type="Int32" />
           <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Consultas" Relationship="Self.FK__Consulta__idPaci__4316F928" FromRole="Paciente" ToRole="Consulta" />
+          <NavigationProperty Name="Consulta" Relationship="Self.FK__Consulta__idPaci__4316F928" FromRole="Paciente" ToRole="Consulta" />
         </EntityType>
         <EntityType Name="PRecetado">
           <Key>
@@ -448,7 +448,7 @@
           </Key>
           <Property Name="idPresentacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Existencias" Relationship="Self.FK__Existenci__idPre__36B12243" FromRole="Presentacion" ToRole="Existencia" />
+          <NavigationProperty Name="Existencia" Relationship="Self.FK__Existenci__idPre__36B12243" FromRole="Presentacion" ToRole="Existencia" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -458,8 +458,8 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Cantidad" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Existencias" Relationship="Self.FK__Existenci__idPro__37A5467C" FromRole="Producto" ToRole="Existencia" />
-          <NavigationProperty Name="PRecetadoes" Relationship="Self.FK__PRecetado__idPro__46E78A0C" FromRole="Producto" ToRole="PRecetado" />
+          <NavigationProperty Name="Existencia" Relationship="Self.FK__Existenci__idPro__37A5467C" FromRole="Producto" ToRole="Existencia" />
+          <NavigationProperty Name="PRecetado" Relationship="Self.FK__PRecetado__idPro__46E78A0C" FromRole="Producto" ToRole="PRecetado" />
         </EntityType>
         <EntityType Name="Proveedor">
           <Key>
@@ -469,8 +469,8 @@
           <Property Name="RUC" Type="String" MaxLength="29" FixedLength="false" Unicode="true" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Suministroes" Relationship="Self.FK__Suministr__idPro__30F848ED" FromRole="Proveedor" ToRole="Suministro" />
-          <NavigationProperty Name="TelefonoPs" Relationship="Self.FK__TelefonoP__idPro__33D4B598" FromRole="Proveedor" ToRole="TelefonoP" />
+          <NavigationProperty Name="Suministro" Relationship="Self.FK__Suministr__idPro__30F848ED" FromRole="Proveedor" ToRole="Suministro" />
+          <NavigationProperty Name="TelefonoP" Relationship="Self.FK__TelefonoP__idPro__33D4B598" FromRole="Proveedor" ToRole="TelefonoP" />
         </EntityType>
         <EntityType Name="Suministro">
           <Key>
@@ -500,7 +500,7 @@
           <Property Name="idEmpleado" Type="Int32" Nullable="false" />
           <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Total" Type="Double" Nullable="false" />
-          <NavigationProperty Name="ContenidoVs" Relationship="Self.FK__Contenido__idVen__3A81B327" FromRole="Venta" ToRole="ContenidoV" />
+          <NavigationProperty Name="ContenidoV" Relationship="Self.FK__Contenido__idVen__3A81B327" FromRole="Venta" ToRole="ContenidoV" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__Venta__idEmplead__2E1BDC42" FromRole="Venta" ToRole="Empleado" />
         </EntityType>
         <Association Name="FK__Consulta__idEmpl__4222D4EF">
@@ -541,7 +541,7 @@
         </Association>
         <Association Name="FK__Contenido__idExi__3F466844">
           <End Role="Existencia" Type="Self.Existencia" Multiplicity="1" />
-          <End Role="ContenidoS" Type="Self.Contenido" Multiplicity="*" />
+          <End Role="ContenidoS" Type="Self.ContenidoS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Existencia">
               <PropertyRef Name="idExistencia" />
@@ -553,7 +553,7 @@
         </Association>
         <Association Name="FK__Contenido__idSum__3E52440B">
           <End Role="Suministro" Type="Self.Suministro" Multiplicity="1" />
-          <End Role="ContenidoS" Type="Self.Contenido" Multiplicity="*" />
+          <End Role="ContenidoS" Type="Self.ContenidoS" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Suministro">
               <PropertyRef Name="idSuministro" />
@@ -660,70 +660,70 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CNMEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Consultas" EntityType="Self.Consulta" />
-          <EntitySet Name="ContenidoS" EntityType="Self.Contenido" />
-          <EntitySet Name="ContenidoVs" EntityType="Self.ContenidoV" />
-          <EntitySet Name="Empleadoes" EntityType="Self.Empleado" />
-          <EntitySet Name="Existencias" EntityType="Self.Existencia" />
-          <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
-          <EntitySet Name="PRecetadoes" EntityType="Self.PRecetado" />
-          <EntitySet Name="Presentacions" EntityType="Self.Presentacion" />
-          <EntitySet Name="Productoes" EntityType="Self.Producto" />
-          <EntitySet Name="Proveedors" EntityType="Self.Proveedor" />
-          <EntitySet Name="Suministroes" EntityType="Self.Suministro" />
-          <EntitySet Name="TelefonoPs" EntityType="Self.TelefonoP" />
-          <EntitySet Name="Ventas" EntityType="Self.Venta" />
+          <EntitySet Name="Consulta" EntityType="Self.Consulta" />
+          <EntitySet Name="ContenidoS" EntityType="Self.ContenidoS" />
+          <EntitySet Name="ContenidoV" EntityType="Self.ContenidoV" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Existencia" EntityType="Self.Existencia" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" />
+          <EntitySet Name="PRecetado" EntityType="Self.PRecetado" />
+          <EntitySet Name="Presentacion" EntityType="Self.Presentacion" />
+          <EntitySet Name="Producto" EntityType="Self.Producto" />
+          <EntitySet Name="Proveedor" EntityType="Self.Proveedor" />
+          <EntitySet Name="Suministro" EntityType="Self.Suministro" />
+          <EntitySet Name="TelefonoP" EntityType="Self.TelefonoP" />
+          <EntitySet Name="Venta" EntityType="Self.Venta" />
           <AssociationSet Name="FK__Consulta__idEmpl__4222D4EF" Association="Self.FK__Consulta__idEmpl__4222D4EF">
-            <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Consulta" EntitySet="Consultas" />
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Consulta" EntitySet="Consulta" />
           </AssociationSet>
           <AssociationSet Name="FK__Consulta__idPaci__4316F928" Association="Self.FK__Consulta__idPaci__4316F928">
-            <End Role="Paciente" EntitySet="Pacientes" />
-            <End Role="Consulta" EntitySet="Consultas" />
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="Consulta" EntitySet="Consulta" />
           </AssociationSet>
           <AssociationSet Name="FK__PRecetado__idCon__45F365D3" Association="Self.FK__PRecetado__idCon__45F365D3">
-            <End Role="Consulta" EntitySet="Consultas" />
-            <End Role="PRecetado" EntitySet="PRecetadoes" />
+            <End Role="Consulta" EntitySet="Consulta" />
+            <End Role="PRecetado" EntitySet="PRecetado" />
           </AssociationSet>
           <AssociationSet Name="FK__Contenido__idExi__3F466844" Association="Self.FK__Contenido__idExi__3F466844">
-            <End Role="Existencia" EntitySet="Existencias" />
+            <End Role="Existencia" EntitySet="Existencia" />
             <End Role="ContenidoS" EntitySet="ContenidoS" />
           </AssociationSet>
           <AssociationSet Name="FK__Contenido__idSum__3E52440B" Association="Self.FK__Contenido__idSum__3E52440B">
-            <End Role="Suministro" EntitySet="Suministroes" />
+            <End Role="Suministro" EntitySet="Suministro" />
             <End Role="ContenidoS" EntitySet="ContenidoS" />
           </AssociationSet>
           <AssociationSet Name="FK__Contenido__idExi__3B75D760" Association="Self.FK__Contenido__idExi__3B75D760">
-            <End Role="Existencia" EntitySet="Existencias" />
-            <End Role="ContenidoV" EntitySet="ContenidoVs" />
+            <End Role="Existencia" EntitySet="Existencia" />
+            <End Role="ContenidoV" EntitySet="ContenidoV" />
           </AssociationSet>
           <AssociationSet Name="FK__Contenido__idVen__3A81B327" Association="Self.FK__Contenido__idVen__3A81B327">
-            <End Role="Venta" EntitySet="Ventas" />
-            <End Role="ContenidoV" EntitySet="ContenidoVs" />
+            <End Role="Venta" EntitySet="Venta" />
+            <End Role="ContenidoV" EntitySet="ContenidoV" />
           </AssociationSet>
           <AssociationSet Name="FK__Venta__idEmplead__2E1BDC42" Association="Self.FK__Venta__idEmplead__2E1BDC42">
-            <End Role="Empleado" EntitySet="Empleadoes" />
-            <End Role="Venta" EntitySet="Ventas" />
+            <End Role="Empleado" EntitySet="Empleado" />
+            <End Role="Venta" EntitySet="Venta" />
           </AssociationSet>
           <AssociationSet Name="FK__Existenci__idPre__36B12243" Association="Self.FK__Existenci__idPre__36B12243">
-            <End Role="Presentacion" EntitySet="Presentacions" />
-            <End Role="Existencia" EntitySet="Existencias" />
+            <End Role="Presentacion" EntitySet="Presentacion" />
+            <End Role="Existencia" EntitySet="Existencia" />
           </AssociationSet>
           <AssociationSet Name="FK__Existenci__idPro__37A5467C" Association="Self.FK__Existenci__idPro__37A5467C">
-            <End Role="Producto" EntitySet="Productoes" />
-            <End Role="Existencia" EntitySet="Existencias" />
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Existencia" EntitySet="Existencia" />
           </AssociationSet>
           <AssociationSet Name="FK__PRecetado__idPro__46E78A0C" Association="Self.FK__PRecetado__idPro__46E78A0C">
-            <End Role="Producto" EntitySet="Productoes" />
-            <End Role="PRecetado" EntitySet="PRecetadoes" />
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="PRecetado" EntitySet="PRecetado" />
           </AssociationSet>
           <AssociationSet Name="FK__Suministr__idPro__30F848ED" Association="Self.FK__Suministr__idPro__30F848ED">
-            <End Role="Proveedor" EntitySet="Proveedors" />
-            <End Role="Suministro" EntitySet="Suministroes" />
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="Suministro" EntitySet="Suministro" />
           </AssociationSet>
           <AssociationSet Name="FK__TelefonoP__idPro__33D4B598" Association="Self.FK__TelefonoP__idPro__33D4B598">
-            <End Role="Proveedor" EntitySet="Proveedors" />
-            <End Role="TelefonoP" EntitySet="TelefonoPs" />
+            <End Role="Proveedor" EntitySet="Proveedor" />
+            <End Role="TelefonoP" EntitySet="TelefonoP" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -731,9 +731,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="CentroNaturistaMasayaModelStoreContainer" CdmEntityContainer="CNMEntities">
-          <EntitySetMapping Name="Consultas">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Consulta">
+        <EntityContainerMapping StorageEntityContainer="CNM_ModelStoreContainer" CdmEntityContainer="CNMEntities">
+          <EntitySetMapping Name="Consulta">
+            <EntityTypeMapping TypeName="CNM_Model.Consulta">
               <MappingFragment StoreEntitySet="Consulta">
                 <ScalarProperty Name="idConsulta" ColumnName="idConsulta" />
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
@@ -744,7 +744,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ContenidoS">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Contenido">
+            <EntityTypeMapping TypeName="CNM_Model.ContenidoS">
               <MappingFragment StoreEntitySet="ContenidoS">
                 <ScalarProperty Name="idContenidoS" ColumnName="idContenidoS" />
                 <ScalarProperty Name="idSuministro" ColumnName="idSuministro" />
@@ -755,8 +755,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ContenidoVs">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.ContenidoV">
+          <EntitySetMapping Name="ContenidoV">
+            <EntityTypeMapping TypeName="CNM_Model.ContenidoV">
               <MappingFragment StoreEntitySet="ContenidoV">
                 <ScalarProperty Name="idContenidoV" ColumnName="idContenidoV" />
                 <ScalarProperty Name="idVenta" ColumnName="idVenta" />
@@ -767,8 +767,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Empleadoes">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Empleado">
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="CNM_Model.Empleado">
               <MappingFragment StoreEntitySet="Empleado">
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -777,8 +777,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Existencias">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Existencia">
+          <EntitySetMapping Name="Existencia">
+            <EntityTypeMapping TypeName="CNM_Model.Existencia">
               <MappingFragment StoreEntitySet="Existencia">
                 <ScalarProperty Name="idExistencia" ColumnName="idExistencia" />
                 <ScalarProperty Name="idPresentacion" ColumnName="idPresentacion" />
@@ -790,8 +790,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Pacientes">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Paciente">
+          <EntitySetMapping Name="Paciente">
+            <EntityTypeMapping TypeName="CNM_Model.Paciente">
               <MappingFragment StoreEntitySet="Paciente">
                 <ScalarProperty Name="idPaciente" ColumnName="idPaciente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -801,8 +801,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="PRecetadoes">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.PRecetado">
+          <EntitySetMapping Name="PRecetado">
+            <EntityTypeMapping TypeName="CNM_Model.PRecetado">
               <MappingFragment StoreEntitySet="PRecetado">
                 <ScalarProperty Name="idPRecetado" ColumnName="idPRecetado" />
                 <ScalarProperty Name="idConsulta" ColumnName="idConsulta" />
@@ -810,16 +810,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Presentacions">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Presentacion">
+          <EntitySetMapping Name="Presentacion">
+            <EntityTypeMapping TypeName="CNM_Model.Presentacion">
               <MappingFragment StoreEntitySet="Presentacion">
                 <ScalarProperty Name="idPresentacion" ColumnName="idPresentacion" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Productoes">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Producto">
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="CNM_Model.Producto">
               <MappingFragment StoreEntitySet="Producto">
                 <ScalarProperty Name="idProducto" ColumnName="idProducto" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -828,8 +828,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Proveedors">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Proveedor">
+          <EntitySetMapping Name="Proveedor">
+            <EntityTypeMapping TypeName="CNM_Model.Proveedor">
               <MappingFragment StoreEntitySet="Proveedor">
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
                 <ScalarProperty Name="RUC" ColumnName="RUC" />
@@ -838,8 +838,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Suministroes">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Suministro">
+          <EntitySetMapping Name="Suministro">
+            <EntityTypeMapping TypeName="CNM_Model.Suministro">
               <MappingFragment StoreEntitySet="Suministro">
                 <ScalarProperty Name="idSuministro" ColumnName="idSuministro" />
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
@@ -848,8 +848,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TelefonoPs">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.TelefonoP">
+          <EntitySetMapping Name="TelefonoP">
+            <EntityTypeMapping TypeName="CNM_Model.TelefonoP">
               <MappingFragment StoreEntitySet="TelefonoP">
                 <ScalarProperty Name="idTelefonoP" ColumnName="idTelefonoP" />
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
@@ -857,8 +857,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Ventas">
-            <EntityTypeMapping TypeName="CentroNaturistaMasayaModel.Venta">
+          <EntitySetMapping Name="Venta">
+            <EntityTypeMapping TypeName="CNM_Model.Venta">
               <MappingFragment StoreEntitySet="Venta">
                 <ScalarProperty Name="idVenta" ColumnName="idVenta" />
                 <ScalarProperty Name="idEmpleado" ColumnName="idEmpleado" />
@@ -881,7 +881,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />

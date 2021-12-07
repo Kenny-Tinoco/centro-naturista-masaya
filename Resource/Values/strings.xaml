@@ -4,5 +4,6 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     >
     <System:String x:Key="tituloVPE">Lista Existencia de Productos</System:String>
-    <System:String x:Key="tituloVPP">Lista datos de Productos</System:String>
+    <System:String x:Key="tituloVPPd">Lista datos de Productos</System:String>
+    <System:String x:Key="tituloVPPs">Lista datos de Presentaciones</System:String>
 </ResourceDictionary>

@@ -1,5 +1,5 @@
 ﻿<Window
-    x:Class="CentroNaturistaMasaya.UI.VentanaProducto.agregarProducto"
+    x:Class="CentroNaturistaMasaya.UI.VentanaProducto.agregarPresentacion"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -9,14 +9,13 @@
     WindowStartupLocation="CenterScreen"
     ResizeMode="NoResize"
     WindowStyle="None"
-    Height="420" 
-    Width="500">
+    Height="280" 
+    Width="420">
     <Border
         Background="Transparent"
         BorderBrush="{DynamicResource colorPrimary}"
         BorderThickness="3"
             CornerRadius="10 10 2 2">
-
         <Grid
         Background="{DynamicResource colorBlancoFondo}">
             <!--#region Definción de filas y columnas-->
@@ -35,20 +34,20 @@
             </Grid.ColumnDefinitions>
             <!--#endregion-->
             <!--#region Titulo de la ventana y Botón Salir-->
-            <Grid
+                <Grid
             Grid.Row="0"
             Grid.RowSpan="2"
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Background ="{DynamicResource colorPrimary}">
-                <!--#region Titulo de la ventana-->
+                    <!--#region Titulo de la ventana-->
                     <StackPanel
                     Orientation="Horizontal"
                     Margin="18 10 10 10" 
                     >
                         <Image
                         Width="{DynamicResource width-heigthSize}"
-                        Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/producto.png"
+                        Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/presentacion.png"
                         />
                         <TextBlock
                         Name="txtTituloVentana"
@@ -98,10 +97,10 @@
                         FontWeight="SemiBold"
                         />
                         <TextBox
-                        Name="nombreProducto"
-                        Text="{Binding Path=productoRecord.Nombre, Mode=TwoWay}"
+                        Name="txtNombre"
+                        Text="{Binding Path=presentacionRecord.Nombre, Mode=TwoWay}"
                         Height="28"
-                        Width="400"
+                        Width="370"
                         Margin="0,5,0,0"
                         Foreground="Black"
                         VerticalContentAlignment="Center"
@@ -109,33 +108,6 @@
                         TextChanged="habilitarBoton"
                         />
 
-                    </StackPanel>
-                    <!--#endregion-->
-                    <!--#region TextBox Descripción-->
-                    <StackPanel
-                    HorizontalAlignment="Center"
-                    Margin="0,15,0,0"
-                    >
-                        <TextBlock
-                        Text="Descripción:"
-                        Foreground="Black"
-                        FontSize="{DynamicResource fontSizeTextBlock}"
-                        FontWeight="SemiBold"
-                        />
-                        <TextBox
-                        Name="descripcionProducto"
-                        Text="{Binding Path=productoRecord.Descripcion, Mode=TwoWay}"
-                        Height="170"
-                        Width="400"
-                        Margin="0,5,0,0"
-                        Foreground="Black"
-                        VerticalContentAlignment="Top"
-                        FontSize="{DynamicResource fontSizeTextBox}"
-                        ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                        ScrollViewer.VerticalScrollBarVisibility="Auto"
-                        TextWrapping="Wrap"
-                        TextChanged="habilitarBoton"
-                        />
                     </StackPanel>
                     <!--#endregion-->
                 </StackPanel>
@@ -183,6 +155,7 @@
                 FontSize="13.5"/>
             <!--#endregion-->
         </Grid>
+
     </Border>
     <Window.Resources>
         <System:Double x:Key="width-heigthSize">30</System:Double>

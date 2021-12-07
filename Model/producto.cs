@@ -9,6 +9,7 @@
 
 namespace CentroNaturistaMasaya.Model
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Collections.Specialized;
@@ -17,20 +18,23 @@ namespace CentroNaturistaMasaya.Model
 
     public partial class Producto : INotifyPropertyChanged
     {
+
         #region Definición de los atributos
         private int _idProducto;
         private string _nombre;
         private string _descripcion;
         private int _cantidad;
         #endregion
+        
         #region Constructor de la clase
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Producto()
         {
-            this.Existencias = new HashSet<Existencia>();
-            this.PRecetadoes = new HashSet<PRecetado>();
+            this.Existencia = new HashSet<Existencia>();
+            this.PRecetado = new HashSet<PRecetado>();
         }
         #endregion
+
         #region Métodos Set-Get de los atributos
         public int idProducto
         {
@@ -69,12 +73,14 @@ namespace CentroNaturistaMasaya.Model
             }
         }
         #endregion
+        
         #region Referencia de entidades que tiene como foranea a producto
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Existencia> Existencias { get; set; }
+        public virtual ICollection<Existencia> Existencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRecetado> PRecetadoes { get; set; }
+        public virtual ICollection<PRecetado> PRecetado { get; set; }
         #endregion
+        
         #region Elementos del PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -82,23 +88,38 @@ namespace CentroNaturistaMasaya.Model
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
+        
         #region Lista de productos
         private ObservableCollection<Producto> _registrosProducto;
         public ObservableCollection<Producto> registrosProducto
         {
-            get
-            {
-                return _registrosProducto;
-            }
+            get => _registrosProducto;
             set
             {
                 _registrosProducto = value;
-                OnPropertyChanged("registrosProducto");
+                OnPropertyChanged(nameof(registrosProducto));
             }
         }
         public void RegistrosProducto_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnPropertyChanged("registrosProducto");
+            OnPropertyChanged(nameof(registrosProducto));
+        }
+        #endregion
+
+        #region Lista de nombre de los productos
+        private ObservableCollection<String> _nombresProducto;
+        public ObservableCollection<String> nombresProducto
+        {
+            get => _nombresProducto;
+            set
+            {
+                _nombresProducto = value;
+                OnPropertyChanged(nameof(nombresProducto));
+            }
+        }
+        public void NombresProducto_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(nombresProducto));
         }
         #endregion
     }

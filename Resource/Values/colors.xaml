@@ -41,4 +41,12 @@
     <SolidColorBrush x:Key="Button.Disabled.Border"      Color = "#FFADB2B5"/>
     <SolidColorBrush x:Key="Button.Disabled.Foreground"  Color = "#FF838383"/>
     <!--#endregion-->
+    
+    <!--#region Color de los mensaje de confirmación en las ventana de agregar/editar registros-->
+        <!--Este color tiene el mismo del colorPrimary-->
+    <SolidColorBrush
+        x:Key="colorMensajeVA"
+        Color="#132c33"
+        />
+    <!--#endregion-->
 </ResourceDictionary>

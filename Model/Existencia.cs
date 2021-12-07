@@ -18,61 +18,138 @@ namespace CentroNaturistaMasaya.Model
 
     public partial class Existencia : INotifyPropertyChanged
     {
-        private int idExistencia1;
-        private int idPresentacion1;
-        private int idProducto1;
-        private int cantidad;
-        private double precio;
-        private DateTime? caducidad;
-        private DateTime? fechaEntrada1;
-        private Presentacion presentacion;
-        private Producto producto;
 
+        #region Definición de los atributos del modelo
+        private int _idExistencia;
+        private int _idPresentacion;
+        private int _idProducto;
+        private int _cantidad;
+        private double _precio;
+        private DateTime? _caducidad;
+        private DateTime? _fechaEntrada;
+        private Presentacion _presentacion;
+        private Producto _producto;
+        #endregion
+
+        #region Métodos Set-Get de los atributos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Existencia()
         {
-            this.ContenidoS = new HashSet<Contenido>();
-            this.ContenidoVs = new HashSet<ContenidoV>();
+            this.ContenidoS = new HashSet<ContenidoS>();
+            this.ContenidoV = new HashSet<ContenidoV>();
         }
+        public int idExistencia
+        {
+            get => _idExistencia;
+            set
+            {
+                _idExistencia = value;
+                OnPropertyChanged(nameof(idExistencia));
+            }
+        }
+        public int idPresentacion
+        {
+            get => _idPresentacion;
+            set
+            {
+                _idPresentacion = value;
+                OnPropertyChanged(nameof(idPresentacion));
+            }
+        }
+        public int idProducto
+        {
+            get => _idProducto;
+            set
+            {
+                _idProducto = value;
+                OnPropertyChanged(nameof(idProducto));
+            }
+        }
+        public int Cantidad
+        {
+            get => _cantidad;
+            set
+            {
+                _cantidad = value;
+                OnPropertyChanged(nameof(Cantidad));
+            }
+        }
+        public double Precio
+        {
+            get => _precio;
+            set
+            {
+                _precio = value;
+                OnPropertyChanged(nameof(Precio));
+            }
+        }
+        public Nullable<System.DateTime> Caducidad
+        {
+            get => _caducidad;
+            set
+            {
+                _caducidad = value;
+                OnPropertyChanged(nameof(Caducidad));
+            }
+        }
+        public Nullable<System.DateTime> fechaEntrada
+        {
+            get => _fechaEntrada;
+            set
+            {
+                _fechaEntrada = value;
+                OnPropertyChanged(nameof(fechaEntrada));
+            }
+        }
+        public virtual Presentacion Presentacion
+        {
+            get => _presentacion;
+            set
+            {
+                _presentacion = value;
+                OnPropertyChanged(nameof(Presentacion));
+            }
+        }
+        public virtual Producto Producto
+        {
+            get => _producto;
+            set
+            {
+                _producto = value;
+                OnPropertyChanged(nameof(Producto));
+            }
+        }
+        #endregion
 
-        public int idExistencia { get => idExistencia1; set { idExistencia1 = value; OnPropertyChanged(nameof(idExistencia)); } }
-        public int idPresentacion { get => idPresentacion1; set { idPresentacion1 = value; OnPropertyChanged(nameof(idPresentacion)); } }
-        public int idProducto { get => idProducto1; set { idProducto1 = value; OnPropertyChanged(nameof(idProducto)); } }
-        public int Cantidad { get => cantidad; set { cantidad = value; OnPropertyChanged(nameof(Cantidad)); } }
-        public double Precio { get => precio; set { precio = value; OnPropertyChanged(nameof(Precio)); } }
-        public Nullable<System.DateTime> Caducidad { get => caducidad; set { caducidad = value; OnPropertyChanged(nameof(Caducidad)); } }
-        public Nullable<System.DateTime> fechaEntrada { get => fechaEntrada1; set { fechaEntrada1 = value; OnPropertyChanged(nameof(fechaEntrada)); } }
-
+        #region Entidades que tiene como llave foranea a Existencia
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contenido> ContenidoS { get; set; }
+        public virtual ICollection<ContenidoS> ContenidoS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContenidoV> ContenidoVs { get; set; }
-        public virtual Presentacion Presentacion { get => presentacion; set => presentacion = value; }
-        public virtual Producto Producto { get => producto; set => producto = value; }
+        public virtual ICollection<ContenidoV> ContenidoV { get; set; }
+        #endregion
 
+        #region Métodos del PropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
-
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+        #endregion
+
         #region Lista de existencias
         private ObservableCollection<Existencia> _registrosExistencia;
         public ObservableCollection<Existencia> registrosExistencia
         {
-            get
-            {
-                return _registrosExistencia;
-            }
+            get => _registrosExistencia;
             set
             {
                 _registrosExistencia = value;
-                OnPropertyChanged("registrosExistencia");
+                OnPropertyChanged(nameof(registrosExistencia));
             }
         }
         public void RegistrosExistencia_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnPropertyChanged("registrosExistencia");
+            OnPropertyChanged(nameof(registrosExistencia));
         }
         #endregion
     }

@@ -7,69 +7,80 @@ namespace CentroNaturistaMasaya.Model.Repository
     {
 
         #region Definicón de variables
-        private CNMEntities productoContext = null;
+        private CNMEntities context = null;
         #endregion
+
         #region Constructor de la clase
         public productoRepository()
         {
-            productoContext = new CNMEntities();
+            context = new CNMEntities();
         }
         #endregion
+
         #region Método para obtener un producto por id
         public Producto get(int id)
         {
-            return productoContext.Productoes.Find(id);
+            return context.Producto.Find(id);
         }
         #endregion
+
         #region Método para obtener una lista de todos los productos
         public List<Producto> getAll()
         {
-            return productoContext.Productoes.ToList();
+            return context.Producto.ToList();
         }
-        #endregion        
+        #endregion
+
+        #region Método para obtener una lista de los nombre de los registros
+        #endregion
+
         #region Método para obtener una lista de todos los productos que cumplen una condición (Busqueda)
         public List<Producto> getWhere(string cadena)
         {
-            return productoContext
-                .Productoes
+            return context
+                .Producto
                 .Where
                 (
-                    PD => PD.idProducto.ToString().Contains(cadena) ||
-                    PD.Nombre.ToLower().StartsWith(cadena.ToLower())
+                    objeto => 
+                    objeto.idProducto.ToString().Contains(cadena) ||
+                    objeto.Nombre.ToLower().StartsWith(cadena.ToLower())
                 ).ToList();
         }
-#endregion
+        #endregion
+
         #region Método para añadir un producto a la tabla
-        public void addProducto(Producto producto)
+        public void addProducto(Producto objeto)
         {
-            if (producto != null)
+            if (objeto != null)
             {
-                productoContext.Productoes.Add(producto);
-                productoContext.SaveChanges();
+                context.Producto.Add(objeto);
+                context.SaveChanges();
             }
         }
         #endregion
+
         #region Método para modificar un producto de la tabla
-        public void updateProducto(Producto producto)
+        public void updateProducto(Producto objeto)
         {
-            var findProducto = get(producto.idProducto);
-            if (findProducto != null)
+            var findObjeto = get(objeto.idProducto);
+            if (findObjeto != null)
             {
-                findProducto.Nombre = producto.Nombre;
-                findProducto.Descripcion = producto.Descripcion;
-                findProducto.Cantidad = producto.Cantidad;
-                productoContext.SaveChanges();
+                findObjeto.Nombre = objeto.Nombre;
+                findObjeto.Descripcion = objeto.Descripcion;
+                findObjeto.Cantidad = objeto.Cantidad;
+                context.SaveChanges();
             }
         }
         #endregion
+
         #region Método para remover un producto de la tabla
         public void removeProducto(int id)
         {
-            var objectProducto = productoContext.Productoes.Find(id);
-            if (objectProducto != null)
+            var objeto = context.Producto.Find(id);
+            if (objeto != null)
             {
-                productoContext.Productoes.Remove(objectProducto);
-                productoContext.SaveChanges();
+                context.Producto.Remove(objeto);
+                context.SaveChanges();
             }
         }
         #endregion
