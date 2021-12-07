@@ -12,23 +12,23 @@ namespace CentroNaturistaMasaya.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Proveedor
+    public partial class Empleado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Proveedor()
+        public Empleado()
         {
-            this.Suministro = new HashSet<Suministro>();
-            this.TelefonoP = new HashSet<TelefonoP>();
+            this.Consulta = new HashSet<Consulta>();
+            this.Venta = new HashSet<Venta>();
         }
     
-        public int idProveedor { get; set; }
-        public string RUC { get; set; }
+        public int idEmpleado { get; set; }
         public string Nombre { get; set; }
+        public string Apellido { get; set; }
         public string Direccion { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Suministro> Suministro { get; set; }
+        public virtual ICollection<Consulta> Consulta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TelefonoP> TelefonoP { get; set; }
+        public virtual ICollection<Venta> Venta { get; set; }
     }
 }
