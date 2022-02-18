@@ -42,6 +42,9 @@
     <Reference Include="Caliburn.Micro.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f, processorArchitecture=MSIL">
       <HintPath>packages\Caliburn.Micro.Core.4.0.173\lib\netstandard2.0\Caliburn.Micro.Core.dll</HintPath>
     </Reference>
+    <Reference Include="DotLiquid, Version=2.2.595.0, Culture=neutral, PublicKeyToken=82e46016ecf9f07c, processorArchitecture=MSIL">
+      <HintPath>packages\DotLiquid.2.2.595\lib\net45\DotLiquid.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -118,6 +121,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CentroNaturistaMasaya.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Consult.cs" />
     <Compile Include="Model\Consulta.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
@@ -127,37 +131,50 @@
     <Compile Include="Model\ContenidoV.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Date.cs" />
+    <Compile Include="Model\Detail.cs" />
     <Compile Include="Model\Empleado.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Existencia.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\existenciaProducto.cs" />
+    <Compile Include="Model\IOTransation.cs" />
+    <Compile Include="Model\Name.cs" />
     <Compile Include="Model\Paciente.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\PersonalInformation.cs" />
     <Compile Include="Model\PRecetado.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Presentacion.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Producto.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Stock.cs" />
     <Compile Include="Model\Proveedor.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Provider.cs" />
     <Compile Include="Model\Repository\existenciaRepository.cs" />
     <Compile Include="Model\Repository\presentacionRepository.cs" />
     <Compile Include="Model\Repository\productoRepository.cs" />
+    <Compile Include="Model\Sell.cs" />
     <Compile Include="Model\Suministro.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Supply.cs" />
     <Compile Include="Model\TelefonoP.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Time.cs" />
     <Compile Include="Model\Venta.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>

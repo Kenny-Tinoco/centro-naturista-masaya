@@ -1,21 +1,9 @@
-﻿/*
-Modelo de datos para la ventana de Producto
-ivProducto: información de ventana Producto
-*/
-using System;
+﻿using System;
 
 namespace CentroNaturistaMasaya.Model
 {
     public class existenciaProducto
     {
-        /*
-         * Existencia de Producto es el modelo de datos que optiene la
-         * información completa (o la información util) de la tabla Existencia,
-         * es decir el nombre del producto, la descripción y el nombre de la 
-         * presentación de las existencias.
-         */
-
-        #region Definición de los atributos
         private int       _idExistencia;
         private string    _nombreProducto;
         private string    _descripcionProducto;
@@ -24,8 +12,7 @@ namespace CentroNaturistaMasaya.Model
         private double    _precioExistencia;
         private DateTime? _caducidadExistencia;
         private DateTime? _fechaEntradaExistencia;
-        #endregion
-        #region Metodos Set-Get
+
         public int idExistencia
         {
             get => _idExistencia;
@@ -66,6 +53,5 @@ namespace CentroNaturistaMasaya.Model
             get => _fechaEntradaExistencia;
             set => _fechaEntradaExistencia = value;
         }
-        #endregion
     }
 }
