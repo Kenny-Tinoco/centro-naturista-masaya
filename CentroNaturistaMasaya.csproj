@@ -131,7 +131,7 @@
     <Compile Include="Model\ContenidoV.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Date.cs" />
+    <Compile Include="Model\Utilities\Date.cs" />
     <Compile Include="Model\Detail.cs" />
     <Compile Include="Model\Empleado.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
@@ -141,8 +141,9 @@
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\existenciaProducto.cs" />
-    <Compile Include="Model\IOTransation.cs" />
-    <Compile Include="Model\Name.cs" />
+    <Compile Include="Model\Utilities\Presentation.cs" />
+    <Compile Include="Model\Transaction.cs" />
+    <Compile Include="Model\Utilities\Name.cs" />
     <Compile Include="Model\Paciente.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
@@ -174,7 +175,8 @@
     <Compile Include="Model\TelefonoP.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Time.cs" />
+    <Compile Include="Model\Utilities\Position.cs" />
+    <Compile Include="Model\Utilities\Time.cs" />
     <Compile Include="Model\Venta.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>

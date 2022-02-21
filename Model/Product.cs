@@ -13,13 +13,22 @@ namespace CentroNaturistaMasaya.Model
         {
         }
 
-        public Product(string name, string description)
+        public Product(string name, string description) : this(0, name, description, 0)
         {
-            Contract.Requires(name != null && description != null);
-            this.name = name;
-            this.description = description;
         }
 
+        public Product(int idProduct, string name, string description) : this(idProduct, name, description, 0)
+        {
 
+        }
+
+        public Product(int idProduct, string name, string description, int quantity)
+        {
+            Contract.Requires(idProduct >= 0 && name != null && description != null && quantity >= 0);
+            this.idProduct = idProduct;
+            this.name = name;
+            this.description = description;
+            this.quantity = quantity;
+        }
     }
 }

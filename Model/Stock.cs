@@ -1,30 +1,70 @@
-﻿namespace CentroNaturistaMasaya.Model
+﻿using System.Diagnostics.Contracts;
+
+namespace CentroNaturistaMasaya.Model
 {
     internal class Stock
     {
         private int idProductStock;
-        private string presentation;
+        private Presentations presentation;
         private Date expiration;
         private int quantity;
         private float price;
         private Date entryDate;
 
+
         public Stock()
         {
-
+            getId();
         }
 
-        public void add()
+        public Stock(Presentations presentation) : this()
         {
-
+           
         }
-        public void delete()
+
+        public Stock(Presentations presentation, Date expiration, int quantity, float price) : this(presentation, new Date().getToday(), expiration, quantity, price)
+        { 
+        }
+
+        public Stock(Presentations presentation, Date entryDate, Date expiration, int quantity, float price)
         {
-
+            Contract.Requires(entryDate != null && expiration != null);
+            
+            this.presentation = presentation;
+            this.entryDate = entryDate;
+            this.expiration = expiration;
+            this.quantity = quantity;
+            this.price = price;
         }
-        public void edit()
+
+        
+        public int IdProductStock
         {
-
+            set { idProductStock = value; }
+            get { return idProductStock; }
         }
+
+        public float Price
+        {
+            set { price = value; }
+            get { return price; }
+        }
+
+        public void reduceQuantity()
+        {
+            if(quantity > 0)
+            quantity--;
+        }
+
+        public void increaseQuantity()
+        {
+            quantity++;
+        }
+
+        private void getId()
+        {
+            IdProductStock = 0;
+        }
+
     }
 }

@@ -8,6 +8,7 @@ namespace CentroNaturistaMasaya.Model
         private int month;
         private int year;   
 
+
         public Date()
         {
             Date date = getToday();
@@ -15,6 +16,7 @@ namespace CentroNaturistaMasaya.Model
             this.month = date.month;
             this.year = date.year;
         }
+
         public Date(int day, int month, int year)
         {
             Contract.Requires(validDate(day, month, year));
@@ -23,7 +25,8 @@ namespace CentroNaturistaMasaya.Model
             this.year = year;
         }
 
-        public string getStringDate()
+
+        public string getDateString()
         {
             return day + "/" + month + "/" + year;
         }

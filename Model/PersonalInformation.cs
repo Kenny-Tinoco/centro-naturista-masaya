@@ -12,12 +12,17 @@ namespace CentroNaturistaMasaya.Model
 
         public PersonalInformation()
         {
-            this.id = getId();
         }
 
-        public PersonalInformation(Name name, int age, string dni, string address) : this()
+        public PersonalInformation(Name name, int age, string dni, string address) : this(0, name, age, dni, address)
         {
-            Contract.Requires(name != null && dni != null && address != null && validAge(age));
+            id = getId();
+        }
+
+        public PersonalInformation(int id, Name name, int age, string dni, string address)
+        {
+            Contract.Requires(name != null && dni != null && address != null && validAge(age) && id >= 0);
+            this.id = id;
             this.name = name;
             this.age = age;
             this.dni = dni;

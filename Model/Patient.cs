@@ -10,6 +10,7 @@ namespace CentroNaturistaMasaya.Model
         private List<String> symptoms;
         private List<Consult> recordMedicalConsultation;
 
+
         public Patient()
         {
             
@@ -18,17 +19,21 @@ namespace CentroNaturistaMasaya.Model
         public Patient(PersonalInformation personalInformation) 
         {
             Contract.Requires(personalInformation != null);
+
             this.personalInformation = personalInformation;
             symptoms = new List<String>();
         }
 
+
         public void addSymptom(string symptom)
         {
+            Contract.Requires(symptom != null);
             symptoms.Add(symptom);
         }
 
         public void deleteSymptom(string symptom)
         {
+            Contract.Requires(symptom != null);
             symptoms.Remove(symptom);
         }
 
