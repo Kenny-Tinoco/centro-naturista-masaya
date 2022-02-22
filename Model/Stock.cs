@@ -5,6 +5,7 @@ namespace CentroNaturistaMasaya.Model
     internal class Stock
     {
         private int idProductStock;
+        private int idProduct;
         private Presentations presentation;
         private Date expiration;
         private int quantity;

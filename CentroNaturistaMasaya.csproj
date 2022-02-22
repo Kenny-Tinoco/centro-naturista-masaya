@@ -131,6 +131,12 @@
     <Compile Include="Model\ContenidoV.cs">
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\DAO\SQLServeStrategy.cs" />
+    <Compile Include="Model\DAO\Strategy.cs" />
+    <Compile Include="Model\DTO\PresentationsDTO.cs" />
+    <Compile Include="Model\DTO\ProductDTO.cs" />
+    <Compile Include="Model\DTO\StockDTO.cs" />
+    <Compile Include="Model\Repository\StockRepository.cs" />
     <Compile Include="Model\Utilities\Date.cs" />
     <Compile Include="Model\Detail.cs" />
     <Compile Include="Model\Empleado.cs">
@@ -141,7 +147,7 @@
       <DependentUpon>CentroNaturistaMasaya.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\existenciaProducto.cs" />
-    <Compile Include="Model\Utilities\Presentation.cs" />
+    <Compile Include="Model\Utilities\Presentations.cs" />
     <Compile Include="Model\Transaction.cs" />
     <Compile Include="Model\Utilities\Name.cs" />
     <Compile Include="Model\Paciente.cs">
@@ -220,8 +226,10 @@
     <Compile Include="ViewModel\existenciaViewModel.cs" />
     <Compile Include="ViewModel\presentacionViewModel.cs" />
     <Compile Include="ViewModel\productoViewModel.cs" />
+    <Compile Include="ViewModel\ProductWindow\CRUD.cs" />
     <Compile Include="ViewModel\pViewModel.cs" />
     <Compile Include="ViewModel\Command\RelayCommand.cs" />
+    <Compile Include="ViewModel\ProductWindow\StockViewModel.cs" />
     <Page Include="Resource\Values\Styles\ventanaAgregarExistencia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -417,6 +425,7 @@
     </Content>
     <Resource Include="Resource\Drawable\Image\presentacion-negro.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

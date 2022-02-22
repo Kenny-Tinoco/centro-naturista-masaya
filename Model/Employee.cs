@@ -1,6 +1,5 @@
 ﻿
 using CentroNaturistaMasaya.Model.Utilities;
-using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
 namespace CentroNaturistaMasaya.Model

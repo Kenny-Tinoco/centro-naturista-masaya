@@ -7,6 +7,7 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d"
     Title="pExistencia"
+    Background="YellowGreen"
     d:DesignHeight="700"
     d:DesignWidth="1200"
     >
@@ -120,8 +121,8 @@
             <!--#endregion-->
             <!--#region Botón Agregar Existencia-->
             <Button
-            x:Name="btnAgregar"
-            Click="btnAgregar_Click"
+            x:Name="btnAgregarExistencia"
+            Click="AgregarExistencia"
                 VerticalAlignment="Center"
             Style="{DynamicResource styleButtonVentanaProducto}"
             >

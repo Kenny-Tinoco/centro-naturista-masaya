@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using CentroNaturistaMasaya.Model.DAO;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Windows;
 
@@ -6,33 +8,31 @@ namespace CentroNaturistaMasaya.Model.Repository
 {
     class presentacionRepository
     {
-
-        #region Definicón de variables
         private CNMEntities context = null;
-        #endregion
+        private Strategy strategy;
 
-        #region Constructor de la clase
         public presentacionRepository()
         {
             context = new CNMEntities();
         }
-        #endregion
 
-        #region Método para obtener un registro por id
+        public presentacionRepository(Strategy strategy)
+        {
+            Contract.Requires(strategy != null); 
+            this.strategy = strategy;
+        }
+
+
         public Presentacion get(int id)
         {
             return context.Presentacion.Find(id);
         }
-        #endregion
 
-        #region Método para obtener una lista de todos los registros
         public List<Presentacion> getAll()
         {
             return context.Presentacion.ToList();
         }
-        #endregion
 
-        #region Método para obtener una lista de todos los registros que cumplen una condición (Busqueda)
         public List<Presentacion> getWhere(string cadena)
         {
             return context
@@ -44,9 +44,7 @@ namespace CentroNaturistaMasaya.Model.Repository
                         objeto.Nombre.ToLower().StartsWith(cadena.ToLower())
                 ).ToList();
         }
-        #endregion
-
-        #region Método para añadir un registro a la tabla
+     
         public void addPresentacion(Presentacion objeto)
         {
             if (objeto != null)
@@ -55,9 +53,7 @@ namespace CentroNaturistaMasaya.Model.Repository
                 context.SaveChanges();
             }
         }
-        #endregion
-
-        #region Método para modificar un registro de la tabla
+     
         public void updatePresentacion(Presentacion objeto)
         {
             var findObjeto = get(objeto.idPresentacion);
@@ -67,9 +63,7 @@ namespace CentroNaturistaMasaya.Model.Repository
                 context.SaveChanges();
             }
         }
-        #endregion
 
-        #region Método para remover un registro de la tabla
         public void removePresentacion(int id)
         {
             var objeto = context.Presentacion.Find(id);
@@ -79,7 +73,5 @@ namespace CentroNaturistaMasaya.Model.Repository
                 context.SaveChanges();
             }
         }
-        #endregion
-
     }
 }

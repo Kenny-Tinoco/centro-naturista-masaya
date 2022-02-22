@@ -46,9 +46,7 @@ namespace CentroNaturistaMasaya.Model
             set { quantity = value; }
             get { return quantity; }
         }
-
-        public object Cotract { get; }
-
+         
         private void getId()
         {
             idDetail = 0;

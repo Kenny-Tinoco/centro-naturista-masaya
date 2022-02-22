@@ -10,48 +10,62 @@ namespace CentroNaturistaMasaya.ViewModel
 {
     public class existenciaViewModel
     {
-
-        #region Definición de los atributos
         private ICommand _saveCommand;
         private ICommand _resetCommand;
         private ICommand _editCommand;
         private ICommand _deleteCommand;
 
-        public Producto productoRecord
-        { set; get; }
-        public Presentacion presentacionRecord
-        { set; get; }
-
         private existenciaRepository _repository;
         productoRepository _repositoryProducto = new productoRepository();
         presentacionRepository _repositoryPresentacion = new presentacionRepository();
-
         private Existencia _existenciaEntity = null;
         /*Esta variable es auxiliar, sólo para el método agregar*/
-        public Existencia existenciaRecord
-        { get; set; }
-        public Existencia existenciaSelected
-        { get; set; }
-        public CNMEntities existenciaEntities
-        { get; set; }
-        #endregion
 
-        #region Constructor del viewModel
+
         public existenciaViewModel()
         {
             existenciaRecord = new Existencia();
             productoRecord = new Producto();
-            presentacionRecord = new Presentacion(); 
+            presentacionRecord = new Presentacion();
             _existenciaEntity = new Existencia();
             _repository = new existenciaRepository();
             getAll();
             getAllNames();
-            existenciaRecord.registrosExistencia.CollectionChanged += 
+            existenciaRecord.registrosExistencia.CollectionChanged +=
                 new NotifyCollectionChangedEventHandler(existenciaRecord.RegistrosExistencia_CollectionChanged);
         }
-        #endregion
 
-        #region Definición de los métodos de command
+
+        public Producto productoRecord
+        {
+            set;
+            get;
+        }
+
+        public Presentacion presentacionRecord
+        {
+            set;
+            get;
+        }
+
+        public Existencia existenciaRecord
+        {
+            get;
+            set;
+        }
+
+        public Existencia existenciaSelected
+        {
+            get;
+            set;
+        }
+
+        public CNMEntities existenciaEntities
+        {
+            get;
+            set;
+        }
+
         public ICommand ResetCommand
         {
             get
@@ -61,7 +75,7 @@ namespace CentroNaturistaMasaya.ViewModel
 
                 return _resetCommand;
             }
-        }
+        } 
         public ICommand SaveCommand
         {
             get
@@ -92,9 +106,8 @@ namespace CentroNaturistaMasaya.ViewModel
                 return _deleteCommand;
             }
         }
-        #endregion
 
-        #region Métodos del CRUD
+
         public void saveData()
         {
             if (existenciaRecord != null)
@@ -132,6 +145,7 @@ namespace CentroNaturistaMasaya.ViewModel
                 }
             }
         }
+        
         public void resetData()
         {
             existenciaRecord.idExistencia = 0;
@@ -144,6 +158,7 @@ namespace CentroNaturistaMasaya.ViewModel
             existenciaRecord.Caducidad = null;
             existenciaRecord.fechaEntrada = null;
         }
+        
         public void editData(int id)
         {
             var model = _repository.get(id);
@@ -157,6 +172,7 @@ namespace CentroNaturistaMasaya.ViewModel
             existenciaRecord.Producto = model.Producto;
             existenciaRecord.Presentacion = model.Presentacion;
         }
+        
         public void deleteExistencia(int id)
         {
             if (MessageBox.Show("Confirmación de eliminación de producto.\n¿Desea eliminar este producto?", "Eliminar presentación", MessageBoxButton.YesNo)
@@ -177,9 +193,7 @@ namespace CentroNaturistaMasaya.ViewModel
                 }
             }
         }
-        #endregion
 
-        #region Métodos para obtener todos los registros (El ObservableCollection)
         public void getAll()
         {
             existenciaRecord.registrosExistencia = new ObservableCollection<Existencia>();
@@ -202,9 +216,7 @@ namespace CentroNaturistaMasaya.ViewModel
                 )
             ); 
         }
-        #endregion
 
-        #region Método para obtener el nombre de todos los registros
         public void getAllNames()
         {
             productoRecord.nombresProducto = new ObservableCollection<string>();
@@ -224,6 +236,7 @@ namespace CentroNaturistaMasaya.ViewModel
                     data => presentacionRecord.nombresPresentacion.Add(data.Nombre)
                 );
         }
+       
         public void productoSeleccionado()
         {
             var model = _repositoryProducto.get(productoRecord.idProducto + 1);
@@ -236,9 +249,7 @@ namespace CentroNaturistaMasaya.ViewModel
             var model = _repositoryPresentacion.get(presentacionRecord.idPresentacion + 1);
             presentacionRecord.Nombre = model.Nombre;
         }
-        #endregion
 
-        #region Métodos de búsqueda
         public void buscarRegistro(string cadena)
         {
             existenciaRecord.registrosExistencia = new ObservableCollection<Existencia>();
@@ -261,7 +272,6 @@ namespace CentroNaturistaMasaya.ViewModel
                 )
             );
         }
-        #endregion
 
     }
 }
