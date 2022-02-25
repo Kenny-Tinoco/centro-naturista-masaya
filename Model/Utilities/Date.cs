@@ -31,6 +31,18 @@ namespace MasayaNaturistCenter.Model
             return day + "/" + month + "/" + year;
         }
 
+        public Date getStringOfDate(string parameter)
+        {
+            var date = new Date
+            {
+                day = 0,
+                month = 0,
+                year = 0
+            };
+
+            return date;
+        }
+
         public Date getToday()
         {
             Date date = new Date();

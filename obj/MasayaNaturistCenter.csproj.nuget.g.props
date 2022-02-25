@@ -17,8 +17,6 @@
     <Import Project="$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\netcoreapp3.0\EntityFramework.props" Condition="Exists('$(NuGetPackageRoot)entityframework\6.4.4\buildTransitive\netcoreapp3.0\EntityFramework.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Kenny Tinoco\.nuget\packages\microsoft.codeanalysis.analyzers\1.1.0</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgEO_WebBrowser Condition=" '$(PkgEO_WebBrowser)' == '' ">C:\Users\Kenny Tinoco\.nuget\packages\eo.webbrowser\22.0.30</PkgEO_WebBrowser>
     <PkgEntityFramework Condition=" '$(PkgEntityFramework)' == '' ">C:\Users\Kenny Tinoco\.nuget\packages\entityframework\6.4.4</PkgEntityFramework>
   </PropertyGroup>
 </Project>

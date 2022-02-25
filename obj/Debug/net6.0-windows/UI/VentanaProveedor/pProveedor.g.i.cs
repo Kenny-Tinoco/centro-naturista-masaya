@@ -9,13 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ccr.PresentationCore.Animation;
-using Ccr.PresentationCore.Animation.Templating;
-using Ccr.PresentationCore.Animation.Timelines;
-using Ccr.PresentationCore.Controls;
-using Ccr.PresentationCore.Markup.Extensions;
-using Ccr.PresentationCore.Markup.Extensions.Animation;
-using Ccr.PresentationCore.Markup.TypeConverters;
 using MasayaNaturistCenter.UI.VentanaProveedor;
 using System;
 using System.Diagnostics;
@@ -60,7 +53,7 @@ namespace MasayaNaturistCenter.UI.VentanaProveedor {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/ui/ventanaproveedor/pproveedor.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/ui/ventanaproveedor/pproveedor.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UI\VentanaProveedor\pProveedor.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

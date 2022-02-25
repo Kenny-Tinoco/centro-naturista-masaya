@@ -26,10 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Ccr.PresentationCore" Version="3.0.0" />
     <PackageReference Include="EntityFramework" Version="6.4.4" />
-    <PackageReference Include="EO.WebBrowser" Version="22.0.30" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.RazorPages" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
   </ItemGroup>

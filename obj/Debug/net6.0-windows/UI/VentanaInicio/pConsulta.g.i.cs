@@ -9,13 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ccr.PresentationCore.Animation;
-using Ccr.PresentationCore.Animation.Templating;
-using Ccr.PresentationCore.Animation.Timelines;
-using Ccr.PresentationCore.Controls;
-using Ccr.PresentationCore.Markup.Extensions;
-using Ccr.PresentationCore.Markup.Extensions.Animation;
-using Ccr.PresentationCore.Markup.TypeConverters;
 using MasayaNaturistCenter.UI.VentanaInicio;
 using System;
 using System.Diagnostics;
@@ -68,7 +61,7 @@ namespace MasayaNaturistCenter.UI.VentanaInicio {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/ui/ventanainicio/pconsulta.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/ui/ventanainicio/pconsulta.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UI\VentanaInicio\pConsulta.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

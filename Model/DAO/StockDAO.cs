@@ -1,49 +1,52 @@
 ﻿using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.Model.Models;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics.Contracts;
+using System.Linq;
 
 namespace MasayaNaturistCenter.Model.DAO
 {
     public class StockDAO : IStockDAO
     {
-        private MasayaNaturistCenterEntity masayaNaturistCenterEntity;
+        private MasayaNaturistCenterEntity dataBaseContext; 
 
-        public StockDAO(MasayaNaturistCenterEntity masayaNaturistCenterEntity)
+        public StockDAO(MasayaNaturistCenterEntity dataBaseContext)
         {
-            Contract.Requires(masayaNaturistCenterEntity != null);
-            this.masayaNaturistCenterEntity = masayaNaturistCenterEntity;
+            Contract.Requires(dataBaseContext != null);
+            this.dataBaseContext = dataBaseContext;
         }
 
-
-        public void add(Stock param)
+        public void add(StockDTO parameter)
         {
-            //var stockDTO = new StockDTO
-            //{
-            //    idProductStock = param.idProductStock,
-            //    idProduct = param.idProduct,
-            //    idPresentation = param.idPresentation,
-            //    quantity = param.quantity,
-            //    price = param.price,
-            //    entryDate = param.entryDate,
-            //    expiration = param.expiration
-            //};
-            //masayaNaturistCenterEntity.Stock.AddObject(stock);
-        }
+            var stock = getStockOf(parameter);
 
-        public void add(StockDTO objet)
-        {
-            throw new System.NotImplementedException();
+            dataBaseContext.Stock.AddObject(stock);
+            dataBaseContext.SaveChanges();
         }
 
         public void delete(int id)
         {
-            throw new System.NotImplementedException();
+            var stock = findStock(id);
+            if(stock != null)
+            {
+                dataBaseContext.Stock.DeleteObject(stock);
+                dataBaseContext.SaveChanges();
+            }
         }
 
         public StockDTO find(int id)
         {
-            throw new System.NotImplementedException();
+            var stockDTO = new StockDTO();
+
+            var stock = findStock(id);
+
+            if (stock == null)
+                return null;
+            else
+                stockDTO = getStockDTOof(stock);
+
+            return stockDTO;
         }
 
         public List<StockDTO> get(int id)
@@ -53,12 +56,58 @@ namespace MasayaNaturistCenter.Model.DAO
 
         public List<StockDTO> getAll()
         {
-            throw new System.NotImplementedException();
+            var list = new List<StockDTO>();
+
+            var stocks = dataBaseContext.Stock.ToList();
+
+            list.AddRange(stocks.Select(stock => getStockDTOof(stock)).ToList());
+
+            return list;
         }
 
-        public void update(StockDTO objet)
+        public void update(StockDTO parameter)
         {
-            throw new System.NotImplementedException();
+            delete(parameter.idStock);
+            add(parameter);
+        }
+
+
+        private Models.Stock getStockOf(StockDTO parameter)
+        {
+            var stock = new Models.Stock
+            {
+                idStock = parameter.idStock,
+                idProduct = parameter.idProduct,
+                idPresentation = parameter.idPresentation,
+                quantity = parameter.quantity,
+                price = parameter.price,
+                entryDate = parameter.entryDate.getDateString(),
+                expiration = parameter.expiration.getDateString()
+            };
+
+            return stock;
+        }
+
+        private StockDTO getStockDTOof(Models.Stock parameter)
+        {
+            var stockDTO = new StockDTO
+            {
+                idStock = parameter.idStock,
+                idProduct = parameter.idProduct,
+                idPresentation = parameter.idPresentation,
+                quantity = parameter.quantity,
+                price = parameter.price,
+                entryDate = new Date().getStringOfDate(parameter.entryDate),
+                expiration = new Date().getStringOfDate(parameter.expiration)
+            };
+
+            return stockDTO;
+        }
+
+        private Models.Stock findStock(int id)
+        {
+            var stock = dataBaseContext.Stock.AsNoTracking().SingleOrDefault(stock => stock.idStock == id);
+            return stock;
         }
     }
 }

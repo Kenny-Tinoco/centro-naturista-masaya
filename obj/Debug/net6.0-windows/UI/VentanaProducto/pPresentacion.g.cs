@@ -9,13 +9,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using Ccr.PresentationCore.Animation;
-using Ccr.PresentationCore.Animation.Templating;
-using Ccr.PresentationCore.Animation.Timelines;
-using Ccr.PresentationCore.Controls;
-using Ccr.PresentationCore.Markup.Extensions;
-using Ccr.PresentationCore.Markup.Extensions.Animation;
-using Ccr.PresentationCore.Markup.TypeConverters;
 using MasayaNaturistCenter.UI.VentanaProducto;
 using System;
 using System.Diagnostics;

@@ -8,8 +8,8 @@ namespace MasayaNaturistCenter.Model.DAO
         List<StockDTO> getAll();
         public List<StockDTO> get(int id);
         StockDTO find(int id);
-        public void add(StockDTO objet);
-        public void update(StockDTO objet);
+        public void add(StockDTO parameter);
+        public void update(StockDTO parameter);
         public void delete(int id);
     }
 }
