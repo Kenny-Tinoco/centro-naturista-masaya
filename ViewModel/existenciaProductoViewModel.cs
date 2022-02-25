@@ -1,4 +1,4 @@
-﻿using CentroNaturistaMasaya.Model;
+﻿using MasayaNaturistCenter.Model;
 using System.Linq;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Data;
 using System.Collections.Generic;
 
-namespace CentroNaturistaMasaya.ViewModel
+namespace MasayaNaturistCenter.ViewModel
 {
     public class existenciaProductoViewModel : INotifyPropertyChanged
     {

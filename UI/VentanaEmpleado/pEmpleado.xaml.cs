@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CentroNaturistaMasaya.UI.VentanaEmpleado
+namespace MasayaNaturistCenter.UI.VentanaEmpleado
 {
     /// <summary>
     /// Lógica de interacción para pEmpleado.xaml

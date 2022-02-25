@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace CentroNaturistaMasaya.Model.DAO
+namespace MasayaNaturistCenter.Model.DAO
 {
     internal class SQLServeStrategy : Strategy
     {

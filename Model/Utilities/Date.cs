@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics.Contracts;
 
-namespace CentroNaturistaMasaya.Model
+namespace MasayaNaturistCenter.Model
 {
     internal class Date
     {

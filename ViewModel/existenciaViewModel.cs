@@ -1,12 +1,12 @@
-﻿using CentroNaturistaMasaya.Model;
-using CentroNaturistaMasaya.Model.Repository;
+﻿using MasayaNaturistCenter.Model;
+using MasayaNaturistCenter.Model.Repository;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Input;
 
-namespace CentroNaturistaMasaya.ViewModel
+namespace MasayaNaturistCenter.ViewModel
 {
     public class existenciaViewModel
     {

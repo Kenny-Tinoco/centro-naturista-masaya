@@ -1,9 +1,9 @@
-﻿using CentroNaturistaMasaya.Model.DTO;
-using CentroNaturistaMasaya.Model.Repository;
-using CentroNaturistaMasaya.ViewModel.ProductWindow;
+﻿using MasayaNaturistCenter.Model.DTO;
+using MasayaNaturistCenter.Model.Repository;
+using MasayaNaturistCenter.ViewModel.ProductWindow;
 using System.Diagnostics.Contracts;
 
-namespace CentroNaturistaMasaya.ViewModel
+namespace MasayaNaturistCenter.ViewModel
 {
     internal class StockViewModel : CRUD
     {

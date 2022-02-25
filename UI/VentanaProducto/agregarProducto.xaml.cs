@@ -1,8 +1,8 @@
-﻿using CentroNaturistaMasaya.ViewModel;
+﻿using MasayaNaturistCenter.ViewModel;
 using System;
 using System.Windows;
 
-namespace CentroNaturistaMasaya.UI.VentanaProducto
+namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class agregarProducto : Window
     {

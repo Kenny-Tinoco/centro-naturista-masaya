@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace CentroNaturistaMasaya.UI.VentanaProveedor
+namespace MasayaNaturistCenter.UI.VentanaProveedor
 {
     public partial class pProveedor : Page
     {

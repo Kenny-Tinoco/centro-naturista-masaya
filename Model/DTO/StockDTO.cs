@@ -1,4 +1,4 @@
-﻿namespace CentroNaturistaMasaya.Model.DTO
+﻿namespace MasayaNaturistCenter.Model.DTO
 {
     internal class StockDTO
     {

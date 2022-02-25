@@ -1,4 +1,4 @@
-﻿namespace CentroNaturistaMasaya.Model.DAO
+﻿namespace MasayaNaturistCenter.Model.DAO
 {
     internal interface Strategy
     {

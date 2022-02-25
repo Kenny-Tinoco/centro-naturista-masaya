@@ -1,4 +1,4 @@
-﻿namespace CentroNaturistaMasaya.Model
+﻿namespace MasayaNaturistCenter.Model.Utilities
 {
     public enum Presentations
     {

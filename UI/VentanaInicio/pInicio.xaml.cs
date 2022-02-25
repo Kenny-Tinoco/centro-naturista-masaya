@@ -3,7 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-namespace CentroNaturistaMasaya.UI.VentanaInicio
+namespace MasayaNaturistCenter.UI.VentanaInicio
 {
     public partial class pInicio : Page
     {

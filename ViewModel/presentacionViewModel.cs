@@ -1,4 +1,4 @@
-﻿using CentroNaturistaMasaya.Model;
+﻿using MasayaNaturistCenter.Model;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CentroNaturistaMasaya.Model.Repository;
@@ -6,7 +6,7 @@ using System.Windows;
 using System;
 using System.Collections.Specialized;
 
-namespace CentroNaturistaMasaya.ViewModel
+namespace MasayaNaturistCenter.ViewModel
 {
     public class presentacionViewModel
     {

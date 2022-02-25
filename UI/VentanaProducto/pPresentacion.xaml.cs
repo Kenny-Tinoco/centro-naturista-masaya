@@ -1,9 +1,9 @@
-﻿using CentroNaturistaMasaya.ViewModel;
+﻿using MasayaNaturistCenter.ViewModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace CentroNaturistaMasaya.UI.VentanaProducto
+namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class pPresentacion : Page
     {

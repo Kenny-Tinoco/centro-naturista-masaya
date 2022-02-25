@@ -1,4 +1,4 @@
-﻿namespace CentroNaturistaMasaya.Model.Utilities
+﻿namespace MasayaNaturistCenter.Model.Utilities
 {
     public enum Position
     {

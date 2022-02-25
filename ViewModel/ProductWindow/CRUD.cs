@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace CentroNaturistaMasaya.ViewModel.ProductWindow
+namespace MasayaNaturistCenter.ViewModel.ProductWindow
 {
     internal abstract class CRUD
     {

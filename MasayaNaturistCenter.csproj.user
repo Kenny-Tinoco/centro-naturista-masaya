@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Resource\Drawable\Icono\IconosVP.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\colors.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\dimens.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\strings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\Styles\ventanaAgregarExistencia.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\Styles\ventanaPrincipal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\Styles\ventanaProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resource\Values\Styles\ventanaProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaEmpleado\pEmpleado.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaInicio\pCompra.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaInicio\pConsulta.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaInicio\pInicio.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaInicio\pVenta.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaPrincipal.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\agregarExistencia.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\agregarPresentacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\agregarProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\pExistencia.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\pPresentacion.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProducto\pProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="UI\VentanaProveedor\pProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

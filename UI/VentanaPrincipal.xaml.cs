@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace CentroNaturistaMasaya
+namespace MasayaNaturistCenter
 {
     public partial class MainWindow : Window
     {
