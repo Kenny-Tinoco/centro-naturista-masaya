@@ -1,10 +1,11 @@
-﻿using System;
+﻿using MasayaNaturistCenter.Model.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Transaction
+    public class Transaction
     {
         protected int id;
         private Date date;

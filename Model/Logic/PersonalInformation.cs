@@ -1,8 +1,9 @@
-﻿using System.Diagnostics.Contracts;
+﻿using MasayaNaturistCenter.Model.Utilities;
+using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class PersonalInformation
+    public class PersonalInformation
     {
         private int id;
         private Name name;

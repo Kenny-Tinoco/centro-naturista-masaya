@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using MasayaNaturistCenter.Model.Utilities;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Consult
+    public class Consult
     {
         private int idConsult;
         private Time time;

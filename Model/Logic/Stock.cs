@@ -1,8 +1,9 @@
-﻿using System.Diagnostics.Contracts;
+﻿using MasayaNaturistCenter.Model.Utilities;
+using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Stock
+    public class Stock
     {
         private int idProductStock;
         private int idProduct;

@@ -13,7 +13,7 @@ namespace MasayaNaturistCenter.Model.Models
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["BloggingDatabase"].ConnectionString);
+            optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["MasayaNaturistCenterDataBase"].ConnectionString);
         }
 
         public virtual DbSet<Consult> Consult { get; set; }

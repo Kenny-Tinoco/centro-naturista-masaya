@@ -1,10 +1,10 @@
-﻿using CentroNaturistaMasaya.Model.DAO;
-using CentroNaturistaMasaya.Model.DTO;
+﻿using MasayaNaturistCenter.Model.DAO;
+using MasayaNaturistCenter.Model.DTO;
 using System.Diagnostics.Contracts;
 
 namespace CentroNaturistaMasaya.Model.Repository
 {
-    internal class StockRepository
+    public class StockRepository
     {
         Strategy strategy;
 

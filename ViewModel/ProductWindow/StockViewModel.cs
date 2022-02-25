@@ -1,5 +1,5 @@
-﻿using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Repository;
+﻿using CentroNaturistaMasaya.Model.Repository;
+using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.ViewModel.ProductWindow;
 using System.Diagnostics.Contracts;
 

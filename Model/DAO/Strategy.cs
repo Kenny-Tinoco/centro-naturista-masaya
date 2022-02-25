@@ -1,6 +1,6 @@
 ﻿namespace MasayaNaturistCenter.Model.DAO
 {
-    internal interface Strategy
+    public interface Strategy
     {
         void getBDConnection();
     }

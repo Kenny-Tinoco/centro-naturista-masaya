@@ -2,7 +2,7 @@
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Detail
+    public class Detail
     {
         private int idDetail;
         private Stock product;

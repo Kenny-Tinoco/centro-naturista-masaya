@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model.Utilities
 {
-    internal class Time
+    public class Time
     {
         private int second;
         private int minute;

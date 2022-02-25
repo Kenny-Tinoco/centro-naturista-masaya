@@ -117,7 +117,7 @@ namespace MasayaNaturistCenter {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/ui/ventanaprincipal.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/ui/ventanaprincipal.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\UI\VentanaPrincipal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

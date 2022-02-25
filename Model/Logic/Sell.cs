@@ -2,7 +2,7 @@
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Sell : Transaction
+    public class Sell : Transaction
     {
         private Employee employee;
        

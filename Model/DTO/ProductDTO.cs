@@ -1,6 +1,6 @@
 ﻿namespace MasayaNaturistCenter.Model.DTO
 {
-    internal class ProductDTO
+    public class ProductDTO
     {
         private int _idProduct;
         private string _name;

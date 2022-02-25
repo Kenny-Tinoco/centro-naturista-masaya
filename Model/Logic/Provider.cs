@@ -3,7 +3,7 @@ using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Provider
+    public class Provider
     {
         private int idProvider;
         private string name;

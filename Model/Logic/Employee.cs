@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Employee
+    public class Employee
     {
         private PersonalInformation personalInformation;
         private Position position;

@@ -2,7 +2,7 @@
 
 namespace MasayaNaturistCenter.Model.Utilities
 {
-    internal class Name
+    public class Name
     {
         private string _name;
         private string _lastName;

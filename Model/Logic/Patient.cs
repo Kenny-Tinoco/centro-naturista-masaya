@@ -4,7 +4,7 @@ using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.Model
 {
-    internal class Patient
+    public class Patient
     {
         private PersonalInformation personalInformation;
         private List<String> symptoms;
