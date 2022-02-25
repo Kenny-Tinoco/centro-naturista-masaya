@@ -1,5 +1,4 @@
-﻿using MasayaNaturistCenter.ViewModel;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -8,14 +7,10 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class pExistencia : Page
     {
-        existenciaViewModel eVM;
 
 
         public pExistencia()
         {
-            InitializeComponent();
-            eVM = new existenciaViewModel();
-            DataContext = eVM;
         }
 
 
@@ -41,16 +36,10 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 
         private void SalirVentanaAgregarProducto(object sender, EventArgs e)
         {
-            eVM.resetData();
-            eVM.getAll();
-            dgProducto.SelectedItem = null;
         }
 
         private void mostrarSubVentana(bool modificar)
         {
-            agregarExistencia subVentana = new agregarExistencia(eVM, modificar);
-            subVentana.Salir += new EventHandler(SalirVentanaAgregarProducto);
-            subVentana.ShowDialog();
         }
 
         private void btnEliminar_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -59,8 +48,6 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 
         private void txtBusqueda_GotFocus(object sender, System.Windows.RoutedEventArgs e)
         {
-            eVM.existenciaSelected = null;
-            if (txtBusqueda.Text == "Buscar") txtBusqueda.Text = "";
         }
 
         private void txtBusqueda_LostFocus(object sender, System.Windows.RoutedEventArgs e)
@@ -86,10 +73,6 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 
         private void HabilitarBotones(object sender, RoutedEventArgs e)
         {
-            if (eVM.existenciaSelected != null)
-                enabledBotones(true);
-            else
-                enabledBotones(false);
         }
 
         private void enabledBotones(bool variable)
@@ -100,12 +83,6 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 
         public void Buscar(string dato, bool bandera)
         {
-            if (bandera)
-                eVM.buscarRegistro(dato);
-            else
-                if (eVM != null)
-                eVM.getAll();
-
         }
 
         private void txtBusqueda_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)

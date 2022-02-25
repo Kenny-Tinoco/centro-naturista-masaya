@@ -1,5 +1,4 @@
-﻿using MasayaNaturistCenter.ViewModel;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,15 +7,15 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
     public partial class pPresentacion : Page
     {
         #region Definición de variables
-        presentacionViewModel ptVM; 
+         
         #endregion
 
         #region Constructor de la pagina
         public pPresentacion()
         {
             InitializeComponent();
-            ptVM = new presentacionViewModel();
-            DataContext = ptVM;
+            //ptVM = new presentacionViewModel();
+            //DataContext = ptVM;
         }
         #endregion
         
@@ -36,15 +35,15 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         }
         private void SalirVAP(object sender, EventArgs e)
         {/*Salir de la ventana agregar presentación*/
-            ptVM.resetData();
-            ptVM.getAll();
-            ptVM.presentacionSelected = null;
+            //ptVM.resetData();
+            //ptVM.getAll();
+            //ptVM.presentacionSelected = null;
         }
         private void mostrarSubVentana(bool modificar)
         {
-            agregarPresentacion subVentana = new agregarPresentacion(ptVM, modificar);
-            subVentana.Salir += new EventHandler(SalirVAP);
-            subVentana.ShowDialog();
+            //agregarPresentacion subVentana = new agregarPresentacion(ptVM, modificar);
+            //subVentana.Salir += new EventHandler(SalirVAP);
+            //subVentana.ShowDialog();
         }
         #endregion
 
@@ -63,11 +62,11 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         #region Método buscar del viewModel
         public void Buscar(string dato, bool bandera)
         {
-            if (bandera)
-                ptVM.buscarRegistro(dato);
-            else
-                if (ptVM != null)
-                ptVM.getAll();
+            //if (bandera)
+            //    ptVM.buscarRegistro(dato);
+            //else
+            //    if (ptVM != null)
+            //    ptVM.getAll();
 
         }
         #endregion
@@ -89,10 +88,10 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         }
         private void HabilitarBotones(object sender, RoutedEventArgs e)
         {
-            if (ptVM.presentacionSelected != null)
-                enabledBotones(true);
-            else
-                enabledBotones(false);
+            //if (ptVM.presentacionSelected != null)
+            //    enabledBotones(true);
+            //else
+            //    enabledBotones(false);
         }
         private void enabledBotones(bool variable)
         {

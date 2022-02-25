@@ -1,23 +1,17 @@
-﻿using MasayaNaturistCenter.Model;
-using MasayaNaturistCenter.ViewModel;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
 
 namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class pProducto : Page
     {
         #region Definición de las variables
-        productoViewModel pVM;
         #endregion
         #region Constructor de la clase
         public pProducto()
         {
             InitializeComponent();
-            pVM = new productoViewModel();
-            DataContext = pVM;
         }
         #endregion
         #region Métodos de los botones
@@ -35,16 +29,10 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
             mostrarSubVentana(true);
         }
         private void SalirVAP(object sender, EventArgs e)
-        {/*Salir de la ventana agregar producto*/
-            pVM.resetData();
-            pVM.getAll();
-            dgProducto.SelectedItem = null;
+        {
         }
         private void mostrarSubVentana(bool modificar)
         {
-            agregarProducto subVentana = new agregarProducto(pVM, modificar);
-            subVentana.Salir += new EventHandler(SalirVAP);
-            subVentana.ShowDialog();
         }
         #endregion
         #region Estilo del text para el cuadro de búsqueda
@@ -62,11 +50,6 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         #region Métodos buscar del viewModel
         public void Buscar(string dato, bool bandera)
         {
-            if (bandera)
-                pVM.buscarRegistro(dato);
-            else
-                if(pVM != null)
-                pVM.getAll();
 
         }
         #endregion

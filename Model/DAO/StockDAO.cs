@@ -7,28 +7,33 @@ namespace MasayaNaturistCenter.Model.DAO
 {
     public class StockDAO : IStockDAO
     {
-        private MasayaNaturistCenterContext masayaNaturistCenterContext;
+        private MasayaNaturistCenterEntity masayaNaturistCenterEntity;
 
-        public StockDAO(MasayaNaturistCenterContext masayaNaturistCenterContext)
+        public StockDAO(MasayaNaturistCenterEntity masayaNaturistCenterEntity)
         {
-            Contract.Requires(masayaNaturistCenterContext != null);
-            this.masayaNaturistCenterContext = masayaNaturistCenterContext;
+            Contract.Requires(masayaNaturistCenterEntity != null);
+            this.masayaNaturistCenterEntity = masayaNaturistCenterEntity;
         }
 
 
-        public void add(StockDTO param)
+        public void add(Stock param)
         {
-            var stockDTO = new StockDTO
-            {
-                idProductStock = param.idProductStock,
-                idProduct = param.idProduct,
-                idPresentation = param.idPresentation,
-                quantity = param.quantity,
-                price = param.price,
-                entryDate = param.entryDate,
-                expiration = param.expiration
-            };
-            masayaNaturistCenterContext.Stock.Add(stockDTO);
+            //var stockDTO = new StockDTO
+            //{
+            //    idProductStock = param.idProductStock,
+            //    idProduct = param.idProduct,
+            //    idPresentation = param.idPresentation,
+            //    quantity = param.quantity,
+            //    price = param.price,
+            //    entryDate = param.entryDate,
+            //    expiration = param.expiration
+            //};
+            //masayaNaturistCenterEntity.Stock.AddObject(stock);
+        }
+
+        public void add(StockDTO objet)
+        {
+            throw new System.NotImplementedException();
         }
 
         public void delete(int id)

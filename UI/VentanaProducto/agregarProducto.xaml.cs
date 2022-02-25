@@ -1,5 +1,4 @@
-﻿using MasayaNaturistCenter.ViewModel;
-using System;
+﻿using System;
 using System.Windows;
 
 namespace MasayaNaturistCenter.UI.VentanaProducto
@@ -12,20 +11,9 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         #endregion
 
         #region Constructor de la clase
-        public agregarProducto(productoViewModel pVM, bool bandera)
+        public agregarProducto()
         {
             InitializeComponent();
-            #region Asignación de valores
-            editable = bandera;
-            #endregion
-
-            DataContext = pVM;
-
-            #region Metodos que se ejecutan cuando la ventana es de edición
-            textoDeVentana();
-            if (editable)
-                pVM.editData(pVM.productoSelected.idProducto);
-            #endregion
         }
         #endregion
         

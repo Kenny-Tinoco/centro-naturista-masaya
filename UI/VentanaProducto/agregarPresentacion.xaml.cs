@@ -1,5 +1,4 @@
-﻿using MasayaNaturistCenter.ViewModel;
-using System;
+﻿using System;
 using System.Windows;
 
 namespace MasayaNaturistCenter.UI.VentanaProducto
@@ -12,20 +11,10 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         #endregion
 
         #region Constructor del formulario
-        public agregarPresentacion(presentacionViewModel ptVM, bool bandera)
+        public agregarPresentacion()
         {
             /*Cuando bandera = true, esta ventana será utilizada para editar un elemento*/
             InitializeComponent();
-            #region Asignación de valores
-            editable = bandera;
-            #endregion
-           
-            DataContext = ptVM;
-
-            #region Metodos que se ejecutan cuando la ventana es de edición
-            textosDeVentana();
-            if (editable) ptVM.editData(ptVM.presentacionSelected.idPresentacion);
-            #endregion
         }
         #endregion
 
