@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MasayaNaturistCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MasayaNaturistCenterEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Consult">
           <Key>
             <PropertyRef Name="idConsult" />
@@ -285,7 +285,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MasayaNaturistCenterModelStoreContainer">
+        <EntityContainer Name="MasayaNaturistCenterEntitiesStoreContainer">
           <EntitySet Name="Consult" EntityType="Self.Consult" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Patient" EntityType="Self.Patient" Schema="dbo" store:Type="Tables" />
@@ -356,7 +356,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MasayaNaturistCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MasayaNaturistCenterEntities" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Consult">
           <Key>
             <PropertyRef Name="idConsult" />
@@ -663,7 +663,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MasayaNaturistCenterEntity" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MasayaNaturistCenterDataBase" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Consult" EntityType="Self.Consult" />
           <EntitySet Name="Employee" EntityType="Self.Employee" />
           <EntitySet Name="Patient" EntityType="Self.Patient" />
@@ -735,9 +735,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MasayaNaturistCenterModelStoreContainer" CdmEntityContainer="MasayaNaturistCenterEntity">
+        <EntityContainerMapping StorageEntityContainer="MasayaNaturistCenterEntitiesStoreContainer" CdmEntityContainer="MasayaNaturistCenterDataBase">
           <EntitySetMapping Name="Consult">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Consult">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Consult">
               <MappingFragment StoreEntitySet="Consult">
                 <ScalarProperty Name="idConsult" ColumnName="idConsult" />
                 <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
@@ -748,7 +748,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Employee">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -759,7 +759,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Patient">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Patient">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Patient">
               <MappingFragment StoreEntitySet="Patient">
                 <ScalarProperty Name="idPatient" ColumnName="idPatient" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -770,7 +770,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PrescriptionProduct">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.PrescriptionProduct">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.PrescriptionProduct">
               <MappingFragment StoreEntitySet="PrescriptionProduct">
                 <ScalarProperty Name="idPrescriptionProduct" ColumnName="idPrescriptionProduct" />
                 <ScalarProperty Name="idConsult" ColumnName="idConsult" />
@@ -779,7 +779,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Presentation">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Presentation">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Presentation">
               <MappingFragment StoreEntitySet="Presentation">
                 <ScalarProperty Name="idPresentation" ColumnName="idPresentation" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -787,7 +787,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Product">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -797,7 +797,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provider">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Provider">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Provider">
               <MappingFragment StoreEntitySet="Provider">
                 <ScalarProperty Name="idProvider" ColumnName="idProvider" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -807,7 +807,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProviderPhone">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.ProviderPhone">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.ProviderPhone">
               <MappingFragment StoreEntitySet="ProviderPhone">
                 <ScalarProperty Name="idProviderPhone" ColumnName="idProviderPhone" />
                 <ScalarProperty Name="idProvider" ColumnName="idProvider" />
@@ -815,7 +815,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SaleDetail">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.SaleDetail">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.SaleDetail">
               <MappingFragment StoreEntitySet="SaleDetail">
                 <ScalarProperty Name="idSaleDetail" ColumnName="idSaleDetail" />
                 <ScalarProperty Name="idSell" ColumnName="idSell" />
@@ -827,7 +827,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sell">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Sell">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Sell">
               <MappingFragment StoreEntitySet="Sell">
                 <ScalarProperty Name="idSell" ColumnName="idSell" />
                 <ScalarProperty Name="idEmployee" ColumnName="idEmployee" />
@@ -838,7 +838,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stock">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Stock">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Stock">
               <MappingFragment StoreEntitySet="Stock">
                 <ScalarProperty Name="idStock" ColumnName="idStock" />
                 <ScalarProperty Name="idProduct" ColumnName="idProduct" />
@@ -851,7 +851,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Supply">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.Supply">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.Supply">
               <MappingFragment StoreEntitySet="Supply">
                 <ScalarProperty Name="idSupply" ColumnName="idSupply" />
                 <ScalarProperty Name="idProvider" ColumnName="idProvider" />
@@ -862,7 +862,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SupplyDetail">
-            <EntityTypeMapping TypeName="MasayaNaturistCenterModel.SupplyDetail">
+            <EntityTypeMapping TypeName="MasayaNaturistCenterEntities.SupplyDetail">
               <MappingFragment StoreEntitySet="SupplyDetail">
                 <ScalarProperty Name="idSupplyDetail" ColumnName="idSupplyDetail" />
                 <ScalarProperty Name="idSupply" ColumnName="idSupply" />

@@ -5,11 +5,10 @@ namespace MasayaNaturistCenter.Model.DAO
 {
     public interface IStockDAO
     {
+        void add(StockDTO parameter);
+        void delete(int id);
+        void update(StockDTO parameter);
         List<StockDTO> getAll();
-        public List<StockDTO> get(int id);
-        StockDTO find(int id);
-        public void add(StockDTO parameter);
-        public void update(StockDTO parameter);
-        public void delete(int id);
+        StockDTO get(int id);
     }
 }

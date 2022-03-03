@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net48</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>MasayaNaturistCenter.App</StartupObject>
@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <None Remove="MasayaNaturistCenterDataBase.edmx" />
-    <None Remove="Model\Models\Models.edmx" />
+    <None Remove="Model\Entities\Entities.edmx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,9 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EntityDeploy Include="Model\Models\Models.edmx">
+    <EntityDeploy Include="Model\Entities\Entities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Models.Designer.cs</LastGenOutput>
+      <LastGenOutput>Entities.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
 
@@ -36,19 +36,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Reference Include="System.Security" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Model\Models\Models.Designer.cs">
+    <Compile Update="Model\Entities\Entities.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Models.edmx</DependentUpon>
+      <DependentUpon>Entities.edmx</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ViewModel\" />
   </ItemGroup>
 
   <ItemGroup>

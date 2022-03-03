@@ -1,4 +1,6 @@
-﻿namespace MasayaNaturistCenter.Model.DTO
+﻿using MasayaNaturistCenter.Model.Utilities;
+
+namespace MasayaNaturistCenter.Model.DTO
 {
     public class StockDTO
     {

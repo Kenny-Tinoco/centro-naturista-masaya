@@ -5,9 +5,9 @@ namespace MasayaNaturistCenter.Model.Utilities
 {
     public class Time
     {
-        private int second;
-        private int minute;
-        private int hour;
+        public int second;
+        public int minute;
+        public int hour;
 
         public Time()
         {

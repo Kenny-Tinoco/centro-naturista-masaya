@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.Contracts;
 
-namespace MasayaNaturistCenter.Model
+namespace MasayaNaturistCenter.Model.Utilities
 {
     public class Date
     {
-        private int day;
-        private int month;
-        private int year;   
+        public int day;
+        public int month;
+        public int year;   
 
 
         public Date()

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="37b1a370972d45f0a2f5777da9fbb1e6" Name="Diagram1">
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Consult" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Employee" Width="1.5" PointX="1.5" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Patient" Width="1.5" PointX="1.5" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.PrescriptionProduct" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Presentation" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Product" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Provider" Width="1.5" PointX="6.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.ProviderPhone" Width="1.5" PointX="9" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.SaleDetail" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Sell" Width="1.5" PointX="6" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Stock" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.Supply" Width="1.5" PointX="9" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MasayaNaturistCenterEntities.SupplyDetail" Width="1.5" PointX="11.25" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Consult__idEmplo__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Consult__idPatie__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Prescript__idCon__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Sell__idEmployee__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Prescript__idPro__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Stock__idPresent__37A5467C" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Stock__idProduct__36B12243" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__ProviderP__idPro__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__Supply__idProvid__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__SaleDetai__idSel__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__SaleDetai__idSto__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__SupplyDet__idSto__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="MasayaNaturistCenterEntities.FK__SupplyDet__idSup__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

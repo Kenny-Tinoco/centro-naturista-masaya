@@ -1,5 +1,6 @@
 ﻿using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Models;
+using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.Utilities;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics.Contracts;
@@ -9,9 +10,9 @@ namespace MasayaNaturistCenter.Model.DAO
 {
     public class StockDAO : IStockDAO
     {
-        private MasayaNaturistCenterEntity dataBaseContext; 
+        private MasayaNaturistCenterDataBase dataBaseContext; 
 
-        public StockDAO(MasayaNaturistCenterEntity dataBaseContext)
+        public StockDAO(MasayaNaturistCenterDataBase dataBaseContext)
         {
             Contract.Requires(dataBaseContext != null);
             this.dataBaseContext = dataBaseContext;
@@ -33,6 +34,28 @@ namespace MasayaNaturistCenter.Model.DAO
                 dataBaseContext.Stock.DeleteObject(stock);
                 dataBaseContext.SaveChanges();
             }
+        }     
+        
+        public void update(StockDTO parameter)
+        {
+            delete(parameter.idStock);
+            add(parameter);
+        }
+
+        public List<StockDTO> getAll()
+        {
+            var list = new List<StockDTO>();
+
+            var stocks = dataBaseContext.Stock.ToList();
+
+            list.AddRange(stocks.Select(stock => getStockDTOof(stock)).ToList());
+
+            return list;
+        } 
+        
+        public StockDTO get(int id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public StockDTO find(int id)
@@ -49,32 +72,11 @@ namespace MasayaNaturistCenter.Model.DAO
             return stockDTO;
         }
 
-        public List<StockDTO> get(int id)
+
+
+        private Entities.Stock getStockOf(StockDTO parameter)
         {
-            throw new System.NotImplementedException();
-        }
-
-        public List<StockDTO> getAll()
-        {
-            var list = new List<StockDTO>();
-
-            var stocks = dataBaseContext.Stock.ToList();
-
-            list.AddRange(stocks.Select(stock => getStockDTOof(stock)).ToList());
-
-            return list;
-        }
-
-        public void update(StockDTO parameter)
-        {
-            delete(parameter.idStock);
-            add(parameter);
-        }
-
-
-        private Models.Stock getStockOf(StockDTO parameter)
-        {
-            var stock = new Models.Stock
+            var stock = new Entities.Stock
             {
                 idStock = parameter.idStock,
                 idProduct = parameter.idProduct,
@@ -88,7 +90,7 @@ namespace MasayaNaturistCenter.Model.DAO
             return stock;
         }
 
-        private StockDTO getStockDTOof(Models.Stock parameter)
+        private StockDTO getStockDTOof(Entities.Stock parameter)
         {
             var stockDTO = new StockDTO
             {
@@ -104,10 +106,15 @@ namespace MasayaNaturistCenter.Model.DAO
             return stockDTO;
         }
 
-        private Models.Stock findStock(int id)
+        private Entities.Stock findStock(int id)
         {
-            var stock = dataBaseContext.Stock.AsNoTracking().SingleOrDefault(stock => stock.idStock == id);
-            return stock;
+            var foundElement = 
+                dataBaseContext
+                .Stock
+                .AsNoTracking()
+                .SingleOrDefault(element => element.idStock == id);
+            
+            return foundElement;
         }
     }
 }

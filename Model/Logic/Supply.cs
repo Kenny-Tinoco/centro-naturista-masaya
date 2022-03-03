@@ -34,11 +34,6 @@ namespace MasayaNaturistCenter.Model
 
         void increaseQuantityInProducts()
         {
-            foreach (Detail i in detail)
-            {
-                for (int j = 1; j <= i.Quantity; j++)
-                    i.Product.increaseQuantity();
-            }
         }
     }
 }

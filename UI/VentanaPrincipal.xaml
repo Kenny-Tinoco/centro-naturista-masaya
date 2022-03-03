@@ -42,7 +42,7 @@
                 Style="{DynamicResource styleButtonSalir}"
                 >
                 <Image
-                    Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/salir.png"
+                    Source="/Resource/Drawable/Image/salir.png"
                     Height="30"
                     Width="30"/>
             </Button>
@@ -54,7 +54,7 @@
                 Click="btnMinimizar_Click" Style="{DynamicResource styleButtonMinimizar}"
                 >
                 <Image
-                    Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/minimizar.png"
+                    Source="/Resource/Drawable/Image/minimizar.png"
                     Height="30"
                     Width="30"/>
             </Button>
@@ -73,8 +73,7 @@
                 VerticalAlignment="Top"
                 >
                 <Image
-                    Margin="1"
-                    Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/logo-cnm.png"
+                    Margin="1" Source="/Resource/Drawable/Image/logo-cnm.png"
                 />
             </Border>
             <ListView
@@ -99,7 +98,7 @@
                             Height="auto"
                             VerticalAlignment="center"
                             Margin="{DynamicResource margenI_t}"
-                            Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/home.png"
+                            Source="/Resource/Drawable/Image/home.png"
                             />
                         <TextBlock
                             Text="Inicio"
@@ -125,8 +124,7 @@
                         <Image
                             Height="auto"
                             VerticalAlignment="center"
-                            Margin="{DynamicResource margenI_t}"
-                            Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/producto.png"
+                            Margin="{DynamicResource margenI_t}" Source="/Resource/Drawable/Image/producto.png" 
                             />
                         <TextBlock
                             Text="Producto"
@@ -153,7 +151,7 @@
                             Height="auto"
                             VerticalAlignment="center"
                             Margin="{DynamicResource margenI_t}"
-                            Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/proveedor.png"
+                            Source="/Resource/Drawable/Image/proveedor.png"
                             />
                         <TextBlock
                             Text="Proveedor"
@@ -180,7 +178,7 @@
                             Height="auto"
                             VerticalAlignment="center"
                             Margin="{DynamicResource margenI_t}"
-                            Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/empleado.png"
+                            Source="/Resource/Drawable/Image/empleado.png"
                             />
                         <TextBlock
                             Text="Empleado"
