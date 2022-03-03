@@ -11,30 +11,24 @@ namespace MasayaNaturistCenter.Model.Utilities
 
         public Time()
         {
-            Time time = actualTime();
-            this.second = time.second;
-            this.minute = time.minute;
-            this.hour = time.hour;
+            var element = new TimeUtilities().actualTime();
+            this.second = element.second;
+            this.minute = element.minute;
+            this.hour = element.hour;
         }
 
-        public Time(int second, int minute, int hour)
+        public Time(int hour, int minute)
         {
-            Contract.Requires(validTime(second, minute, hour));
+            Contract.Requires(validTime(hour, minute, 0));
             this.second = second;
             this.minute = minute;
             this.hour = hour;
         }
 
-        private bool validTime(int second, int minute, int hour)
+        private bool validTime(int hour, int minute, int second)
         {
             bool ok = true;
             return ok;
-        }
-
-        public Time actualTime()
-        {
-            Time time = new Time();
-            return time;
         }
     }
 }

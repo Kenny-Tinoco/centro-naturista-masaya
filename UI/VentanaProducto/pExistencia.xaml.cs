@@ -2,15 +2,20 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
+using MasayaNaturistCenter.Model.DTO;
+using MasayaNaturistCenter.ViewModel;
+using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class pExistencia : Page
     {
-
-
-        public pExistencia()
+        public pExistencia(StockViewModel parameter)
         {
+            InitializeComponent();
+            
+            Contract.Requires(parameter != null);
+            DataContext = parameter;
         }
 
 

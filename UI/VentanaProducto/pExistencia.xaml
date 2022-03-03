@@ -285,8 +285,7 @@
             CanUserSortColumns="False"
             HeadersVisibility="Column"
             HorizontalGridLinesBrush="Black"
-            SelectedItem="{Binding existenciaSelected, Mode=TwoWay}"
-            ItemsSource="{Binding existenciaRecord.registrosExistencia}"
+            ItemsSource="{Binding stockList}"
             ColumnHeaderStyle="{DynamicResource styleDataGridColumnHeaderVentanaProducto}"
             RowStyle="{DynamicResource styleDataGridRowVentanaProducto}"
             >
@@ -295,42 +294,42 @@
                 <DataGridTextColumn
                     Header="Cód."
                     Width="45"
-                    Binding="{Binding idExistencia}"/>
+                    Binding="{Binding idStock}"/>
 
                 <DataGridTextColumn
                     Header="Nombre"
                     Width="200"
-                    Binding="{Binding Producto.Nombre}"/>
+                    Binding="{Binding name}"/>
 
                 <DataGridTextColumn
                     Header="Descripción"
                     Width="300"
-                    Binding="{Binding Producto.Descripcion}"/>
+                    Binding="{Binding description}"/>
 
                 <DataGridTextColumn
                     Header="Presentación"
                     Width="120"
-                    Binding="{Binding Presentacion.Nombre}"/>
+                    Binding="{Binding presentation}"/>
 
                 <DataGridTextColumn
                     Header="Cantidad"
                     Width="70"
-                    Binding="{Binding Cantidad}"/>
+                    Binding="{Binding quantity}"/>
 
                 <DataGridTextColumn
                     Header="Precio"
                     Width="60"
-                    Binding="{Binding Precio}"/>
+                    Binding="{Binding price}"/>
 
                 <DataGridTextColumn
                     Header="Caducidad"
                     Width="*"
-                    Binding="{Binding Caducidad}"/>
+                    Binding="{Binding entryDate}"/>
 
                 <DataGridTextColumn
                     Header="F. Entrada"
                     Width="*"
-                    Binding="{Binding fechaEntrada}"/>
+                    Binding="{Binding expiration}"/>
             </DataGrid.Columns>
             <!--#endregion-->
         </DataGrid>

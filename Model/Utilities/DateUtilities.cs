@@ -2,11 +2,12 @@
 {
     public class DateUtilities
     {
-        public DateUtilities()
+        public Date getToday()
         {
-
+            Date date = new Date();
+            return date;
         }
-
+        
         public string convertDateToString(Date parameter)
         {
             return parameter.day + "/" + parameter.month + "/" + parameter.year;

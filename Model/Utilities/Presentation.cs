@@ -1,6 +1,6 @@
 ﻿namespace MasayaNaturistCenter.Model.Utilities
 {
-    public enum Presentations
+    public enum Presentation
     {
         oil = 0,
         cream = 1,

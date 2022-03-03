@@ -12,26 +12,29 @@ namespace MasayaNaturistCenter.Model.DAO
     {
         private MasayaNaturistCenterDataBase dataBaseContext; 
 
+
         public StockDAO(MasayaNaturistCenterDataBase dataBaseContext)
         {
             Contract.Requires(dataBaseContext != null);
             this.dataBaseContext = dataBaseContext;
         }
 
+
         public void add(StockDTO parameter)
         {
-            var stock = getStockOf(parameter);
+            var element = getStockOf(parameter);
 
-            dataBaseContext.Stock.AddObject(stock);
+            dataBaseContext.Stock.AddObject(element);
             dataBaseContext.SaveChanges();
         }
 
         public void delete(int id)
         {
-            var stock = findStock(id);
-            if(stock != null)
+            var foundStock = findStock(id);
+
+            if(foundStock != null)
             {
-                dataBaseContext.Stock.DeleteObject(stock);
+                dataBaseContext.Stock.DeleteObject(foundStock);
                 dataBaseContext.SaveChanges();
             }
         }     
@@ -45,7 +48,6 @@ namespace MasayaNaturistCenter.Model.DAO
         public List<StockDTO> getAll()
         {
             var list = new List<StockDTO>();
-
             var stocks = dataBaseContext.Stock.ToList();
 
             list.AddRange(stocks.Select(stock => getStockDTOof(stock)).ToList());
@@ -58,55 +60,80 @@ namespace MasayaNaturistCenter.Model.DAO
             throw new System.NotImplementedException();
         }
 
+        public List<StockDTO> getAllOccurrencesOf(string parameter)
+        {
+            Contract.Requires(parameter != null);
+            var foundList = 
+                dataBaseContext
+                .Stock
+                .AsNoTracking()
+                .SingleOrDefault
+                (
+                    element => 
+                    element.idStock == int.Parse(parameter) ||
+                    element.Product.name = parameter ||
+                    element.Presentation.name = parameter
+                ).ToList();
+            var list = new List<StockDTO>();
+            foreach(var item in foundList)
+            {
+                list.AddRange(foundList.Select(stock => getStockDTOof(stock)).ToList());
+            }
+
+            return list;
+        }
+
         public StockDTO find(int id)
         {
-            var stockDTO = new StockDTO();
+            var element = new StockDTO();
+            var foundStock = findStock(id);
 
-            var stock = findStock(id);
-
-            if (stock == null)
+            if (foundStock == null)
                 return null;
             else
-                stockDTO = getStockDTOof(stock);
+                element = getStockDTOof(foundStock);
 
-            return stockDTO;
+            return element;
         }
 
 
-
-        private Entities.Stock getStockOf(StockDTO parameter)
+        private Stock getStockOf(StockDTO parameter)
         {
-            var stock = new Entities.Stock
+            var dateUtilities = new DateUtilities();
+
+            var element = new Stock
             {
                 idStock = parameter.idStock,
                 idProduct = parameter.idProduct,
                 idPresentation = parameter.idPresentation,
                 quantity = parameter.quantity,
                 price = parameter.price,
-                entryDate = parameter.entryDate.getDateString(),
-                expiration = parameter.expiration.getDateString()
+                entryDate = dateUtilities.convertDateToString(parameter.entryDate),
+                expiration = dateUtilities.convertDateToString(parameter.expiration)
             };
 
-            return stock;
+            return element;
         }
 
-        private StockDTO getStockDTOof(Entities.Stock parameter)
+        private StockDTO getStockDTOof(Stock parameter)
         {
-            var stockDTO = new StockDTO
+            var dateUtilities = new DateUtilities();
+
+            var element = new StockDTO
             {
                 idStock = parameter.idStock,
                 idProduct = parameter.idProduct,
                 idPresentation = parameter.idPresentation,
                 quantity = parameter.quantity,
                 price = parameter.price,
-                entryDate = new Date().getStringOfDate(parameter.entryDate),
-                expiration = new Date().getStringOfDate(parameter.expiration)
+                entryDate = dateUtilities.convertStringToDate(parameter.entryDate),
+                expiration = dateUtilities.convertStringToDate(parameter.expiration)
             };
 
-            return stockDTO;
+            return element;
         }
 
-        private Entities.Stock findStock(int id)
+        private Stock findStock(int id)
         {
             var foundElement = 
                 dataBaseContext

@@ -10,5 +10,6 @@ namespace MasayaNaturistCenter.Model.DAO
         void update(StockDTO parameter);
         List<StockDTO> getAll();
         StockDTO get(int id);
+        List<StockDTO> getAllOccurrencesOf(string parameter);
     }
 }

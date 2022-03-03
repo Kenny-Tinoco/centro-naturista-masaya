@@ -1,8 +1,8 @@
 ﻿namespace MasayaNaturistCenter.Model.Utilities
 {
-    public class TimeUtilites
+    public class TimeUtilities
     {
-        public TimeUtilites()
+        public TimeUtilities()
         {
 
         }
@@ -16,6 +16,12 @@
         public Time convertStringToTime(string parameter)
         {
             return new Time();
+        }
+        
+        public Time actualTime()
+        {
+            Time time = new Time();
+            return time;
         }
     }
 }

@@ -8,9 +8,8 @@ namespace MasayaNaturistCenter.Model.Logic
         public TransactionDTO transaction { get; set; }
 
 
-        public TransactionLogic()
+        public TransactionLogic() : this(new TransactionDTO())
         {
-            this.transaction = new TransactionDTO();
         }
 
         public TransactionLogic(TransactionDTO parameter)
@@ -47,7 +46,7 @@ namespace MasayaNaturistCenter.Model.Logic
             return findDetailByStockId(parameter.idStock);
         }
     
-        public void makeTransaction()
+        protected makeTransaction()
         {
 
         }
@@ -98,5 +97,6 @@ namespace MasayaNaturistCenter.Model.Logic
 
             return foundElement;
         }
+        
     }
 }

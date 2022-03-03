@@ -6,23 +6,24 @@ namespace MasayaNaturistCenter.Model.Logic
 {
     public class SaleLogic : TransactionLogic
     {
-        public TransactionLogic sellDAO;
+        public ITransaction sellDAO;
         public EmployeeDTO employee;
+
 
         public SaleLogic()
         {
         }
 
-        public SaleLogic(EmployeeDTO employee)
+        public SaleLogic(EmployeeDTO employee, TransactionDTO transaction) : base(transaction)
         {
-            Contract.Requires(employee != null);
+            Contract.Requires(employee != null && transaction != null);
             this.employee = employee;
         }
 
 
         public void makeSale()
         {
-            sellDAO.makeTransaction();
+            makeTransaction();
         }
 
         void reduceQuantityInProducts()
