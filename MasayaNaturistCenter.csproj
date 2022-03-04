@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>MasayaNaturistCenter.App</StartupObject>
@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="ViewModel\" />
+    <Folder Include="View\HomeWindows\" />
   </ItemGroup>
 
   <ItemGroup>

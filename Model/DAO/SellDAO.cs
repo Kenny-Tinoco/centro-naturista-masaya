@@ -78,7 +78,7 @@ namespace MasayaNaturistCenter.Model.DAO
         private Sell getSellOf(TransactionDTO parameter)
         {
             var dateUtilities = new DateUtilities();
-            var timeUtilities = new TimeUtilites();
+            var timeUtilities = new TimeUtilities();
 
             var element = new Sell
             {
@@ -95,7 +95,7 @@ namespace MasayaNaturistCenter.Model.DAO
         private TransactionDTO getTransactionOf(Sell parameter)
         {
             var dateUtilities = new DateUtilities();
-            var timeUtilities = new TimeUtilites();
+            var timeUtilities = new TimeUtilities();
 
             var element = new TransactionDTO
             {

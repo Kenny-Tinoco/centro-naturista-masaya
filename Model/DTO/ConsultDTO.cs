@@ -1,4 +1,5 @@
 using MasayaNaturistCenter.Model.Utilities;
+using System.Collections.Generic;
 
 namespace MasayaNaturistCenter.Model.DTO
 {

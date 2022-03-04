@@ -27,12 +27,12 @@ namespace MasayaNaturistCenter.Model.Logic
         {
             get
             {
-                return this._stock;
+                return _stock;
             }
             set
             {
                 Contract.Requires(value != null);
-                this._stock = value;
+                _stock = value;
             }
         }
 
@@ -50,7 +50,7 @@ namespace MasayaNaturistCenter.Model.Logic
             }
         }
 
-        public Presentation presentation
+        public string presentation
         {
             get
             {
@@ -59,7 +59,6 @@ namespace MasayaNaturistCenter.Model.Logic
 
             set
             {
-                Contract.Requires(value != null);
                 stock.presentation = value;
             }
         }

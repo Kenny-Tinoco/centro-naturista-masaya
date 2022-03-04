@@ -324,12 +324,12 @@
                 <DataGridTextColumn
                     Header="Caducidad"
                     Width="*"
-                    Binding="{Binding entryDate}"/>
+                    Binding="{Binding entryDate.dateString}"/>
 
                 <DataGridTextColumn
                     Header="F. Entrada"
                     Width="*"
-                    Binding="{Binding expiration}"/>
+                    Binding="{Binding expiration.dateString}"/>
             </DataGrid.Columns>
             <!--#endregion-->
         </DataGrid>

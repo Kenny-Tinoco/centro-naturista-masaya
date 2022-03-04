@@ -1,7 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Update="View\ProductWindows\StockPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Page Update="Resource\Drawable\Icono\IconosVP.xaml">
       <SubType>Designer</SubType>
@@ -64,6 +68,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\VentanaProveedor\pProveedor.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

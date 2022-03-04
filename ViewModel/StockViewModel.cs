@@ -1,13 +1,13 @@
-using MasayaNaturistCenter.Model.Utilities;
 using MasayaNaturistCenter.Model.DTO;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace MasayaNaturistCenter.ViewModel
 {
     public class StockViewModel
-    {
-        public List<StockDTO> stockList;
+    { 
+        public List<StockDTO> stockList { get; set; }
         public StockViewModelRecords stockRecords;
 
 
@@ -15,14 +15,16 @@ namespace MasayaNaturistCenter.ViewModel
         {
             Contract.Requires(parameter != null);
             stockRecords = parameter;
+
+            getAllStock();
         }
 
-        public getAllStock()
+        public void getAllStock()
         {
             stockList = stockRecords.getAll();
         }
 
-        public searchStock(string parameter)
+        public void searchStock(string parameter)
         {
             stockList = stockRecords.getAllOccurrencesOf(parameter);
         }

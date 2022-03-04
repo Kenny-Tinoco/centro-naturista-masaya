@@ -92,8 +92,7 @@ namespace MasayaNaturistCenter.UI.VentanaProducto {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/ui/ventanaproducto/agregarpresentacion.x" +
-                    "aml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/ui/ventanaproducto/agregarpresentacion.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\UI\VentanaProducto\agregarPresentacion.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -1,0 +1,71 @@
+﻿<Page x:Class="MasayaNaturistCenter.View.ProductWindows.StockPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
+      Title="StockPage">
+
+    <Grid>
+        <DataGrid   
+            x:Name="stockDataGrid"
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="30,40,30,40" 
+            AutoGenerateColumns="False"
+            IsReadOnly="True"
+            Background="White"
+            CanUserAddRows="False"
+            CanUserResizeColumns="true"
+            CanUserResizeRows="false"
+            CanUserSortColumns="False"
+            HeadersVisibility="Column"
+            HorizontalGridLinesBrush="Black"
+            ItemsSource="{Binding stockList}"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Cód."
+                    Width="45"
+                    Binding="{Binding idStock}"/>
+
+                <DataGridTextColumn
+                    Header="Nombre"
+                    Width="200"
+                    Binding="{Binding name}"/>
+
+                <DataGridTextColumn
+                    Header="Descripción"
+                    Width="300"
+                    Binding="{Binding description}"/>
+
+                <DataGridTextColumn
+                    Header="Presentación"
+                    Width="120"
+                    Binding="{Binding presentation}"/>
+
+                <DataGridTextColumn
+                    Header="Cantidad"
+                    Width="70"
+                    Binding="{Binding quantity}"/>
+
+                <DataGridTextColumn
+                    Header="Precio"
+                    Width="60"
+                    Binding="{Binding price}"/>
+
+                <DataGridTextColumn
+                    Header="Caducidad"
+                    Width="*"
+                    Binding="{Binding entryDate}"/>
+
+                <DataGridTextColumn
+                    Header="F. Entrada"
+                    Width="*"
+                    Binding="{Binding expiration}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>

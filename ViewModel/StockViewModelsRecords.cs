@@ -34,7 +34,7 @@ namespace MasayaNaturistCenter.ViewModel
 
         public void saveStock()
         {
-            stockDAO.add(logic.stock());
+            stockDAO.add(logic.stock);
         }
     }
 }

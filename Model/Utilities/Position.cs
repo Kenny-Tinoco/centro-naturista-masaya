@@ -2,7 +2,7 @@
 {
     public enum Position
     {
-        administrator = 0,
-        seller = 1
+        administrator,
+        seller
     }
 }

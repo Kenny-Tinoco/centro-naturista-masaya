@@ -10,12 +10,16 @@
         
         public string convertDateToString(Date parameter)
         {
-            return parameter.day + "/" + parameter.month + "/" + parameter.year;
+            return parameter.dateString;
         }
 
         public Date convertStringToDate(string parameter)
         {
-            return new Date();
+            if (parameter == null)
+                return null;
+
+            Date date = new Date();
+            return date;
         }
     }
 }

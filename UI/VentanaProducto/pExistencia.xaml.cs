@@ -10,10 +10,13 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 {
     public partial class pExistencia : Page
     {
-        public pExistencia(StockViewModel parameter)
+        public pExistencia()
         {
             InitializeComponent();
-            
+        }
+
+        public pExistencia(StockViewModel parameter) : this()
+        {
             Contract.Requires(parameter != null);
             DataContext = parameter;
         }

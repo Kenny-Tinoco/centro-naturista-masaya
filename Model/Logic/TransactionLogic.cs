@@ -46,7 +46,7 @@ namespace MasayaNaturistCenter.Model.Logic
             return findDetailByStockId(parameter.idStock);
         }
     
-        protected makeTransaction()
+        protected void makeTransaction()
         {
 
         }

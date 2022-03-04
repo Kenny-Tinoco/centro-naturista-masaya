@@ -11,10 +11,9 @@ namespace MasayaNaturistCenter.Model.Utilities
 
         public Date()
         {
-            var date = new DateUtilities().getToday();
-            this.day = date.day;
-            this.month = date.month;
-            this.year = date.year;
+            day = 3;
+            month = 3;
+            year = 2022;
         }
 
         public Date(int day, int month, int year)
@@ -29,6 +28,11 @@ namespace MasayaNaturistCenter.Model.Utilities
         {
             bool ok = true;
             return ok;
+        }
+
+        public string dateString
+        {
+            get { return day+"/"+month+"/" + year; }
         }
     }
 }

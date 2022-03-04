@@ -63,23 +63,8 @@ namespace MasayaNaturistCenter.Model.DAO
         public List<StockDTO> getAllOccurrencesOf(string parameter)
         {
             Contract.Requires(parameter != null);
-            var foundList = 
-                dataBaseContext
-                .Stock
-                .AsNoTracking()
-                .SingleOrDefault
-                (
-                    element => 
-                    element.idStock == int.Parse(parameter) ||
-                    element.Product.name = parameter ||
-                    element.Presentation.name = parameter
-                ).ToList();
+            var foundList = new List<StockDTO>();
             var list = new List<StockDTO>();
-            foreach(var item in foundList)
-            {
-                list.AddRange(foundList.Select(stock => getStockDTOof(stock)).ToList());
-            }
-
             return list;
         }
 
@@ -123,7 +108,10 @@ namespace MasayaNaturistCenter.Model.DAO
             {
                 idStock = parameter.idStock,
                 idProduct = parameter.idProduct,
+                name = parameter.Product.name,
+                description = parameter.Product.description,
                 idPresentation = parameter.idPresentation,
+                presentation = parameter.Presentation.name,
                 quantity = parameter.quantity,
                 price = parameter.price,
                 entryDate = dateUtilities.convertStringToDate(parameter.entryDate),

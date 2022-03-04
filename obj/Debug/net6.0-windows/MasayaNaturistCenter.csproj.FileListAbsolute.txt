@@ -122,3 +122,5 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\ref\MasayaNaturistCenter.dll
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\MasayaNaturistCenter.pdb
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\MasayaNaturistCenter.genruntimeconfig.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockPage.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockPage.g.cs

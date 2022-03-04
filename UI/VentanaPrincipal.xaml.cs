@@ -1,4 +1,8 @@
-﻿using System;
+﻿using MasayaNaturistCenter.Model.DAO;
+using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.UI.VentanaProducto;
+using MasayaNaturistCenter.ViewModel;
+using System;
 using System.Windows;
 
 namespace MasayaNaturistCenter
@@ -32,11 +36,13 @@ namespace MasayaNaturistCenter
         #region Eventos de click en los botones del menú lateral
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
+            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));            
         }
         private void btnProducto_Click(object sender, RoutedEventArgs e)
         {
-            PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
+            //PagesNavigation.Navigate(new Uri("UI/VentanaProducto/pExistencia.xaml", UriKind.RelativeOrAbsolute));
+            var pStock = new pExistencia(new StockViewModel(new StockViewModelRecords(new StockDAO(new MasayaNaturistCenterDataBase()))));
+            PagesNavigation.Navigate(pStock);
         }
         private void btnProveedor_Click(object sender, RoutedEventArgs e)
         {

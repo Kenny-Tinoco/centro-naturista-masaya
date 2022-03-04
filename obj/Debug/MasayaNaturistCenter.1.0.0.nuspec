@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MasayaNaturistCenter</id>
+    <version>1.0.0</version>
+    <authors>MasayaNaturistCenter</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="EntityFramework" version="6.4.4" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore" version="6.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="6.0.2" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net6.0-windows7.0/logo-cnm.ico" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\MasayaNaturistCenter.runtimeconfig.json" target="lib\net6.0-windows7.0\MasayaNaturistCenter.runtimeconfig.json" />
+    <file src="C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\MasayaNaturistCenter.dll" target="lib\net6.0-windows7.0\MasayaNaturistCenter.dll" />
+    <file src="C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\logo-cnm.ico" target="content\logo-cnm.ico" />
+    <file src="C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\logo-cnm.ico" target="contentFiles\any\net6.0-windows7.0\logo-cnm.ico" />
+  </files>
+</package>
