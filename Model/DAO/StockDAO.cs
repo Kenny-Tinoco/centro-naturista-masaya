@@ -20,6 +20,7 @@ namespace MasayaNaturistCenter.Model.DAO
         }
 
 
+
         public void add(StockDTO parameter)
         {
             var element = getStockOf(parameter);
@@ -47,40 +48,40 @@ namespace MasayaNaturistCenter.Model.DAO
 
         public List<StockDTO> getAll()
         {
-            var list = new List<StockDTO>();
-            var stocks = dataBaseContext.Stock.ToList();
-
-            list.AddRange(stocks.Select(stock => getStockDTOof(stock)).ToList());
-
-            return list;
+            return getStockDTOListOf(dataBaseContext.Stock.ToList());
         } 
         
-        public StockDTO get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public List<StockDTO> getAllOccurrencesOf(string parameter)
         {
+            return getStockDTOListOf(getWhere(parameter));
+        }
+
+
+
+        private List<Stock> getWhere(string parameter)
+        {
             Contract.Requires(parameter != null);
-            var foundList = new List<StockDTO>();
+
+            return dataBaseContext
+                .Stock
+                .Where
+                (
+                    element => 
+                    element.idStock.ToString().Contains(parameter) ||
+                    element.Product.name.ToLower().StartsWith(parameter.ToLower()) ||
+                    element.Presentation.name.ToLower().StartsWith(parameter.ToLower())
+
+                ).ToList();
+        }
+
+        private List<StockDTO> getStockDTOListOf(List<Stock> stocks)
+        {
             var list = new List<StockDTO>();
+
+            list.AddRange(stocks.Select(element => getStockDTOof(element)).ToList());
+
             return list;
         }
-
-        public StockDTO find(int id)
-        {
-            var element = new StockDTO();
-            var foundStock = findStock(id);
-
-            if (foundStock == null)
-                return null;
-            else
-                element = getStockDTOof(foundStock);
-
-            return element;
-        }
-
 
         private Stock getStockOf(StockDTO parameter)
         {

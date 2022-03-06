@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\App.xaml
-22915010728
-1-353176491
-47699736327
+25147644068
+28-300001614
+50-1557136649
 217-229156742
-Resource\Drawable\Icono\IconosVP.xaml;Resource\Values\colors.xaml;Resource\Values\dimens.xaml;Resource\Values\strings.xaml;Resource\Values\Styles\ventanaAgregarExistencia.xaml;Resource\Values\Styles\ventanaPrincipal.xaml;Resource\Values\Styles\ventanaProducto.xaml;Resource\Values\Styles\ventanaProveedor.xaml;UI\VentanaEmpleado\pEmpleado.xaml;UI\VentanaInicio\pCompra.xaml;UI\VentanaInicio\pConsulta.xaml;UI\VentanaInicio\pInicio.xaml;UI\VentanaInicio\pVenta.xaml;UI\VentanaPrincipal.xaml;UI\VentanaProducto\agregarExistencia.xaml;UI\VentanaProducto\agregarPresentacion.xaml;UI\VentanaProducto\agregarProducto.xaml;UI\VentanaProducto\pExistencia.xaml;UI\VentanaProducto\pPresentacion.xaml;UI\VentanaProducto\pProducto.xaml;UI\VentanaProveedor\pProveedor.xaml;View\ProductWindows\StockPage.xaml;
+UI\VentanaEmpleado\pEmpleado.xaml;UI\VentanaInicio\pCompra.xaml;UI\VentanaInicio\pConsulta.xaml;UI\VentanaInicio\pInicio.xaml;UI\VentanaInicio\pVenta.xaml;UI\VentanaPrincipal.xaml;UI\VentanaProducto\agregarExistencia.xaml;UI\VentanaProducto\agregarPresentacion.xaml;UI\VentanaProducto\agregarProducto.xaml;UI\VentanaProducto\pExistencia.xaml;UI\VentanaProducto\pPresentacion.xaml;UI\VentanaProducto\pProducto.xaml;UI\VentanaProveedor\pProveedor.xaml;View\ProductWindows\StockPage.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Style\ventanaAgregarExistencia.xaml;View\Resource\Style\ventanaPrincipal.xaml;View\Resource\Style\ventanaProducto.xaml;View\Resource\Style\ventanaProveedor.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\UserControls\CustomButton.xaml;View\UserControls\PageTitle.xaml;View\UserControls\SearchBar.xaml;
 
 False
 

@@ -1,11 +1,14 @@
-﻿namespace MasayaNaturistCenter.Model.Utilities
+﻿using System;
+
+namespace MasayaNaturistCenter.Model.Utilities
 {
     public class DateUtilities
     {
+        private string dateFormat = "d/M/yyyy";
+
         public Date getToday()
         {
-            Date date = new Date();
-            return date;
+            return convertStringToDate(DateTime.Now.ToString(dateFormat));
         }
         
         public string convertDateToString(Date parameter)
@@ -16,10 +19,13 @@
         public Date convertStringToDate(string parameter)
         {
             if (parameter == null)
+            {
                 return null;
+            }
 
-            Date date = new Date();
-            return date;
+            var dateTime = DateTime.ParseExact(parameter, dateFormat, null);
+
+            return new Date(dateTime.Day, dateTime.Month, dateTime.Year);
         }
     }
 }

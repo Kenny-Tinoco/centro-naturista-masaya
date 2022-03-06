@@ -7,7 +7,6 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     mc:Ignorable="d"
     Title="pExistencia"
-    Background="YellowGreen"
     d:DesignHeight="700"
     d:DesignWidth="1200"
     >
@@ -42,7 +41,7 @@
                 >
                 <Image
                     Margin="{DynamicResource margenITitulo}"
-                    Source="/CentroNaturistaMasaya;component/Resource/Drawable/Image/producto-negro.png"
+                    Source="/Resource/Drawable/Image/producto-negro.png"
                 />
                 <TextBlock
                     Text="Producto"
@@ -92,7 +91,7 @@
                 </StackPanel>
             </Button>
             <!--#endregion-->
-            <!--#region Botón Producto-->
+            <!--#region Botón Presentación-->
             <Button
                 x:Name="btnPresentacion"
                 VerticalAlignment="Center"
@@ -269,25 +268,14 @@
             FontWeight="SemiBold"
             Margin="0,5,0,0"/>
         <!--#endregion-->
-        
+
         <!--#region DataGrid - Tabla-->
         <DataGrid   
             x:Name="dgProducto"
             Grid.Row="3"
             Grid.Column="1"
-            Margin="30,40,30,40" 
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
-            Background="White"
-            CanUserAddRows="False"
-            CanUserResizeColumns="true"
-            CanUserResizeRows="false"
-            CanUserSortColumns="False"
-            HeadersVisibility="Column"
-            HorizontalGridLinesBrush="Black"
             ItemsSource="{Binding stockList}"
-            ColumnHeaderStyle="{DynamicResource styleDataGridColumnHeaderVentanaProducto}"
-            RowStyle="{DynamicResource styleDataGridRowVentanaProducto}"
+            Style="{DynamicResource ElementsDataGrid}"
             >
             <!--#region Definición de las columnas-->
             <DataGrid.Columns>

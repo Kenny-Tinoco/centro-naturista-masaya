@@ -9,13 +9,6 @@ namespace MasayaNaturistCenter.Model.Utilities
         public int year;   
 
 
-        public Date()
-        {
-            day = 3;
-            month = 3;
-            year = 2022;
-        }
-
         public Date(int day, int month, int year)
         {
             Contract.Requires(validDate(day, month, year));
@@ -23,6 +16,7 @@ namespace MasayaNaturistCenter.Model.Utilities
             this.month = month;
             this.year = year;
         }
+
 
         private bool validDate(int day, int month, int year)
         {

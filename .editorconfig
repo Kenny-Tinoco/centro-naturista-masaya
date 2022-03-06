@@ -5,3 +5,6 @@ dotnet_diagnostic.CS8618.severity = none
 
 # CS8601: Posible asignación de referencia nula
 dotnet_diagnostic.CS8601.severity = silent
+
+# CS8602: Desreferencia de una referencia posiblemente NULL.
+dotnet_diagnostic.CS8602.severity = none

@@ -5,30 +5,42 @@
     <Compile Update="View\ProductWindows\StockPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\CustomButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\PageTitle.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\SearchBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Resource\Drawable\Icono\IconosVP.xaml">
+    <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\colors.xaml">
+    <Page Update="View\Resource\Style\ControlStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\dimens.xaml">
+    <Page Update="View\Resource\Values\colors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\strings.xaml">
+    <Page Update="View\Resource\Values\dimens.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\Styles\ventanaAgregarExistencia.xaml">
+    <Page Update="View\Resource\Values\strings.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\Styles\ventanaPrincipal.xaml">
+    <Page Update="View\Resource\Style\ventanaAgregarExistencia.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\Styles\ventanaProducto.xaml">
+    <Page Update="View\Resource\Style\ventanaPrincipal.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Resource\Values\Styles\ventanaProveedor.xaml">
+    <Page Update="View\Resource\Style\ventanaProducto.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Resource\Style\ventanaProveedor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\VentanaEmpleado\pEmpleado.xaml">
@@ -70,7 +82,13 @@
     <Page Update="UI\VentanaProveedor\pProveedor.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\StockPage.xaml">
+    <Page Update="View\UserControls\CustomButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\PageTitle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\SearchBar.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

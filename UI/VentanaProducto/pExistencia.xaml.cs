@@ -59,8 +59,8 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
         }
 
         private void txtBusqueda_LostFocus(object sender, System.Windows.RoutedEventArgs e)
-        { 
-            if (txtBusqueda.Text.Trim().Equals("")) txtBusqueda.Text = "Buscar"; 
+        {
+            if (txtBusqueda.Text.Trim().Equals("")) txtBusqueda.Text = "Buscar";
         }
 
         private bool validadorBarraDeBusqueda()

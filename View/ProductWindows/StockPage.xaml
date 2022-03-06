@@ -3,69 +3,108 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" 
-      d:DesignWidth="800"
+      xmlns:userControls="clr-namespace:MasayaNaturistCenter.View.UserControls"
+      x:Name="root"
+      mc:Ignorable="d"
+      d:DesignHeight="550"
+      d:DesignWidth="1200"
       Title="StockPage">
 
-    <Grid>
-        <DataGrid   
-            x:Name="stockDataGrid"
+    <Grid
+        Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="15"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="124"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+        
+        <userControls:PageTitle
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Title="Existencia"
+            ImageSource="/View/Resource/Image/producto-negro.png"
+            />
+
+        <StackPanel
+            HorizontalAlignment="Left"
+            Margin="30,30,0,15"
+            Style="{DynamicResource StackPanelStyle}">
+            <userControls:CustomButton
+                Title="Producto"
+                CustomButtonClick="customButton_Click"
+                ImageSource="/View/Resource/Image/producto.png"/>
+            <userControls:CustomButton
+                Title="Presetación"
+                ImageSource="/View/Resource/Image/presentacion.png"/>
+            <userControls:CustomButton
+                Title="Agregar Existencia"
+                ImageSource="/View/Resource/Image/plus.png"/>
+        </StackPanel>
+
+        <StackPanel
+            HorizontalAlignment="Right"
+            Margin="0,0,30,15"
+            Style="{DynamicResource StackPanelStyle}">
+            <StackPanel Orientation="Horizontal">
+                <userControls:SearchBar
+                    BarHeight="30"
+                    BarWidth="250"
+                    searchBarText="{Binding searchText, ElementName=root}"
+                    SearchBarTextChanged="searchText_TextChanged"
+                    />
+                <userControls:CustomButton
+                    Title="Modificar"
+                    ImageSource="/View/Resource/Image/edit.png"/>
+                <userControls:CustomButton
+                    Title="Eliminar"
+                    ImageSource="/View/Resource/Image/eliminar-rojo.png"/>
+            </StackPanel>
+        </StackPanel>
+        
+        <TextBlock
             Grid.Row="3"
             Grid.Column="1"
-            Margin="30,40,30,40" 
-            AutoGenerateColumns="False"
-            IsReadOnly="True"
-            Background="White"
-            CanUserAddRows="False"
-            CanUserResizeColumns="true"
-            CanUserResizeRows="false"
-            CanUserSortColumns="False"
-            HeadersVisibility="Column"
-            HorizontalGridLinesBrush="Black"
+            FontWeight="SemiBold"
+            HorizontalAlignment="Center"
+            Text="{DynamicResource StockWindowTitle}"
+            FontSize="{DynamicResource ElementsDataGridTitleFontSize}"/>
+        
+        <DataGrid
+            x:Name="elementDataGrid"
+            Grid.Row="4"
+            Grid.Column="1"
             ItemsSource="{Binding stockList}"
+            Style="{DynamicResource ElementsDataGrid}"
             >
             <DataGrid.Columns>
-                <DataGridTextColumn
-                    Header="Cód."
-                    Width="45"
-                    Binding="{Binding idStock}"/>
-
-                <DataGridTextColumn
-                    Header="Nombre"
-                    Width="200"
-                    Binding="{Binding name}"/>
-
-                <DataGridTextColumn
-                    Header="Descripción"
-                    Width="300"
-                    Binding="{Binding description}"/>
-
-                <DataGridTextColumn
-                    Header="Presentación"
-                    Width="120"
-                    Binding="{Binding presentation}"/>
-
-                <DataGridTextColumn
-                    Header="Cantidad"
-                    Width="70"
-                    Binding="{Binding quantity}"/>
-
-                <DataGridTextColumn
-                    Header="Precio"
-                    Width="60"
-                    Binding="{Binding price}"/>
-
-                <DataGridTextColumn
-                    Header="Caducidad"
-                    Width="*"
-                    Binding="{Binding entryDate}"/>
-
-                <DataGridTextColumn
-                    Header="F. Entrada"
-                    Width="*"
-                    Binding="{Binding expiration}"/>
+                <DataGridTextColumn Header="Código" Width="auto" Binding="{Binding idStock}"/>
+                <DataGridTextColumn Header="Nombre" Width="200" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Descripción" Width="*" Binding="{Binding description}"/>
+                <DataGridTextColumn Header="Presentación" Width="120" Binding="{Binding presentation}"/>
+                <DataGridTextColumn Header="Cantidad" Width="auto" Binding="{Binding quantity}"/>
+                <DataGridTextColumn Header="Precio" Width="auto" Binding="{Binding price}"/>
+                <DataGridTextColumn Header="Caducidad" Width="auto" Binding="{Binding entryDate.dateString}"/>
+                <DataGridTextColumn Header="Entrada" Width="auto" Binding="{Binding expiration.dateString}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
+    <Page.Resources>
+        <Style x:Key="StackPanelStyle"
+               TargetType="StackPanel">
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+    </Page.Resources>
 </Page>

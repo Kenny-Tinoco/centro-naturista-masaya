@@ -5,30 +5,35 @@ namespace MasayaNaturistCenter.Model.Utilities
 {
     public class Time
     {
-        public int second;
         public int minute;
         public int hour;
+        public string abbreviation;
 
-        public Time()
+
+        public Time(int hour, string abbreviation) : this(hour,0, abbreviation)
         {
-            var element = new TimeUtilities().actualTime();
-            this.second = element.second;
-            this.minute = element.minute;
-            this.hour = element.hour;
         }
 
-        public Time(int hour, int minute)
+        public Time(int hour, int minute, string abbreviation)
         {
-            Contract.Requires(validTime(hour, minute, 0));
-            this.second = second;
+            Contract.Requires(validTime(hour, minute) && abbreviation != null);
             this.minute = minute;
             this.hour = hour;
+            this.abbreviation = abbreviation;
         }
 
-        private bool validTime(int hour, int minute, int second)
+        private bool validTime(int hour, int minute)
         {
             bool ok = true;
             return ok;
+        }
+
+        public string stringTime
+        {
+            get 
+            {
+                return hour + ":" + minute+" "+abbreviation;
+            }
         }
     }
 }
