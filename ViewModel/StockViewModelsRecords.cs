@@ -4,7 +4,6 @@ using MasayaNaturistCenter.Model.Logic;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 
-
 namespace MasayaNaturistCenter.ViewModel
 {
     public class StockViewModelRecords

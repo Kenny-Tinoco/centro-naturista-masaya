@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="MasayaNaturistCenter.View.UserControls.TitleBarButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             x:Name="root"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Button
+            x:Name="titleBarButton"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0,0,10,0"
+            Click="titleBarButton_Click"
+            Style="{DynamicResource styleButtonSalir}"
+            >
+            <Image
+                Source="{Binding ImageSource, ElementName=root}"
+                Height="30"
+                Width="30"/>
+        </Button>
+    </Grid>
+</UserControl>

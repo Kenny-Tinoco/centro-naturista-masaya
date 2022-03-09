@@ -4,6 +4,7 @@
     xmlns:System="clr-namespace:System;assembly=mscorlib"
     >
     <System:String x:Key="StockWindowTitle">Lista Existencia de Productos</System:String>
+    <System:String x:Key="ProductWindowTitle">Lista de Productos</System:String>
     <System:String x:Key="tituloVPPd">Lista datos de Productos</System:String>
     <System:String x:Key="tituloVPPs">Lista datos de Presentaciones</System:String>
 </ResourceDictionary>

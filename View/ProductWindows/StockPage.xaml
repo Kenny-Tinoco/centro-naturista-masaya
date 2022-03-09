@@ -58,7 +58,7 @@
                 <userControls:SearchBar
                     BarHeight="30"
                     BarWidth="250"
-                    searchBarText="{Binding searchText, ElementName=root}"
+                    searchBarText="{Binding searchText, ElementName=root, Mode=TwoWay}"
                     SearchBarTextChanged="searchText_TextChanged"
                     />
                 <userControls:CustomButton

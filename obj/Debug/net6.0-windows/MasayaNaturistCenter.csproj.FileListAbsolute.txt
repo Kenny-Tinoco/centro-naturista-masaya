@@ -38,7 +38,6 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pConsulta.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pInicio.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pVenta.g.cs
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaPrincipal.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProducto\agregarExistencia.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProducto\agregarPresentacion.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProducto\agregarProducto.g.cs
@@ -100,7 +99,6 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pConsulta.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pInicio.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaInicio\pVenta.baml
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaPrincipal.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProducto\pPresentacion.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProducto\pProducto.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\VentanaProveedor\pProveedor.baml
@@ -158,3 +156,15 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\Resource\Style\ventanaPrincipal.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\Resource\Style\ventanaProducto.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\Resource\Style\ventanaProveedor.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\HomeButton.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\TitleBarButton.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\HomeButton.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\MenuButton.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\TitleBarButton.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\MenuButton.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\BackButton.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\UserControls\BackButton.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\ProductPage.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\ProductPage.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\Startup.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\UI\Startup.baml

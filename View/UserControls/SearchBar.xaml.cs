@@ -22,8 +22,6 @@ namespace MasayaNaturistCenter.View.UserControls
             get { return (double)GetValue(BarHeightProperty); }
             set { SetValue(BarHeightProperty, value); }
         }
-
-        public event TextChangedEventHandler SearchBarTextChanged;
         
         public static readonly DependencyProperty BarWidthProperty =
             DependencyProperty.Register("BarWidth", typeof(double), typeof(SearchBar), new PropertyMetadata());
@@ -33,6 +31,8 @@ namespace MasayaNaturistCenter.View.UserControls
 
         public static readonly DependencyProperty searchBarTextProperty =
             DependencyProperty.Register("searchBarText", typeof(string), typeof(SearchBar), new PropertyMetadata(string.Empty));
+
+        public event TextChangedEventHandler SearchBarTextChanged;
 
         public SearchBar()
         {

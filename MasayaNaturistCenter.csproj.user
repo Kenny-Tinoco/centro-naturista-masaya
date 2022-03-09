@@ -2,10 +2,22 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\ProductWindows\StockPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\BackButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\UserControls\CustomButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\HomeButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\MenuButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserControls\PageTitle.xaml.cs">
@@ -14,8 +26,14 @@
     <Compile Update="View\UserControls\SearchBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\TitleBarButton.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="View\ProductWindows\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -58,7 +76,7 @@
     <Page Update="UI\VentanaInicio\pVenta.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\VentanaPrincipal.xaml">
+    <Page Update="UI\Startup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\VentanaProducto\agregarExistencia.xaml">
@@ -82,13 +100,25 @@
     <Page Update="UI\VentanaProveedor\pProveedor.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\UserControls\BackButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\UserControls\CustomButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\HomeButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\MenuButton.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\PageTitle.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\SearchBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\TitleBarButton.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

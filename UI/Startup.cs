@@ -1,29 +1,43 @@
 ﻿using MasayaNaturistCenter.Model.DAO;
 using MasayaNaturistCenter.Model.Entities;
 using MasayaNaturistCenter.UI.VentanaProducto;
+using MasayaNaturistCenter.View.ProductWindows;
 using MasayaNaturistCenter.ViewModel;
 using System;
 using System.Windows;
 
 namespace MasayaNaturistCenter
 {
-    public partial class MainWindow : Window
+    public partial class Startup : Window
     {
         #region Constructor de la clase
-        public MainWindow()
+        public Startup()
         {
             InitializeComponent();
 
+            MaximizarVentana();
+
+            /*Se inicia en la ventana de Inicio*/
+            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
+        }
+
+        private void MaximizarVentana()
+        {
             #region Sentencias de para el agrandado de la pantalla
             Width = SystemParameters.WorkArea.Width;
             Height = SystemParameters.WorkArea.Height;
             Top = SystemParameters.WorkArea.Bottom - Height;
             Left = SystemParameters.PrimaryScreenWidth - Width;
             #endregion
-
-            /*Se inicia en la ventana de Inicio*/
-            PagesNavigation.Navigate(new Uri("UI/VentanaInicio/pInicio.xaml", UriKind.RelativeOrAbsolute));
         }
+
+        public Startup(StockPage o)
+        {
+            InitializeComponent();
+            MaximizarVentana();
+            PagesNavigation.Navigate(o);
+        }
+
         #endregion
 
         #region Eventos de click de los botones de la barra de titulo
