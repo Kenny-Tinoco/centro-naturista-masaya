@@ -95,7 +95,7 @@ namespace MasayaNaturistCenter.UI.VentanaProducto
 
         private void txtBusqueda_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-
+           
         }
 
     }

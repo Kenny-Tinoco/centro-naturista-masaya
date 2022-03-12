@@ -8,6 +8,9 @@
     <Compile Update="View\ProductWindows\StockPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\ProductWindows\StockPopup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\UserControls\BackButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -23,7 +26,13 @@
     <Compile Update="View\UserControls\PageTitle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\UserControls\Popup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\UserControls\SearchBar.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\UserControls\SpinBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserControls\TitleBarButton.xaml.cs">
@@ -37,6 +46,9 @@
     <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\ProductWindows\StockPopup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\Resource\Style\ControlStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -47,18 +59,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Resource\Values\strings.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Resource\Style\ventanaAgregarExistencia.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Resource\Style\ventanaPrincipal.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Resource\Style\ventanaProducto.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="View\Resource\Style\ventanaProveedor.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="UI\VentanaEmpleado\pEmpleado.xaml">
@@ -115,7 +115,13 @@
     <Page Update="View\UserControls\PageTitle.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\UserControls\Popup.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\UserControls\SearchBar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\UserControls\SpinBox.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\TitleBarButton.xaml">

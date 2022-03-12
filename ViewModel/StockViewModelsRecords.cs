@@ -35,5 +35,28 @@ namespace MasayaNaturistCenter.ViewModel
         {
             stockDAO.add(logic.stock);
         }
+
+        public void deleteStock(int parameter)
+        {
+            stockDAO.delete(parameter);
+        }
+
+        public bool searchLogic(StockDTO element, string parameter)
+        {
+            Contract.Requires(parameter != null && element != null);
+            bool ok = false;
+
+            if
+            (
+                element.idStock.ToString().Contains(parameter) ||
+                element.name.ToLower().StartsWith(parameter.ToLower()) ||
+                element.presentation.ToLower().StartsWith(parameter.ToLower())
+            )
+            {
+                ok = true;
+            }
+
+            return ok;
+        }
     }
 }

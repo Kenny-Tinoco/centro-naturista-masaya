@@ -12,34 +12,33 @@
   <ItemGroup>
     <None Remove="MasayaNaturistCenterDataBase.edmx" />
     <None Remove="Model\Entities\Entities.edmx" />
+    <None Remove="View\Resource\Image\arrow-right.png" />
     <None Remove="View\Resource\Image\back-black.png" />
     <None Remove="View\Resource\Image\back.png" />
-    <None Remove="View\Resource\Image\busqueda.png" />
     <None Remove="View\Resource\Image\buy.png" />
     <None Remove="View\Resource\Image\consult.png" />
     <None Remove="View\Resource\Image\edit.png" />
-    <None Remove="View\Resource\Image\eliminar-rojo.png" />
-    <None Remove="View\Resource\Image\empleado-negro.png" />
-    <None Remove="View\Resource\Image\empleado.png" />
-    <None Remove="View\Resource\Image\flecha derecha.png" />
-    <None Remove="View\Resource\Image\guardar-negro.png" />
-    <None Remove="View\Resource\Image\guardar.png" />
+    <None Remove="View\Resource\Image\employee-black.png" />
+    <None Remove="View\Resource\Image\employee.png" />
+    <None Remove="View\Resource\Image\exit.png" />
     <None Remove="View\Resource\Image\help.png" />
     <None Remove="View\Resource\Image\home-black.png" />
     <None Remove="View\Resource\Image\home.png" />
-    <None Remove="View\Resource\Image\logo-cnm.png" />
-    <None Remove="View\Resource\Image\minimizar.png" />
-    <None Remove="View\Resource\Image\paciente.png" />
+    <None Remove="View\Resource\Image\minimize.png" />
+    <None Remove="View\Resource\Image\patient.png" />
     <None Remove="View\Resource\Image\plus.png" />
-    <None Remove="View\Resource\Image\presentacion-negro.png" />
-    <None Remove="View\Resource\Image\presentacion.png" />
-    <None Remove="View\Resource\Image\producto-negro.png" />
-    <None Remove="View\Resource\Image\producto.png" />
-    <None Remove="View\Resource\Image\proveedor-negro.png" />
-    <None Remove="View\Resource\Image\proveedor.png" />
+    <None Remove="View\Resource\Image\presentation-black.png" />
+    <None Remove="View\Resource\Image\presentation.png" />
+    <None Remove="View\Resource\Image\product-black.png" />
+    <None Remove="View\Resource\Image\product.png" />
+    <None Remove="View\Resource\Image\provider-black.png" />
+    <None Remove="View\Resource\Image\provider.png" />
     <None Remove="View\Resource\Image\record.png" />
+    <None Remove="View\Resource\Image\remove-red.png" />
     <None Remove="View\Resource\Image\sale.png" />
-    <None Remove="View\Resource\Image\salir.png" />
+    <None Remove="View\Resource\Image\save-black.png" />
+    <None Remove="View\Resource\Image\save.png" />
+    <None Remove="View\Resource\Image\search.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -47,7 +46,7 @@
     <Content Include="View\Resource\Image\back-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\busqueda.png">
+    <Content Include="View\Resource\Image\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Resource\Image\buy.png">
@@ -59,22 +58,22 @@
     <Content Include="View\Resource\Image\edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\eliminar-rojo.png">
+    <Content Include="View\Resource\Image\remove-red.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\empleado-negro.png">
+    <Content Include="View\Resource\Image\employee-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\empleado.png">
+    <Content Include="View\Resource\Image\employee.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\flecha derecha.png">
+    <Content Include="View\Resource\Image\arrow-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\guardar-negro.png">
+    <Content Include="View\Resource\Image\save-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\guardar.png">
+    <Content Include="View\Resource\Image\save.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Resource\Image\help.png">
@@ -86,34 +85,31 @@
     <Content Include="View\Resource\Image\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\logo-cnm.png">
+    <Content Include="View\Resource\Image\minimize.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\minimizar.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="View\Resource\Image\paciente.png">
+    <Content Include="View\Resource\Image\patient.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Resource\Image\plus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\presentacion-negro.png">
+    <Content Include="View\Resource\Image\presentation-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\presentacion.png">
+    <Content Include="View\Resource\Image\presentation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\producto-negro.png">
+    <Content Include="View\Resource\Image\product-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\producto.png">
+    <Content Include="View\Resource\Image\product.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\proveedor-negro.png">
+    <Content Include="View\Resource\Image\provider-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\proveedor.png">
+    <Content Include="View\Resource\Image\provider.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Resource\Image\record.png">
@@ -122,7 +118,7 @@
     <Content Include="View\Resource\Image\sale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\salir.png">
+    <Content Include="View\Resource\Image\exit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -145,10 +141,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="View\HomeWindows\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="System.Security" />
   </ItemGroup>
 
@@ -164,6 +156,10 @@
     <None Update="UI\VentanaProducto\Window1.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="View\HomeWindows\" />
   </ItemGroup>
 
 </Project>

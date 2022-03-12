@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\App.xaml
-30-39912605
-28-300001614
-611056486944
+291273153203
+27-1756877297
+67-904194362
 217-229156742
-UI\Startup.xaml;UI\VentanaEmpleado\pEmpleado.xaml;UI\VentanaInicio\pCompra.xaml;UI\VentanaInicio\pConsulta.xaml;UI\VentanaInicio\pInicio.xaml;UI\VentanaInicio\pVenta.xaml;UI\VentanaProducto\agregarExistencia.xaml;UI\VentanaProducto\agregarPresentacion.xaml;UI\VentanaProducto\agregarProducto.xaml;UI\VentanaProducto\pExistencia.xaml;UI\VentanaProducto\pPresentacion.xaml;UI\VentanaProducto\pProducto.xaml;UI\VentanaProveedor\pProveedor.xaml;View\ProductWindows\ProductPage.xaml;View\ProductWindows\StockPage.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Style\ventanaAgregarExistencia.xaml;View\Resource\Style\ventanaPrincipal.xaml;View\Resource\Style\ventanaProducto.xaml;View\Resource\Style\ventanaProveedor.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\UserControls\BackButton.xaml;View\UserControls\CustomButton.xaml;View\UserControls\HomeButton.xaml;View\UserControls\MenuButton.xaml;View\UserControls\PageTitle.xaml;View\UserControls\SearchBar.xaml;View\UserControls\TitleBarButton.xaml;
+UI\Startup.xaml;UI\VentanaEmpleado\pEmpleado.xaml;UI\VentanaInicio\pCompra.xaml;UI\VentanaInicio\pConsulta.xaml;UI\VentanaInicio\pInicio.xaml;UI\VentanaInicio\pVenta.xaml;UI\VentanaProducto\agregarExistencia.xaml;UI\VentanaProducto\agregarPresentacion.xaml;UI\VentanaProducto\agregarProducto.xaml;UI\VentanaProducto\pExistencia.xaml;UI\VentanaProducto\pPresentacion.xaml;UI\VentanaProducto\pProducto.xaml;UI\VentanaProveedor\pProveedor.xaml;View\ProductWindows\ProductPage.xaml;View\ProductWindows\StockPage.xaml;View\ProductWindows\StockPopup.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\UserControls\BackButton.xaml;View\UserControls\CustomButton.xaml;View\UserControls\HomeButton.xaml;View\UserControls\MenuButton.xaml;View\UserControls\PageTitle.xaml;View\UserControls\Popup.xaml;View\UserControls\SearchBar.xaml;View\UserControls\SpinBox.xaml;View\UserControls\TitleBarButton.xaml;
 
 False
 

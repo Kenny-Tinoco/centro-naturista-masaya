@@ -115,9 +115,9 @@
                 <GroupBox
                     Grid.Row="1"
                     Header="Producto"
-                    FontSize="{DynamicResource fontSizeTextBlock}"
-                    Style="{DynamicResource styleGroupBox}"
-                    FontWeight="DemiBold"
+                    FontSize="16.5"
+                    BorderBrush="Black"
+                    FontWeight="SemiBold"
                     >
                     <Grid
                         Margin="5"

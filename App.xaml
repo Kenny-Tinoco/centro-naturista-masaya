@@ -8,10 +8,6 @@
                 <ResourceDictionary Source="View/Resource/Values/dimens.xaml"/>
                 <ResourceDictionary Source="View/Resource/Values/strings.xaml"/>
                 <ResourceDictionary Source="View/Resource/Style/ControlStyles.xaml"/>
-                <ResourceDictionary Source="View/Resource/Style/ventanaPrincipal.xaml"/>
-                <ResourceDictionary Source="View/Resource/Style/ventanaProducto.xaml"/>
-                <ResourceDictionary Source="View/Resource/Style/ventanaProveedor.xaml"/>
-                <ResourceDictionary Source="View/Resource/Style/ventanaAgregarExistencia.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

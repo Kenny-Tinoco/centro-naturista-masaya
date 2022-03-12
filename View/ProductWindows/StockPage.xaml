@@ -9,7 +9,18 @@
       d:DesignHeight="550"
       d:DesignWidth="1200"
       Title="StockPage">
-
+    <Page.Resources>
+        <CollectionViewSource x:Key="DataGridSource"
+                              Source="{Binding stockList}"/>
+        <Style x:Key="StackPanelStyle"
+               TargetType="StackPanel">
+            <Setter Property="Grid.Row" Value="2"/>
+            <Setter Property="Grid.Column" Value="1"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+    </Page.Resources>
     <Grid
         Background="White">
         <Grid.ColumnDefinitions>
@@ -31,7 +42,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Title="Existencia"
-            ImageSource="/View/Resource/Image/producto-negro.png"
+            ImageSource="/View/Resource/Image/product-black.png"
             />
 
         <StackPanel
@@ -40,13 +51,15 @@
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
                 Title="Producto"
-                CustomButtonClick="customButton_Click"
-                ImageSource="/View/Resource/Image/producto.png"/>
+                CustomButtonClick="product_Click"
+                ImageSource="/View/Resource/Image/product.png"/>
             <userControls:CustomButton
                 Title="Presetación"
-                ImageSource="/View/Resource/Image/presentacion.png"/>
+                CustomButtonClick="presentation_Click"
+                ImageSource="/View/Resource/Image/presentation.png"/>
             <userControls:CustomButton
                 Title="Agregar Existencia"
+                CustomButtonClick="addStock_Click"
                 ImageSource="/View/Resource/Image/plus.png"/>
         </StackPanel>
 
@@ -58,7 +71,7 @@
                 <userControls:SearchBar
                     BarHeight="30"
                     BarWidth="250"
-                    searchBarText="{Binding searchText, ElementName=root, Mode=TwoWay}"
+                    searchBarText="{Binding searchText, Mode=TwoWay}"
                     SearchBarTextChanged="searchText_TextChanged"
                     />
                 <userControls:CustomButton
@@ -66,7 +79,7 @@
                     ImageSource="/View/Resource/Image/edit.png"/>
                 <userControls:CustomButton
                     Title="Eliminar"
-                    ImageSource="/View/Resource/Image/eliminar-rojo.png"/>
+                    ImageSource="/View/Resource/Image/remove-red.png"/>
             </StackPanel>
         </StackPanel>
         
@@ -82,7 +95,7 @@
             x:Name="elementDataGrid"
             Grid.Row="4"
             Grid.Column="1"
-            ItemsSource="{Binding stockList}"
+            ItemsSource="{Binding Source={StaticResource DataGridSource}}"
             Style="{DynamicResource ElementsDataGrid}"
             >
             <DataGrid.Columns>
@@ -97,14 +110,4 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-    <Page.Resources>
-        <Style x:Key="StackPanelStyle"
-               TargetType="StackPanel">
-            <Setter Property="Grid.Row" Value="2"/>
-            <Setter Property="Grid.Column" Value="1"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Height" Value="32"/>
-            <Setter Property="Orientation" Value="Horizontal"/>
-        </Style>
-    </Page.Resources>
 </Page>

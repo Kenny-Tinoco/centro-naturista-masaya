@@ -3,13 +3,19 @@ using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System;
+using MasayaNaturistCenter.ViewModel.Command;
+using System.Windows.Data;
 
 namespace MasayaNaturistCenter.ViewModel
 {
-    public class StockViewModel : ViewModelBase
+    public class StockViewModel : CRUDCommand
     {
         private ObservableCollection<StockDTO> _stockList;
         public StockViewModelRecords stockRecords;
+
+
+        public string searchText { get; set; }
+        public CollectionViewSource dataGridSource;
 
 
         public StockViewModel(StockViewModelRecords parameter)
@@ -45,6 +51,18 @@ namespace MasayaNaturistCenter.ViewModel
             getStockList(stockRecords.getAllOccurrencesOf(parameter));
         }
 
+        public override void saveData(StockDTO parameter)
+        {
+            stockRecords.logic.stock = parameter;
+            stockRecords.saveStock();
+        }
+
+        public override void deleteElement(int parameter)
+        {
+            stockRecords.deleteStock(parameter);
+        }
+
+
         private void getStockList(List<StockDTO> list)
         {
             var stocks = new ObservableCollection<StockDTO>();
@@ -52,15 +70,31 @@ namespace MasayaNaturistCenter.ViewModel
             stockList = stocks;
         }
 
-        public void search(string parameter)
+        public void search()
         {
-            if (validateSearchString(parameter))
+            if (validateSearchString(searchText))
             {
-                searchStock(parameter);
+                dataGridSource.Filter += new FilterEventHandler(DataGridSource_Filter);
             }
-            else if (parameter.Equals(""))
+            else if (searchText.Equals(""))
             {
-                getAllStock();
+                dataGridSource.Filter += null;
+            }
+        }
+
+        private void DataGridSource_Filter(object sender, FilterEventArgs e)
+        {
+            var element = e.Item as StockDTO;
+            if (element != null)
+            {
+                if(stockRecords.searchLogic(element, searchText))
+                {
+                    e.Accepted = true;
+                }
+                else
+                {
+                    e.Accepted = false;
+                }
             }
         }
 

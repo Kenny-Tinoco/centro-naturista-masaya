@@ -15,6 +15,9 @@
     <System:Double x:Key="ElementsDataGridTitleFontSize">22.5</System:Double>
     <System:Double x:Key="fontSizeBotonVolver">15</System:Double>
     <System:Double x:Key="fontSizeVEmergente">22</System:Double>
+
+    <System:Double x:Key="PopupFontSize">18</System:Double>
+    
     <System:Double x:Key="fontSizeTextBox">17</System:Double>
     <System:Double x:Key="fontSizeTextBlock">16.5</System:Double>
 

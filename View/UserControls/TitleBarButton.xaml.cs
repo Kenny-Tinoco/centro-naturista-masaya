@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MasayaNaturistCenter.View.UserControls
@@ -10,10 +11,23 @@ namespace MasayaNaturistCenter.View.UserControls
         {
             InitializeComponent();
         }
-        public ImageSource ImageSource
+
+
+        public object styleButton
         {
-            get { return (ImageSource)GetValue(ImageSourceProperty); }
-            set { SetValue(ImageSourceProperty, value); }
+            get { return (object)GetValue(styleButtonProperty); }
+            set { SetValue(styleButtonProperty, value); }
+        }
+
+        public static readonly DependencyProperty styleButtonProperty =
+            DependencyProperty.Register("styleButton", typeof(object), typeof(TitleBarButton), new PropertyMetadata(0));
+
+
+
+        public ImageSource Icon
+        {
+            get { return (ImageSource)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
         }
 
         public event RoutedEventHandler TitleBarButtonClick
@@ -22,8 +36,8 @@ namespace MasayaNaturistCenter.View.UserControls
             remove { RemoveHandler(TitleBarButtonClickEvent, value); }
         }
         
-        public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(CustomButton), new PropertyMetadata());
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(ImageSource), typeof(TitleBarButton), new PropertyMetadata());
        
         public static readonly RoutedEvent TitleBarButtonClickEvent = 
             EventManager.RegisterRoutedEvent(nameof(TitleBarButtonClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TitleBarButton));

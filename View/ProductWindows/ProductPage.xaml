@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MasayaNaturistCenter.View.ProductWindows" 
       xmlns:userControls="clr-namespace:MasayaNaturistCenter.View.UserControls"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      x:Name="root"
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ProductPage">
 
@@ -29,7 +30,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Title="Producto"
-            ImageSource="/View/Resource/Image/producto-negro.png"
+            ImageSource="/View/Resource/Image/product-black.png"
             />
 
         <StackPanel
@@ -48,7 +49,7 @@
                     ImageSource="/View/Resource/Image/edit.png"/>
                 <userControls:CustomButton
                     Title="Eliminar"
-                    ImageSource="/View/Resource/Image/eliminar-rojo.png"/>
+                    ImageSource="/View/Resource/Image/remove-red.png"/>
             </StackPanel>
         </StackPanel>
 
