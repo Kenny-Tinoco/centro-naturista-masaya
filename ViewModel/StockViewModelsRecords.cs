@@ -3,19 +3,22 @@ using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.Model.Logic;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
+using MasayaNaturistCenter.ViewModel.Services;
 
 namespace MasayaNaturistCenter.ViewModel
 {
     public class StockViewModelRecords
     {
         public StockLogic logic;
+        public INavigationService navigationService;
         private IStockDAO stockDAO;
 
 
-        public StockViewModelRecords(IStockDAO parameter)
+        public StockViewModelRecords(IStockDAO parameter, INavigationService navigationService)
         {
             Contract.Requires(parameter != null);
             stockDAO = parameter;
+            this.navigationService = navigationService;
             logic = new StockLogic();
         }
 
@@ -48,9 +51,9 @@ namespace MasayaNaturistCenter.ViewModel
 
             if
             (
-                element.idStock.ToString().Contains(parameter) ||
-                element.name.ToLower().StartsWith(parameter.ToLower()) ||
-                element.presentation.ToLower().StartsWith(parameter.ToLower())
+                element.idStock.ToString().Contains(parameter.Trim()) ||
+                element.name.ToLower().StartsWith(parameter.Trim().ToLower()) ||
+                element.presentation.ToLower().StartsWith(parameter.Trim().ToLower())
             )
             {
                 ok = true;

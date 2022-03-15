@@ -7,6 +7,15 @@
     <UseWPF>true</UseWPF>
     <StartupObject>MasayaNaturistCenter.App</StartupObject>
     <ApplicationIcon>logo-cnm.ico</ApplicationIcon>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +25,7 @@
     <None Remove="View\Resource\Image\back-black.png" />
     <None Remove="View\Resource\Image\back.png" />
     <None Remove="View\Resource\Image\buy.png" />
+    <None Remove="View\Resource\Image\cnm-icon.png" />
     <None Remove="View\Resource\Image\consult.png" />
     <None Remove="View\Resource\Image\edit.png" />
     <None Remove="View\Resource\Image\employee-black.png" />
@@ -44,6 +54,9 @@
   <ItemGroup>
     <Content Include="logo-cnm.ico" />
     <Content Include="View\Resource\Image\back-black.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Resource\Image\cnm-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="View\Resource\Image\search.png">
@@ -134,14 +147,12 @@
     <PackageReference Include="EntityFramework" Version="6.4.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Contracts" Version="5.0.2" />
+    <PackageReference Include="SimpleModal.WPF" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Security" />
   </ItemGroup>
 
   <ItemGroup>
@@ -150,16 +161,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Entities.edmx</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="UI\VentanaProducto\Window1.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="View\HomeWindows\" />
   </ItemGroup>
 
 </Project>

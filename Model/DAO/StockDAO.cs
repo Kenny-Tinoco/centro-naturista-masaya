@@ -1,6 +1,7 @@
 ﻿using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.Model.Entities;
 using MasayaNaturistCenter.Model.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics.Contracts;
@@ -10,8 +11,9 @@ namespace MasayaNaturistCenter.Model.DAO
 {
     public class StockDAO : IStockDAO
     {
-        private MasayaNaturistCenterDataBase dataBaseContext; 
+        private MasayaNaturistCenterDataBase dataBaseContext;
 
+        public Func<MasayaNaturistCenterDataBase> P { get; }
 
         public StockDAO(MasayaNaturistCenterDataBase dataBaseContext)
         {
@@ -19,7 +21,10 @@ namespace MasayaNaturistCenter.Model.DAO
             this.dataBaseContext = dataBaseContext;
         }
 
-
+        public StockDAO(Func<MasayaNaturistCenterDataBase> p)
+        {
+            dataBaseContext = p();
+        }
 
         public void add(StockDTO parameter)
         {

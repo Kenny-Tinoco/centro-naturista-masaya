@@ -21,25 +21,11 @@ namespace MasayaNaturistCenter.View.UserControls
             set { SetValue(ImageSourceProperty, value); }
         }
 
-        public event RoutedEventHandler HomeButtonClick
-        {
-            add { AddHandler(HomeButtonClickEvent, value); }
-            remove { RemoveHandler(HomeButtonClickEvent, value); }
-        }
-
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(CustomButton), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("Title", typeof(string), typeof(HomeButton), new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(CustomButton), new PropertyMetadata());
+            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(HomeButton), new PropertyMetadata());
 
-        public static readonly RoutedEvent HomeButtonClickEvent =
-            EventManager.RegisterRoutedEvent(nameof(HomeButtonClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(HomeButton));
-
-
-        private void homeButton_Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(HomeButtonClickEvent));
-        }
     }
 }

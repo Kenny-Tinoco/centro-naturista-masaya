@@ -10,8 +10,6 @@
       d:DesignWidth="1200"
       Title="StockPage">
     <Page.Resources>
-        <CollectionViewSource x:Key="DataGridSource"
-                              Source="{Binding stockList}"/>
         <Style x:Key="StackPanelStyle"
                TargetType="StackPanel">
             <Setter Property="Grid.Row" Value="2"/>
@@ -51,15 +49,13 @@
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
                 Title="Producto"
-                CustomButtonClick="product_Click"
                 ImageSource="/View/Resource/Image/product.png"/>
             <userControls:CustomButton
                 Title="Presetación"
-                CustomButtonClick="presentation_Click"
                 ImageSource="/View/Resource/Image/presentation.png"/>
             <userControls:CustomButton
                 Title="Agregar Existencia"
-                CustomButtonClick="addStock_Click"
+                buttonCommand="{Binding addStockCommand}"
                 ImageSource="/View/Resource/Image/plus.png"/>
         </StackPanel>
 
@@ -72,7 +68,6 @@
                     BarHeight="30"
                     BarWidth="250"
                     searchBarText="{Binding searchText, Mode=TwoWay}"
-                    SearchBarTextChanged="searchText_TextChanged"
                     />
                 <userControls:CustomButton
                     Title="Modificar"
@@ -95,7 +90,7 @@
             x:Name="elementDataGrid"
             Grid.Row="4"
             Grid.Column="1"
-            ItemsSource="{Binding Source={StaticResource DataGridSource}}"
+            ItemsSource="{Binding dataGridSource}"
             Style="{DynamicResource ElementsDataGrid}"
             >
             <DataGrid.Columns>

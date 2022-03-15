@@ -15,7 +15,7 @@
                 Background="Transparent"
                 Click="backButton_Click"
                 VerticalAlignment="Center"
-                Style="{DynamicResource styleButtonVolver}"
+                Style="{DynamicResource CustomButtonBackStyle}"
                 >
             <StackPanel Orientation="Horizontal">
                 <Image Source="/View/Resource/Image/back-black.png"/>

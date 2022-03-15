@@ -2,9 +2,10 @@ using MasayaNaturistCenter.Model.DTO;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System;
 using MasayaNaturistCenter.ViewModel.Command;
 using System.Windows.Data;
+using System.ComponentModel;
+using System.Windows.Input;
 
 namespace MasayaNaturistCenter.ViewModel
 {
@@ -13,19 +14,40 @@ namespace MasayaNaturistCenter.ViewModel
         private ObservableCollection<StockDTO> _stockList;
         public StockViewModelRecords stockRecords;
 
+        private string _searchText;
+        private CollectionViewSource _dataGridSource;
 
-        public string searchText { get; set; }
-        public CollectionViewSource dataGridSource;
+        public ICommand addStockCommand { get; }
 
 
         public StockViewModel(StockViewModelRecords parameter)
         {
             Contract.Requires(parameter != null);
             stockRecords = parameter;
+            addStockCommand = new NavigateCommand(stockRecords.navigationService);
 
             stockList = new ObservableCollection<StockDTO>();
 
             getAllStock();
+        }
+
+
+        public string searchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                _searchText = value;
+                search();
+            }
+        }
+
+        public ICollectionView dataGridSource
+        {
+            get{ return DataGridSource.View;}
         }
 
         public ObservableCollection<StockDTO> stockList
@@ -74,11 +96,11 @@ namespace MasayaNaturistCenter.ViewModel
         {
             if (validateSearchString(searchText))
             {
-                dataGridSource.Filter += new FilterEventHandler(DataGridSource_Filter);
+                DataGridSource.Filter += new FilterEventHandler(DataGridSource_Filter);
             }
             else if (searchText.Equals(""))
             {
-                dataGridSource.Filter += null;
+                DataGridSource.Filter += null;
             }
         }
 
@@ -110,5 +132,19 @@ namespace MasayaNaturistCenter.ViewModel
 
             return ok;
         }
+        
+        private CollectionViewSource DataGridSource
+        {
+            get
+            {
+                if (_dataGridSource == null)
+                {
+                    _dataGridSource = new CollectionViewSource();
+                    _dataGridSource.Source = stockList;
+                }
+                return _dataGridSource;
+            }
+        }
+
     }
 }

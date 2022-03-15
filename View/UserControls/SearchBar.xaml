@@ -16,6 +16,7 @@
         Height="{Binding BarHeight, ElementName=root}"
         >
         <Grid>
+            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition />
@@ -37,8 +38,7 @@
                 LostFocus="searchText_LostFocus"
                 VerticalContentAlignment="Center"
                 TextChanged="searchText_TextChanged"
-                FontSize="{DynamicResource SearchBarFontSize}"
-                />
+                FontSize="{DynamicResource SearchBarFontSize}"/>
         </Grid>
     </Border>
 </UserControl>

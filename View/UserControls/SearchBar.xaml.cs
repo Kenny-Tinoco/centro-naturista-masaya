@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace MasayaNaturistCenter.View.UserControls
 {
@@ -22,7 +23,9 @@ namespace MasayaNaturistCenter.View.UserControls
             get { return (double)GetValue(BarHeightProperty); }
             set { SetValue(BarHeightProperty, value); }
         }
-        
+
+
+
         public static readonly DependencyProperty BarWidthProperty =
             DependencyProperty.Register("BarWidth", typeof(double), typeof(SearchBar), new PropertyMetadata());
 
@@ -32,7 +35,7 @@ namespace MasayaNaturistCenter.View.UserControls
         public static readonly DependencyProperty searchBarTextProperty =
             DependencyProperty.Register("searchBarText", typeof(string), typeof(SearchBar), new PropertyMetadata(string.Empty));
 
-        public event TextChangedEventHandler SearchBarTextChanged;
+
 
         public SearchBar()
         {
@@ -57,11 +60,7 @@ namespace MasayaNaturistCenter.View.UserControls
 
         private void searchText_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(SearchBarTextChanged != null)
-            {
-                searchBarText = searchText.Text;
-                SearchBarTextChanged(this,e);
-            }
+            searchBarText = searchText.Text;
         }
     }
 }

@@ -6,6 +6,7 @@
     
     <!--#region Tamaño fuente botones menú lateral-->
     <System:Double x:Key="fontSizeBML">25</System:Double>
+    <System:Double x:Key="ButtonMenuFontSize">23</System:Double>
     <!--#endregion-->
     
     <System:Double x:Key="PageTitleFontSize">25</System:Double>

@@ -42,7 +42,6 @@
                     BarHeight="30"
                     BarWidth="250"
                     searchBarText="{Binding searchText, ElementName=root, Mode=TwoWay}"
-                    SearchBarTextChanged="SearchBar_SearchBarTextChanged" 
                     />
                 <userControls:CustomButton
                     Title="Modificar"

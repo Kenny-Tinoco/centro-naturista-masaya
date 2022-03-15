@@ -2,6 +2,15 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="View\HomeWindows\SellView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuBar\Layout.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\MenuBar\NavigationMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -9,6 +18,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\StockPopup.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\Startup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\UserControls\BackButton.xaml.cs">
@@ -40,6 +52,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HomeWindows\HomeView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\HomeWindows\SellView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuBar\Layout.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MenuBar\NavigationMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\ProductWindows\ProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -61,43 +88,7 @@
     <Page Update="View\Resource\Values\strings.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="UI\VentanaEmpleado\pEmpleado.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaInicio\pCompra.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaInicio\pConsulta.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaInicio\pInicio.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaInicio\pVenta.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\Startup.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\agregarExistencia.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\agregarPresentacion.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\agregarProducto.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\pExistencia.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\pPresentacion.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProducto\pProducto.xaml">
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Update="UI\VentanaProveedor\pProveedor.xaml">
+    <Page Update="View\Startup.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\UserControls\BackButton.xaml">

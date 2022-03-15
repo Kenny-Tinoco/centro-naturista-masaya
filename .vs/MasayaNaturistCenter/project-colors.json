@@ -15,7 +15,12 @@
       "ProjectGuid": "a5163a37-b377-4f91-a2c4-6e92933dea22",
       "DisplayName": "MasayaNaturistCenterTest",
       "ColorIndex": 1
+    },
+    "b9d94074-6569-44da-9f84-9af00145b805": {
+      "ProjectGuid": "b9d94074-6569-44da-9f84-9af00145b805",
+      "DisplayName": "PruebasDeNuevasFuncionalidades",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

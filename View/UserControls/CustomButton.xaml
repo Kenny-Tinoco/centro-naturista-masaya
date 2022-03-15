@@ -10,9 +10,9 @@
     <Grid>
         <Button x:Name="customButton"
                 Margin="5 0 5 0"
-                Click="customButton_Click"
                 VerticalAlignment="Center"
                 Style="{DynamicResource CustomButtonStyle}"
+                Command="{Binding buttonCommand, ElementName=root}"
                 >
             <StackPanel
                 Orientation="Horizontal">

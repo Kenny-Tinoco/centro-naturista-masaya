@@ -68,7 +68,6 @@
                 <userControls:TitleBarButton
                     Grid.Column="1"
                     Margin="5"
-                    TitleBarButtonClick="exit_Click"
                     Icon="/View/Resource/Image/exit.png"
                     styleButton="{DynamicResource CustomButtonExitStyle}"
                     />
@@ -85,7 +84,6 @@
                 Grid.Column="1"
                 Width="130"
                 Title="Guardar"
-                CustomButtonClick="save_Click"
                 ImageSource="/View/Resource/Image/save.png"
                 />
         </Grid>

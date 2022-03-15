@@ -10,6 +10,7 @@
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("logo-cnm.ico")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resource/image/back-black.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resource/image/cnm-icon.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resource/image/search.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resource/image/buy.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("view/resource/image/consult.png")]

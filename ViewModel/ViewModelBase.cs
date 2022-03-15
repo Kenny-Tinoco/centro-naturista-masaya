@@ -1,16 +1,22 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using System;
+using System.ComponentModel;
 
 namespace MasayaNaturistCenter.ViewModel
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected void OnPropertyChanged(string propertyName)
         { 
             if(PropertyChanged != null)
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public virtual void Dispose()
+        {
         }
     }
 }

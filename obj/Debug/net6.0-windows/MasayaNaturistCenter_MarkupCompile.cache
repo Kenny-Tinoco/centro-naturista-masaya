@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\App.xaml
-291273153203
-27-1756877297
-67-904194362
-217-229156742
-UI\Startup.xaml;UI\VentanaEmpleado\pEmpleado.xaml;UI\VentanaInicio\pCompra.xaml;UI\VentanaInicio\pConsulta.xaml;UI\VentanaInicio\pInicio.xaml;UI\VentanaInicio\pVenta.xaml;UI\VentanaProducto\agregarExistencia.xaml;UI\VentanaProducto\agregarPresentacion.xaml;UI\VentanaProducto\agregarProducto.xaml;UI\VentanaProducto\pExistencia.xaml;UI\VentanaProducto\pPresentacion.xaml;UI\VentanaProducto\pProducto.xaml;UI\VentanaProveedor\pProveedor.xaml;View\ProductWindows\ProductPage.xaml;View\ProductWindows\StockPage.xaml;View\ProductWindows\StockPopup.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\UserControls\BackButton.xaml;View\UserControls\CustomButton.xaml;View\UserControls\HomeButton.xaml;View\UserControls\MenuButton.xaml;View\UserControls\PageTitle.xaml;View\UserControls\Popup.xaml;View\UserControls\SearchBar.xaml;View\UserControls\SpinBox.xaml;View\UserControls\TitleBarButton.xaml;
+22-420141560
+28-578680414
+711761375204
+220-1448241514
+Themes\Generic.xaml;View\HomeWindows\HomeView.xaml;View\HomeWindows\SellView.xaml;View\MenuBar\Layout.xaml;View\MenuBar\NavigationMenu.xaml;View\ProductWindows\ProductPage.xaml;View\ProductWindows\StockPage.xaml;View\ProductWindows\StockPopup.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\Startup.xaml;View\UserControls\BackButton.xaml;View\UserControls\CustomButton.xaml;View\UserControls\HomeButton.xaml;View\UserControls\MenuButton.xaml;View\UserControls\PageTitle.xaml;View\UserControls\Popup.xaml;View\UserControls\SearchBar.xaml;View\UserControls\SpinBox.xaml;View\UserControls\TitleBarButton.xaml;
 
 False
 

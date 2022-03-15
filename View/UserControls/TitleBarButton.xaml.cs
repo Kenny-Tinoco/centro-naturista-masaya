@@ -20,7 +20,7 @@ namespace MasayaNaturistCenter.View.UserControls
         }
 
         public static readonly DependencyProperty styleButtonProperty =
-            DependencyProperty.Register("styleButton", typeof(object), typeof(TitleBarButton), new PropertyMetadata(0));
+            DependencyProperty.Register("styleButton", typeof(object), typeof(TitleBarButton), new PropertyMetadata());
 
 
 
@@ -30,22 +30,30 @@ namespace MasayaNaturistCenter.View.UserControls
             set { SetValue(IconProperty, value); }
         }
 
-        public event RoutedEventHandler TitleBarButtonClick
-        {
-            add { AddHandler(TitleBarButtonClickEvent, value); }
-            remove { RemoveHandler(TitleBarButtonClickEvent, value); }
-        }
         
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(ImageSource), typeof(TitleBarButton), new PropertyMetadata());
-       
-        public static readonly RoutedEvent TitleBarButtonClickEvent = 
-            EventManager.RegisterRoutedEvent(nameof(TitleBarButtonClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(TitleBarButton));
 
-
-        private void titleBarButton_Click(object sender, RoutedEventArgs e)
+        public ICommand buttonCommand
         {
-            RaiseEvent(new RoutedEventArgs(TitleBarButtonClickEvent));
+            get { return (ICommand)GetValue(buttonCommandPropety); }
+            set { SetValue(buttonCommandPropety, value); }
         }
+
+        public static readonly DependencyProperty buttonCommandPropety =
+            DependencyProperty.Register("buttonCommand", typeof(ICommand), typeof(TitleBarButton), new PropertyMetadata());
+
+
+
+        public object buttonParameter
+        {
+            get { return (object)GetValue(buttonParameterProperty); }
+            set { SetValue(buttonParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty buttonParameterProperty =
+            DependencyProperty.Register("buttonParameter", typeof(object), typeof(TitleBarButton), new PropertyMetadata(string.Empty));
+
+
     }
 }

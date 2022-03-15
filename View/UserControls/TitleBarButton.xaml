@@ -11,10 +11,11 @@
         >
         <Button
             x:Name="titleBarButton"
-            Click="titleBarButton_Click"
+            Style="{Binding styleButton, ElementName=root}"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            Style="{Binding styleButton, ElementName=root}"
+            Command="{Binding buttonCommand, ElementName=root}"
+            CommandParameter="{Binding buttonParameter, ElementName=root}"
             >
             <Image
                 Source="{Binding Icon, ElementName=root}"

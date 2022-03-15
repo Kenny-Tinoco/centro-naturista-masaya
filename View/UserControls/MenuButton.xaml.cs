@@ -29,10 +29,10 @@ namespace MasayaNaturistCenter.View.UserControls
         }
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(CustomButton), new PropertyMetadata(string.Empty));
+            DependencyProperty.Register("Title", typeof(string), typeof(MenuButton), new PropertyMetadata(string.Empty));
 
         public static readonly DependencyProperty ImageSourceProperty =
-            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(CustomButton), new PropertyMetadata());
+            DependencyProperty.Register("ImageSource", typeof(ImageSource), typeof(MenuButton), new PropertyMetadata());
 
         public static readonly RoutedEvent MenuButtonClickEvent =
             EventManager.RegisterRoutedEvent(nameof(MenuButtonClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(MenuButton));
