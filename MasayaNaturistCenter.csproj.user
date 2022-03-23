@@ -5,10 +5,10 @@
     <Compile Update="View\HomeWindows\SellView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MenuBar\Layout.xaml.cs">
+    <Compile Update="ViewComponents\MenuBar\Layout.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\MenuBar\NavigationMenu.xaml.cs">
+    <Compile Update="ViewComponents\MenuBar\NavigationMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
@@ -23,31 +23,31 @@
     <Compile Update="View\Startup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\BackButton.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\BackButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\CustomButton.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\CustomButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\HomeButton.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\HomeButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\MenuButton.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\MenuButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\PageTitle.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\PageTitle.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\Popup.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\Popup.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\SearchBar.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\SearchBar.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\SpinBox.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\SpinBox.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\UserControls\TitleBarButton.xaml.cs">
+    <Compile Update="ViewComponents\UserControls\TitleBarButton.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -61,10 +61,10 @@
     <Page Update="View\HomeWindows\SellView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MenuBar\Layout.xaml">
+    <Page Update="ViewComponents\MenuBar\Layout.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\MenuBar\NavigationMenu.xaml">
+    <Page Update="ViewComponents\MenuBar\NavigationMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\ProductPage.xaml">
@@ -91,31 +91,31 @@
     <Page Update="View\Startup.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\BackButton.xaml">
+    <Page Update="ViewComponents\UserControls\BackButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\CustomButton.xaml">
+    <Page Update="ViewComponents\UserControls\CustomButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\HomeButton.xaml">
+    <Page Update="ViewComponents\UserControls\HomeButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\MenuButton.xaml">
+    <Page Update="ViewComponents\UserControls\MenuButton.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\PageTitle.xaml">
+    <Page Update="ViewComponents\UserControls\PageTitle.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\Popup.xaml">
+    <Page Update="ViewComponents\UserControls\Popup.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\SearchBar.xaml">
+    <Page Update="ViewComponents\UserControls\SearchBar.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\SpinBox.xaml">
+    <Page Update="ViewComponents\UserControls\SpinBox.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\UserControls\TitleBarButton.xaml">
+    <Page Update="ViewComponents\UserControls\TitleBarButton.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

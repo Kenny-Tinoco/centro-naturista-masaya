@@ -18,6 +18,7 @@ namespace MasayaNaturistCenter.ViewModel
             this.navigationMenuViewModel = navigationMenuViewModel;
             this.contentViewModel = contentViewModel;
             stateBarCommand = new StateBarCommand();
+            stateBarCommand = new StateBarCommand();
         }
 
         public override void Dispose()

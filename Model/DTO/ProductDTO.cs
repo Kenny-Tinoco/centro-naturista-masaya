@@ -1,6 +1,6 @@
 ﻿namespace MasayaNaturistCenter.Model.DTO
 {
-    public class ProductDTO
+    public class ProductDTO : BaseDTO
     {
         public int idProduct {get; set;}
         public string name {get; set;}

@@ -68,7 +68,7 @@ namespace MasayaNaturistCenter.View.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/view/usercontrols/homebutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/view/usercontrols/homebutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\UserControls\HomeButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

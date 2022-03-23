@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MasayaNaturistCenter.Model.DTO
 {
-    public class ConsultDTO
+    public class ConsultDTO : BaseDTO
     {
         public int idConsult {get; set;}
         public Time time {get; set;}

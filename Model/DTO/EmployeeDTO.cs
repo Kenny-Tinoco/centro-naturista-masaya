@@ -2,7 +2,7 @@
 
 namespace MasayaNaturistCenter.Model.DTO
 {
-    public class EmployeeDTO
+    public class EmployeeDTO : BaseDTO
     {
         public int idEmployee {get; set;}
         public Name name {get; set;}

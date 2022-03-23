@@ -1,9 +1,11 @@
-﻿using MasayaNaturistCenter.Model.DAO;
+﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
+using MasayaNaturistCenter.DAO.SqlServer;
 using MasayaNaturistCenter.Model.Entities;
 using MasayaNaturistCenter.View;
 using MasayaNaturistCenter.ViewModel;
 using MasayaNaturistCenter.ViewModel.Services;
 using MasayaNaturistCenter.ViewModel.Stores;
+using MasayaNaturistCenter.X;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
@@ -45,9 +47,8 @@ namespace MasayaNaturistCenter
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
             services.AddSingleton<MasayaNaturistCenterDataBase>();
-            services.AddSingleton<IStockDAO>(s => createStockDAO(s));
-            services.AddSingleton<StockViewModelRecords>();
-            services.AddSingleton<StockViewModel>();
+            services.AddSingleton<DAOFactory>(s => createDAOFactory(s));
+            services.AddSingleton<StockViewModel>(s => createStockViewModel(s));
             services.AddSingleton<HomeViewModel>(s => new HomeViewModel(createProductNavigationService(s)));
 
             services.AddSingleton<INavigationService>(s => createHomeNavigationService(s));
@@ -63,24 +64,25 @@ namespace MasayaNaturistCenter
                 }
             );
         }
-
-        private IStockDAO createStockDAO(IServiceProvider serviceProvider)
+        private DAOFactory createDAOFactory(IServiceProvider serviceProvider)
         {
-            return new StockDAO(serviceProvider.GetRequiredService<MasayaNaturistCenterDataBase>());
+            return new DAOFactorySQL(serviceProvider.GetRequiredService<MasayaNaturistCenterDataBase>());
         }
 
         private StockViewModel createStockViewModel(IServiceProvider serviceProvider)
         {
             return new StockViewModel
             (
-                createStockViewModelRecord(serviceProvider)
+                createStockX(serviceProvider), 
+                createHomeNavigationService(serviceProvider)
             );
         }
 
-        private StockViewModelRecords createStockViewModelRecord(IServiceProvider serviceProvider)
+        private IX createStockX(IServiceProvider serviceProvider)
         {
-            return new StockViewModelRecords(serviceProvider.GetRequiredService<IStockDAO>(), createHomeNavigationService(serviceProvider));
+            return new StockX(serviceProvider.GetRequiredService<DAOFactory>());
         }
+
 
         private NavigationMenuViewModel createNavigationMenuViewModel(IServiceProvider serviceProvider)
         {

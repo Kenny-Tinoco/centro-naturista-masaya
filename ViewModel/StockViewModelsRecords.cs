@@ -1,9 +1,9 @@
-using MasayaNaturistCenter.Model.DAO;
 using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.Model.Logic;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 using MasayaNaturistCenter.ViewModel.Services;
+using MasayaNaturistCenter.DAO.SqlServer;
 
 namespace MasayaNaturistCenter.ViewModel
 {
@@ -11,10 +11,10 @@ namespace MasayaNaturistCenter.ViewModel
     {
         public StockLogic logic;
         public INavigationService navigationService;
-        private IStockDAO stockDAO;
+        private StockDAOSQL stockDAO;
 
 
-        public StockViewModelRecords(IStockDAO parameter, INavigationService navigationService)
+        public StockViewModelRecords(StockDAOSQL parameter, INavigationService navigationService)
         {
             Contract.Requires(parameter != null);
             stockDAO = parameter;
@@ -23,12 +23,12 @@ namespace MasayaNaturistCenter.ViewModel
         }
 
 
-        public List<StockDTO> getAll()
+        public List<BaseDTO> getAll()
         {
             return stockDAO.getAll();
         }
 
-        public List<StockDTO> getAllOccurrencesOf(string parameter)
+        public List<BaseDTO> getAllOccurrencesOf(string parameter)
         {
             Contract.Requires(parameter != null);
             return stockDAO.getAllOccurrencesOf(parameter);
@@ -36,12 +36,12 @@ namespace MasayaNaturistCenter.ViewModel
 
         public void saveStock()
         {
-            stockDAO.add(logic.stock);
+            stockDAO.create(logic.stock);
         }
 
         public void deleteStock(int parameter)
         {
-            stockDAO.delete(parameter);
+            stockDAO.deleteById(parameter);
         }
 
         public bool searchLogic(StockDTO element, string parameter)

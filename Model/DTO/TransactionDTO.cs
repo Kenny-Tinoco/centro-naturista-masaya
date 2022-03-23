@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MasayaNaturistCenter.Model.DTO
 {
-    public class TransactionDTO
+    public class TransactionDTO : BaseDTO
     {
         public int idTransaction { get; set; }
         public int idTransactionRelatedObjet { get; set; }

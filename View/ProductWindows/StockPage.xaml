@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:userControls="clr-namespace:MasayaNaturistCenter.View.UserControls"
+      xmlns:userControls="clr-namespace:MasayaNaturistCenter.ViewComponents.UserControls"
       x:Name="root"
       mc:Ignorable="d"
       d:DesignHeight="550"
@@ -100,8 +100,8 @@
                 <DataGridTextColumn Header="Presentación" Width="120" Binding="{Binding presentation}"/>
                 <DataGridTextColumn Header="Cantidad" Width="auto" Binding="{Binding quantity}"/>
                 <DataGridTextColumn Header="Precio" Width="auto" Binding="{Binding price}"/>
-                <DataGridTextColumn Header="Caducidad" Width="auto" Binding="{Binding entryDate.dateString}"/>
-                <DataGridTextColumn Header="Entrada" Width="auto" Binding="{Binding expiration.dateString}"/>
+                <DataGridTextColumn Header="Entrada" Width="auto" Binding="{Binding entryDate.dateString}"/>
+                <DataGridTextColumn Header="Caducidad" Width="auto" Binding="{Binding expiration.dateString}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

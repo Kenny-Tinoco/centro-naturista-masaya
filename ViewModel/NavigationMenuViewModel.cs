@@ -9,7 +9,10 @@ namespace MasayaNaturistCenter.ViewModel
         private bool _isMenuOpen;
         public bool isMenuOpen
         {
-            get { return _isMenuOpen; }
+            get
+            {   
+                return _isMenuOpen; 
+            }
             set
             {
                 _isMenuOpen = value;
@@ -28,8 +31,10 @@ namespace MasayaNaturistCenter.ViewModel
                 INavigationService navigateProductCommand
             )
         {
+            isMenuOpen = true;
             this.navigateHomeCommand = new NavigateCommand(navigateHomeCommand);
             this.navigateProductCommand = new NavigateCommand(navigateProductCommand);
+
         }
     }
 }

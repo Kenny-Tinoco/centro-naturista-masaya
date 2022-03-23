@@ -6,13 +6,16 @@ using MasayaNaturistCenter.ViewModel.Command;
 using System.Windows.Data;
 using System.ComponentModel;
 using System.Windows.Input;
+using MasayaNaturistCenter.X;
+using MasayaNaturistCenter.ViewModel.Services;
 
 namespace MasayaNaturistCenter.ViewModel
 {
     public class StockViewModel : CRUDCommand
     {
         private ObservableCollection<StockDTO> _stockList;
-        public StockViewModelRecords stockRecords;
+        public INavigationService navigationService;
+        public IX stockX;
 
         private string _searchText;
         private CollectionViewSource _dataGridSource;
@@ -20,17 +23,17 @@ namespace MasayaNaturistCenter.ViewModel
         public ICommand addStockCommand { get; }
 
 
-        public StockViewModel(StockViewModelRecords parameter)
+        public StockViewModel(IX parameter, INavigationService navigation)
         {
             Contract.Requires(parameter != null);
-            stockRecords = parameter;
-            addStockCommand = new NavigateCommand(stockRecords.navigationService);
+            stockX = parameter;
+
+            addStockCommand = new NavigateCommand(navigation);
 
             stockList = new ObservableCollection<StockDTO>();
 
             getAllStock();
         }
-
 
         public string searchText
         {
@@ -65,30 +68,30 @@ namespace MasayaNaturistCenter.ViewModel
 
         public void getAllStock()
         {
-            getStockList(stockRecords.getAll());
+            getStockList(((StockX)stockX).getAll());
         }
 
         public void searchStock(string parameter)
         {
-            getStockList(stockRecords.getAllOccurrencesOf(parameter));
+            getStockList(((StockX)stockX).getAllOccurrencesOf(parameter));
         }
 
         public override void saveData(StockDTO parameter)
         {
-            stockRecords.logic.stock = parameter;
-            stockRecords.saveStock();
+            ((StockX)stockX).currentStock = parameter;
+            ((StockX)stockX).saveStock();
         }
 
         public override void deleteElement(int parameter)
         {
-            stockRecords.deleteStock(parameter);
+            ((StockX)stockX).deleteStock(parameter);
         }
 
 
-        private void getStockList(List<StockDTO> list)
+        private void getStockList(List<BaseDTO> list)
         {
             var stocks = new ObservableCollection<StockDTO>();
-            list.ForEach(element => stocks.Add(element));
+            list.ForEach(element => stocks.Add((StockDTO)element));
             stockList = stocks;
         }
 
@@ -109,7 +112,7 @@ namespace MasayaNaturistCenter.ViewModel
             var element = e.Item as StockDTO;
             if (element != null)
             {
-                if(stockRecords.searchLogic(element, searchText))
+                if(((StockX)stockX).searchLogic(element, searchText))
                 {
                     e.Accepted = true;
                 }

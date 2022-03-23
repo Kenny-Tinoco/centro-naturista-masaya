@@ -2,7 +2,7 @@ using MasayaNaturistCenter.Model.Utilities;
 
 namespace MasayaNaturistCenter.Model.DTO
 {
-    public class ProviderDTO
+    public class ProviderDTO : BaseDTO
     {
         public int idProvider {get; set;}
         public Name name {get; set;}

@@ -6,7 +6,7 @@
         xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
         xmlns:viewmodel="clr-namespace:MasayaNaturistCenter.ViewModel"
         xmlns:viewsProductWindows="clr-namespace:MasayaNaturistCenter.View.ProductWindows"
-        xmlns:viewsMenuBar="clr-namespace:MasayaNaturistCenter.View.MenuBar"
+        xmlns:viewsMenuBar="clr-namespace:MasayaNaturistCenter.ViewComponents.MenuBar"
         xmlns:viewsHomeWindows="clr-namespace:MasayaNaturistCenter.View.HomeWindows"
         mc:Ignorable="d"
         WindowStyle="None"
