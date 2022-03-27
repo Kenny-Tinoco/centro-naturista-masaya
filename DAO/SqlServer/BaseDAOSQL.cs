@@ -1,17 +1,17 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
 using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Diagnostics.Contracts;
-using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class BaseDAOSQL : BaseDAO
+    public class BaseDAOSQL : BaseDAO<BaseDTO, object>
     {
         protected object entity;
         protected MasayaNaturistCenterDataBase dataBaseContext;
+
 
         public BaseDAOSQL(MasayaNaturistCenterDataBase dataBaseContext)
         {
@@ -19,7 +19,8 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             this.dataBaseContext = dataBaseContext;
         }
 
-        public virtual void create(object element)
+
+        public virtual void create(BaseDTO element)
         {
             ((ObjectSet<object>)entity).AddObject(element);
             dataBaseContext.SaveChanges();
@@ -38,12 +39,11 @@ namespace MasayaNaturistCenter.DAO.SqlServer
 
         public virtual BaseDTO read(object id)
         {
-            throw new System.NotImplementedException();
+            return null;
         }
 
-        public virtual void update(object element)
+        public virtual void update( BaseDTO element )
         {
-            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 
 namespace MasayaNaturistCenter.ViewComponents.UserControls
@@ -39,14 +40,15 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls
             InitializeComponent();
         }
 
-        public event RoutedEventHandler exitClick
+        public ICommand buttonExitCommand
         {
-            add { AddHandler(exitClickEvent, value); }
-            remove { RemoveHandler(exitClickEvent, value); }
+            get { return (ICommand)GetValue(buttonExitCommandPropety); }
+            set { SetValue(buttonExitCommandPropety, value); }
         }
 
-        public static readonly RoutedEvent exitClickEvent =
-            EventManager.RegisterRoutedEvent(nameof(exitClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Popup));
+        public static readonly DependencyProperty buttonExitCommandPropety =
+            DependencyProperty.Register("buttonExitCommand", typeof(ICommand), typeof(Popup), new PropertyMetadata());
+
 
 
         public event RoutedEventHandler saveClick
@@ -58,11 +60,6 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls
         public static readonly RoutedEvent saveClickEvent =
             EventManager.RegisterRoutedEvent(nameof(saveClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Popup));
 
-
-        private void exit_Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(exitClickEvent));
-        }
 
         private void save_Click(object sender, RoutedEventArgs e)
         {

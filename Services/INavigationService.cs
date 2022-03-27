@@ -1,4 +1,4 @@
-﻿namespace MasayaNaturistCenter.ViewModel.Services
+﻿namespace MasayaNaturistCenter.Services
 {
     public interface INavigationService
     {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MasayaNaturistCenter.DAO.DAOInterfaces
 {
-    public interface ProductDAO : BaseDAO
+    public interface ProductDAO : BaseDAO<BaseDTO, object>
     {
         List<ProductDTO> getAllOccurrencesOf(string parameter);
     }

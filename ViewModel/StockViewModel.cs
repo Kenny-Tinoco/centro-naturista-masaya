@@ -2,38 +2,46 @@ using MasayaNaturistCenter.Model.DTO;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MasayaNaturistCenter.ViewModel.Command;
+using MasayaNaturistCenter.Command;
 using System.Windows.Data;
 using System.ComponentModel;
 using System.Windows.Input;
-using MasayaNaturistCenter.X;
-using MasayaNaturistCenter.ViewModel.Services;
+using MasayaNaturistCenter.Logic;
+using MasayaNaturistCenter.Services;
 
 namespace MasayaNaturistCenter.ViewModel
 {
-    public class StockViewModel : CRUDCommand
+    public class StockViewModel : ViewModelBase
     {
-        private ObservableCollection<StockDTO> _stockList;
+        private ObservableCollection<StockViewDTO> _stockList;
         public INavigationService navigationService;
-        public IX stockX;
+        public ILogic stockLogic;
+        public StockDTO currentStock;
 
         private string _searchText;
         private CollectionViewSource _dataGridSource;
 
         public ICommand addStockCommand { get; }
+        public ICommand productNavigationCommand { get; }
+        public ICommand save { get; }
+        public ICommand delete { get; }
 
 
-        public StockViewModel(IX parameter, INavigationService navigation)
+        public StockViewModel( ILogic parameter, INavigationService productPageNavigation, INavigationService stockModalNavigation )
         {
             Contract.Requires(parameter != null);
-            stockX = parameter;
+            stockLogic = parameter;
 
-            addStockCommand = new NavigateCommand(navigation);
+            addStockCommand = new NavigateCommand(stockModalNavigation);
+            productNavigationCommand = new NavigateCommand(productPageNavigation);
+            save = new SaveCommand(stockLogic);
+            delete = new DeleteCommand(stockLogic);
 
-            stockList = new ObservableCollection<StockDTO>();
+            stockList = new ObservableCollection<StockViewDTO>();
 
             getAllStock();
         }
+
 
         public string searchText
         {
@@ -50,10 +58,10 @@ namespace MasayaNaturistCenter.ViewModel
 
         public ICollectionView dataGridSource
         {
-            get{ return DataGridSource.View;}
+            get { return DataGridSource.View; }
         }
 
-        public ObservableCollection<StockDTO> stockList
+        public ObservableCollection<StockViewDTO> stockList
         {
             get
             {
@@ -68,30 +76,19 @@ namespace MasayaNaturistCenter.ViewModel
 
         public void getAllStock()
         {
-            getStockList(((StockX)stockX).getAll());
+            getStockList(stockLogic.getAll());
         }
 
         public void searchStock(string parameter)
         {
-            getStockList(((StockX)stockX).getAllOccurrencesOf(parameter));
-        }
-
-        public override void saveData(StockDTO parameter)
-        {
-            ((StockX)stockX).currentStock = parameter;
-            ((StockX)stockX).saveStock();
-        }
-
-        public override void deleteElement(int parameter)
-        {
-            ((StockX)stockX).deleteStock(parameter);
+            getStockList(((StockLogic)stockLogic).getAllOccurrencesOf(parameter));
         }
 
 
         private void getStockList(List<BaseDTO> list)
         {
-            var stocks = new ObservableCollection<StockDTO>();
-            list.ForEach(element => stocks.Add((StockDTO)element));
+            var stocks = new ObservableCollection<StockViewDTO>();
+            list.ForEach(element => stocks.Add((StockViewDTO)element));
             stockList = stocks;
         }
 
@@ -109,10 +106,10 @@ namespace MasayaNaturistCenter.ViewModel
 
         private void DataGridSource_Filter(object sender, FilterEventArgs e)
         {
-            var element = e.Item as StockDTO;
+            var element = e.Item as StockViewDTO;
             if (element != null)
             {
-                if(((StockX)stockX).searchLogic(element, searchText))
+                if(((StockLogic)stockLogic).searchLogic(element, searchText))
                 {
                     e.Accepted = true;
                 }

@@ -107,8 +107,6 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\View\Resource\Image\sale.png
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\ProductPage.g.cs
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\ProductPage.baml
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockPopup.g.cs
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockPopup.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\View\Resource\Image\search.png
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\View\Resource\Image\remove-red.png
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\bin\Debug\net6.0-windows\View\Resource\Image\employee-black.png
@@ -158,3 +156,5 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\ne
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\ViewComponents\UserControls\MenuButton.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\ViewComponents\UserControls\Popup.baml
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\Themes\Generic.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockModal.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net6.0-windows\View\ProductWindows\StockModal.baml

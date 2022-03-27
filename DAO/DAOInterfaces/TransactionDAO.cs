@@ -1,6 +1,8 @@
-﻿namespace MasayaNaturistCenter.DAO.DAOInterfaces
+﻿using MasayaNaturistCenter.Model.DTO;
+
+namespace MasayaNaturistCenter.DAO.DAOInterfaces
 {
-    public interface TransactionDAO : BaseDAO
+    public interface TransactionDAO : BaseDAO<BaseDTO, object>
     {
     }
 }

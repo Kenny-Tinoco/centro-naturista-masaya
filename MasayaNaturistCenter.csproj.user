@@ -14,10 +14,10 @@
     <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\StockPage.xaml.cs">
+    <Compile Update="View\ProductWindows\StockModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\StockPopup.xaml.cs">
+    <Compile Update="View\ProductWindows\StockPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\Startup.xaml.cs">
@@ -70,10 +70,10 @@
     <Page Update="View\ProductWindows\ProductPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\StockPage.xaml">
+    <Page Update="View\ProductWindows\StockModal.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\StockPopup.xaml">
+    <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Resource\Style\ControlStyles.xaml">

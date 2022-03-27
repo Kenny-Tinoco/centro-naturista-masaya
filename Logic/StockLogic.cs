@@ -1,104 +1,62 @@
-﻿using MasayaNaturistCenter.Model.Utilities;
-using MasayaNaturistCenter.Model.DTO;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using MasayaNaturistCenter.Model.DTO;
+using MasayaNaturistCenter.DAO.DAOInterfaces;
 
-namespace MasayaNaturistCenter.Model.Logic
+namespace MasayaNaturistCenter.Logic
 {
-    public class StockLogic
+    public class StockLogic : ILogic
     {
-        private StockDTO _stock;
+        public StockDTO currentStock { get; set; }
+        private DAOFactory daoFactory;
+        private StockDAO entity;  
 
 
-        public StockLogic()
+        public StockLogic(DAOFactory parameter)
         {
+            Contract.Requires(parameter != null);
+            daoFactory = parameter;
+            entity = daoFactory.stockDAO;
         }
 
-    
-        public void associateStockToProduct(ProductDTO productDTO)
+
+        public List<BaseDTO> getAll()
         {
-            Contract.Requires(productDTO != null);
-            stock.idProduct = productDTO.idProduct;
-            stock.name = productDTO.name;
-            stock.description = productDTO.description;
+            return entity.getAll();
         }
 
-        public StockDTO stock
+        public List<BaseDTO> getAllOccurrencesOf(string parameter)
         {
-            get
-            {
-                return _stock;
-            }
-            set
-            {
-                Contract.Requires(value != null);
-                _stock = value;
-            }
+            Contract.Requires(parameter != null);
+            return entity.getAllOccurrencesOf(parameter);
         }
 
-        public double price
+        public void save()
         {
-            get
-            {
-                return stock.price;
-            }
-
-            set
-            {
-                Contract.Requires(value >= 0);
-                stock.price = value;
-            }
+            entity.create(currentStock);
         }
 
-        public string presentation
+        public void delete(int parameter)
         {
-            get
-            {
-                return stock.presentation;
-            }
-
-            set
-            {
-                stock.presentation = value;
-            }
+            entity.deleteById(parameter);
         }
 
-        public Date entryDate
+        public bool searchLogic(StockViewDTO element, string parameter)
         {
-            get
-            {
-                return stock.entryDate;
-            }
-            
-            set
-            {
-                Contract.Requires(value != null);
-                stock.entryDate = value;
-            }
-        }
+            Contract.Requires(parameter != null && element != null);
+            bool ok = false;
 
-        public Date expiration
-        {
-            get
+            if
+            (
+                element.idStock.ToString().Contains(parameter.Trim()) ||
+                element.name.ToLower().StartsWith(parameter.Trim().ToLower()) ||
+                element.presentation.ToLower().StartsWith(parameter.Trim().ToLower())
+            )
             {
-                return stock.expiration;
+                ok = true;
             }
-            
-            set
-            {
-                Contract.Requires(value != null);
-                stock.expiration = value;
-            }
-        }
 
-        public void reduceQuantity()
-        {
-            if(stock.quantity > 0)
-                stock.quantity--;
-        }
-
-        public void increaseQuantity()
-        {
-            stock.quantity++;
+            return ok;
         }
     }
 }

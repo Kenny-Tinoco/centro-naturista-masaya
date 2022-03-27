@@ -24,9 +24,9 @@ namespace MasayaNaturistCenter.Model.Utilities
             return ok;
         }
 
-        public string dateString
+        public string toString
         {
-            get { return day+"/"+month+"/" + year; }
+            get { return day + "/" + month + "/" + year; }
         }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
 using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
@@ -15,25 +14,19 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             entity = parameter.Product;
         }
 
-
-        public void add(ProductDTO parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<ProductDTO> getAll()
+        public override List<BaseDTO> getAll()
         {
             return getProductDTOListOf(dataBaseContext.Product.ToList());
         }
 
-        private List<ProductDTO> getProductDTOListOf(List<Product> collection)
+        public List<ProductDTO> getAllOccurrencesOf( string parameter )
         {
-            var list = new List<ProductDTO>();
+            throw new NotImplementedException();
+        }
+
+        private List<BaseDTO> getProductDTOListOf(List<Product> collection)
+        {
+            var list = new List<BaseDTO>();
 
             list.AddRange(collection.Select(element => getProductDTOof(element)).ToList());
 
@@ -50,16 +43,6 @@ namespace MasayaNaturistCenter.DAO.SqlServer
                 quantity = parameter.quantity
             };
             return element;
-        }
-
-        public List<ProductDTO> getAllOccurrencesOf(string parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void update(ProductDTO parameter)
-        {
-            throw new NotImplementedException();
         }
     }
 }

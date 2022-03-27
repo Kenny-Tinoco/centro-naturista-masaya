@@ -1,6 +1,7 @@
-﻿using System;
+﻿using MasayaNaturistCenter.ViewModel;
+using System;
 
-namespace MasayaNaturistCenter.ViewModel.Stores
+namespace MasayaNaturistCenter.Stores
 {
     public class NavigationStore
     {

@@ -1,10 +1,10 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
 using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
 using MasayaNaturistCenter.Model.Utilities;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Diagnostics.Contracts;
+using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
@@ -17,43 +17,15 @@ namespace MasayaNaturistCenter.DAO.SqlServer
         }
 
 
-        public void add(TransactionDTO parameter)
-        { 
-            dataBaseContext.Sell.AddObject(getSellOf(parameter));
-            dataBaseContext.SaveChanges();
-        }
-
-        public void delete(int id)
+        public override List<BaseDTO> getAll()
         {
-            var element = findTransaction(id);
-
-            if(element != null)
-            {
-                dataBaseContext.Sell.DeleteObject((Sell)element);
-                dataBaseContext.SaveChanges();
-            }
-        }
-
-        public void update(TransactionDTO parameter)
-        {
-            delete(parameter.idTransaction);
-            add(parameter);
-        }
-
-        public TransactionDTO get(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public List<TransactionDTO> getAll()
-        {
-            var list = new List<TransactionDTO>();
-            var sells = dataBaseContext.Sell.ToList();
+            var list = new List<BaseDTO>();
+            var sells = ((ObjectSet<object>)entity).ToList();
 
             list.AddRange
                 (
                     sells
-                    .Select(element => getTransactionOf(element))
+                    .Select(element => getTransactionOf((Sell)element))
                     .ToList()
                 );
 
@@ -81,8 +53,7 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             {
                 idSell = parameter.idTransaction,
                 idEmployee = parameter.idTransactionRelatedObjet,
-                time = timeUtilities.convertTimeToString(parameter.time),
-                date = dateUtilities.convertDateToString(parameter.date),
+                date = dateUtilities.convertDateToDateTime(parameter.date),
                 total = parameter.total
             };
 
@@ -98,8 +69,8 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             {
                 idTransaction = parameter.idSell,
                 idTransactionRelatedObjet = parameter.idEmployee,
-                time = timeUtilities.convertStringToTime(parameter.time),
-                date = dateUtilities.convertStringToDate(parameter.date),
+                time = timeUtilities.convertDateTimeToTime(parameter.date),
+                date = dateUtilities.convertDateTimeToDate(parameter.date),
                 total = parameter.total
             };
 

@@ -1,6 +1,6 @@
-﻿using MasayaNaturistCenter.ViewModel.Services;
+﻿using MasayaNaturistCenter.Services;
 
-namespace MasayaNaturistCenter.ViewModel.Command
+namespace MasayaNaturistCenter.Command
 {
     public class NavigateCommand : CommandBase
     {

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace MasayaNaturistCenter.DAO.DAOInterfaces
 {
-    public interface BaseDAO
+    public interface BaseDAO<T, ID>
     {
-        void create(object element);
-        BaseDTO read(object id);
-        void update(object element);
-        void deleteById(object id);
-        List<BaseDTO> getAll();
+        void create( T element );
+        BaseDTO read( ID id );
+        void update( T element );
+        void deleteById( ID id );
+        List<T> getAll();
     }
 }

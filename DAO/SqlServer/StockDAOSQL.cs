@@ -1,6 +1,6 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
 using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
 using MasayaNaturistCenter.Model.Utilities;
 using System;
 using System.Collections.Generic;
@@ -12,15 +12,17 @@ namespace MasayaNaturistCenter.DAO.SqlServer
 {
     public class StockDAOSQL : BaseDAOSQL, StockDAO
     {
-        public StockDAOSQL(MasayaNaturistCenterDataBase parameter) :  base(parameter)
+
+        public StockDAOSQL(MasayaNaturistCenterDataBase parameter) : base(parameter)
         {
             entity = dataBaseContext.Stock;
         }
 
-        public override void create(object parameter)
+
+        public override void create(BaseDTO parameter)
         {
             var element = getStockOf((StockDTO)parameter);
-            base.create(element);
+            base.create((BaseDTO)element);
         }
 
         public override void deleteById(object id)
@@ -31,7 +33,7 @@ namespace MasayaNaturistCenter.DAO.SqlServer
                 base.deleteById(id);
         }     
         
-        public override void update(object parameter)
+        public override void update( BaseDTO parameter )
         {
             deleteById(((StockDTO)parameter).idStock);
             create(parameter);
@@ -39,9 +41,17 @@ namespace MasayaNaturistCenter.DAO.SqlServer
 
         public override List<BaseDTO> getAll()
         {
-            return getStockDTOListOf(dataBaseContext.Stock.ToList());
-        } 
-        
+            return getStockDTOListOf(dataBaseContext.StockView.ToList());
+        }
+
+        public override BaseDTO read( object id )
+        {
+            return getStockDTOof
+                (
+                    findStock((int)id)
+                );
+        }
+
         public List<BaseDTO> getAllOccurrencesOf(string parameter)
         {
             return getStockDTOListOf(getWhere(parameter));
@@ -49,23 +59,23 @@ namespace MasayaNaturistCenter.DAO.SqlServer
 
 
 
-        private List<Stock> getWhere(string parameter)
+        private List<StockView> getWhere(string parameter)
         {
             Contract.Requires(parameter != null);
 
             return dataBaseContext
-                .Stock
+                .StockView
                 .Where
                 (
                     element => 
                     element.idStock.ToString().Contains(parameter) ||
-                    element.Product.name.ToLower().StartsWith(parameter.ToLower()) ||
-                    element.Presentation.name.ToLower().StartsWith(parameter.ToLower())
+                    element.name.ToLower().StartsWith(parameter.ToLower()) ||
+                    element.presentation.ToLower().StartsWith(parameter.ToLower())
 
                 ).ToList();
         }
 
-        private List<BaseDTO> getStockDTOListOf(List<Stock> stocks)
+        private List<BaseDTO> getStockDTOListOf(List<StockView> stocks)
         {
             var list = new List<BaseDTO>();
 
@@ -85,39 +95,35 @@ namespace MasayaNaturistCenter.DAO.SqlServer
                 idPresentation = parameter.idPresentation,
                 quantity = parameter.quantity,
                 price = parameter.price,
-                entryDate = dateUtilities.convertDateToString(parameter.entryDate),
-                expiration = dateUtilities.convertDateToString(parameter.expiration)
+                entryDate = dateUtilities.convertDateToDateTime(parameter.entryDate),
+                expiration = dateUtilities.convertDateToDateTime(parameter.expiration)
             };
 
             return element;
         }
 
-        private StockDTO getStockDTOof(Stock parameter)
+        private StockViewDTO getStockDTOof(StockView parameter)
         {
-            var dateUtilities = new DateUtilities();
-
-            var element = new StockDTO
+            var element = new StockViewDTO
             {
                 idStock = parameter.idStock,
-                idProduct = parameter.idProduct,
-                name = parameter.Product.name,
-                description = parameter.Product.description,
-                idPresentation = parameter.idPresentation,
-                presentation = parameter.Presentation.name,
+                name = parameter.name,
+                description = parameter.description,
+                presentation = parameter.presentation,
                 quantity = parameter.quantity,
                 price = parameter.price,
-                entryDate = dateUtilities.convertStringToDate(parameter.entryDate),
-                expiration = dateUtilities.convertStringToDate(parameter.expiration)
+                entryDate = parameter.entryDate,
+                expiration = parameter.expiration
             };
 
             return element;
         }
 
-        private Stock findStock(int id)
+        private StockView findStock(int id)
         {
             var foundElement = 
                 dataBaseContext
-                .Stock
+                .StockView
                 .AsNoTracking()
                 .SingleOrDefault(element => element.idStock == id);
             

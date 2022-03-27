@@ -1,5 +1,6 @@
-﻿using MasayaNaturistCenter.Model.DTO;
-using System;
+﻿using MasayaNaturistCenter.Logic;
+using MasayaNaturistCenter.Model.DTO;
+using MasayaNaturistCenter.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
@@ -9,15 +10,31 @@ namespace MasayaNaturistCenter.ViewModel
     public class ProductViewModel : ViewModelBase
     {
         private ObservableCollection<ProductDTO> _productList;
-        private ProductViewModelRecords productRecords;
+        public INavigationService navigationService;
+        public ILogic productLogic;
+        private string _searchText;
 
-        public ProductViewModel(ProductViewModelRecords parameter)
+        public ProductViewModel( ILogic productLogic, INavigationService navigationService )
         {
-            Contract.Requires(parameter != null);
-            productRecords = parameter;
+            Contract.Requires(navigationService != null && productLogic != null);
+            this.navigationService = navigationService;
+            this.productLogic = productLogic;
 
             productList = new ObservableCollection<ProductDTO>();
             getAll();
+        }
+
+
+        public string searchText
+        {
+            get
+            {
+                return _searchText;
+            }
+            set
+            {
+                _searchText = value;
+            }
         }
 
         public ObservableCollection<ProductDTO> productList
@@ -32,14 +49,14 @@ namespace MasayaNaturistCenter.ViewModel
 
         public void getAll()
         {
-            getProductListOf(productRecords.getAll());
+            getProductListOf(productLogic.getAll());
         }
 
-        private void getProductListOf(List<ProductDTO> collection)
+        private void getProductListOf(List<BaseDTO> collection)
         {
             var list = new ObservableCollection<ProductDTO>();
 
-            collection.ForEach(element => list.Add(element));
+            collection.ForEach(element => list.Add((ProductDTO)element));
 
             productList = list;
         }

@@ -10,20 +10,15 @@ namespace MasayaNaturistCenter.Model.Utilities
 
         public Time actualTime()
         {
-            return convertStringToTime(DateTime.Now.ToString(timeFormat));
+            return convertDateTimeToTime(DateTime.Now);
         }
 
-        public string convertTimeToString(Time paremeter)
-        {
-            return paremeter.stringTime;
-        }
-
-        public Time convertStringToTime(string parameter)
+        public Time convertDateTimeToTime(DateTime? parameter)
         {
             if (parameter == null)
                 return null;
 
-            var timeObject = DateTime.ParseExact(parameter, timeFormat, CultureInfo.InvariantCulture);
+            var timeObject = DateTime.ParseExact(parameter.ToString(), timeFormat, CultureInfo.InvariantCulture);
 
             var time = timeObject.ToString(timeFormat);
             var abbreviation = time.Substring(time.Length-2,2);

@@ -1,5 +1,6 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
+using MasayaNaturistCenter.Model.DTO;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 

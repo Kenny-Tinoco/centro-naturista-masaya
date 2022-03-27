@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MasayaNaturistCenter.ViewModel.Command
+namespace MasayaNaturistCenter.Command
 {
     public class RelayCommand : ICommand
     {
@@ -30,7 +30,7 @@ namespace MasayaNaturistCenter.ViewModel.Command
             remove { CommandManager.RequerySuggested -= value; }
         }
 
-        public void Execute(object parameter)
+        public void Execute( object parameter )
         {
             _execute(parameter);
         }

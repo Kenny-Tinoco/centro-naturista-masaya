@@ -7,7 +7,8 @@
       xmlns:userControls="clr-namespace:MasayaNaturistCenter.ViewComponents.UserControls"
       mc:Ignorable="d"
       x:Name="root"
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" 
+      d:DesignWidth="800"
       Title="ProductPage">
 
     <Grid>
@@ -32,6 +33,14 @@
             Title="Producto"
             ImageSource="/View/Resource/Image/product-black.png"
             />
+        <StackPanel
+            HorizontalAlignment="Left"
+            Margin="30,30,0,15"
+            Style="{DynamicResource StackPanelStyle}">
+            <userControls:CustomButton
+                Title="Agregar producto"
+                ImageSource="/View/Resource/Image/plus.png"/>
+        </StackPanel>
 
         <StackPanel
             HorizontalAlignment="Right"
@@ -41,7 +50,8 @@
                 <userControls:SearchBar
                     BarHeight="30"
                     BarWidth="250"
-                    searchBarText="{Binding searchText, ElementName=root, Mode=TwoWay}"
+                    searchBarText="{Binding searchText, Mode=TwoWay}"
+                    Margin="0 0 20 0"
                     />
                 <userControls:CustomButton
                     Title="Modificar"
@@ -71,7 +81,7 @@
                 <DataGridTextColumn Header="Código" Width="auto" Binding="{Binding idProduct}"/>
                 <DataGridTextColumn Header="Nombre" Width="200" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Descripción" Width="*" Binding="{Binding description}"/>
-                <DataGridTextColumn Header="Cantidad" Width="auto" Binding="{Binding quantity}"/>
+                <DataGridTextColumn Header="Cantidad total" Width="auto" Binding="{Binding quantity}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

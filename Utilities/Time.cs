@@ -28,12 +28,11 @@ namespace MasayaNaturistCenter.Model.Utilities
             return ok;
         }
 
-        public string stringTime
+
+        public override string ToString()
         {
-            get 
-            {
-                return hour + ":" + minute+" "+abbreviation;
-            }
+            return hour + ":" + minute + " " + abbreviation;
         }
+
     }
 }

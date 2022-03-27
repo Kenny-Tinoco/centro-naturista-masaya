@@ -1,7 +1,8 @@
-﻿using MasayaNaturistCenter.ViewModel.Stores;
+﻿using MasayaNaturistCenter.Stores;
+using MasayaNaturistCenter.ViewModel;
 using System;
 
-namespace MasayaNaturistCenter.ViewModel.Services
+namespace MasayaNaturistCenter.Services
 {
     public class NavigationService<viewModelBase> : INavigationService 
                                                     where viewModelBase : ViewModelBase

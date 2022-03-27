@@ -25,6 +25,12 @@
             <DataTemplate DataType="{x:Type viewmodel:StockViewModel}">
                 <viewsProductWindows:StockPage/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:StockModalViewModel}">
+                <viewsProductWindows:StockModal/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:ProductViewModel}">
+                <viewsProductWindows:ProductPage/>
+            </DataTemplate>
         </Grid.Resources>
         
         <custom:Modal Panel.ZIndex="1"

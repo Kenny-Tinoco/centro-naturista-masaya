@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 
 namespace MasayaNaturistCenter.Model.Utilities
 {
@@ -8,24 +9,26 @@ namespace MasayaNaturistCenter.Model.Utilities
 
         public Date getToday()
         {
-            return convertStringToDate(DateTime.Now.ToString(dateFormat));
+            return convertDateTimeToDate(DateTime.Now);
         }
         
-        public string convertDateToString(Date parameter)
+        public DateTime convertDateToDateTime(Date parameter)
         {
-            return parameter.dateString;
+            return Convert.ToDateTime(parameter.ToString());
         }
 
-        public Date convertStringToDate(string parameter)
+        public Date convertDateTimeToDate(DateTime? parameter)
         {
+            DateTime date;
             if (parameter == null)
-            {
                 return null;
-            }
+            else
+                date = (DateTime)parameter;
 
-            var dateTime = DateTime.ParseExact(parameter, dateFormat, null);
+            //var dateTime = DateTime.ParseExact(parameter.ToString(), dateFormat, CultureInfo.InvariantCulture);
 
-            return new Date(dateTime.Day, dateTime.Month, dateTime.Year);
+            //return new Date(dateTime.Day, dateTime.Month, dateTime.Year);
+            return new Date(date.Day, date.Month, date.Year);
         }
     }
 }

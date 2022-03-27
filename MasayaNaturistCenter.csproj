@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <None Remove="MasayaNaturistCenterDataBase.edmx" />
-    <None Remove="Model\Entities\Entities.edmx" />
+    <None Remove="Model\DataSource\SQLDataSource.edmx" />
     <None Remove="View\Resource\Image\arrow-right.png" />
     <None Remove="View\Resource\Image\back-black.png" />
     <None Remove="View\Resource\Image\back.png" />
@@ -137,9 +137,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EntityDeploy Include="Model\Entities\Entities.edmx">
+    <EntityDeploy Include="Model\DataSource\SQLDataSource.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Entities.Designer.cs</LastGenOutput>
+      <LastGenOutput>SQLDataSource.Designer.cs</LastGenOutput>
     </EntityDeploy>
   </ItemGroup>
 
@@ -152,14 +152,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Model\Entities\Entities.Designer.cs">
+    <Compile Update="Model\DataSource\SQLDataSource.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>Entities.edmx</DependentUpon>
+      <DependentUpon>SQLDataSource.edmx</DependentUpon>
     </Compile>
   </ItemGroup>
 

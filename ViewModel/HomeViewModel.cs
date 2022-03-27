@@ -1,5 +1,5 @@
-﻿using MasayaNaturistCenter.ViewModel.Command;
-using MasayaNaturistCenter.ViewModel.Services;
+﻿using MasayaNaturistCenter.Command;
+using MasayaNaturistCenter.Services;
 using System.Windows.Input;
 
 namespace MasayaNaturistCenter.ViewModel

@@ -19,8 +19,7 @@
             <Setter Property="Orientation" Value="Horizontal"/>
         </Style>
     </Page.Resources>
-    <Grid
-        Background="White">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="15"/>
             <ColumnDefinition/>
@@ -48,7 +47,8 @@
             Margin="30,30,0,15"
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
-                Title="Producto"
+                Title="Dato de Producto"
+                buttonCommand="{Binding productNavigationCommand}"
                 ImageSource="/View/Resource/Image/product.png"/>
             <userControls:CustomButton
                 Title="Presetación"
@@ -68,6 +68,7 @@
                     BarHeight="30"
                     BarWidth="250"
                     searchBarText="{Binding searchText, Mode=TwoWay}"
+                    Margin="0 0 20 0"
                     />
                 <userControls:CustomButton
                     Title="Modificar"
@@ -100,8 +101,8 @@
                 <DataGridTextColumn Header="Presentación" Width="120" Binding="{Binding presentation}"/>
                 <DataGridTextColumn Header="Cantidad" Width="auto" Binding="{Binding quantity}"/>
                 <DataGridTextColumn Header="Precio" Width="auto" Binding="{Binding price}"/>
-                <DataGridTextColumn Header="Entrada" Width="auto" Binding="{Binding entryDate.dateString}"/>
-                <DataGridTextColumn Header="Caducidad" Width="auto" Binding="{Binding expiration.dateString}"/>
+                <DataGridTextColumn Header="Entrada" Width="auto" Binding="{Binding entryDate}"/>
+                <DataGridTextColumn Header="Caducidad" Width="auto" Binding="{Binding expiration}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

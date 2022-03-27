@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace MasayaNaturistCenter.ViewModel.Command
+namespace MasayaNaturistCenter.Command
 {
     public class StateBarCommand : CommandBase
     {

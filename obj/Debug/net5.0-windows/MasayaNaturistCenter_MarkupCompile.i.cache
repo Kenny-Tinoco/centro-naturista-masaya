@@ -1,0 +1,20 @@
+﻿MasayaNaturistCenter
+1.0.0.0
+
+winexe
+C#
+.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\obj\Debug\net5.0-windows\
+MasayaNaturistCenter
+none
+false
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\App.xaml
+22-1858198313
+28-578680414
+921040448306
+199-1500998860
+Themes\Generic.xaml;ViewComponents\MenuBar\Layout.xaml;ViewComponents\MenuBar\NavigationMenu.xaml;ViewComponents\UserControls\BackButton.xaml;ViewComponents\UserControls\CustomButton.xaml;ViewComponents\UserControls\HomeButton.xaml;ViewComponents\UserControls\MenuButton.xaml;ViewComponents\UserControls\PageTitle.xaml;ViewComponents\UserControls\Popup.xaml;ViewComponents\UserControls\SearchBar.xaml;ViewComponents\UserControls\SpinBox.xaml;ViewComponents\UserControls\TitleBarButton.xaml;View\HomeWindows\HomeView.xaml;View\HomeWindows\SellView.xaml;View\ProductWindows\ProductPage.xaml;View\ProductWindows\StockModal.xaml;View\ProductWindows\StockPage.xaml;View\Resource\Style\ControlStyles.xaml;View\Resource\Values\colors.xaml;View\Resource\Values\dimens.xaml;View\Resource\Values\strings.xaml;View\Startup.xaml;
+
+False
+

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace MasayaNaturistCenter.ViewModel.Command
+namespace MasayaNaturistCenter.Command
 {
     public abstract class CommandBase : ICommand
     {

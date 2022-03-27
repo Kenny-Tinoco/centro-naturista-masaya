@@ -1,11 +1,11 @@
 ﻿using MasayaNaturistCenter.DAO.DAOInterfaces;
 using MasayaNaturistCenter.DAO.SqlServer;
-using MasayaNaturistCenter.Model.Entities;
+using MasayaNaturistCenter.Model.DataSource;
 using MasayaNaturistCenter.View;
 using MasayaNaturistCenter.ViewModel;
-using MasayaNaturistCenter.ViewModel.Services;
-using MasayaNaturistCenter.ViewModel.Stores;
-using MasayaNaturistCenter.X;
+using MasayaNaturistCenter.Services;
+using MasayaNaturistCenter.Stores;
+using MasayaNaturistCenter.Logic;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Windows;
@@ -14,14 +14,11 @@ namespace MasayaNaturistCenter
 {
     public partial class App : Application
     {
-
         private readonly IServiceProvider _serviceProvider;
-        private readonly MasayaNaturistCenterDataBase dataBaseContext;
 
 
         public App()
         {
-            dataBaseContext = new MasayaNaturistCenterDataBase();
             IServiceCollection services = new ServiceCollection();
 
             addServices(services);
@@ -30,7 +27,7 @@ namespace MasayaNaturistCenter
         }
 
 
-        protected override void OnStartup(StartupEventArgs e)
+        protected override void OnStartup( StartupEventArgs e )
         {
             INavigationService initialNavigationService = _serviceProvider.GetRequiredService<INavigationService>();
             initialNavigationService.Navigate();
@@ -42,16 +39,26 @@ namespace MasayaNaturistCenter
         }
 
 
-        private void addServices(IServiceCollection services)
+        private void addServices( IServiceCollection services )
         {
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
             services.AddSingleton<MasayaNaturistCenterDataBase>();
-            services.AddSingleton<DAOFactory>(s => createDAOFactory(s));
-            services.AddSingleton<StockViewModel>(s => createStockViewModel(s));
-            services.AddSingleton<HomeViewModel>(s => new HomeViewModel(createProductNavigationService(s)));
+            services.AddSingleton<DAOFactory>(s => createDAOFactorySQL(s));
 
-            services.AddSingleton<INavigationService>(s => createHomeNavigationService(s));
+
+            services.AddSingleton<StockLogic>();
+            services.AddSingleton<ProductLogic>();
+
+            services.AddSingleton<CloseModalNavigationService>();
+
+
+            services.AddTransient<StockModalViewModel>(s => createStockModaViewModel(s));
+            services.AddSingleton<ProductViewModel>(s => createProductViewModel(s));
+            services.AddSingleton<StockViewModel>(s => createStockViewModel(s));
+            services.AddSingleton<HomeViewModel>(s => new HomeViewModel(createProductPageNavigationService(s)));
+
+            services.AddSingleton<INavigationService>(s => createHomePageNavigationService(s));
 
             services.AddTransient<NavigationMenuViewModel>(createNavigationMenuViewModel);
 
@@ -64,36 +71,56 @@ namespace MasayaNaturistCenter
                 }
             );
         }
-        private DAOFactory createDAOFactory(IServiceProvider serviceProvider)
+
+        private StockModalViewModel createStockModaViewModel( IServiceProvider serviceProvider )
+        {
+            CompositeNavigationService navigationService = new CompositeNavigationService
+            (
+                serviceProvider.GetRequiredService<CloseModalNavigationService>()
+            );
+
+            return new StockModalViewModel(navigationService);
+        }
+
+        private DAOFactory createDAOFactorySQL( IServiceProvider serviceProvider )
         {
             return new DAOFactorySQL(serviceProvider.GetRequiredService<MasayaNaturistCenterDataBase>());
         }
 
-        private StockViewModel createStockViewModel(IServiceProvider serviceProvider)
+        private StockViewModel createStockViewModel( IServiceProvider serviceProvider )
         {
+            //CompositeNavigationService navigationService = new CompositeNavigationService
+            //(
+            //    createProductNavigationService(serviceProvider),
+            //    createStockModalNavigationService(serviceProvider)
+            //);
             return new StockViewModel
             (
-                createStockX(serviceProvider), 
-                createHomeNavigationService(serviceProvider)
+                serviceProvider.GetRequiredService<StockLogic>(),
+                createProductNavigationService(serviceProvider),
+                createStockModalNavigationService(serviceProvider)
             );
         }
 
-        private IX createStockX(IServiceProvider serviceProvider)
+        private ProductViewModel createProductViewModel( IServiceProvider serviceProvider )
         {
-            return new StockX(serviceProvider.GetRequiredService<DAOFactory>());
+            return new ProductViewModel
+            (
+                serviceProvider.GetRequiredService<ProductLogic>(),
+                createStockModalNavigationService(serviceProvider)
+            ) ;
         }
 
-
-        private NavigationMenuViewModel createNavigationMenuViewModel(IServiceProvider serviceProvider)
+        private NavigationMenuViewModel createNavigationMenuViewModel( IServiceProvider serviceProvider )
         {
             return new NavigationMenuViewModel
             (
-                createHomeNavigationService(serviceProvider),
-                createProductNavigationService(serviceProvider)
+                createHomePageNavigationService(serviceProvider),
+                createProductPageNavigationService(serviceProvider)
             );
         }
 
-        private INavigationService createProductNavigationService(IServiceProvider serviceProvider)
+        private INavigationService createProductPageNavigationService( IServiceProvider serviceProvider )
         {
             return new LayoutNavigationService<StockViewModel>
             (
@@ -103,13 +130,31 @@ namespace MasayaNaturistCenter
             );
         }
 
-        private INavigationService createHomeNavigationService(IServiceProvider serviceProvider)
+        private INavigationService createProductNavigationService( IServiceProvider serviceProvider )
+        {
+            return new LayoutNavigationService<ProductViewModel>
+            (
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService <ProductViewModel>(),
+                () => serviceProvider.GetRequiredService<NavigationMenuViewModel>()
+            );
+        }
+
+        private INavigationService createHomePageNavigationService(IServiceProvider serviceProvider)
         {
             return new LayoutNavigationService<HomeViewModel>
             (
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 () => serviceProvider.GetRequiredService<HomeViewModel>(),
                 () => serviceProvider.GetRequiredService<NavigationMenuViewModel>()
+            );
+        }
+        private INavigationService createStockModalNavigationService( IServiceProvider serviceProvider )
+        {
+            return new ModalNavigationService<StockModalViewModel>
+            (
+                serviceProvider.GetRequiredService<ModalNavigationStore>(),
+                () => serviceProvider.GetRequiredService<StockModalViewModel>()
             );
         }
     }
