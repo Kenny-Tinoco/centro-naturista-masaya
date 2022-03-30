@@ -11,7 +11,7 @@ namespace MasayaNaturistCenter.Services
             _navigationServices = navigationServices;
         }
 
-        public void Navigate()
+        public void Navigate(object parameter = null)
         {
             foreach(INavigationService navigationService in _navigationServices)
             {

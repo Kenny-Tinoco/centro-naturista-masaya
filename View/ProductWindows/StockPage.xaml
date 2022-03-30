@@ -26,40 +26,27 @@
             <ColumnDefinition Width="15"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="8"/>
-            <RowDefinition Height="124"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition/>
             <RowDefinition Height="8"/>
         </Grid.RowDefinitions>
-        
-        <userControls:PageTitle
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Title="Existencia"
-            ImageSource="/View/Resource/Image/product-black.png"
-            />
 
         <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Left"
             Margin="30,30,0,15"
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
-                Title="Dato de Producto"
-                buttonCommand="{Binding productNavigationCommand}"
-                ImageSource="/View/Resource/Image/product.png"/>
-            <userControls:CustomButton
-                Title="Presetación"
-                ImageSource="/View/Resource/Image/presentation.png"/>
-            <userControls:CustomButton
                 Title="Agregar Existencia"
-                buttonCommand="{Binding addStockCommand}"
+                buttonCommand="{Binding addCommand}"
+                buttonParameter="{Binding currentStock}"
                 ImageSource="/View/Resource/Image/plus.png"/>
         </StackPanel>
 
         <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Right"
             Margin="0,0,30,15"
             Style="{DynamicResource StackPanelStyle}">
@@ -80,16 +67,17 @@
         </StackPanel>
         
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.Column="1"
             FontWeight="SemiBold"
-            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            VerticalAlignment="Bottom"
             Text="{DynamicResource StockWindowTitle}"
             FontSize="{DynamicResource ElementsDataGridTitleFontSize}"/>
         
         <DataGrid
             x:Name="elementDataGrid"
-            Grid.Row="4"
+            Grid.Row="3"
             Grid.Column="1"
             ItemsSource="{Binding dataGridSource}"
             Style="{DynamicResource ElementsDataGrid}"

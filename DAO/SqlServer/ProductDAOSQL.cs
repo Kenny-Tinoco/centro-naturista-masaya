@@ -7,33 +7,14 @@ using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class ProductDAOSQL : BaseDAOSQL, ProductDAO
+    public class ProductDAOSQL : BaseDAOSQL<Product>, ProductDAO
     {
         public ProductDAOSQL(MasayaNaturistCenterDataBase parameter) : base(parameter)
         {
             entity = parameter.Product;
         }
 
-        public override List<BaseDTO> getAll()
-        {
-            return getProductDTOListOf(dataBaseContext.Product.ToList());
-        }
-
-        public List<ProductDTO> getAllOccurrencesOf( string parameter )
-        {
-            throw new NotImplementedException();
-        }
-
-        private List<BaseDTO> getProductDTOListOf(List<Product> collection)
-        {
-            var list = new List<BaseDTO>();
-
-            list.AddRange(collection.Select(element => getProductDTOof(element)).ToList());
-
-            return list;
-        }
-
-        private ProductDTO getProductDTOof(Product parameter)
+        public override BaseDTO convertToDTO( Product parameter )
         {
             var element = new ProductDTO()
             {
@@ -43,6 +24,18 @@ namespace MasayaNaturistCenter.DAO.SqlServer
                 quantity = parameter.quantity
             };
             return element;
+        }
+
+        public override Product converter( BaseDTO element )
+        {
+            var specificDTO = (ProductDTO)element;
+            return new Product()
+            {
+                idProduct = specificDTO.idProduct,
+                name = specificDTO.name,
+                description = specificDTO.description,
+                quantity = specificDTO.quantity
+            };
         }
     }
 }

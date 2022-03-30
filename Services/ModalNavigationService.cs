@@ -18,7 +18,7 @@ namespace MasayaNaturistCenter.Services
             _createViewModel = createViewModel;
         }
 
-        public void Navigate()
+        public void Navigate(object parameter = null)
         {
             _navigationStore.currentViewModel = _createViewModel();
         }

@@ -28,7 +28,8 @@ namespace MasayaNaturistCenter.Logic
         public List<BaseDTO> getAllOccurrencesOf(string parameter)
         {
             Contract.Requires(parameter != null);
-            return entity.getAllOccurrencesOf(parameter);
+            //return entity.getAllOccurrencesOf(parameter);
+            return getAll();
         }
 
         public void save()

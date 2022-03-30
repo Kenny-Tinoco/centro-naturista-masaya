@@ -3,7 +3,7 @@ using MasayaNaturistCenter.Model.DataSource;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class PatientDAOSQL : BaseDAOSQL, PatientDAO
+    public class PatientDAOSQL : BaseDAOSQL<Patient>, PatientDAO
     {
         public PatientDAOSQL( MasayaNaturistCenterDataBase dataBaseContext ) : base(dataBaseContext)
         {

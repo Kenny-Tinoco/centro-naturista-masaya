@@ -167,4 +167,8 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="View\ProviderWindows\" />
+  </ItemGroup>
+
 </Project>

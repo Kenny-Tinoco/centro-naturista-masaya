@@ -6,7 +6,7 @@ using System.Diagnostics.Contracts;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class ConsultDAOSQL : BaseDAOSQL, ConsultDAO
+    public class ConsultDAOSQL : BaseDAOSQL<Consult>, ConsultDAO
     {
         public ConsultDAOSQL(MasayaNaturistCenterDataBase dataBaseContext) : base(dataBaseContext)
         {

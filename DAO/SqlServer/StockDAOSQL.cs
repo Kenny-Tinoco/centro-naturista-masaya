@@ -10,61 +10,19 @@ using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class StockDAOSQL : BaseDAOSQL, StockDAO
+    public class StockDAOSQL : BaseDAOSQL<StockView>, StockDAO
     {
 
-        public StockDAOSQL(MasayaNaturistCenterDataBase parameter) : base(parameter)
+        public StockDAOSQL(MasayaNaturistCenterDataBase dataBaseContext ) : base(dataBaseContext)
         {
-            entity = dataBaseContext.Stock;
+            entity = dataBaseContext.StockView;
         }
-
-
-        public override void create(BaseDTO parameter)
-        {
-            var element = getStockOf((StockDTO)parameter);
-            base.create((BaseDTO)element);
-        }
-
-        public override void deleteById(object id)
-        {
-            var foundStock = findStock((int)id);
-
-            if (foundStock != null)
-                base.deleteById(id);
-        }     
-        
-        public override void update( BaseDTO parameter )
-        {
-            deleteById(((StockDTO)parameter).idStock);
-            create(parameter);
-        }
-
-        public override List<BaseDTO> getAll()
-        {
-            return getStockDTOListOf(dataBaseContext.StockView.ToList());
-        }
-
-        public override BaseDTO read( object id )
-        {
-            return getStockDTOof
-                (
-                    findStock((int)id)
-                );
-        }
-
-        public List<BaseDTO> getAllOccurrencesOf(string parameter)
-        {
-            return getStockDTOListOf(getWhere(parameter));
-        }
-
-
 
         private List<StockView> getWhere(string parameter)
         {
             Contract.Requires(parameter != null);
 
-            return dataBaseContext
-                .StockView
+            return entity
                 .Where
                 (
                     element => 
@@ -75,14 +33,6 @@ namespace MasayaNaturistCenter.DAO.SqlServer
                 ).ToList();
         }
 
-        private List<BaseDTO> getStockDTOListOf(List<StockView> stocks)
-        {
-            var list = new List<BaseDTO>();
-
-            list.AddRange(stocks.Select(element => getStockDTOof(element)).ToList());
-
-            return list;
-        }
 
         private Stock getStockOf(StockDTO parameter)
         {
@@ -102,7 +52,9 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             return element;
         }
 
-        private StockViewDTO getStockDTOof(StockView parameter)
+  
+
+        public override BaseDTO convertToDTO( StockView parameter )
         {
             var element = new StockViewDTO
             {
@@ -117,17 +69,6 @@ namespace MasayaNaturistCenter.DAO.SqlServer
             };
 
             return element;
-        }
-
-        private StockView findStock(int id)
-        {
-            var foundElement = 
-                dataBaseContext
-                .StockView
-                .AsNoTracking()
-                .SingleOrDefault(element => element.idStock == id);
-            
-            return foundElement;
         }
     }
 }

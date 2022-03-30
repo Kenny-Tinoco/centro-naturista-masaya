@@ -4,14 +4,13 @@ using MasayaNaturistCenter.Model.DataSource;
 using MasayaNaturistCenter.Model.Utilities;
 using System.Collections.Generic;
 using System.Data.Entity;
-using System.Data.Entity.Core.Objects;
 using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class SellDAOSQL : BaseDAOSQL, TransactionDAO
+    public class SellDAOSQL : BaseDAOSQL<Sell>, TransactionDAO
     {
-        public SellDAOSQL(MasayaNaturistCenterDataBase parameter) : base(parameter)
+        public SellDAOSQL(MasayaNaturistCenterDataBase dataBaseContext ) : base(dataBaseContext)
         {
             entity = dataBaseContext.Sell;
         }
@@ -20,7 +19,7 @@ namespace MasayaNaturistCenter.DAO.SqlServer
         public override List<BaseDTO> getAll()
         {
             var list = new List<BaseDTO>();
-            var sells = ((ObjectSet<object>)entity).ToList();
+            var sells = entity.ToList();
 
             list.AddRange
                 (
@@ -35,8 +34,7 @@ namespace MasayaNaturistCenter.DAO.SqlServer
         public object findTransaction(int id)
         {
             var foundElement =
-                dataBaseContext
-                .Sell
+                entity
                 .AsNoTracking()
                 .SingleOrDefault(element => element.idSell == id);
 

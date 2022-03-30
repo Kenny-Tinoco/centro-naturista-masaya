@@ -13,7 +13,7 @@
     <System:Double x:Key="PageTitleHeight">40</System:Double>
     <Thickness x:Key="PageTitleMargin">20,1,5,1</Thickness>
 
-    <System:Double x:Key="ElementsDataGridTitleFontSize">22.5</System:Double>
+    <System:Double x:Key="ElementsDataGridTitleFontSize">20.5</System:Double>
     <System:Double x:Key="fontSizeBotonVolver">15</System:Double>
     <System:Double x:Key="fontSizeVEmergente">22</System:Double>
 

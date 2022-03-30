@@ -2,16 +2,22 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="ViewComponents\Menus\TabControlMenu.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="View\HomeWindows\SellView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ViewComponents\MenuBar\Layout.xaml.cs">
+    <Compile Update="ViewComponents\Menus\NavigationMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="ViewComponents\MenuBar\NavigationMenu.xaml.cs">
+    <Compile Update="View\ProductWindows\PresentationModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ProductWindows\ProductWindowsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\StockModal.xaml.cs">
@@ -55,19 +61,25 @@
     <Page Update="Themes\Generic.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="ViewComponents\Menus\TabControlMenu.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\HomeWindows\HomeView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\HomeWindows\SellView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ViewComponents\MenuBar\Layout.xaml">
+    <Page Update="ViewComponents\Menus\NavigationMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="ViewComponents\MenuBar\NavigationMenu.xaml">
+    <Page Update="View\ProductWindows\PresentationModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\ProductPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProductWindows\ProductWindowsView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\StockModal.xaml">

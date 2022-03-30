@@ -13,7 +13,7 @@ namespace MasayaNaturistCenter.Services
             _navigationStore = navigationStore;
         }
 
-        public void Navigate()
+        public void Navigate(object parameter = null)
         {
             _navigationStore.Close();
         }

@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 
 namespace MasayaNaturistCenter.ViewComponents.CustomControls
 {
-    public class HamburgerMenuItem : RadioButton
+    public class HamburgerMenuItem : RibbonRadioButton
     {
         static HamburgerMenuItem()
         {

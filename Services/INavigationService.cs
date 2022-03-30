@@ -1,7 +1,9 @@
-﻿namespace MasayaNaturistCenter.Services
+﻿using MasayaNaturistCenter.Model.DTO;
+
+namespace MasayaNaturistCenter.Services
 {
     public interface INavigationService
     {
-        void Navigate();
+        void Navigate( object parameter = null );
     }
 }

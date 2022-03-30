@@ -18,22 +18,15 @@
             <ColumnDefinition Width="15"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
             <RowDefinition Height="8"/>
-            <RowDefinition Height="124"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition Height="40"/>
             <RowDefinition/>
             <RowDefinition Height="8"/>
         </Grid.RowDefinitions>
 
-        <userControls:PageTitle
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="3"
-            Title="Producto"
-            ImageSource="/View/Resource/Image/product-black.png"
-            />
         <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Left"
             Margin="30,30,0,15"
             Style="{DynamicResource StackPanelStyle}">
@@ -43,6 +36,7 @@
         </StackPanel>
 
         <StackPanel
+            Grid.Row="1"
             HorizontalAlignment="Right"
             Margin="0,0,30,15"
             Style="{DynamicResource StackPanelStyle}">
@@ -63,23 +57,24 @@
         </StackPanel>
 
         <TextBlock
-            Grid.Row="3"
+            Grid.Row="2"
             Grid.Column="1"
             FontWeight="SemiBold"
-            HorizontalAlignment="Center"
+            TextAlignment="Center"
+            VerticalAlignment="Bottom"
             Text="{DynamicResource ProductWindowTitle}"
             FontSize="{DynamicResource ElementsDataGridTitleFontSize}"/>
 
         <DataGrid
             x:Name="elementDataGrid"
-            Grid.Row="4"
+            Grid.Row="3"
             Grid.Column="1"
             ItemsSource="{Binding productList}"
             Style="{DynamicResource ElementsDataGrid}"
             >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Código" Width="auto" Binding="{Binding idProduct}"/>
-                <DataGridTextColumn Header="Nombre" Width="200" Binding="{Binding name}"/>
+                <DataGridTextColumn Header="Nombre" Width="220" Binding="{Binding name}"/>
                 <DataGridTextColumn Header="Descripción" Width="*" Binding="{Binding description}"/>
                 <DataGridTextColumn Header="Cantidad total" Width="auto" Binding="{Binding quantity}"/>
             </DataGrid.Columns>

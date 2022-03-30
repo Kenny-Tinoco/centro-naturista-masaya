@@ -5,6 +5,5 @@ namespace MasayaNaturistCenter.DAO.DAOInterfaces
 {
     public interface ProductDAO : BaseDAO<BaseDTO, object>
     {
-        List<ProductDTO> getAllOccurrencesOf(string parameter);
     }
 }

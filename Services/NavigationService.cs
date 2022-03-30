@@ -1,10 +1,11 @@
-﻿using MasayaNaturistCenter.Stores;
+﻿using MasayaNaturistCenter.Model.DTO;
+using MasayaNaturistCenter.Stores;
 using MasayaNaturistCenter.ViewModel;
 using System;
 
 namespace MasayaNaturistCenter.Services
 {
-    public class NavigationService<viewModelBase> : INavigationService 
+    public class NavigationService<viewModelBase> : INavigationService
                                                     where viewModelBase : ViewModelBase
     {
         private readonly NavigationStore _navigationStore;
@@ -16,7 +17,7 @@ namespace MasayaNaturistCenter.Services
             _createViewModel = createViewModel;
         }
 
-        public void Navigate()
+        public void Navigate( object parameter = null )
         {
             _navigationStore.currentViewModel = _createViewModel();
         }

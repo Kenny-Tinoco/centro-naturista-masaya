@@ -38,5 +38,15 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls
         public static readonly DependencyProperty buttonCommandPropety =
             DependencyProperty.Register("buttonCommand", typeof(ICommand), typeof(CustomButton), new PropertyMetadata());
 
+
+        public object buttonParameter
+        {
+            get { return (object)GetValue(buttonParameterProperty); }
+            set { SetValue(buttonParameterProperty, value); }
+        }
+
+        public static readonly DependencyProperty buttonParameterProperty =
+            DependencyProperty.Register("buttonParameter", typeof(object), typeof(CustomButton), new PropertyMetadata(string.Empty));
+
     }
 }

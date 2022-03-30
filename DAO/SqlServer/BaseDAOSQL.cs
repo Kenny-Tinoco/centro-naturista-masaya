@@ -4,46 +4,66 @@ using MasayaNaturistCenter.Model.DataSource;
 using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Diagnostics.Contracts;
+using System;
+using System.Linq;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class BaseDAOSQL : BaseDAO<BaseDTO, object>
+    public class BaseDAOSQL<Entity> : BaseDAO<BaseDTO, object> where Entity : class
     {
-        protected object entity;
-        protected MasayaNaturistCenterDataBase dataBaseContext;
+        protected ObjectSet<Entity> entity;
+        private MasayaNaturistCenterDataBase _dataBaseContext;
 
 
-        public BaseDAOSQL(MasayaNaturistCenterDataBase dataBaseContext)
+        public BaseDAOSQL( MasayaNaturistCenterDataBase dataBaseContext )
         {
             Contract.Requires(dataBaseContext != null);
-            this.dataBaseContext = dataBaseContext;
+            this._dataBaseContext = dataBaseContext;
         }
 
 
-        public virtual void create(BaseDTO element)
+        public virtual void create( BaseDTO element )
         {
-            ((ObjectSet<object>)entity).AddObject(element);
-            dataBaseContext.SaveChanges();
+            entity.AddObject(converter(element));
+            _dataBaseContext.SaveChanges();
         }
 
-        public virtual void deleteById(object id)
+        public virtual void deleteById( object id )
         {
-            ((ObjectSet<object>)entity).DeleteObject(id);
-            dataBaseContext.SaveChanges();
         }
 
         public virtual List<BaseDTO> getAll()
         {
-            return null;
+            return getList(entity.ToList());
         }
 
-        public virtual BaseDTO read(object id)
+        public virtual BaseDTO read( object id )
         {
-            return null;
+            throw new NotImplementedException();
         }
 
         public virtual void update( BaseDTO element )
         {
+        }
+
+
+        public virtual Entity converter( BaseDTO element )
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<BaseDTO> getList( List<Entity> list )
+        {
+            var presentations = new List<BaseDTO>();
+
+            presentations.AddRange(list.Select(element => convertToDTO(element)).ToList());
+
+            return presentations;
+        }
+
+        public virtual BaseDTO convertToDTO( Entity parameter )
+        {
+            throw new NotImplementedException();
         }
     }
 }

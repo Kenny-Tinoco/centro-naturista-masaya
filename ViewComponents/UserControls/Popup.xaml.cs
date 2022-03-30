@@ -49,21 +49,5 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls
         public static readonly DependencyProperty buttonExitCommandPropety =
             DependencyProperty.Register("buttonExitCommand", typeof(ICommand), typeof(Popup), new PropertyMetadata());
 
-
-
-        public event RoutedEventHandler saveClick
-        {
-            add { AddHandler(saveClickEvent, value); }
-            remove { RemoveHandler(saveClickEvent, value); }
-        }
-
-        public static readonly RoutedEvent saveClickEvent =
-            EventManager.RegisterRoutedEvent(nameof(saveClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(Popup));
-
-
-        private void save_Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(saveClickEvent));
-        }
     }
 }

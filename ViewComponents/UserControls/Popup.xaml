@@ -22,8 +22,6 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="8"/>
                 <RowDefinition />
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="10"/>
                 <RowDefinition Height="8"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -78,14 +76,6 @@
                 Grid.Row="2"
                 Grid.Column="1"
                 Content="{Binding popupContent, ElementName=root}"
-                />
-
-            <userControls:CustomButton
-                Grid.Row="3"
-                Grid.Column="1"
-                Width="130"
-                Title="Guardar"
-                ImageSource="/View/Resource/Image/save.png"
                 />
         </Grid>
     </Border>

@@ -28,12 +28,14 @@ namespace MasayaNaturistCenter.ViewModel
         public NavigationMenuViewModel
             (
                 INavigationService navigateHomeCommand,
-                INavigationService navigateProductCommand
+                INavigationService navigateProductCommand,
+                INavigationService navigateProviderCommand
             )
         {
             isMenuOpen = true;
             this.navigateHomeCommand = new NavigateCommand(navigateHomeCommand);
             this.navigateProductCommand = new NavigateCommand(navigateProductCommand);
+            this.navigateProviderCommand = new NavigateCommand(navigateProviderCommand);
 
         }
     }

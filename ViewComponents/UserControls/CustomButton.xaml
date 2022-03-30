@@ -13,6 +13,7 @@
                 VerticalAlignment="Center"
                 Style="{DynamicResource CustomButtonStyle}"
                 Command="{Binding buttonCommand, ElementName=root}"
+                CommandParameter="{Binding buttonParameter, ElementName=root}"
                 >
             <StackPanel
                 Orientation="Horizontal">

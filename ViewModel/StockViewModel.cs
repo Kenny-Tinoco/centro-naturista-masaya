@@ -1,41 +1,47 @@
-using MasayaNaturistCenter.Model.DTO;
+using System.Windows.Data;
+using System.Windows.Input;
+using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using MasayaNaturistCenter.Command;
-using System.Windows.Data;
-using System.ComponentModel;
-using System.Windows.Input;
 using MasayaNaturistCenter.Logic;
 using MasayaNaturistCenter.Services;
+using MasayaNaturistCenter.Stores;
+using MasayaNaturistCenter.Command;
+using MasayaNaturistCenter.Model.DTO;
 
 namespace MasayaNaturistCenter.ViewModel
 {
     public class StockViewModel : ViewModelBase
     {
-        private ObservableCollection<StockViewDTO> _stockList;
-        public INavigationService navigationService;
         public ILogic stockLogic;
-        public StockDTO currentStock;
-
         private string _searchText;
+        public INavigationService navigationService;
         private CollectionViewSource _dataGridSource;
+        private ObservableCollection<StockViewDTO> _stockList;
+        
+        public StockDTO currentStock { get; set; }
 
-        public ICommand addStockCommand { get; }
-        public ICommand productNavigationCommand { get; }
-        public ICommand save { get; }
-        public ICommand delete { get; }
+        public ICommand addCommand { get; }
+        public ICommand saveCommand { get; }
+        public ICommand deleteCommand { get; }
 
 
-        public StockViewModel( ILogic parameter, INavigationService productPageNavigation, INavigationService stockModalNavigation )
+        public StockViewModel
+        (
+            ILogic parameter, 
+            ModalNavigationStore navigationStore, 
+            INavigationService a 
+        )
         {
             Contract.Requires(parameter != null);
             stockLogic = parameter;
 
-            addStockCommand = new NavigateCommand(stockModalNavigation);
-            productNavigationCommand = new NavigateCommand(productPageNavigation);
-            save = new SaveCommand(stockLogic);
-            delete = new DeleteCommand(stockLogic);
+            var stockModalNavigation = new ParameterNavigationService<BaseDTO, ViewModelBase>(navigationStore, ( parameter ) => new StockModalViewModel(a, new StockDTO()));
+
+            addCommand = new ParameterNavigateCommand(stockModalNavigation);
+            saveCommand = new SaveCommand(stockLogic);
+            deleteCommand = new DeleteCommand(stockLogic);
 
             stockList = new ObservableCollection<StockViewDTO>();
 

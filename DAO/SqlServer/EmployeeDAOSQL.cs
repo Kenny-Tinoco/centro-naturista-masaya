@@ -3,7 +3,7 @@ using MasayaNaturistCenter.Model.DataSource;
 
 namespace MasayaNaturistCenter.DAO.SqlServer
 {
-    public class EmployeeDAOSQL : BaseDAOSQL, EmployeeDAO
+    public class EmployeeDAOSQL : BaseDAOSQL<Employee>, EmployeeDAO
     {
         public EmployeeDAOSQL( MasayaNaturistCenterDataBase dataBaseContext ) : base(dataBaseContext)
         {
