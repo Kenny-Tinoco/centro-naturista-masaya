@@ -1,0 +1,5 @@
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\DataAccess\obj\Debug\net48\DataAccess.csproj.AssemblyReference.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\DataAccess\obj\Debug\net48\DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\DataAccess\obj\Debug\net48\DataAccess.AssemblyInfoInputs.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\DataAccess\obj\Debug\net48\DataAccess.AssemblyInfo.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\CentroNaturistaMasaya\DataAccess\obj\Debug\net48\DataAccess.csproj.CoreCompileInputs.cache

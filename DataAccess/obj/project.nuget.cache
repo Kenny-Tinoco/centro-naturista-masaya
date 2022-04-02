@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Qd5a+hjTOrVH6ibsVS5nQY4BjosltHRrlD3JKlUxdME5sHARplDqTP5FCwkdufoZnQPIjK7xrp67HVei4x9hNA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\CentroNaturistaMasaya\\DataAccess\\DataAccess.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\entityframework\\6.4.4\\entityframework.6.4.4.nupkg.sha512"
+  ],
+  "logs": []
+}

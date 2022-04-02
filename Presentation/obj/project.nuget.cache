@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "zWUpfkYB3q+Ltj0j0oyu+IADhydQAi4FkI1dxcPgwt0jYo2jJIQErOL7KiKnPT3Ru3QtLpbPrcsBsNVpGfpX4w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\CentroNaturistaMasaya\\Presentation\\Presentation.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.windows.sdk.net.ref\\10.0.17763.23\\microsoft.windows.sdk.net.ref.10.0.17763.23.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -20,7 +20,17 @@
       "ProjectGuid": "b9d94074-6569-44da-9f84-9af00145b805",
       "DisplayName": "PruebasDeNuevasFuncionalidades",
       "ColorIndex": 2
+    },
+    "0195fd7e-1fcb-4e29-bd24-2e16ab6d77d3": {
+      "ProjectGuid": "0195fd7e-1fcb-4e29-bd24-2e16ab6d77d3",
+      "DisplayName": "Domain",
+      "ColorIndex": 3
+    },
+    "af88c07b-683e-4c23-8d2b-72c918a51b5f": {
+      "ProjectGuid": "af88c07b-683e-4c23-8d2b-72c918a51b5f",
+      "DisplayName": "DataAccess",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 5
 }
