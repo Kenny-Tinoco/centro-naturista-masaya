@@ -69,7 +69,7 @@ namespace MasayaNaturistCenter.ViewComponents.Menus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/viewcomponents/menus/navigationmenu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Presentation;component/viewcomponents/menus/navigationmenu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\Menus\NavigationMenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

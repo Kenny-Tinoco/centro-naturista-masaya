@@ -1,6 +1,6 @@
-﻿using MasayaNaturistCenter.Command;
-using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Model.Utilities;
+﻿using DataAccess.Model.DTO;
+using Domain.Utilities;
+using MasayaNaturistCenter.Command;
 using MasayaNaturistCenter.Services;
 using System;
 using System.Windows.Input;

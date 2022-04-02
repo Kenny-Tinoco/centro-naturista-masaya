@@ -61,8 +61,7 @@ namespace MasayaNaturistCenter.ViewComponents.Menus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/viewcomponents/menus/tabcontrolmenu.xaml" +
-                    "", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Presentation;V1.0.0.0;component/viewcomponents/menus/tabcontrolmenu.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\Menus\TabControlMenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

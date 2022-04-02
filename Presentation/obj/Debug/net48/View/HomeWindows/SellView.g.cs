@@ -54,7 +54,7 @@ namespace MasayaNaturistCenter.View.HomeWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;component/view/homewindows/sellview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Presentation;component/view/homewindows/sellview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\HomeWindows\SellView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

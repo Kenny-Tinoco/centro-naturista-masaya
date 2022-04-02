@@ -61,8 +61,7 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/MasayaNaturistCenter;V1.0.0.0;component/viewcomponents/usercontrols/menubutton.x" +
-                    "aml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Presentation;V1.0.0.0;component/viewcomponents/usercontrols/menubutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\UserControls\MenuButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

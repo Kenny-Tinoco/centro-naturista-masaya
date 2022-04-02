@@ -1,4 +1,4 @@
-﻿using MasayaNaturistCenter.Model.DTO;
+﻿using DataAccess.Model.DTO;
 using MasayaNaturistCenter.ViewModel;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;

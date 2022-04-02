@@ -2,13 +2,13 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using MasayaNaturistCenter.Logic;
 using MasayaNaturistCenter.Services;
 using MasayaNaturistCenter.Stores;
 using MasayaNaturistCenter.Command;
-using MasayaNaturistCenter.Model.DTO;
 using System.Threading.Tasks;
 using MasayaNaturistCenter.Command.Crud;
+using Domain.Logic;
+using DataAccess.Model.DTO;
 
 namespace MasayaNaturistCenter.ViewModel
 {

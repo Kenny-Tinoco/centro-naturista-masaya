@@ -1,7 +1,5 @@
-﻿using MasayaNaturistCenter.Logic;
-using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.ViewModel;
-using System.ComponentModel;
+﻿using DataAccess.Model.DTO;
+using Domain.Logic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 

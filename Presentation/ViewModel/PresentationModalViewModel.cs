@@ -1,11 +1,9 @@
-﻿using MasayaNaturistCenter.Command;
+﻿using DataAccess.Model.DTO;
+using Domain.Logic;
+using MasayaNaturistCenter.Command;
 using MasayaNaturistCenter.Command.Crud;
-using MasayaNaturistCenter.Logic;
-using MasayaNaturistCenter.Model.DTO;
 using MasayaNaturistCenter.Services;
-using System.ComponentModel;
 using System.Threading.Tasks;
-using System.Windows.Data;
 using System.Windows.Input;
 
 namespace MasayaNaturistCenter.ViewModel

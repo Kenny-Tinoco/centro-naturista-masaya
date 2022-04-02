@@ -5,7 +5,11 @@ using MasayaNaturistCenter.Stores;
 using System;
 using System.Windows;
 using MasayaNaturistCenter.ViewModel.Components;
+using DataAccess.Model.DataSource;
+using DataAccess.DAO.DAOInterfaces;
+using Domain.Logic;
 using Microsoft.Extensions.DependencyInjection;
+using DataAccess.Model.DTO;
 
 namespace MasayaNaturistCenter
 {
