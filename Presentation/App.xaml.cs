@@ -5,11 +5,13 @@ using MasayaNaturistCenter.Stores;
 using System;
 using System.Windows;
 using MasayaNaturistCenter.ViewModel.Components;
-using DataAccess.Model.DataSource;
-using DataAccess.DAO.DAOInterfaces;
 using Domain.Logic;
 using Microsoft.Extensions.DependencyInjection;
-using DataAccess.Model.DTO;
+using DataAccess.DAO.DAOInterfaces;
+using DataAccess.DAO.SqlServer;
+using DataAccess.SqlServerDataSource;
+using System.Configuration;
+using Microsoft.EntityFrameworkCore;
 
 namespace MasayaNaturistCenter
 {
@@ -21,9 +23,7 @@ namespace MasayaNaturistCenter
         public App()
         {
             IServiceCollection services = new ServiceCollection();
-
             addServices(services);
-
             _serviceProvider = services.BuildServiceProvider();
         }
 
@@ -44,7 +44,13 @@ namespace MasayaNaturistCenter
         {
             services.AddSingleton<NavigationStore>();
             services.AddSingleton<ModalNavigationStore>();
-            services.AddSingleton<MasayaNaturistCenterDataBase>();
+
+            var configureDbContext = new MasayaNaturistCenterDataBaseFactory().getConfigureDbContext();
+
+            services.AddDbContext<MasayaNaturistCenterDataBase>(configureDbContext);
+            services.AddSingleton<MasayaNaturistCenterDataBaseFactory>(new MasayaNaturistCenterDataBaseFactory(configureDbContext));
+            
+            
             services.AddSingleton<DAOFactory>(s => createDAOFactorySQL(s));
 
 
@@ -110,7 +116,7 @@ namespace MasayaNaturistCenter
             return new StockModalViewModel
             (
                 serviceProvider.GetRequiredService<CloseModalNavigationService>(), 
-                new StockDTO { name="Este es un objeto de prueba" }
+                new DataAccess.SqlServerDataSource.Stock()
             );
         }
 
@@ -204,7 +210,7 @@ namespace MasayaNaturistCenter
 
         private INavigationService createStockModalNavigationService( IServiceProvider serviceProvider )
         {
-            return new ParameterNavigationService<BaseDTO, StockModalViewModel>
+            return new ParameterNavigationService<BaseEntity, StockModalViewModel>
             (
                 serviceProvider.GetRequiredService<ModalNavigationStore>(),
                 (BaseDTO) => serviceProvider.GetRequiredService<StockModalViewModel>()
@@ -223,8 +229,16 @@ namespace MasayaNaturistCenter
 
         private DAOFactory createDAOFactorySQL( IServiceProvider serviceProvider )
         {
-            return new DAOFactorySQL(serviceProvider.GetRequiredService<MasayaNaturistCenterDataBase>());
+            return new DAOFactorySQL(serviceProvider.GetRequiredService<MasayaNaturistCenterDataBaseFactory>());
         }
 
+        public void AddDbContext( IServiceCollection services )
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["CSCentroNaturistaMasaya"].ConnectionString;
+            Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlServer(connectionString);
+
+            services.AddDbContext<MasayaNaturistCenterDataBase>(configureDbContext);
+            services.AddSingleton<MasayaNaturistCenterDataBaseFactory>(new MasayaNaturistCenterDataBaseFactory(configureDbContext));
+        }
     }
 }

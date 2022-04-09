@@ -1,20 +1,18 @@
-﻿using DataAccess.Model.DTO;
-
-namespace DataAccess.DAO.DAOInterfaces
+﻿namespace DataAccess.DAO.DAOInterfaces
 {
     public abstract class DAOFactory
     {
-        public virtual ConsultDAO<ConsultDTO> consultDAO { get; }
-        public virtual EmployeeDAO<EmployeeDTO> employeeDAO { get; }
-        public virtual PatientDAO<PatientDTO> patientDAO { get; }
-        public virtual PrescriptionProductDAO<PrescriptionProductDTO> prescriptionProductDAO { get; }
-        public virtual PresentationDAO<PresentationDTO> presentationDAO { get; }
-        public virtual ProductDAO<ProductDTO> productDAO { get; }
-        public virtual ProviderDAO<ProviderDTO> providerDAO { get; }
-        public virtual StockDAO<StockViewDTO> stockDAO { get; }
-        public virtual TransactionDAO<TransactionDTO> sellDAO { get; }
-        public virtual TransactionDetailDAO<TransactionDetailDTO> saleDetailDAO { get; }
-        public virtual TransactionDAO<TransactionDTO> supplyDAO { get; }
-        public virtual TransactionDetailDAO<TransactionDetailDTO> supplyDetailDAO { get; }
+        public virtual ConsultDAO consultDAO { get; } = null!;
+        public virtual EmployeeDAO employeeDAO { get; } = null!;
+        public virtual PatientDAO patientDAO { get; } = null!;
+        public virtual PrescriptionProductDAO prescriptionProductDAO { get; } = null!;
+        public virtual PresentationDAO presentationDAO { get; } = null!;
+        public virtual ProductDAO productDAO { get; } = null!;
+        public virtual ProviderDAO providerDAO { get; } = null!;
+        public virtual StockDAO stockDAO { get; } = null!;
+        public virtual TransactionDAO sellDAO { get; } = null!;
+        public virtual TransactionDetailDAO saleDetailDAO { get; } = null!;
+        public virtual TransactionDAO supplyDAO { get; } = null!;
+        public virtual TransactionDetailDAO supplyDetailDAO { get; } = null!;
     }
 }

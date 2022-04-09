@@ -1,12 +1,12 @@
 ﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Model.DTO;
+using DataAccess.SqlServerDataSource;
 
 namespace Domain.Logic
 {
-    public class StockModalLogic : BaseLogic<StockViewDTO>
+    public class StockModalLogic : BaseLogic<StockView>
     {
-        private ProductDAO<ProductDTO> productDAO;
-        private PresentationDAO<PresentationDTO> presentationDAO;
+        private ProductDAO productDAO;
+        private PresentationDAO presentationDAO;
 
         public StockModalLogic( DAOFactory parameter ) : base(parameter.stockDAO)
         {

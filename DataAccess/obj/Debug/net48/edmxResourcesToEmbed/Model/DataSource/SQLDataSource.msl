@@ -249,5 +249,27 @@
         <ScalarProperty Name="idRole" ColumnName="idRole" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="sp_DeleteByIdInEntity" FunctionName="MasayaNaturistCenterModel.Store.sp_DeleteByIdInEntity" />
+    <FunctionImportMapping FunctionImportName="sp_Presentation_TableManager" FunctionName="MasayaNaturistCenterModel.Store.sp_Presentation_TableManager">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MasayaNaturistCenterModel.sp_Presentation_TableManager_Result">
+          <ScalarProperty Name="idPresentation" ColumnName="idPresentation" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_Stock_TableManager" FunctionName="MasayaNaturistCenterModel.Store.sp_Stock_TableManager">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MasayaNaturistCenterModel.sp_Stock_TableManager_Result">
+          <ScalarProperty Name="idStock" ColumnName="idStock" />
+          <ScalarProperty Name="idProduct" ColumnName="idProduct" />
+          <ScalarProperty Name="idPresentation" ColumnName="idPresentation" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="entryDate" ColumnName="entryDate" />
+          <ScalarProperty Name="expiration" ColumnName="expiration" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

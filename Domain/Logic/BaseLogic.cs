@@ -1,17 +1,17 @@
 ﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Model.DTO;
+using DataAccess.SqlServerDataSource;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Domain.Logic
 {
-    public class BaseLogic<GenericDTO> : INotifyPropertyChanged 
-        where GenericDTO : BaseDTO
+    public class BaseLogic<Entity> : INotifyPropertyChanged 
+        where Entity : BaseEntity
     {
-        private GenericDTO _currentDTO;
-        public GenericDTO currentDTO
-        { 
+        private Entity _currentDTO;
+        public Entity currentDTO
+        {
             get
             {
                 return _currentDTO;
@@ -33,14 +33,14 @@ namespace Domain.Logic
                 _isEditable = value;
                 OnPropertyChanged(nameof(isEditable));
             }
-        } 
+        }
 
-        private BaseDAO<GenericDTO, object> _entity;
+        private BaseDAO<Entity, object> _entity;
         private bool _isEditable;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public BaseLogic( BaseDAO<GenericDTO, object> parameter )
+        public BaseLogic(BaseDAO<Entity, object> parameter)
         {
             _entity = parameter;
         }
@@ -60,22 +60,22 @@ namespace Domain.Logic
         public async Task edit()
         {
             await _entity.update(currentDTO);
-            isEditable = false;
             resetCurrentDTO();
             await updateRecordList();
+            isEditable = false;
         }
-        public async Task delete( GenericDTO parameter )
+        public async Task delete(Entity parameter)
         {
             await _entity.deleteById(getId(parameter));
             await updateRecordList();
         }
 
-        public virtual int getId( GenericDTO parameter )
+        public virtual int getId(Entity parameter)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<GenericDTO>> getAll()
+        public async Task<IEnumerable<Entity>> getAll()
         {
             return await _entity.getAll();
         }
@@ -85,7 +85,7 @@ namespace Domain.Logic
             throw new NotImplementedException();
         }
 
-        protected void OnPropertyChanged( string propertyName )
+        protected void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
             {
@@ -93,23 +93,23 @@ namespace Domain.Logic
             }
         }
 
-        public void getListUpdates( IEnumerable<GenericDTO> list)
+        public void getListUpdates(IEnumerable<Entity> list)
         {
             recordList.Clear();
 
-            var auxiliaryList = new ObservableCollection<GenericDTO>();
+            var auxiliaryList = new ObservableCollection<Entity>();
             list.ToList().ForEach(element => auxiliaryList.Add(element));
 
             recordList = auxiliaryList;
         }
-        
-        private ObservableCollection<GenericDTO> _recordList; 
-        public ObservableCollection<GenericDTO> recordList
+
+        private ObservableCollection<Entity> _recordList;
+        public ObservableCollection<Entity> recordList
         {
             get
             {
                 if (_recordList == null)
-                    _recordList = new ObservableCollection<GenericDTO>();
+                    _recordList = new ObservableCollection<Entity>();
                 return _recordList;
             }
             set

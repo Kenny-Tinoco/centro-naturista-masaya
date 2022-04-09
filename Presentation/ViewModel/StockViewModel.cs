@@ -4,11 +4,11 @@ using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using MasayaNaturistCenter.Services;
 using MasayaNaturistCenter.Stores;
-using MasayaNaturistCenter.Command;
 using System.Threading.Tasks;
-using MasayaNaturistCenter.Command.Crud;
 using Domain.Logic;
-using DataAccess.Model.DTO;
+using DataAccess.SqlServerDataSource;
+using MasayaNaturistCenter.Command;
+using MasayaNaturistCenter.Command.Crud;
 
 namespace MasayaNaturistCenter.ViewModel
 {
@@ -18,34 +18,34 @@ namespace MasayaNaturistCenter.ViewModel
         public ICommand addCommand { get; }
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
-        public BaseLogic<StockViewDTO> logic { get; }
+        public BaseLogic<StockView> logic { get; }
 
         public INavigationService navigationService;
 
 
         public StockViewModel
-        ( BaseLogic<StockViewDTO> parameter, INavigationService addStockNavigationService )
+        ( BaseLogic<StockView> parameter, INavigationService addStockNavigationService )
         {
             Contract.Requires(parameter != null);
             logic = parameter;
 
             addCommand = new ParameterNavigateCommand(addStockNavigationService);
-            saveCommand = new SaveCommand<StockViewDTO>(parameter);
-            deleteCommand = new DeleteCommand<StockViewDTO>(parameter);
+            saveCommand = new SaveCommand<StockView>(parameter);
+            deleteCommand = new DeleteCommand<StockView>(parameter);
 
-            logic.loadListRecordsCommand = new LoadRecordListCommand<StockViewDTO>(this);
+            logic.loadListRecordsCommand = new LoadRecordListCommand<StockView>(this);
         }
 
         public static StockViewModel LoadViewModel
-        ( BaseLogic<StockViewDTO> parameter, ModalNavigationStore navigationStore, INavigationService CloseModalNavigationService)
+        ( BaseLogic<StockView> parameter, ModalNavigationStore navigationStore, INavigationService CloseModalNavigationService)
         {
-            var stockModalNavigation = new ParameterNavigationService<BaseDTO, ViewModelBase>
+            var stockModalNavigation = new ParameterNavigationService<BaseEntity, ViewModelBase>
             (
                 navigationStore, 
-                ( param ) => new StockModalViewModel(CloseModalNavigationService, new StockDTO())
+                ( param ) => new StockModalViewModel(CloseModalNavigationService, new DataAccess.SqlServerDataSource.Stock())
             );
 
-            StockViewModel viewModel = new StockViewModel(parameter,stockModalNavigation);
+            StockViewModel viewModel = new StockViewModel(parameter, stockModalNavigation);
 
             viewModel.logic.loadListRecordsCommand.Execute(null);
 
@@ -92,7 +92,7 @@ namespace MasayaNaturistCenter.ViewModel
 
         private void DataGridSource_Filter(object sender, FilterEventArgs e)
         {
-            StockViewDTO element = e.Item as StockViewDTO;
+            StockView element = e.Item as StockView;
             if (element != null)
             {
                 if((logic as StockLogic).searchLogic(element, searchText))

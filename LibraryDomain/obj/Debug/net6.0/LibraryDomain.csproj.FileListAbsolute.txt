@@ -1,0 +1,14 @@
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\bin\Debug\net6.0\LibraryDomain.deps.json
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\bin\Debug\net6.0\LibraryDomain.runtimeconfig.json
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\bin\Debug\net6.0\LibraryDomain.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\bin\Debug\net6.0\LibraryDomain.pdb
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.csproj.AssemblyReference.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.AssemblyInfoInputs.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.AssemblyInfo.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.csproj.CoreCompileInputs.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\ref\LibraryDomain.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.pdb
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\obj\Debug\net6.0\LibraryDomain.genruntimeconfig.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\LibraryDomain\bin\Debug\net6.0\ref\LibraryDomain.dll

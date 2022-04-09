@@ -1,5 +1,4 @@
-﻿using MasayaNaturistCenter.Model.DTO;
-using MasayaNaturistCenter.Stores;
+﻿using MasayaNaturistCenter.Stores;
 using MasayaNaturistCenter.ViewModel;
 using System;
 

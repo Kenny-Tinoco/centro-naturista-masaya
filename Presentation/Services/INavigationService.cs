@@ -1,6 +1,4 @@
-﻿using MasayaNaturistCenter.Model.DTO;
-
-namespace MasayaNaturistCenter.Services
+﻿namespace MasayaNaturistCenter.Services
 {
     public interface INavigationService
     {

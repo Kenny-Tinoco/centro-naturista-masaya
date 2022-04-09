@@ -1,20 +1,19 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Model.DTO;
+﻿using DataAccess.SqlServerDataSource;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
     public class SaleLogic : TransactionLogic
     {
-        public TransactionDAO<BaseDTO> sellDAO;
-        public EmployeeDTO employee;
+        //public TransactionDAO<BaseEntity> sellDAO;
+        public Employee employee;
 
 
         public SaleLogic()
         {
         }
 
-        public SaleLogic(EmployeeDTO employee, TransactionDTO transaction) : base(transaction)
+        public SaleLogic(Employee employee, Transaction transaction) : base(transaction)
         {
             Contract.Requires(employee != null && transaction != null);
             this.employee = employee;
@@ -23,7 +22,7 @@ namespace Domain.Logic
 
         public void makeSale()
         {
-            makeTransaction();
+            //makeTransaction();
         }
 
         void reduceQuantityInProducts()

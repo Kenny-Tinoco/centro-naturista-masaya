@@ -1,6 +1,6 @@
-﻿using MasayaNaturistCenter.Command.Crud;
-using MasayaNaturistCenter.Logic;
-using MasayaNaturistCenter.Model.DTO;
+﻿using DataAccess.SqlServerDataSource;
+using Domain.Logic;
+using MasayaNaturistCenter.Command.Crud;
 using MasayaNaturistCenter.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,24 +14,24 @@ namespace MasayaNaturistCenter.ViewModel
 {
     public class ProductViewModel : ViewModelBase
     {
-        private ObservableCollection<ProductDTO> _recordsList;
+        private ObservableCollection<Product> _recordsList;
         public INavigationService navigationService;
-        public BaseLogic<ProductDTO> logic;
+        public BaseLogic<Product> logic;
         private string _searchText;
 
-        public ProductViewModel( BaseLogic<ProductDTO> parameter, INavigationService navigationService )
+        public ProductViewModel( BaseLogic<Product> parameter, INavigationService navigationService )
         {
             Contract.Requires(navigationService != null && parameter != null);
             this.navigationService = navigationService;
             logic = parameter;
 
-            recordsList = new ObservableCollection<ProductDTO>();
-            logic.loadListRecordsCommand = new LoadRecordListCommand<ProductDTO>(this);
+            recordsList = new ObservableCollection<Product>();
+            logic.loadListRecordsCommand = new LoadRecordListCommand<Product>(this);
         }
 
 
         public static ProductViewModel LoadViewModel
-        ( BaseLogic<ProductDTO> parameter, INavigationService navigationService )
+        ( BaseLogic<Product> parameter, INavigationService navigationService )
         {
             ProductViewModel viewModel = new ProductViewModel(parameter, navigationService);
 
@@ -41,7 +41,7 @@ namespace MasayaNaturistCenter.ViewModel
         }
 
 
-        public ObservableCollection<ProductDTO> recordsList
+        public ObservableCollection<Product> recordsList
         {
             get { return _recordsList; }
             set 
@@ -71,11 +71,11 @@ namespace MasayaNaturistCenter.ViewModel
             dataGridSource = DataGridSource.View;
         }
 
-        private void getListUpdates( IEnumerable<ProductDTO> list )
+        private void getListUpdates( IEnumerable<Product> list )
         {
             recordsList.Clear();
 
-            var auxiliaryList = new ObservableCollection<ProductDTO>();
+            var auxiliaryList = new ObservableCollection<Product>();
             list.ToList().ForEach(element => auxiliaryList.Add(element));
 
             recordsList = auxiliaryList;
@@ -95,7 +95,7 @@ namespace MasayaNaturistCenter.ViewModel
 
         private void DataGridSource_Filter( object sender, FilterEventArgs e )
         {
-            var element = e.Item as ProductDTO;
+            var element = e.Item as Product;
             if (element != null)
             {
                 if ((logic as ProductLogic).searchLogic(element, searchText))

@@ -1,11 +1,11 @@
-﻿using DataAccess.Model.DTO;
+﻿using DataAccess.SqlServerDataSource;
 using MasayaNaturistCenter.ViewModel;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 
 namespace MasayaNaturistCenter.Command.Crud
 {
-    public class LoadRecordListCommand<Entity> : AsyncCommandBase where Entity : BaseDTO
+    public class LoadRecordListCommand<Entity> : AsyncCommandBase where Entity : BaseEntity
     {
         private ViewModelBase viewModel;
 

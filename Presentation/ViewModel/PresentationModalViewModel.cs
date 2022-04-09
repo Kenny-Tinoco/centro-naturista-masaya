@@ -1,5 +1,4 @@
-﻿using DataAccess.Model.DTO;
-using Domain.Logic;
+﻿using Domain.Logic;
 using MasayaNaturistCenter.Command;
 using MasayaNaturistCenter.Command.Crud;
 using MasayaNaturistCenter.Services;
@@ -22,20 +21,20 @@ namespace MasayaNaturistCenter.ViewModel
         public ICommand exitCommand { get; }
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
-        public BaseLogic<PresentationDTO> logic { get; }
+        public BaseLogic<DataAccess.SqlServerDataSource.Presentation> logic { get; }
 
-        public PresentationModalViewModel( BaseLogic<PresentationDTO> parameter, INavigationService closeModalNavigationService )
+        public PresentationModalViewModel( BaseLogic<DataAccess.SqlServerDataSource.Presentation> parameter, INavigationService closeModalNavigationService )
         {
             logic = parameter;
             exitCommand = new ExitModalCommand(closeModalNavigationService);
-            saveCommand = new SaveCommand<PresentationDTO>(logic);
-            deleteCommand = new DeleteCommand<PresentationDTO>(logic);
+            saveCommand = new SaveCommand<DataAccess.SqlServerDataSource.Presentation>(logic);
+            deleteCommand = new DeleteCommand<DataAccess.SqlServerDataSource.Presentation>(logic);
 
-            logic.loadListRecordsCommand = new LoadRecordListCommand<PresentationDTO>(this);
+            logic.loadListRecordsCommand = new LoadRecordListCommand<DataAccess.SqlServerDataSource.Presentation>(this);
         }
 
         public static PresentationModalViewModel LoadViewModel
-        ( BaseLogic<PresentationDTO> parameter, INavigationService closeModalNavigationService )
+        ( BaseLogic<DataAccess.SqlServerDataSource.Presentation> parameter, INavigationService closeModalNavigationService )
         {
             PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, closeModalNavigationService);
 
@@ -58,7 +57,7 @@ namespace MasayaNaturistCenter.ViewModel
             get
             {
                 if (_resetCommand == null)
-                    _resetCommand = new RelayCommand(parametro => reset(), null);
+                    _resetCommand = new RelayCommand(parameter => reset(), null);
 
                 return _resetCommand;
             }
@@ -75,12 +74,12 @@ namespace MasayaNaturistCenter.ViewModel
             get
             {
                 if (_editCommand == null)
-                    _editCommand = new RelayCommand(parameter => edit((PresentationDTO)parameter), null);
+                    _editCommand = new RelayCommand(parameter => edit((DataAccess.SqlServerDataSource.Presentation)parameter), null);
 
                 return _editCommand;
             }
         }
-        public void edit(PresentationDTO parameter)
+        public void edit( DataAccess.SqlServerDataSource.Presentation parameter)
         {
             logic.currentDTO = parameter;
             logic.isEditable = true;

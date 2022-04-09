@@ -1,15 +1,15 @@
-﻿using DataAccess.Model.DTO;
+﻿using DataAccess.SqlServerDataSource;
 using Domain.Logic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 
 namespace MasayaNaturistCenter.Command
 {
-    public class DeleteCommand<GenericDTO> : AsyncCommandBase where GenericDTO : BaseDTO
+    public class DeleteCommand<Entity> : AsyncCommandBase where Entity : BaseEntity
     {
-        private BaseLogic<GenericDTO> logicElement;
+        private BaseLogic<Entity> logicElement;
 
-        public DeleteCommand( BaseLogic<GenericDTO> parameter )
+        public DeleteCommand( BaseLogic<Entity> parameter )
         {
             Contract.Requires(parameter != null);
             logicElement = parameter;
@@ -17,7 +17,7 @@ namespace MasayaNaturistCenter.Command
 
         public override async Task ExecuteAsync( object parameter )
         {
-            await logicElement.delete((GenericDTO)parameter);
+            //await logicElement.delete((Entity)parameter);
         }
     }
 }

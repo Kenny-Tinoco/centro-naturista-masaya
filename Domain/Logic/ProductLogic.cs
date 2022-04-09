@@ -1,16 +1,16 @@
 ﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Model.DTO;
+using DataAccess.SqlServerDataSource;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
-    public class ProductLogic : BaseLogic<ProductDTO>
+    public class ProductLogic : BaseLogic<Product>
     {
         public ProductLogic( DAOFactory parameter ) : base(parameter.productDAO)
         {
         }
 
-        public bool searchLogic( ProductDTO element, string parameter )
+        public bool searchLogic( Product element, string parameter )
         {
             Contract.Requires(parameter != null && element != null);
             bool ok = false;

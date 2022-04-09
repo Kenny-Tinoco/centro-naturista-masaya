@@ -45,7 +45,22 @@
       "ProjectGuid": "ce8cd781-d2d5-46ea-b547-8ff02ef6b3a6",
       "DisplayName": "Domain",
       "ColorIndex": 7
+    },
+    "7c2b9b69-095a-4156-ab7e-6b99d6d39662": {
+      "ProjectGuid": "7c2b9b69-095a-4156-ab7e-6b99d6d39662",
+      "DisplayName": "LibraryDomain",
+      "ColorIndex": 8
+    },
+    "0b7b9b57-5b45-4ad7-861f-f3dc48baad7e": {
+      "ProjectGuid": "0b7b9b57-5b45-4ad7-861f-f3dc48baad7e",
+      "DisplayName": "ClassLibrary1",
+      "ColorIndex": 9
+    },
+    "77efbaca-0d6e-45ef-b1ea-dda7854e908c": {
+      "ProjectGuid": "77efbaca-0d6e-45ef-b1ea-dda7854e908c",
+      "DisplayName": "Solution Items",
+      "ColorIndex": 10
     }
   },
-  "NextColorIndex": 8
+  "NextColorIndex": 11
 }

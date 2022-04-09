@@ -68,7 +68,7 @@ namespace MasayaNaturistCenter.ViewComponents.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Presentation;component/viewcomponents/usercontrols/spinbox.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF;component/viewcomponents/usercontrols/spinbox.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\UserControls\SpinBox.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

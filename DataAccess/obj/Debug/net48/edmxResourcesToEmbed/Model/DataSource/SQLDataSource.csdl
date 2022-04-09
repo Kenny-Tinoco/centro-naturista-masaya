@@ -8,7 +8,7 @@
     <Property Name="idEmployee" Type="Int32" Nullable="false" />
     <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="created" Type="DateTime" />
+    <Property Name="created" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Employee" Relationship="Self.FK__Account__idEmplo__5629CD9C" FromRole="Account" ToRole="Employee" />
     <NavigationProperty Name="Role" Relationship="Self.AccountRole" FromRole="Account" ToRole="Role" />
   </EntityType>
@@ -20,7 +20,7 @@
     <Property Name="idEmployee" Type="Int32" Nullable="false" />
     <Property Name="idPatient" Type="Int32" Nullable="false" />
     <Property Name="symptom" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
     <NavigationProperty Name="Employee" Relationship="Self.FK__Consult__idEmplo__4E88ABD4" FromRole="Consult" ToRole="Employee" />
     <NavigationProperty Name="Patient" Relationship="Self.FK__Consult__idPatie__4F7CD00D" FromRole="Consult" ToRole="Patient" />
     <NavigationProperty Name="PrescriptionProduct" Relationship="Self.FK__Prescript__idCon__52593CB8" FromRole="Consult" ToRole="PrescriptionProduct" />
@@ -124,7 +124,7 @@
     </Key>
     <Property Name="idSell" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idEmployee" Type="Int32" Nullable="false" />
-    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="total" Type="Double" Nullable="false" />
     <NavigationProperty Name="Employee" Relationship="Self.FK__Sell__idEmployee__30F848ED" FromRole="Sell" ToRole="Employee" />
     <NavigationProperty Name="SaleDetail" Relationship="Self.FK__SaleDetai__idSel__412EB0B6" FromRole="Sell" ToRole="SaleDetail" />
@@ -138,8 +138,8 @@
     <Property Name="idPresentation" Type="Int32" Nullable="false" />
     <Property Name="quantity" Type="Int32" Nullable="false" />
     <Property Name="price" Type="Double" Nullable="false" />
-    <Property Name="entryDate" Type="DateTime" />
-    <Property Name="expiration" Type="DateTime" />
+    <Property Name="entryDate" Type="DateTime" Precision="3" />
+    <Property Name="expiration" Type="DateTime" Precision="3" />
     <NavigationProperty Name="Presentation" Relationship="Self.FK__Stock__idPresent__3C69FB99" FromRole="Stock" ToRole="Presentation" />
     <NavigationProperty Name="Product" Relationship="Self.FK__Stock__idProduct__3B75D760" FromRole="Stock" ToRole="Product" />
     <NavigationProperty Name="SaleDetail" Relationship="Self.FK__SaleDetai__idSto__4222D4EF" FromRole="Stock" ToRole="SaleDetail" />
@@ -151,7 +151,7 @@
     </Key>
     <Property Name="idSupply" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="idProvider" Type="Int32" Nullable="false" />
-    <Property Name="date" Type="DateTime" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="total" Type="Double" Nullable="false" />
     <NavigationProperty Name="Provider" Relationship="Self.FK__Supply__idProvid__34C8D9D1" FromRole="Supply" ToRole="Provider" />
     <NavigationProperty Name="SupplyDetail" Relationship="Self.FK__SupplyDet__idSup__47DBAE45" FromRole="Supply" ToRole="SupplyDetail" />
@@ -528,5 +528,37 @@
       <End Role="Account" EntitySet="Account" />
       <End Role="Role" EntitySet="Role" />
     </AssociationSet>
+    <FunctionImport Name="sp_DeleteByIdInEntity">
+      <Parameter Name="tableName" Mode="In" Type="String" />
+      <Parameter Name="idParameter" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Presentation_TableManager" ReturnType="Collection(MasayaNaturistCenterModel.sp_Presentation_TableManager_Result)">
+      <Parameter Name="operation" Mode="In" Type="Int32" />
+      <Parameter Name="idPresentation" Mode="In" Type="Int32" />
+      <Parameter Name="name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_Stock_TableManager" ReturnType="Collection(MasayaNaturistCenterModel.sp_Stock_TableManager_Result)">
+      <Parameter Name="operation" Mode="In" Type="Int32" />
+      <Parameter Name="idStock" Mode="In" Type="Int32" />
+      <Parameter Name="idProduct" Mode="In" Type="Int32" />
+      <Parameter Name="idPresentation" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+      <Parameter Name="price" Mode="In" Type="Double" />
+      <Parameter Name="entryDate" Mode="In" Type="DateTime" />
+      <Parameter Name="expiration" Mode="In" Type="DateTime" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="sp_Presentation_TableManager_Result">
+    <Property Type="Int32" Name="idPresentation" Nullable="false" />
+    <Property Type="String" Name="name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_Stock_TableManager_Result">
+    <Property Type="Int32" Name="idStock" Nullable="false" />
+    <Property Type="Int32" Name="idProduct" Nullable="false" />
+    <Property Type="Int32" Name="idPresentation" Nullable="false" />
+    <Property Type="Int32" Name="quantity" Nullable="false" />
+    <Property Type="Double" Name="price" Nullable="false" />
+    <Property Type="DateTime" Name="entryDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="expiration" Nullable="true" Precision="23" />
+  </ComplexType>
 </Schema>

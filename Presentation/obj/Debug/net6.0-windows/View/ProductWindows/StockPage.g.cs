@@ -70,7 +70,7 @@ namespace MasayaNaturistCenter.View.ProductWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Presentation;component/view/productwindows/stockpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF;component/view/productwindows/stockpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\ProductWindows\StockPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

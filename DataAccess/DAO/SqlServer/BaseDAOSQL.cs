@@ -1,69 +1,83 @@
 ﻿using System.Diagnostics.Contracts;
-using System.Data.Entity.Core.Objects;
-using DataAccess.Model.DataSource;
 using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Model.DTO;
+using DataAccess.SqlServerDataSource;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.DAO.SqlServer
 {
-    public abstract class BaseDAOSQL<Entity, GenericDTO> : BaseDAO<GenericDTO, object> 
-        where Entity : class 
-        where GenericDTO : BaseDTO
+    public abstract class BaseDAOSQL<Entity> : BaseDAO<Entity, object> where Entity : BaseEntity 
     {
-        protected ObjectSet<Entity> entity;
-        private readonly MasayaNaturistCenterDataBase _dataBaseContext;
+        protected readonly MasayaNaturistCenterDataBaseFactory _contextFactory;
 
-
-        public BaseDAOSQL( MasayaNaturistCenterDataBase dataBaseContext )
+        protected BaseDAOSQL(MasayaNaturistCenterDataBaseFactory contextFactory)
         {
-            Contract.Requires(dataBaseContext != null);
-            _dataBaseContext = dataBaseContext;
+            _contextFactory = contextFactory;
         }
 
-
-        public virtual async Task create( GenericDTO element )
+        public virtual async Task create(Entity element)
         {
-            entity.AddObject(converter(element));
-            //await _dataBaseContext.SaveChangesAsync();
-
+            using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
+            {
+                await context.Set<Entity>().AddAsync(element);
+                await context.SaveChangesAsync();
+            }
         }
 
-        public virtual async Task deleteById( object id )
+        public virtual async Task<bool> deleteById(object id)
         {
-            entity.DeleteObject(converter(await read(id)));
+            using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
+            {
+                Entity element = await getEntityById(id);
+
+                context.Set<Entity>().Remove(element);
+                await context.SaveChangesAsync();
+
+                return true;
+            }
         }
 
-        public virtual async Task<IEnumerable<GenericDTO>> getAll()
-        {
-            return getList(entity.ToList());
-        }
-
-        public virtual async Task<GenericDTO> read( object id )
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual async Task update( GenericDTO element )
+        protected virtual Task<Entity> getEntityById(object id)
         {
             throw new NotImplementedException();
         }
 
+        public virtual async Task<IEnumerable<Entity>> getAll()
+        {
+            using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
+            {
+                IEnumerable<Entity> entities = await context.Set<Entity>().ToListAsync();
 
+                return entities;
+            }
+        }
 
-        public virtual Entity converter( GenericDTO parameter )
+        public virtual async Task<Entity> read(object id)
+        {
+            using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
+            {
+                Entity element = await context.Set<Entity>().FirstOrDefaultAsync(item => validateEntity(item, id));
+                
+                return element = null!;
+            }
+        }
+
+        protected virtual bool validateEntity(Entity item, object id)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<GenericDTO> getList( IEnumerable<Entity> list )
-        {
-            return list.Select(element => convertToDTO(element));
-        }
-
-        public virtual GenericDTO convertToDTO( Entity parameter )
+        public virtual string getEntityName()
         {
             throw new NotImplementedException();
         }
 
+        public virtual async Task update(Entity element)
+        {
+            using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
+            {
+                context.Set<Entity>().Update(element);
+                await context.SaveChangesAsync();
+            }
+        }
     }
 }

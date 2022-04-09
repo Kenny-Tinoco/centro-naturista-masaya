@@ -1,42 +1,44 @@
-﻿namespace DataAccess.DAO.DAOInterfaces
+﻿using DataAccess.SqlServerDataSource;
+
+namespace DataAccess.DAO.DAOInterfaces
 {
-    public interface ConsultDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface ConsultDAO : BaseDAO<Consult, object> 
     {
     }
 
-    public interface EmployeeDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface EmployeeDAO : BaseDAO<Employee, object>
     {
     }
 
-    public interface PatientDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface PatientDAO : BaseDAO<Patient, object>
     {
     }
 
-    public interface PrescriptionProductDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface PrescriptionProductDAO : BaseDAO<PrescriptionProduct, object>
     {
     }
 
-    public interface PresentationDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface PresentationDAO : BaseDAO<Presentation, object>
     {
     }
 
-    public interface ProductDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface ProductDAO : BaseDAO<Product, object>
     {
     }
 
-    public interface ProviderDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface ProviderDAO : BaseDAO<Provider, object>
     {
     }
 
-    public interface StockDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface StockDAO : BaseDAO<StockView, object>
     {
     }
 
-    public interface TransactionDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface TransactionDAO : BaseDAO<Transaction, object>
     {
     }
 
-    public interface TransactionDetailDAO<GenericDTO> : BaseDAO<GenericDTO, object>
+    public interface TransactionDetailDAO : BaseDAO<TransactionDetail, object>
     {
     }
 }

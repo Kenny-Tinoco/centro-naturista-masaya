@@ -1,102 +1,102 @@
-﻿using DataAccess.Model.DTO;
+﻿using DataAccess.SqlServerDataSource;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
     public abstract class TransactionLogic
     {
-        public TransactionDTO transaction { get; set; }
+        public Transaction transaction { get; set; }
 
 
-        public TransactionLogic() : this(new TransactionDTO())
+        public TransactionLogic() : this(new Transaction())
         {
         }
 
-        public TransactionLogic(TransactionDTO parameter)
+        public TransactionLogic(Transaction parameter)
         {
             Contract.Requires(parameter != null);
             this.transaction = parameter;
         }
 
 
-        public void addDetail(StockDTO parameter, int quantity)
-        {
-            Contract.Requires(parameter != null && quantity >= 1);
+        //public void addDetail(Stock parameter, int quantity)
+        //{
+        //    Contract.Requires(parameter != null && quantity >= 1);
 
-            var detail = stockToDetail(parameter, quantity);
+        //    var detail = stockToDetail(parameter, quantity);
 
-            transaction.details.Add(detail);
-        }
+        //    transaction.details.Add(detail);
+        //}
 
-        public void removeDetail(StockDTO parameter)
-        {
-            var element = findDetailByStockId(parameter.idStock);
-            transaction.details.Remove(element);
-        }
+        //public void removeDetail(Stock parameter)
+        //{
+        //    var element = findDetailByStockId(parameter.idStock);
+        //    transaction.details.Remove(element);
+        //}
 
-        public void editDetail(StockDTO parameter, int quantity)
-        {
-            var element = findDetailByStockId(parameter.idProduct);
-            element.quantity = quantity;
-            calculateTotalDetail(element);
-        }
+        //public void editDetail(Stock parameter, int quantity)
+        //{
+        //    var element = findDetailByStockId(parameter.idProduct);
+        //    element.quantity = quantity;
+        //    calculateTotalDetail(element);
+        //}
         
-        public DetailDTO findDetail(StockDTO parameter)
-        {
-            return findDetailByStockId(parameter.idStock);
-        }
+        //public Detail findDetail(Stock parameter)
+        //{
+        //    return findDetailByStockId(parameter.idStock);
+        //}
     
-        protected void makeTransaction()
-        {
+        //protected void makeTransaction()
+        //{
 
-        }
+        //}
 
-        public void calculateTotal()
-        {
-            transaction.total = 0;
+        //public void calculateTotal()
+        //{
+        //    transaction.total = 0;
 
-            foreach(var item in transaction.details)
-            {
-                transaction.total += item.total;
-            }
-        }
+        //    foreach(var item in transaction.details)
+        //    {
+        //        transaction.total += item.total;
+        //    }
+        //}
 
 
-        private DetailDTO stockToDetail(StockDTO parameter, int quantity)
-        {
-            var element = new DetailDTO();
+        //private Detail stockToDetail(Stock parameter, int quantity)
+        //{
+        //    var element = new Detail();
 
-            element.idTransaction = transaction.idTransaction;
-            element.idStock = parameter.idStock;
-            element.price = parameter.price;
-            element.quantity = quantity;
-            calculateTotalDetail(element);
+        //    element.idTransaction = transaction.idTransaction;
+        //    element.idStock = parameter.idStock;
+        //    element.price = parameter.price;
+        //    element.quantity = quantity;
+        //    calculateTotalDetail(element);
 
-            return element;
-        }
+        //    return element;
+        //}
 
-        private void calculateTotalDetail(DetailDTO parameter)
-        {
-            parameter.total = parameter.price * parameter.quantity;
-        }
+        //private void calculateTotalDetail(Detail parameter)
+        //{
+        //    parameter.total = parameter.price * parameter.quantity;
+        //}
        
-        private DetailDTO findDetailByStockId(int parameter)
-        {
-            Contract.Requires(parameter >= 0);
+        //private Detail findDetailByStockId(int parameter)
+        //{
+        //    Contract.Requires(parameter >= 0);
 
-            var foundElement = new DetailDTO();
+        //    var foundElement = new Detail();
 
-            foreach(var item in transaction.details)
-            {
-                if (item.idStock == parameter)
-                {
-                    foundElement = item;
-                    break;
-                }
-            }
+        //    foreach(var item in transaction.details)
+        //    {
+        //        if (item.idStock == parameter)
+        //        {
+        //            foundElement = item;
+        //            break;
+        //        }
+        //    }
 
-            return foundElement;
-        }
+        //    return foundElement;
+        //}
         
     }
 }

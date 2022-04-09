@@ -459,7 +459,25 @@ advertencia 6002: La tabla o vista 'MasayaNaturistCenter.dbo.SupplyView' no tien
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="GetStockList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_DeleteByIdInEntity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tableName" Type="varchar" Mode="In" />
+    <Parameter Name="idParameter" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_Presentation_TableManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="operation" Type="int" Mode="In" />
+    <Parameter Name="idPresentation" Type="int" Mode="In" />
+    <Parameter Name="name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_Stock_TableManager" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="operation" Type="int" Mode="In" />
+    <Parameter Name="idStock" Type="int" Mode="In" />
+    <Parameter Name="idProduct" Type="int" Mode="In" />
+    <Parameter Name="idPresentation" Type="int" Mode="In" />
+    <Parameter Name="quantity" Type="int" Mode="In" />
+    <Parameter Name="price" Type="float" Mode="In" />
+    <Parameter Name="entryDate" Type="datetime" Mode="In" />
+    <Parameter Name="expiration" Type="datetime" Mode="In" />
+  </Function>
   <EntityContainer Name="MasayaNaturistCenterModelStoreContainer">
     <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Consult" EntityType="Self.Consult" Schema="dbo" store:Type="Tables" />

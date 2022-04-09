@@ -1,15 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
 	  <LangVersion>preview</LangVersion>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Model\DataSource\SQLDataSource.edmx" />
-  </ItemGroup>
 
   <ItemGroup>
     <EntityDeploy Include="Model\DataSource\SQLDataSource.edmx">
@@ -19,19 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.4.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="System.Security" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Model\DataSource\SQLDataSource.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>SQLDataSource.edmx</DependentUpon>
-    </Compile>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

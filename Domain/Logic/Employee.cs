@@ -1,5 +1,4 @@
-﻿
-using MasayaNaturistCenter.Model.Utilities;
+﻿using Domain.Utilities;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
