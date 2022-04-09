@@ -12,4 +12,3 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\DataAccess\ob
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\DataAccess\obj\Debug\net6.0\ref\DataAccess.dll
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\DataAccess\obj\Debug\net6.0\DataAccess.pdb
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\DataAccess\obj\Debug\net6.0\DataAccess.genruntimeconfig.cache
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\DataAccess\obj\Debug\net6.0\DataAccess.csproj.AssemblyReference.cache

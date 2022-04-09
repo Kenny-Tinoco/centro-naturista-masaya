@@ -60,7 +60,12 @@
       "ProjectGuid": "77efbaca-0d6e-45ef-b1ea-dda7854e908c",
       "DisplayName": "Solution Items",
       "ColorIndex": 10
+    },
+    "bd85041b-69bd-4604-8a3f-d9c34f86f516": {
+      "ProjectGuid": "bd85041b-69bd-4604-8a3f-d9c34f86f516",
+      "DisplayName": "WPF",
+      "ColorIndex": 11
     }
   },
-  "NextColorIndex": 11
+  "NextColorIndex": 12
 }
