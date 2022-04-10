@@ -1,7 +1,8 @@
-﻿using DataAccess.SqlServerDataSource;
-using WPF.Command;
-using WPF.Services;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using WPF.MVVMEssentials.ViewModels;
+using WPF.MVVMEssentials.Services;
+using DataAccess.Entities;
+using WPF.Command.Navigation;
 
 namespace WPF.ViewModel
 {

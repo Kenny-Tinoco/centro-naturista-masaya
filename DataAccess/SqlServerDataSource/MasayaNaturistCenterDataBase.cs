@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DataAccess.Entities;
+using DataAccess.SqlServerDataSource.Views;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.SqlServerDataSource
 {

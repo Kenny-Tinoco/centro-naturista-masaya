@@ -645,6 +645,16 @@
         "runtime": {
           "bin/placeholder/Domain.dll": {}
         }
+      },
+      "MVVMEssentials.WPF/1.0.3": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MVVMEssentials.WPF.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MVVMEssentials.WPF.dll": {}
+        }
       }
     }
   },
@@ -1850,11 +1860,17 @@
       "type": "project",
       "path": "../Domain/Domain.csproj",
       "msbuildProject": "../Domain/Domain.csproj"
+    },
+    "MVVMEssentials.WPF/1.0.3": {
+      "type": "project",
+      "path": "../WPF.MVVMEssentials/WPF.MVVMEssentials.csproj",
+      "msbuildProject": "../WPF.MVVMEssentials/WPF.MVVMEssentials.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
       "Domain >= 1.0.0",
+      "MVVMEssentials.WPF >= 1.0.3",
       "Microsoft.EntityFrameworkCore.Design >= 6.0.3",
       "Microsoft.Extensions.DependencyInjection >= 6.0.0"
     ]
@@ -1893,6 +1909,9 @@
           "projectReferences": {
             "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\Domain\\Domain.csproj"
+            },
+            "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF.MVVMEssentials\\WPF.MVVMEssentials.csproj": {
+              "projectPath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF.MVVMEssentials\\WPF.MVVMEssentials.csproj"
             }
           }
         }

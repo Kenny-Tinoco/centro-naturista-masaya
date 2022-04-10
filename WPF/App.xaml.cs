@@ -1,7 +1,7 @@
 ﻿using WPF.View;
 using WPF.ViewModel;
 using WPF.Services;
-using WPF.Stores;
+using WPF.MVVMEssentials.Stores;
 using System;
 using System.Windows;
 using WPF.ViewModel.Components;
@@ -12,6 +12,7 @@ using DataAccess.DAO.SqlServer;
 using DataAccess.SqlServerDataSource;
 using System.Configuration;
 using Microsoft.EntityFrameworkCore;
+using WPF.MVVMEssentials.Services;
 
 namespace WPF
 {
@@ -69,6 +70,14 @@ namespace WPF
                    s.GetRequiredService<CloseModalNavigationService>()
                )
             );
+            services.AddTransient<ProductModalViewModel>
+            (
+               s => new ProductModalViewModel
+               (
+                   s.GetRequiredService<LogicFactory>().productLogic,
+                   s.GetRequiredService<CloseModalNavigationService>()
+               )
+            );
             services.AddSingleton<ProductViewModel>(s => createProductViewModel(s));
             services.AddSingleton<StockViewModel>(s => createStockViewModel(s));
             services.AddSingleton<HomeViewModel>(s => new HomeViewModel(createStockNavigationService(s)));
@@ -97,8 +106,7 @@ namespace WPF
             (
                 serviceProvider.GetRequiredService<NavigationStore>(),
                 serviceProvider.GetRequiredService<ModalNavigationStore>(),
-                serviceProvider.GetRequiredService<NavigationMenuViewModel>(),
-                new ViewModelBase()
+                serviceProvider.GetRequiredService<NavigationMenuViewModel>()
             );
         }
 
@@ -116,7 +124,7 @@ namespace WPF
             return new StockModalViewModel
             (
                 serviceProvider.GetRequiredService<CloseModalNavigationService>(), 
-                new DataAccess.SqlServerDataSource.Stock()
+                new DataAccess.Entities.Stock()
             );
         }
 
@@ -138,7 +146,7 @@ namespace WPF
             return ProductViewModel.LoadViewModel
             (
                 serviceProvider.GetRequiredService<LogicFactory>().productLogic,
-                createHomeNavigationService(serviceProvider)
+                createProductModalNavigationService(serviceProvider)
             ) ;
         }
 
@@ -210,19 +218,27 @@ namespace WPF
 
         private INavigationService createStockModalNavigationService( IServiceProvider serviceProvider )
         {
-            return new ParameterNavigationService<BaseEntity, StockModalViewModel>
+            return new NavigationService<StockModalViewModel>
             (
                 serviceProvider.GetRequiredService<ModalNavigationStore>(),
-                (BaseDTO) => serviceProvider.GetRequiredService<StockModalViewModel>()
+                () => serviceProvider.GetRequiredService<StockModalViewModel>()
             );
         }
 
         private INavigationService createPresentationModalNavigationService( IServiceProvider serviceProvider )
         {
-            return new ModalNavigationService<PresentationModalViewModel>
+            return new NavigationService<PresentationModalViewModel>
             (
                 serviceProvider.GetRequiredService<ModalNavigationStore>(),
                 () => serviceProvider.GetRequiredService<PresentationModalViewModel>()
+            );
+        }
+        private INavigationService createProductModalNavigationService( IServiceProvider serviceProvider )
+        {
+            return new NavigationService<ProductModalViewModel>
+            (
+                serviceProvider.GetRequiredService<ModalNavigationStore>(),
+                () => serviceProvider.GetRequiredService<ProductModalViewModel>()
             );
         }
 

@@ -1,4 +1,6 @@
-﻿namespace DataAccess.SqlServerDataSource
+﻿using DataAccess.Entities;
+
+namespace DataAccess.SqlServerDataSource.Views
 {
     public partial class SellView : BaseEntity
     {

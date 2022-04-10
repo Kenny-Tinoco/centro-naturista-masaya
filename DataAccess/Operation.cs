@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Model.DataSource
+﻿namespace DataAccess
 {
     public enum Operation
     {

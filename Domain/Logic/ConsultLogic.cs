@@ -1,4 +1,4 @@
-﻿using DataAccess.SqlServerDataSource;
+﻿using DataAccess.Entities;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic

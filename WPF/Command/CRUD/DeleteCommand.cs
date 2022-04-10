@@ -1,9 +1,10 @@
-﻿using DataAccess.SqlServerDataSource;
+﻿using DataAccess.Entities;
 using Domain.Logic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using WPF.MVVMEssentials.Commands;
 
-namespace WPF.Command
+namespace WPF.Command.CRUD
 {
     public class DeleteCommand<Entity> : AsyncCommandBase where Entity : BaseEntity
     {
@@ -17,7 +18,7 @@ namespace WPF.Command
 
         public override async Task ExecuteAsync( object parameter )
         {
-            //await logicElement.delete((Entity)parameter);
+            await logicElement.delete((Entity)parameter);
         }
     }
 }

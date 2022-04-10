@@ -1,4 +1,4 @@
-﻿namespace DataAccess.SqlServerDataSource
+﻿namespace DataAccess.Entities
 {
     public partial class Stock : BaseEntity
     {

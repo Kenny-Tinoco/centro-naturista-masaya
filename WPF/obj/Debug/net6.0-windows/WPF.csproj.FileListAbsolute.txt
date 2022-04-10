@@ -260,3 +260,7 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug\net6.0-windows\WPF.csproj.CoreCompileInputs.cache
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug\net6.0-windows\WPF.csproj.CopyComplete
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug\net6.0-windows\WPF.genruntimeconfig.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug\net6.0-windows\View\ProductWindows\ProductModal.g.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\obj\Debug\net6.0-windows\View\ProductWindows\ProductModal.baml
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\bin\Debug\net6.0-windows\WPF.MVVMEssentials.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF\bin\Debug\net6.0-windows\WPF.MVVMEssentials.pdb

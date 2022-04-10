@@ -1,4 +1,6 @@
-﻿namespace WPF.ViewModel.Components
+﻿using WPF.MVVMEssentials.ViewModels;
+
+namespace WPF.ViewModel.Components
 {
     public class ProductWindowsViewModel : ViewModelBase
     {

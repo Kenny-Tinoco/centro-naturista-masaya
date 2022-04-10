@@ -1,18 +1,20 @@
-﻿using DataAccess.SqlServerDataSource;
-using WPF.ViewModel;
+﻿using DataAccess.Entities;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
+using WPF.MVVMEssentials.Commands;
+using WPF.MVVMEssentials.ViewModels;
+using WPF.ViewModel;
 
 namespace WPF.Command.Crud
 {
     public class LoadRecordListCommand<Entity> : AsyncCommandBase where Entity : BaseEntity
     {
-        private ViewModelBase viewModel;
+        private ViewModelGeneric viewModel;
 
         public LoadRecordListCommand( ViewModelBase parameter)
         {
             Contract.Requires(parameter != null);
-            viewModel = parameter;
+            viewModel = (ViewModelGeneric)parameter;
         }
         public override async Task ExecuteAsync( object parameter )
         {

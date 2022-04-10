@@ -31,7 +31,8 @@
             Margin="30,30,0,15"
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
-                Title="Agregar producto"
+                Title="Nuevo Producto"
+                buttonCommand="{Binding addCommand}"
                 ImageSource="/View/Resource/Image/plus.png"/>
         </StackPanel>
 
@@ -47,12 +48,6 @@
                     searchBarText="{Binding searchText, Mode=TwoWay}"
                     Margin="0 0 20 0"
                     />
-                <userControls:CustomButton
-                    Title="Modificar"
-                    ImageSource="/View/Resource/Image/edit.png"/>
-                <userControls:CustomButton
-                    Title="Eliminar"
-                    ImageSource="/View/Resource/Image/remove-red.png"/>
             </StackPanel>
         </StackPanel>
 
@@ -83,11 +78,31 @@
                 ItemsSource="{Binding dataGridSource}"
                 Style="{DynamicResource ElementsDataGrid}"
                 >
+                <DataGrid.Resources>
+                    <DataTemplate x:Key="optionsCell">
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            Orientation="Horizontal">
+                            <Button Content="Editar"
+                                    Command="{Binding Path=DataContext.editCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    CommandParameter="{Binding}" 
+                                    Style="{DynamicResource ButtonStyle}"
+                                    Background="#2196F3"/>
+                            <Button Content="Eliminar"
+                                    Command="{Binding Path=DataContext.deleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    CommandParameter="{Binding}"
+                                    Style="{DynamicResource ButtonStyle}"
+                                    Margin="4 0 0 0"
+                                    Background="#F44336"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Código" Width="auto" Binding="{Binding idProduct}"/>
                     <DataGridTextColumn Header="Nombre" Width="220" Binding="{Binding name}"/>
                     <DataGridTextColumn Header="Descripción" Width="*" Binding="{Binding description}"/>
                     <DataGridTextColumn Header="Cantidad total" Width="auto" Binding="{Binding quantity}"/>
+                    <DataGridTemplateColumn Header="Opciones" Width="155" CellTemplate="{StaticResource optionsCell}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
@@ -100,6 +115,46 @@
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Height" Value="32"/>
             <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+        <Style x:Key="ButtonStyle"
+               TargetType="Button">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+
+                        <Border x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="4"
+                            Padding="8 0 8 0"
+                            BorderBrush="white"
+                            BorderThickness="0.6"
+                            SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" 
+                                          Focusable="False" 
+                                          HorizontalAlignment="Center"
+                                          Margin="1" 
+                                          RecognizesAccessKey="True" 
+                                          SnapsToDevicePixels="True" 
+                                          VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="white"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="black"/>
+                                <Setter Property="Foreground" Value="Black"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="White"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="Black"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
 </Page>

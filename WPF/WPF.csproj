@@ -144,7 +144,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Command\Navigation\" />
     <Folder Include="View\ProviderWindows\" />
   </ItemGroup>
 
@@ -158,21 +157,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <ProjectReference Include="..\WPF.MVVMEssentials\WPF.MVVMEssentials.csproj" />
   </ItemGroup>
 
 </Project>

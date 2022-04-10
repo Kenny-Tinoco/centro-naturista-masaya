@@ -1,7 +1,5 @@
-﻿using DataAccess.SqlServerDataSource;
-using Domain.Logic;
+﻿using Domain.Logic;
 using WPF.Command.Crud;
-using WPF.Services;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -9,15 +7,22 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Input;
+using WPF.MVVMEssentials.Services;
+using WPF.MVVMEssentials.Commands;
+using DataAccess.Entities;
+using WPF.Command.Navigation;
 
 namespace WPF.ViewModel
 {
-    public class ProductViewModel : ViewModelBase
+    public class ProductViewModel : ViewModelGeneric
     {
         private ObservableCollection<Product> _recordsList;
         public INavigationService navigationService;
         public BaseLogic<Product> logic;
         private string _searchText;
+        public ICommand addCommand { get; }
+        public ICommand deleteCommand { get; }
 
         public ProductViewModel( BaseLogic<Product> parameter, INavigationService navigationService )
         {
@@ -26,6 +31,8 @@ namespace WPF.ViewModel
             logic = parameter;
 
             recordsList = new ObservableCollection<Product>();
+
+            addCommand = new NavigateCommand(navigationService);
             logic.loadListRecordsCommand = new LoadRecordListCommand<Product>(this);
         }
 
@@ -153,6 +160,24 @@ namespace WPF.ViewModel
             {
                 _dataGridSource = value;
             }
+        }
+        private ICommand _editCommand;
+        public ICommand editCommand
+        {
+            get
+            {
+                if (_editCommand == null)
+                    _editCommand = new RelayCommand(parameter => edit((Product)parameter), null);
+
+                return _editCommand;
+            }
+        }
+        public void edit( Product parameter )
+        {
+            logic.currentDTO = parameter;
+            logic.isEditable = true;
+            addCommand.Execute(1);
+            
         }
     }
 }

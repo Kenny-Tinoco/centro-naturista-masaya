@@ -1,4 +1,5 @@
-﻿using DataAccess.SqlServerDataSource;
+﻿using DataAccess.Entities;
+using DataAccess.SqlServerDataSource.Views;
 
 namespace DataAccess.DAO.DAOInterfaces
 {

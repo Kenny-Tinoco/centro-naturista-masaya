@@ -1,5 +1,5 @@
-﻿using System.Diagnostics.Contracts;
-using DataAccess.DAO.DAOInterfaces;
+﻿using DataAccess.DAO.DAOInterfaces;
+using DataAccess.Entities;
 using DataAccess.SqlServerDataSource;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,7 +27,7 @@ namespace DataAccess.DAO.SqlServer
         {
             using (MasayaNaturistCenterDataBase context = _contextFactory.CreateDbContext())
             {
-                Entity element = await getEntityById(id);
+                Entity element = await getEntityById(id, context);
 
                 context.Set<Entity>().Remove(element);
                 await context.SaveChangesAsync();
@@ -36,7 +36,7 @@ namespace DataAccess.DAO.SqlServer
             }
         }
 
-        protected virtual Task<Entity> getEntityById(object id)
+        protected virtual Task<Entity> getEntityById(object id, MasayaNaturistCenterDataBase context)
         {
             throw new NotImplementedException();
         }
@@ -62,11 +62,6 @@ namespace DataAccess.DAO.SqlServer
         }
 
         protected virtual bool validateEntity(Entity item, object id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public virtual string getEntityName()
         {
             throw new NotImplementedException();
         }

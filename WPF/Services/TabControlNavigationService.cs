@@ -1,20 +1,21 @@
-﻿using WPF.Stores;
-using WPF.ViewModel;
-using WPF.ViewModel.Components;
+﻿using WPF.ViewModel.Components;
 using System;
+using WPF.MVVMEssentials.Services;
+using WPF.MVVMEssentials.Stores;
+using WPF.MVVMEssentials.ViewModels;
 
 namespace WPF.Services
 {
     public class TabControlNavigationService<viewModelBase> : INavigationService where viewModelBase : ViewModelBase
     {
-        private readonly NavigationStore _navigationStore;
-        private readonly Func<viewModelBase> _createViewModel;
+        private readonly INavigationStore _navigationStore;
+        private readonly CreateViewModel<viewModelBase> _createViewModel;
         private readonly Func<TabControlMenuViewModel> _createNavigationMenuViewModel;
 
         public TabControlNavigationService
         (
-            NavigationStore navigationStore,
-            Func<viewModelBase> createViewModel,
+            INavigationStore navigationStore,
+            CreateViewModel<viewModelBase> createViewModel,
             Func<TabControlMenuViewModel> createNavigationMenuViewModel
         )
         {
@@ -23,7 +24,7 @@ namespace WPF.Services
             _createNavigationMenuViewModel = createNavigationMenuViewModel;
         }
 
-        public void Navigate( object parameter = null )
+        public void Navigate()
         {
             _navigationStore.currentViewModel = new ProductWindowsViewModel(_createNavigationMenuViewModel(), _createViewModel());
         }

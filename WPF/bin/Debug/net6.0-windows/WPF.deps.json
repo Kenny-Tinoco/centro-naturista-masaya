@@ -9,6 +9,7 @@
       "WPF/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "MVVMEssentials.WPF": "1.0.3",
           "Microsoft.EntityFrameworkCore.Design": "6.0.3",
           "Microsoft.Extensions.DependencyInjection": "6.0.0"
         },
@@ -418,6 +419,11 @@
         "runtime": {
           "Domain.dll": {}
         }
+      },
+      "MVVMEssentials.WPF/1.0.3": {
+        "runtime": {
+          "WPF.MVVMEssentials.dll": {}
+        }
       }
     }
   },
@@ -727,6 +733,11 @@
       "sha512": ""
     },
     "Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MVVMEssentials.WPF/1.0.3": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

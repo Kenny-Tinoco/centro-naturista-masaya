@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF", "WPF\WPF.csproj", "{BD85041B-69BD-4604-8A3F-D9C34F86F516}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.MVVMEssentials", "WPF.MVVMEssentials\WPF.MVVMEssentials.csproj", "{15C479DA-A0FF-4A4D-B2A0-5DD9C70A209F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{BD85041B-69BD-4604-8A3F-D9C34F86F516}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD85041B-69BD-4604-8A3F-D9C34F86F516}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD85041B-69BD-4604-8A3F-D9C34F86F516}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C479DA-A0FF-4A4D-B2A0-5DD9C70A209F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C479DA-A0FF-4A4D-B2A0-5DD9C70A209F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C479DA-A0FF-4A4D-B2A0-5DD9C70A209F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C479DA-A0FF-4A4D-B2A0-5DD9C70A209F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

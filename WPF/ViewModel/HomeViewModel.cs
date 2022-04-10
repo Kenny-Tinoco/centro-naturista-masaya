@@ -1,12 +1,12 @@
-﻿using WPF.Command;
-using WPF.Services;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using WPF.MVVMEssentials.Commands;
+using WPF.MVVMEssentials.Services;
+using WPF.MVVMEssentials.ViewModels;
 
 namespace WPF.ViewModel
 {
     public class HomeViewModel : ViewModelBase
     {
-        public string WelcomeMessage => "Welcome to my application.";
         public ICommand navigateLoginCommand { get; }
 
         public HomeViewModel(INavigationService logicNavigationService)

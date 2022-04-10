@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "69t83BfKcUVfmoSWLkFkFTL+Ju0InvhW+fsn3cHH5o/f2HbRBeJPrIX3VGwklFki49i3rmBddRE41ub21GvWMQ==",
+  "dgSpecHash": "eeZ0tR9cv72llhTPz+Pind/vCToSXJECI6KOWak0lGOTd8nNHxhtNDTnL/Hx2JvoP4iK0iImz5eLKRtcTT1znQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF\\WPF.csproj",
   "expectedPackageFiles": [
@@ -45,7 +45,8 @@
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.security.permissions\\4.7.0\\system.security.permissions.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.security.principal.windows\\4.7.0\\system.security.principal.windows.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
+    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
+    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\mvvmessentials.wpf\\1.0.3\\mvvmessentials.wpf.1.0.3.nupkg.sha512"
   ],
   "logs": []
 }

@@ -1,13 +1,15 @@
 ﻿using Domain.Logic;
-using WPF.Command;
 using WPF.Command.Crud;
-using WPF.Services;
-using System.Threading.Tasks;
 using System.Windows.Input;
+using WPF.MVVMEssentials.Services;
+using DataAccess.Entities;
+using WPF.Command.Navigation;
+using WPF.Command.CRUD;
+using System.Threading.Tasks;
 
 namespace WPF.ViewModel
 {
-    public class PresentationModalViewModel : ViewModelBase
+    public class PresentationModalViewModel : ViewModelGeneric
     {
 
         public string titleBar
@@ -21,20 +23,20 @@ namespace WPF.ViewModel
         public ICommand exitCommand { get; }
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
-        public BaseLogic<DataAccess.SqlServerDataSource.Presentation> logic { get; }
+        public BaseLogic<Presentation> logic { get; }
 
-        public PresentationModalViewModel( BaseLogic<DataAccess.SqlServerDataSource.Presentation> parameter, INavigationService closeModalNavigationService )
+        public PresentationModalViewModel( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
             logic = parameter;
             exitCommand = new ExitModalCommand(closeModalNavigationService);
-            saveCommand = new SaveCommand<DataAccess.SqlServerDataSource.Presentation>(logic);
-            deleteCommand = new DeleteCommand<DataAccess.SqlServerDataSource.Presentation>(logic);
+            saveCommand = new SaveCommand<Presentation>(logic);
+            deleteCommand = new DeleteCommand<Presentation>(logic);
 
-            logic.loadListRecordsCommand = new LoadRecordListCommand<DataAccess.SqlServerDataSource.Presentation>(this);
+            logic.loadListRecordsCommand = new LoadRecordListCommand<Presentation>(this);
         }
 
         public static PresentationModalViewModel LoadViewModel
-        ( BaseLogic<DataAccess.SqlServerDataSource.Presentation> parameter, INavigationService closeModalNavigationService )
+        ( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
             PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, closeModalNavigationService);
 
@@ -74,12 +76,12 @@ namespace WPF.ViewModel
             get
             {
                 if (_editCommand == null)
-                    _editCommand = new RelayCommand(parameter => edit((DataAccess.SqlServerDataSource.Presentation)parameter), null);
+                    _editCommand = new RelayCommand(parameter => edit((Presentation)parameter), null);
 
                 return _editCommand;
             }
         }
-        public void edit( DataAccess.SqlServerDataSource.Presentation parameter)
+        public void edit( Presentation parameter )
         {
             logic.currentDTO = parameter;
             logic.isEditable = true;

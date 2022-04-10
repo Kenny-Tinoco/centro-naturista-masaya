@@ -1,8 +1,9 @@
-﻿using WPF.Command;
-using WPF.Services;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+using WPF.MVVMEssentials.ViewModels;
+using WPF.MVVMEssentials.Services;
+using WPF.MVVMEssentials.Commands;
 
-namespace WPF.ViewModel
+namespace WPF.ViewModel.Components
 {
     public class NavigationMenuViewModel : ViewModelBase
     {
@@ -10,8 +11,8 @@ namespace WPF.ViewModel
         public bool isMenuOpen
         {
             get
-            {   
-                return _isMenuOpen; 
+            {
+                return _isMenuOpen;
             }
             set
             {

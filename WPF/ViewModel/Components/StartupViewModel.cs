@@ -1,9 +1,9 @@
-﻿using System.Diagnostics.Contracts;
-using System.Windows.Input;
-using WPF.Command;
-using WPF.Stores;
+﻿using System.Windows.Input;
+using WPF.Command.Navigation;
+using WPF.MVVMEssentials.Stores;
+using WPF.MVVMEssentials.ViewModels;
 
-namespace WPF.ViewModel
+namespace WPF.ViewModel.Components
 {
     public class StartupViewModel : ViewModelBase
     {
@@ -19,16 +19,8 @@ namespace WPF.ViewModel
         public NavigationMenuViewModel navigationMenuViewModel { get; }
 
 
-        public StartupViewModel
-        (
-            NavigationStore navigationStore,
-            ModalNavigationStore modalNavigationStore,
-            NavigationMenuViewModel navigationMenuViewModel,
-            ViewModelBase contentViewModel
-        )
+        public StartupViewModel( NavigationStore navigationStore, ModalNavigationStore modalNavigationStore, NavigationMenuViewModel navigationMenuViewModel )
         {
-            Contract.Requires(navigationStore != null && modalNavigationStore != null);
-
             _navigationStore = navigationStore;
             _modalNavigationStore = modalNavigationStore;
 
@@ -36,7 +28,7 @@ namespace WPF.ViewModel
             _modalNavigationStore.currentViewModelChanged += OnCurrentModalViewModelChanged;
 
             this.navigationMenuViewModel = navigationMenuViewModel;
-            this.contentViewModel = contentViewModel;
+            contentViewModel = navigationStore.currentViewModel;
 
             stateBarCommand = new StateBarCommand();
         }

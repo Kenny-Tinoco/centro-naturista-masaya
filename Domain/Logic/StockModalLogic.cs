@@ -1,5 +1,5 @@
 ﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.SqlServerDataSource;
+using DataAccess.SqlServerDataSource.Views;
 
 namespace Domain.Logic
 {

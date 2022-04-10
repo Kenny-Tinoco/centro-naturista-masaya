@@ -2,17 +2,19 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using WPF.Services;
-using WPF.Stores;
-using System.Threading.Tasks;
 using Domain.Logic;
-using DataAccess.SqlServerDataSource;
-using WPF.Command;
 using WPF.Command.Crud;
+using WPF.MVVMEssentials.ViewModels;
+using WPF.MVVMEssentials.Services;
+using WPF.MVVMEssentials.Commands;
+using WPF.MVVMEssentials.Stores;
+using DataAccess.SqlServerDataSource.Views;
+using WPF.Command.CRUD;
+using System.Threading.Tasks;
 
 namespace WPF.ViewModel
 {
-    public class StockViewModel : ViewModelBase
+    public class StockViewModel : ViewModelGeneric
     {
 
         public ICommand addCommand { get; }
@@ -29,7 +31,7 @@ namespace WPF.ViewModel
             Contract.Requires(parameter != null);
             logic = parameter;
 
-            addCommand = new ParameterNavigateCommand(addStockNavigationService);
+            addCommand = new NavigateCommand(addStockNavigationService);
             saveCommand = new SaveCommand<StockView>(parameter);
             deleteCommand = new DeleteCommand<StockView>(parameter);
 
@@ -39,10 +41,10 @@ namespace WPF.ViewModel
         public static StockViewModel LoadViewModel
         ( BaseLogic<StockView> parameter, ModalNavigationStore navigationStore, INavigationService CloseModalNavigationService)
         {
-            var stockModalNavigation = new ParameterNavigationService<BaseEntity, ViewModelBase>
+            var stockModalNavigation = new NavigationService<ViewModelBase>
             (
                 navigationStore, 
-                ( param ) => new StockModalViewModel(CloseModalNavigationService, new DataAccess.SqlServerDataSource.Stock())
+                () => new StockModalViewModel(CloseModalNavigationService, new DataAccess.Entities.Stock())
             );
 
             StockViewModel viewModel = new StockViewModel(parameter, stockModalNavigation);
@@ -54,7 +56,7 @@ namespace WPF.ViewModel
 
 
 
-        public override async Task Initialize() 
+        public override async Task Initialize()
         {
             logic.getListUpdates(await logic.getAll());
             DataGridSource.Source = logic.recordList;

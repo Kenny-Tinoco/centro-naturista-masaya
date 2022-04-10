@@ -1,5 +1,5 @@
 ﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.SqlServerDataSource;
+using DataAccess.Entities;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
@@ -25,6 +25,11 @@ namespace Domain.Logic
             }
 
             return ok;
+        }
+        public override void resetCurrentDTO()
+        {
+            var element = new Product();
+            currentDTO = element;
         }
     }
 }
