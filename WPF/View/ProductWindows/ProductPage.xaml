@@ -33,7 +33,7 @@
             <userControls:CustomButton
                 Title="Nuevo Producto"
                 buttonCommand="{Binding addCommand}"
-                ImageSource="/View/Resource/Image/plus.png"/>
+                ImageSource="/Resource/Image/plus.png"/>
         </StackPanel>
 
         <StackPanel
@@ -75,7 +75,7 @@
 
             <DataGrid
                 x:Name="elementDataGrid"
-                ItemsSource="{Binding dataGridSource}"
+                ItemsSource="{Binding logic.recordList}"
                 Style="{DynamicResource ElementsDataGrid}"
                 >
                 <DataGrid.Resources>

@@ -1,4 +1,4 @@
-﻿using DataAccess.Entities;
+﻿using Domain.Entities;
 using Domain.Logic;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;

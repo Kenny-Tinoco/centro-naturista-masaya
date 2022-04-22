@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace WPF.ViewComponents.UserControls
 {
@@ -10,19 +11,14 @@ namespace WPF.ViewComponents.UserControls
             InitializeComponent();
         }
 
-        public event RoutedEventHandler BackButtonClick
+        public ICommand buttonCommand
         {
-            add { AddHandler(BackButtonClickEvent, value); }
-            remove { RemoveHandler(BackButtonClickEvent, value); }
+            get { return (ICommand)GetValue(buttonCommandPropety); }
+            set { SetValue(buttonCommandPropety, value); }
         }
-        
-        public static readonly RoutedEvent BackButtonClickEvent =
-            EventManager.RegisterRoutedEvent(nameof(BackButtonClick), RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(BackButton));
 
+        public static readonly DependencyProperty buttonCommandPropety =
+            DependencyProperty.Register("buttonCommand", typeof(ICommand), typeof(BackButton), new PropertyMetadata());
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
-        {
-            RaiseEvent(new RoutedEventArgs(BackButtonClickEvent));
-        }
     }
 }

@@ -1,5 +1,5 @@
-﻿using DataAccess.Entities;
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
+using System.Transactions;
 
 namespace Domain.Logic
 {
@@ -13,7 +13,7 @@ namespace Domain.Logic
         {
         }
 
-        public SaleLogic(Employee employee, Transaction transaction) : base(transaction)
+        public SaleLogic(Employee employee, Entities.Transaction transaction) : base(transaction)
         {
             Contract.Requires(employee != null && transaction != null);
             this.employee = employee;

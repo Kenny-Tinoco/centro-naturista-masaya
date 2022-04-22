@@ -23,7 +23,10 @@
     <Compile Update="View\ProductWindows\ProductWindowsView.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\StockModal.xaml.cs">
+    <Compile Update="View\ProductWindows\StockForm.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\ProductWindows\ProductSelectionModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\StockPage.xaml.cs">
@@ -88,25 +91,28 @@
     <Page Update="View\ProductWindows\ProductWindowsView.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\StockModal.xaml">
+    <Page Update="View\ProductWindows\StockForm.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\ProductWindows\ProductSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\StockPage.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Resource\Style\ControlStyles.xaml">
+    <Page Update="Resource\Style\ControlStyles.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Resource\Resource.xaml">
+    <Page Update="Resource\Resource.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Resource\Values\colors.xaml">
+    <Page Update="Resource\Values\colors.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Resource\Values\dimens.xaml">
+    <Page Update="Resource\Values\dimens.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\Resource\Values\strings.xaml">
+    <Page Update="Resource\Values\strings.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Startup.xaml">

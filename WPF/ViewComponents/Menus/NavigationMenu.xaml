@@ -124,7 +124,7 @@
                         Visibility="{Binding isMenuOpen, Converter={StaticResource BooleanToVisibilityConverter}}" >
                         <Image
                             Margin="1.5"
-                            Source="/View/Resource/Image/cnm-icon.png"/>
+                            Source="/Resource/Image/cnm-icon.png"/>
                     </Border>
                 </Grid>
             </custom:HamburgerMenu.Content>

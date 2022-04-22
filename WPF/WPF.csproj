@@ -7,11 +7,12 @@
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
     <StartupObject>WPF.App</StartupObject>
-    <ApplicationIcon>logo-cnm.ico</ApplicationIcon>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <NoWin32Manifest>true</NoWin32Manifest>
     <SignAssembly>False</SignAssembly>
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+    <ApplicationIcon>Resource\logo-cnm.ico</ApplicationIcon>
+    <UseWindowsForms>False</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,117 +25,117 @@
 
   <ItemGroup>
     <None Remove="MasayaNaturistCenterDataBase.edmx" />
-    <None Remove="View\Resource\Image\arrow-right.png" />
-    <None Remove="View\Resource\Image\back-black.png" />
-    <None Remove="View\Resource\Image\back.png" />
-    <None Remove="View\Resource\Image\buy.png" />
-    <None Remove="View\Resource\Image\cnm-icon.png" />
-    <None Remove="View\Resource\Image\consult.png" />
-    <None Remove="View\Resource\Image\edit.png" />
-    <None Remove="View\Resource\Image\employee-black.png" />
-    <None Remove="View\Resource\Image\employee.png" />
-    <None Remove="View\Resource\Image\exit.png" />
-    <None Remove="View\Resource\Image\help.png" />
-    <None Remove="View\Resource\Image\home-black.png" />
-    <None Remove="View\Resource\Image\home.png" />
-    <None Remove="View\Resource\Image\minimize.png" />
-    <None Remove="View\Resource\Image\patient.png" />
-    <None Remove="View\Resource\Image\plus.png" />
-    <None Remove="View\Resource\Image\presentation-black.png" />
-    <None Remove="View\Resource\Image\presentation.png" />
-    <None Remove="View\Resource\Image\product-black.png" />
-    <None Remove="View\Resource\Image\product.png" />
-    <None Remove="View\Resource\Image\provider-black.png" />
-    <None Remove="View\Resource\Image\provider.png" />
-    <None Remove="View\Resource\Image\record.png" />
-    <None Remove="View\Resource\Image\remove-red.png" />
-    <None Remove="View\Resource\Image\sale.png" />
-    <None Remove="View\Resource\Image\save-black.png" />
-    <None Remove="View\Resource\Image\save.png" />
-    <None Remove="View\Resource\Image\search.png" />
+    <None Remove="Resource\Image\arrow-right.png" />
+    <None Remove="Resource\Image\back-black.png" />
+    <None Remove="Resource\Image\back.png" />
+    <None Remove="Resource\Image\buy.png" />
+    <None Remove="Resource\Image\cnm-icon.png" />
+    <None Remove="Resource\Image\consult.png" />
+    <None Remove="Resource\Image\edit.png" />
+    <None Remove="Resource\Image\employee-black.png" />
+    <None Remove="Resource\Image\employee.png" />
+    <None Remove="Resource\Image\exit.png" />
+    <None Remove="Resource\Image\help.png" />
+    <None Remove="Resource\Image\home-black.png" />
+    <None Remove="Resource\Image\home.png" />
+    <None Remove="Resource\Image\minimize.png" />
+    <None Remove="Resource\Image\patient.png" />
+    <None Remove="Resource\Image\plus.png" />
+    <None Remove="Resource\Image\presentation-black.png" />
+    <None Remove="Resource\Image\presentation.png" />
+    <None Remove="Resource\Image\product-black.png" />
+    <None Remove="Resource\Image\product.png" />
+    <None Remove="Resource\Image\provider-black.png" />
+    <None Remove="Resource\Image\provider.png" />
+    <None Remove="Resource\Image\record.png" />
+    <None Remove="Resource\Image\remove-red.png" />
+    <None Remove="Resource\Image\sale.png" />
+    <None Remove="Resource\Image\save-black.png" />
+    <None Remove="Resource\Image\save.png" />
+    <None Remove="Resource\Image\search.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="logo-cnm.ico" />
-    <Content Include="View\Resource\Image\back-black.png">
+    <Content Include="Resource\logo-cnm.ico" />
+    <Content Include="Resource\Image\back-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\cnm-icon.png">
+    <Content Include="Resource\Image\cnm-icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\search.png">
+    <Content Include="Resource\Image\search.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\buy.png">
+    <Content Include="Resource\Image\buy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\consult.png">
+    <Content Include="Resource\Image\consult.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\edit.png">
+    <Content Include="Resource\Image\edit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\remove-red.png">
+    <Content Include="Resource\Image\remove-red.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\employee-black.png">
+    <Content Include="Resource\Image\employee-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\employee.png">
+    <Content Include="Resource\Image\employee.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\arrow-right.png">
+    <Content Include="Resource\Image\arrow-right.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\save-black.png">
+    <Content Include="Resource\Image\save-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\save.png">
+    <Content Include="Resource\Image\save.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\help.png">
+    <Content Include="Resource\Image\help.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\home-black.png">
+    <Content Include="Resource\Image\home-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\home.png">
+    <Content Include="Resource\Image\home.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\minimize.png">
+    <Content Include="Resource\Image\minimize.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\patient.png">
+    <Content Include="Resource\Image\patient.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\plus.png">
+    <Content Include="Resource\Image\plus.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\presentation-black.png">
+    <Content Include="Resource\Image\presentation-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\presentation.png">
+    <Content Include="Resource\Image\presentation.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\product-black.png">
+    <Content Include="Resource\Image\product-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\product.png">
+    <Content Include="Resource\Image\product.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\provider-black.png">
+    <Content Include="Resource\Image\provider-black.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\provider.png">
+    <Content Include="Resource\Image\provider.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\record.png">
+    <Content Include="Resource\Image\record.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\sale.png">
+    <Content Include="Resource\Image\sale.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="View\Resource\Image\exit.png">
+    <Content Include="Resource\Image\exit.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -144,6 +145,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="HostBuilders\" />
     <Folder Include="View\ProviderWindows\" />
   </ItemGroup>
 
@@ -156,8 +158,24 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\WPF.MVVMEssentials\WPF.MVVMEssentials.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

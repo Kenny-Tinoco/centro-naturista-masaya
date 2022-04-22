@@ -39,7 +39,7 @@
             Margin="60">
             <Image
                 Margin="1"
-                Source="/View/Resource/Image/cnm-icon.png"/>
+                Source="/Resource/Image/cnm-icon.png"/>
         </Border>
 
         <WrapPanel
@@ -51,16 +51,16 @@
 
             <usercontrols:HomeButton
                     Title="Venta"
-                    ImageSource="/View/Resource/Image/sale.png"/>
+                    ImageSource="/Resource/Image/sale.png"/>
 
             <usercontrols:HomeButton
                     Margin="50 0 50 0"
                     Title="Consulta"
-                    ImageSource="/View/Resource/Image/consult.png"/>
+                    ImageSource="/Resource/Image/consult.png"/>
 
             <usercontrols:HomeButton
                     Title="Compra"
-                    ImageSource="/View/Resource/Image/buy.png"/>
+                    ImageSource="/Resource/Image/buy.png"/>
 
         </WrapPanel>
         </Grid>

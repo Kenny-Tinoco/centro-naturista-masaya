@@ -1,12 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System.Configuration;
 
 namespace DataAccess.SqlServerDataSource
 {
     public class MasayaNaturistCenterDataBaseFactory
     {
-        private readonly Action<DbContextOptionsBuilder> _configureDbContext;
+       private readonly Action<DbContextOptionsBuilder> _configureDbContext = null!;
 
         public MasayaNaturistCenterDataBaseFactory(Action<DbContextOptionsBuilder> configureDbContext)
         {

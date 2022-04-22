@@ -1,4 +1,5 @@
-﻿using DataAccess.DAO.DAOInterfaces;
+﻿using Domain.DAO;
+using Domain.Services;
 
 namespace Domain.Logic
 {
@@ -10,6 +11,11 @@ namespace Domain.Logic
         private StockModalLogic _stockModalLogic;
         private PresentationLogic _presentationModalLogic;
 
+        public IViewsCollections viewsCollections;
+        public LogicFactory(DAOFactory parameter, IViewsCollections _viewsCollections) : this(parameter)
+        {
+            viewsCollections = _viewsCollections;
+        }
         public LogicFactory( DAOFactory daoFactory )
         {
             _daoFactory = daoFactory;
@@ -20,7 +26,7 @@ namespace Domain.Logic
             get
             {
                 if (_stockLogic == null)
-                    _stockLogic = new StockLogic(_daoFactory);
+                    _stockLogic = new StockLogic(_daoFactory, viewsCollections);
                 return _stockLogic;
             }
         }

@@ -1,5 +1,5 @@
-﻿using DataAccess.Entities;
-using DataAccess.SqlServerDataSource.Views;
+﻿using Domain.Entities;
+using Domain.Entities.Views;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.SqlServerDataSource

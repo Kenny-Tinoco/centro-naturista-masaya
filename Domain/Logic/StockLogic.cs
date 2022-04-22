@@ -1,15 +1,21 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.SqlServerDataSource.Views;
+﻿using Domain.DAO;
+using Domain.Entities;
+using Domain.Entities.Views;
+using Domain.Services;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
-    public class StockLogic : BaseLogic<StockView>
+    public class StockLogic : BaseLogic<Stock>
     {
+        public IViewsCollections viewsCollections;
+        public StockLogic(DAOFactory parameter, IViewsCollections _viewsCollections) : this(parameter)
+        {
+            viewsCollections = _viewsCollections;
+        }
         public StockLogic(DAOFactory parameter) : base(parameter.stockDAO)
         {
         }
-
        
         public bool searchLogic(StockView element, string parameter)
         {

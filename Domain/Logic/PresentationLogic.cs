@@ -1,5 +1,5 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Entities;
+﻿using Domain.DAO;
+using Domain.Entities;
 
 namespace Domain.Logic
 {

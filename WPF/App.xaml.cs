@@ -7,12 +7,13 @@ using System.Windows;
 using WPF.ViewModel.Components;
 using Domain.Logic;
 using Microsoft.Extensions.DependencyInjection;
-using DataAccess.DAO.DAOInterfaces;
-using DataAccess.DAO.SqlServer;
-using DataAccess.SqlServerDataSource;
 using System.Configuration;
-using Microsoft.EntityFrameworkCore;
 using WPF.MVVMEssentials.Services;
+using DataAccess.SqlServerDataSource;
+using Domain.DAO;
+using DataAccess.DaoSqlServer;
+using Microsoft.EntityFrameworkCore;
+using DataAccess;
 
 namespace WPF
 {
@@ -55,13 +56,21 @@ namespace WPF
             services.AddSingleton<DAOFactory>(s => createDAOFactorySQL(s));
 
 
-            services.AddSingleton<LogicFactory>();
+            services.AddSingleton<LogicFactory>
+            (
+                s => new LogicFactory
+                (
+                    s.GetRequiredService<DAOFactory>(),
+                    new ViewsCollectionsSQL(s.GetRequiredService<MasayaNaturistCenterDataBaseFactory>())
+                ) 
+            );
 
             services.AddSingleton<CloseModalNavigationService>();
 
 
 
-            services.AddTransient<StockModalViewModel>(s => createStockModaViewModel(s));
+            services.AddTransient<ProductSelectionModalViewModel>(s => createStockModalViewModel(s));
+            services.AddTransient<StockFormViewModel>(s => createStockFormViewModel(s));
             services.AddTransient<PresentationModalViewModel>
             (
                s => PresentationModalViewModel.LoadViewModel
@@ -99,6 +108,14 @@ namespace WPF
             );
         }
 
+        private ProductSelectionModalViewModel createStockModalViewModel( IServiceProvider s )
+        {
+            return ProductSelectionModalViewModel.LoadViewModel
+            (
+                s.GetRequiredService<LogicFactory>().productLogic,
+                s.GetRequiredService<CloseModalNavigationService>()
+            );
+        }
 
         private StartupViewModel createStartupViewModel( IServiceProvider serviceProvider )
         {
@@ -119,12 +136,22 @@ namespace WPF
             );
         }
 
-        private StockModalViewModel createStockModaViewModel( IServiceProvider serviceProvider )
+        private StockFormViewModel createStockFormViewModel( IServiceProvider serviceProvider )
         {
-            return new StockModalViewModel
+            return new StockFormViewModel
             (
-                serviceProvider.GetRequiredService<CloseModalNavigationService>(), 
-                new DataAccess.Entities.Stock()
+                serviceProvider.GetRequiredService<LogicFactory>(),
+                createStockNavigationService(serviceProvider),
+                createStockModalNavigationService(serviceProvider)
+            );
+        }
+
+        private INavigationService createStockModalNavigationService( IServiceProvider serviceProvider )
+        {
+            return new NavigationService<ProductSelectionModalViewModel>
+            (
+                serviceProvider.GetRequiredService<ModalNavigationStore>(),
+                () => serviceProvider.GetRequiredService<ProductSelectionModalViewModel>()
             );
         }
 
@@ -132,12 +159,8 @@ namespace WPF
         {
             return StockViewModel.LoadViewModel
             (
-                serviceProvider.GetRequiredService<LogicFactory>().stockLogic,
-                serviceProvider.GetRequiredService<ModalNavigationStore>(),
-                new CompositeNavigationService
-                (
-                    serviceProvider.GetRequiredService<CloseModalNavigationService>()
-                )
+                serviceProvider.GetRequiredService<LogicFactory>().stockLogic, 
+                createStockFormNavigationService(serviceProvider)
             );
         }
 
@@ -216,12 +239,13 @@ namespace WPF
         }
 
 
-        private INavigationService createStockModalNavigationService( IServiceProvider serviceProvider )
+        private INavigationService createStockFormNavigationService( IServiceProvider serviceProvider )
         {
-            return new NavigationService<StockModalViewModel>
+            return new TabControlNavigationService<StockFormViewModel>
             (
-                serviceProvider.GetRequiredService<ModalNavigationStore>(),
-                () => serviceProvider.GetRequiredService<StockModalViewModel>()
+                serviceProvider.GetRequiredService<NavigationStore>(),
+                () => serviceProvider.GetRequiredService<StockFormViewModel>(),
+                () => serviceProvider.GetRequiredService<TabControlMenuViewModel>()
             );
         }
 

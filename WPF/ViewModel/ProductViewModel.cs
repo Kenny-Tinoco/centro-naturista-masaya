@@ -1,44 +1,41 @@
 ﻿using Domain.Logic;
 using WPF.Command.Crud;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
 using WPF.MVVMEssentials.Services;
 using WPF.MVVMEssentials.Commands;
-using DataAccess.Entities;
 using WPF.Command.Navigation;
+using WPF.Command.CRUD;
+using System.Windows;
+using Domain.Entities;
 
 namespace WPF.ViewModel
 {
     public class ProductViewModel : ViewModelGeneric
     {
-        private ObservableCollection<Product> _recordsList;
-        public INavigationService navigationService;
-        public BaseLogic<Product> logic;
-        private string _searchText;
-        public ICommand addCommand { get; }
-        public ICommand deleteCommand { get; }
+        public INavigationService _navigationService;
+        
+        public BaseLogic<Product> logic { get; }
 
-        public ProductViewModel( BaseLogic<Product> parameter, INavigationService navigationService )
+        public ICommand openModalCommand { get; }
+
+
+        public ProductViewModel( BaseLogic<Product> parameter, INavigationService modalNavigationService )
         {
-            Contract.Requires(navigationService != null && parameter != null);
-            this.navigationService = navigationService;
+            Contract.Requires(modalNavigationService != null && parameter != null);
+
+            _navigationService = modalNavigationService;
             logic = parameter;
 
-            recordsList = new ObservableCollection<Product>();
-
-            addCommand = new NavigateCommand(navigationService);
             logic.loadListRecordsCommand = new LoadRecordListCommand<Product>(this);
+            openModalCommand = new NavigateCommand(_navigationService);
         }
 
 
-        public static ProductViewModel LoadViewModel
-        ( BaseLogic<Product> parameter, INavigationService navigationService )
+        public static ProductViewModel LoadViewModel ( BaseLogic<Product> parameter, INavigationService navigationService )
         {
             ProductViewModel viewModel = new ProductViewModel(parameter, navigationService);
 
@@ -48,16 +45,14 @@ namespace WPF.ViewModel
         }
 
 
-        public ObservableCollection<Product> recordsList
+        public override async Task Initialize()
         {
-            get { return _recordsList; }
-            set 
-            { 
-                _recordsList = value;
-                OnPropertyChanged(nameof(recordsList));
-            }
+            logic.getListUpdates(await logic.getAll());
         }
 
+
+
+        private string _searchText;
         public string searchText
         {
             get
@@ -71,96 +66,68 @@ namespace WPF.ViewModel
             }
         }
 
-        public override async Task Initialize()
-        {
-            getListUpdates(await logic.getAll());
-            DataGridSource.Source = recordsList;
-            dataGridSource = DataGridSource.View;
-        }
-
-        private void getListUpdates( IEnumerable<Product> list )
-        {
-            recordsList.Clear();
-
-            var auxiliaryList = new ObservableCollection<Product>();
-            list.ToList().ForEach(element => auxiliaryList.Add(element));
-
-            recordsList = auxiliaryList;
-        }
-
         public void search()
         {
             if (validateSearchString(searchText))
             {
-                DataGridSource.Filter += new FilterEventHandler(DataGridSource_Filter);
+                dataGridSource.Filter = DataGridSource_Filter;
             }
             else if (searchText.Equals(""))
             {
-                DataGridSource.Filter += null;
+                dataGridSource.Filter = null;
             }
         }
 
-        private void DataGridSource_Filter( object sender, FilterEventArgs e )
+        private bool DataGridSource_Filter( object obj )
         {
-            var element = e.Item as Product;
-            if (element != null)
+            if (obj is Product element)
             {
-                if ((logic as ProductLogic).searchLogic(element, searchText))
-                {
-                    e.Accepted = true;
-                }
-                else
-                {
-                    e.Accepted = false;
-                }
+                return (logic as ProductLogic).searchLogic(element, searchText);
             }
+
+            return false;
         }
 
         private bool validateSearchString( string parameter )
         {
             Contract.Requires(parameter != null);
-            bool ok = true;
 
             if (parameter.Trim().Equals("Búscar") || parameter.Trim().Equals(""))
-            {
-                ok = false;
-            }
+                return false;
 
-            return ok;
+            return true;
         }
 
-
-        private ICollectionView _dataGridSourceView;
         public ICollectionView dataGridSource
         {
             get
             {
-                return _dataGridSourceView;
-            }
-            set
-            {
-                _dataGridSourceView = value;
-                OnPropertyChanged(nameof(dataGridSource));
+                return CollectionViewSource.GetDefaultView(logic.recordList);
             }
         }
 
-        private CollectionViewSource _dataGridSource;
-        private CollectionViewSource DataGridSource
+
+        private ICommand _addCommand;
+        public ICommand addCommand
         {
             get
             {
-                if (_dataGridSource == null)
-                {
-                    _dataGridSource = new CollectionViewSource();
-                    _dataGridSource.Source = recordsList;
-                }
-                return _dataGridSource;
-            }
-            set
-            {
-                _dataGridSource = value;
+                if (_addCommand == null)
+                    _addCommand = new RelayCommand(parameter => add(), null);
+
+                return _addCommand;
             }
         }
+
+        public void add()
+        {
+            logic.isEditable = false;
+            logic.resetCurrentDTO();
+            openModalCommand.Execute(-1);
+        }
+
+
+
         private ICommand _editCommand;
         public ICommand editCommand
         {
@@ -172,12 +139,35 @@ namespace WPF.ViewModel
                 return _editCommand;
             }
         }
+
         public void edit( Product parameter )
         {
             logic.currentDTO = parameter;
             logic.isEditable = true;
-            addCommand.Execute(1);
-            
+            openModalCommand.Execute(-1);
+        }
+
+
+
+        private ICommand _deleteCommand;
+        public ICommand deleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                    _deleteCommand = new RelayCommand(parameter => delete((Product)parameter), null);
+
+                return _deleteCommand;
+            }
+        }
+
+        public async void delete( Product parameter )
+        {
+            var result = MessageBox
+                .Show("¿Está seguro de eliminar este producto?", "Confirmar Eliminación", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+                await new DeleteCommand<Product>(logic).ExecuteAsync(parameter);
         }
     }
 }

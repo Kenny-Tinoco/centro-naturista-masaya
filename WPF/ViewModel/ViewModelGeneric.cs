@@ -25,5 +25,10 @@ namespace WPF.ViewModel
             }
         }
 
+        public virtual bool canCreate
+        {
+            get => true;
+            set { }
+        }
     }
 }

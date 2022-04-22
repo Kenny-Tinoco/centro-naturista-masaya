@@ -13,12 +13,12 @@
                 Width="auto"
                 BorderBrush="Transparent"
                 Background="Transparent"
-                Click="backButton_Click"
+                Command="{Binding buttonCommand, ElementName=root}"
                 VerticalAlignment="Center"
                 Style="{DynamicResource CustomButtonBackStyle}"
                 >
             <StackPanel Orientation="Horizontal">
-                <Image Source="/View/Resource/Image/back-black.png"/>
+                <Image Source="/Resource/Image/back-black.png"/>
 
                 <TextBlock
                     Margin="0 0 8 0"

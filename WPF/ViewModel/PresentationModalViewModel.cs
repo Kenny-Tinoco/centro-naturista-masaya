@@ -2,10 +2,11 @@
 using WPF.Command.Crud;
 using System.Windows.Input;
 using WPF.MVVMEssentials.Services;
-using DataAccess.Entities;
 using WPF.Command.Navigation;
 using WPF.Command.CRUD;
 using System.Threading.Tasks;
+using System.Windows;
+using Domain.Entities;
 
 namespace WPF.ViewModel
 {
@@ -20,17 +21,16 @@ namespace WPF.ViewModel
             }
         }
 
-        public ICommand exitCommand { get; }
         public ICommand saveCommand { get; }
-        public ICommand deleteCommand { get; }
         public BaseLogic<Presentation> logic { get; }
+        public INavigationService closeModalNavigationService;
 
         public PresentationModalViewModel( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
             logic = parameter;
-            exitCommand = new ExitModalCommand(closeModalNavigationService);
-            saveCommand = new SaveCommand<Presentation>(logic);
-            deleteCommand = new DeleteCommand<Presentation>(logic);
+            this.closeModalNavigationService = closeModalNavigationService;
+            saveCommand = new SaveCommand<Presentation>(logic, this.canCreate);
+            //deleteCommand = new DeleteCommand<Presentation>(logic);
 
             logic.loadListRecordsCommand = new LoadRecordListCommand<Presentation>(this);
         }
@@ -81,10 +81,56 @@ namespace WPF.ViewModel
                 return _editCommand;
             }
         }
-        public void edit( Presentation parameter )
+        public void edit(in Presentation parameter )
         {
-            logic.currentDTO = parameter;
+            logic.currentDTO = new Presentation
+            {
+                idPresentation = parameter.idPresentation,
+                name = parameter.name
+            }; 
+
             logic.isEditable = true;
+        }
+
+        private ICommand _addCommand;
+        public ICommand exitCommand
+        {
+            get
+            {
+                if (_addCommand == null)
+                    _addCommand = new RelayCommand(parameter => add(), null);
+
+                return _addCommand;
+            }
+        }
+
+        public void add()
+        {
+            logic.isEditable = false;
+            logic.resetCurrentDTO(); 
+            new ExitModalCommand(closeModalNavigationService).Execute(1);
+        }
+
+
+        private ICommand _deleteCommand;
+        public ICommand deleteCommand
+        {
+            get
+            {
+                if (_deleteCommand == null)
+                    _deleteCommand = new RelayCommand(parameter => delete((Presentation)parameter), null);
+
+                return _deleteCommand;
+            }
+        }
+
+        public async void delete( Presentation parameter )
+        {
+            var result = MessageBox
+                .Show("¿Está seguro de eliminar esta presentación?", "Confirmar Eliminación", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+                await new DeleteCommand<Presentation>(logic).ExecuteAsync(parameter);
         }
     }
 }

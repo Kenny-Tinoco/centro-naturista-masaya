@@ -7,9 +7,6 @@ namespace Domain.Utilities
         private string name;
         private string lastName;
 
-        public Name()
-        {
-        }
 
         public Name(string name, string lastName)
         {

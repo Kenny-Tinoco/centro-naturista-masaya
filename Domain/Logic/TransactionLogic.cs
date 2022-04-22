@@ -1,18 +1,18 @@
-﻿using DataAccess.Entities;
-using System.Diagnostics.Contracts;
+﻿using System.Diagnostics.Contracts;
+using System.Transactions;
 
 namespace Domain.Logic
 {
     public abstract class TransactionLogic
     {
-        public Transaction transaction { get; set; }
+        public Entities.Transaction transaction { get; set; }
 
 
-        public TransactionLogic() : this(new Transaction())
+        public TransactionLogic() : this(new Entities.Transaction())
         {
         }
 
-        public TransactionLogic(Transaction parameter)
+        public TransactionLogic(Entities.Transaction parameter)
         {
             Contract.Requires(parameter != null);
             this.transaction = parameter;

@@ -4,11 +4,11 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="View/Resource/Values/colors.xaml"/>
-                <ResourceDictionary Source="View/Resource/Values/dimens.xaml"/>
-                <ResourceDictionary Source="View/Resource/Values/strings.xaml"/>
-                <ResourceDictionary Source="View/Resource/Style/ControlStyles.xaml"/>
-                <ResourceDictionary Source="View/Resource/Resource.xaml"/>
+                <ResourceDictionary Source="Resource/Values/colors.xaml"/>
+                <ResourceDictionary Source="Resource/Values/dimens.xaml"/>
+                <ResourceDictionary Source="Resource/Values/strings.xaml"/>
+                <ResourceDictionary Source="Resource/Style/ControlStyles.xaml"/>
+                <ResourceDictionary Source="Resource/Resource.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

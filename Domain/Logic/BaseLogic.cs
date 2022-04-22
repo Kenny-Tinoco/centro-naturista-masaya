@@ -1,15 +1,14 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Entities;
+﻿using Domain.DAO;
+using Domain.Entities;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Domain.Logic
 {
-    public class BaseLogic<Entity> : INotifyPropertyChanged 
-        where Entity : BaseEntity
+    public class BaseLogic<Entity> : INotifyPropertyChanged where Entity : BaseEntity
     {
-        private Entity _currentDTO;
+        private Entity _currentDTO = null!;
         public Entity currentDTO
         {
             get
@@ -22,6 +21,9 @@ namespace Domain.Logic
                 OnPropertyChanged(nameof(currentDTO));
             }
         }
+
+
+        private bool _isEditable;
         public bool isEditable
         {
             get
@@ -35,10 +37,8 @@ namespace Domain.Logic
             }
         }
 
-        private BaseDAO<Entity, object> _entity;
-        private bool _isEditable;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private BaseDAO<Entity, object> _entity;
 
         public BaseLogic(BaseDAO<Entity, object> parameter)
         {
@@ -62,8 +62,8 @@ namespace Domain.Logic
             await _entity.update(currentDTO);
             resetCurrentDTO();
             await updateRecordList();
-            isEditable = false;
         }
+       
         public async Task delete(Entity parameter)
         {
             await _entity.deleteById(getId(parameter));
@@ -80,17 +80,10 @@ namespace Domain.Logic
             return await _entity.getAll();
         }
 
+
         public virtual void resetCurrentDTO()
         {
             throw new NotImplementedException();
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
         }
 
         public void getListUpdates(IEnumerable<Entity> list)
@@ -103,7 +96,8 @@ namespace Domain.Logic
             recordList = auxiliaryList;
         }
 
-        private ObservableCollection<Entity> _recordList;
+
+        private ObservableCollection<Entity> _recordList = null!;
         public ObservableCollection<Entity> recordList
         {
             get
@@ -118,6 +112,17 @@ namespace Domain.Logic
                 OnPropertyChanged(nameof(recordList));
             }
         }
-        public ICommand loadListRecordsCommand { get; set; }
+        public ICommand loadListRecordsCommand { get; set; } = null!;
+
+
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
     }
 }

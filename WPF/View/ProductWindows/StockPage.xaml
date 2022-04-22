@@ -3,7 +3,8 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:userControls="clr-namespace:WPF.ViewComponents.UserControls" xmlns:custom="clr-namespace:WPF.ViewComponents.CustomControls"
+      xmlns:userControls="clr-namespace:WPF.ViewComponents.UserControls" 
+      xmlns:custom="clr-namespace:WPF.ViewComponents.CustomControls"
       x:Name="root"
       mc:Ignorable="d"
       d:DesignHeight="550"
@@ -42,7 +43,7 @@
                 Title="Agregar Existencia"
                 buttonCommand="{Binding addCommand}"
                 buttonParameter="{Binding logic.currentDTO}"
-                ImageSource="/View/Resource/Image/plus.png"/>
+                ImageSource="/Resource/Image/plus.png"/>
         </StackPanel>
 
         <StackPanel
@@ -59,10 +60,10 @@
                     />
                 <userControls:CustomButton
                     Title="Modificar"
-                    ImageSource="/View/Resource/Image/edit.png"/>
+                    ImageSource="/Resource/Image/edit.png"/>
                 <userControls:CustomButton
                     Title="Eliminar"
-                    ImageSource="/View/Resource/Image/remove-red.png"/>
+                    ImageSource="/Resource/Image/remove-red.png"/>
             </StackPanel>
         </StackPanel>
         

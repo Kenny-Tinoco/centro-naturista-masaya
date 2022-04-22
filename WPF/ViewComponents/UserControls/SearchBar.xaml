@@ -24,7 +24,7 @@
             
             <Image
                 Grid.Column="0"
-                Source="/View/Resource/Image/search.png"
+                Source="/Resource/Image/search.png"
                 />
             <TextBox
                 x:Name="searchText"

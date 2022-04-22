@@ -4,13 +4,13 @@ using System.ComponentModel;
 using System.Diagnostics.Contracts;
 using Domain.Logic;
 using WPF.Command.Crud;
-using WPF.MVVMEssentials.ViewModels;
 using WPF.MVVMEssentials.Services;
 using WPF.MVVMEssentials.Commands;
-using WPF.MVVMEssentials.Stores;
-using DataAccess.SqlServerDataSource.Views;
 using WPF.Command.CRUD;
 using System.Threading.Tasks;
+using Domain.Entities;
+using Domain.Entities.Views;
+using System.Collections.Generic;
 
 namespace WPF.ViewModel
 {
@@ -20,36 +20,31 @@ namespace WPF.ViewModel
         public ICommand addCommand { get; }
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
-        public BaseLogic<StockView> logic { get; }
+        public StockLogic logic { get; }
+
+        public IEnumerable<StockView> StockViewCatalog { get; set; } 
 
         public INavigationService navigationService;
 
 
         public StockViewModel
-        ( BaseLogic<StockView> parameter, INavigationService addStockNavigationService )
+        ( BaseLogic<Stock> parameter, INavigationService addStockNavigationService )
         {
             Contract.Requires(parameter != null);
-            logic = parameter;
+            logic = parameter as StockLogic;
 
             addCommand = new NavigateCommand(addStockNavigationService);
-            saveCommand = new SaveCommand<StockView>(parameter);
-            deleteCommand = new DeleteCommand<StockView>(parameter);
-
-            logic.loadListRecordsCommand = new LoadRecordListCommand<StockView>(this);
+            saveCommand = new SaveCommand<Stock>(parameter,this.canCreate);
+            deleteCommand = new DeleteCommand<Stock>(parameter);
         }
 
         public static StockViewModel LoadViewModel
-        ( BaseLogic<StockView> parameter, ModalNavigationStore navigationStore, INavigationService CloseModalNavigationService)
+        ( BaseLogic<Stock> parameter, INavigationService addStockNavigationService )
         {
-            var stockModalNavigation = new NavigationService<ViewModelBase>
-            (
-                navigationStore, 
-                () => new StockModalViewModel(CloseModalNavigationService, new DataAccess.Entities.Stock())
-            );
 
-            StockViewModel viewModel = new StockViewModel(parameter, stockModalNavigation);
+            StockViewModel viewModel = new StockViewModel(parameter, addStockNavigationService);
 
-            viewModel.logic.loadListRecordsCommand.Execute(null);
+            new LoadRecordListCommand<StockView>(viewModel).Execute(null);
 
             return viewModel;
         }
@@ -58,8 +53,8 @@ namespace WPF.ViewModel
 
         public override async Task Initialize()
         {
-            logic.getListUpdates(await logic.getAll());
-            DataGridSource.Source = logic.recordList;
+            StockViewCatalog = await logic.viewsCollections.StockViewCatalog();
+            DataGridSource.Source = StockViewCatalog;
             dataGridSource = DataGridSource.View;
         }
 
@@ -97,7 +92,7 @@ namespace WPF.ViewModel
             StockView element = e.Item as StockView;
             if (element != null)
             {
-                if((logic as StockLogic).searchLogic(element, searchText))
+                if(logic.searchLogic(element, searchText))
                 {
                     e.Accepted = true;
                 }

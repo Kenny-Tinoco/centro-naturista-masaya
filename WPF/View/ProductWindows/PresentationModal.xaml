@@ -9,7 +9,7 @@
     <Grid>
         <userControls:Popup
             titleBar="{Binding titleBar}"
-            iconBar="/View/Resource/Image/presentation.png"
+            iconBar="/Resource/Image/presentation.png"
             buttonExitCommand="{Binding exitCommand}">
 
             <userControls:Popup.popupContent>

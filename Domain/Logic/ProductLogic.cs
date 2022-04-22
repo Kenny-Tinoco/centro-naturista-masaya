@@ -1,5 +1,5 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.Entities;
+﻿using Domain.DAO;
+using Domain.Entities;
 using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
@@ -28,8 +28,20 @@ namespace Domain.Logic
         }
         public override void resetCurrentDTO()
         {
-            var element = new Product();
+            var element = new Product
+            {
+                idProduct = 0,
+                name = "",
+                description = ""
+            };
             currentDTO = element;
+            isEditable = false;
         }
+
+        public override int getId(Product parameter)
+        {
+            return parameter.idProduct;
+        }
+
     }
 }

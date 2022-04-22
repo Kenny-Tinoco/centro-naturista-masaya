@@ -8,7 +8,7 @@
     <Grid>
         <userControls:Popup
             titleBar="{Binding titleBar}"
-            iconBar="/View/Resource/Image/product.png"
+            iconBar="/Resource/Image/product.png"
             buttonExitCommand="{Binding exitCommand}">
 
             <userControls:Popup.popupContent>
@@ -56,7 +56,7 @@
                                     Style="{DynamicResource TextBlockStyle}"/>
 
                             <TextBox
-                                    Text="{Binding logic.currentDTO.name, Mode=TwoWay}"
+                                    Text="{Binding name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                     FontSize="17"
                                     FontWeight="Normal"
                                     TextAlignment="Center"/>
@@ -79,7 +79,7 @@
 
                             <TextBox
                                 Grid.Row="1"
-                                Text="{Binding logic.currentDTO.description, Mode=TwoWay}"
+                                Text="{Binding description, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
                                 FontSize="17"
                                 FontWeight="Normal"
                                 VerticalContentAlignment="Top"
@@ -104,7 +104,8 @@
                                 Style="{DynamicResource CustomButtonStyle}"
                                 Foreground="White"
                                 FontSize="15"
-                                Width="75"/>
+                                Width="75"
+                                IsEnabled="{Binding canCreate}"/>
                         </StackPanel>
 
                     </Grid>

@@ -1,5 +1,4 @@
-﻿using DataAccess.Entities;
-using System.Diagnostics.Contracts;
+﻿using Domain.Entities;
 
 namespace Domain.Logic
 {

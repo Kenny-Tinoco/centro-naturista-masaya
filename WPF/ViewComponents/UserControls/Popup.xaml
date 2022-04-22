@@ -66,11 +66,10 @@
                 <userControls:TitleBarButton
                     Grid.Column="1"
                     Margin="5"
+                    Icon="/Resource/Image/exit.png"
                     styleButton="{DynamicResource CustomButtonExitStyle}"
                     buttonCommand="{Binding buttonExitCommand, ElementName=root}"
                     />
-
-                <!--Icon="/View/Resource/Image/exit.png"-->
             </Grid>
 
             <ContentControl

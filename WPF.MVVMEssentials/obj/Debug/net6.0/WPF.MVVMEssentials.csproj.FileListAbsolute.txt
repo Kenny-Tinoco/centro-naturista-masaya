@@ -9,3 +9,4 @@ C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssen
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\net6.0\WPF.MVVMEssentials.dll
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\net6.0\ref\WPF.MVVMEssentials.dll
 C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\net6.0\WPF.MVVMEssentials.pdb
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\net6.0\WPF.MVVMEssentials.csproj.AssemblyReference.cache

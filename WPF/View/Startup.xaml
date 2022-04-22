@@ -28,8 +28,11 @@
             <DataTemplate DataType="{x:Type viewmodel:StockViewModel}">
                 <viewsProductWindows:StockPage/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:StockModalViewModel}">
-                <viewsProductWindows:StockModal/>
+            <DataTemplate DataType="{x:Type viewmodel:StockFormViewModel}">
+                <viewsProductWindows:StockForm/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewmodel:ProductSelectionModalViewModel}">
+                <viewsProductWindows:ProductSelectionModal/>
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewmodel:ProductViewModel}">
                 <viewsProductWindows:ProductPage/>
@@ -113,14 +116,14 @@
                     HorizontalAlignment="Right">
 
                     <usercontrols:TitleBarButton
-                        Icon="/View/Resource/Image/minimize.png"
+                        Icon="/Resource/Image/minimize.png"
                         buttonCommand="{Binding stateBarCommand}"
                         buttonParameter="minimize"
                         styleButton="{StaticResource CustomButtonMinimizeStyle}"/>
 
                     <usercontrols:TitleBarButton
                         Margin="4 0 0 0"
-                        Icon="/View/Resource/Image/exit.png"
+                        Icon="/Resource/Image/exit.png"
                         buttonCommand="{Binding stateBarCommand}"
                         buttonParameter="exit"
                         styleButton="{StaticResource CustomButtonExitStyle}"/>

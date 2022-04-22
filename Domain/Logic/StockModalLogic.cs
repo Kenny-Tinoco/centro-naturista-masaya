@@ -1,9 +1,9 @@
-﻿using DataAccess.DAO.DAOInterfaces;
-using DataAccess.SqlServerDataSource.Views;
+﻿using Domain.DAO;
+using Domain.Entities;
 
 namespace Domain.Logic
 {
-    public class StockModalLogic : BaseLogic<StockView>
+    public class StockModalLogic : BaseLogic<Stock>
     {
         private ProductDAO productDAO;
         private PresentationDAO presentationDAO;
