@@ -10,7 +10,7 @@
         <userControls:Popup
             titleBar="{Binding titleBar}"
             iconBar="/Resource/Image/presentation.png"
-            buttonExitCommand="{Binding exitCommand}">
+            buttonExitCommand="{Binding ExitCommand}">
 
             <userControls:Popup.popupContent>
 
@@ -47,7 +47,7 @@
                                     Text="Código"
                                     Style="{DynamicResource TextBlockStyle}"/>
                                 <TextBox
-                                    Text="{Binding logic.currentDTO.idPresentation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding logic.entity.idPresentation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     FontSize="17"
                                     TextAlignment="Center"
                                     IsEnabled="False"
@@ -62,7 +62,7 @@
                                     Style="{DynamicResource TextBlockStyle}"/>
                                 
                                 <TextBox
-                                    Text="{Binding logic.currentDTO.name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                    Text="{Binding name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     FontSize="17"
                                     FontWeight="Normal"
                                     TextAlignment="Center"/>
@@ -78,7 +78,8 @@
                                 <Button
                                     Content="Guardar"
                                     FontWeight="Normal"
-                                    Command="{Binding saveCommand}"
+                                    IsEnabled="{Binding canCreate}"
+                                    Command="{Binding SaveCommand}"
                                     CommandParameter="{Binding logic.isEditable}"
                                     Style="{DynamicResource CustomButtonStyle}"
                                     Foreground="White"
@@ -88,7 +89,7 @@
                                     Margin="30 0 0 0"
                                     Content="Limpiar"
                                     FontWeight="Normal"
-                                    Command="{Binding resetCommand}"
+                                    Command="{Binding ResetCommand}"
                                     Style="{DynamicResource CustomButtonStyle}"
                                     Foreground="White"
                                     Width="75"
@@ -123,7 +124,7 @@
                                 Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                                 
                                 <DataGrid
-                                    ItemsSource="{Binding logic.recordList}"
+                                    ItemsSource="{Binding logic.catalogue}"
                                     Style="{DynamicResource ElementsDataGrid}"
                                     Margin="5 20 5 5"
                                     Height="135"
@@ -136,12 +137,12 @@
                                                 HorizontalAlignment="Center"
                                                 Orientation="Horizontal">
                                                 <Button Content="Editar"
-                                                        Command="{Binding Path=DataContext.editCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                                        Command="{Binding Path=DataContext.EditCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
                                                         CommandParameter="{Binding}" 
                                                         Style="{DynamicResource ButtonStyle}"
                                                         Background="#2196F3"/>
                                                 <Button Content="Eliminar"
-                                                        Command="{Binding Path=DataContext.deleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                                        Command="{Binding Path=DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
                                                         CommandParameter="{Binding}"
                                                         Style="{DynamicResource ButtonStyle}"
                                                         Margin="4 0 0 0"

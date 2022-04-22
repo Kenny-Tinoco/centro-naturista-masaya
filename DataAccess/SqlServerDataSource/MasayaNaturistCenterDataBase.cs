@@ -383,7 +383,7 @@ namespace DataAccess.SqlServerDataSource
                     .HasColumnType("datetime")
                     .HasColumnName("date");
 
-                entity.Property(e => e.idTransactionRelatedObjet).HasColumnName("idEmployee");
+                entity.Property(e => e.idRelatedObjet).HasColumnName("idEmployee");
 
                 entity.Property(e => e.total).HasColumnName("total");
             });
@@ -485,7 +485,7 @@ namespace DataAccess.SqlServerDataSource
                     .HasColumnType("datetime")
                     .HasColumnName("date");
 
-                entity.Property(e => e.idTransactionRelatedObjet).HasColumnName("idProvider");
+                entity.Property(e => e.idRelatedObjet).HasColumnName("idProvider");
 
                 entity.Property(e => e.total).HasColumnName("total");
             });

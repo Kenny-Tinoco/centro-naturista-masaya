@@ -8,20 +8,84 @@ namespace Domain.Logic
 {
     public class BaseLogic<Entity> : INotifyPropertyChanged where Entity : BaseEntity
     {
-        private Entity _currentDTO = null!;
-        public Entity currentDTO
+        private BaseDAO<Entity, object> _dao;
+
+        public BaseLogic(BaseDAO<Entity, object> parameter)
+        {
+            _dao = parameter;
+        }
+
+
+        public async Task save()
+        {
+            await _dao.create(entity);
+            resetEntity();
+            await updateCatalogue();
+        }
+
+        public async Task edit()
+        {
+            await _dao.update(entity);
+            resetEntity();
+            await updateCatalogue();
+        }
+       
+        public async Task delete(Entity parameter)
+        {
+            await _dao.deleteById(getId(parameter));
+            await updateCatalogue();
+        }
+
+        public virtual int getId(Entity parameter)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<Entity>> getAll()
+        {
+            return await _dao.getAll();
+        }
+
+
+
+        private async Task updateCatalogue()
+        {
+            RefreshCatalogue(await getAll());
+        }
+
+        public virtual void resetEntity()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RefreshCatalogue(IEnumerable<Entity> list)
+        {
+            catalogue.Clear();
+
+            var auxiliaryList = new ObservableCollection<Entity>();
+            list.ToList().ForEach(element => auxiliaryList.Add(element));
+
+            catalogue = auxiliaryList;
+        }
+
+
+        public ICommand LoadCatalogueCommand { get; set; } = null!;
+
+        private ObservableCollection<Entity> _catalogue = null!;
+        public ObservableCollection<Entity> catalogue
         {
             get
             {
-                return _currentDTO;
+                if (_catalogue == null)
+                    _catalogue = new ObservableCollection<Entity>();
+                return _catalogue;
             }
             set
             {
-                _currentDTO = value;
-                OnPropertyChanged(nameof(currentDTO));
+                _catalogue = value;
+                OnPropertyChanged(nameof(catalogue));
             }
         }
-
 
         private bool _isEditable;
         public bool isEditable
@@ -37,82 +101,19 @@ namespace Domain.Logic
             }
         }
 
-
-        private BaseDAO<Entity, object> _entity;
-
-        public BaseLogic(BaseDAO<Entity, object> parameter)
-        {
-            _entity = parameter;
-        }
-
-        public async Task save()
-        {
-            await _entity.create(currentDTO);
-            resetCurrentDTO();
-            await updateRecordList();
-        }
-
-        private async Task updateRecordList()
-        {
-            getListUpdates(await getAll());
-        }
-
-        public async Task edit()
-        {
-            await _entity.update(currentDTO);
-            resetCurrentDTO();
-            await updateRecordList();
-        }
-       
-        public async Task delete(Entity parameter)
-        {
-            await _entity.deleteById(getId(parameter));
-            await updateRecordList();
-        }
-
-        public virtual int getId(Entity parameter)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task<IEnumerable<Entity>> getAll()
-        {
-            return await _entity.getAll();
-        }
-
-
-        public virtual void resetCurrentDTO()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void getListUpdates(IEnumerable<Entity> list)
-        {
-            recordList.Clear();
-
-            var auxiliaryList = new ObservableCollection<Entity>();
-            list.ToList().ForEach(element => auxiliaryList.Add(element));
-
-            recordList = auxiliaryList;
-        }
-
-
-        private ObservableCollection<Entity> _recordList = null!;
-        public ObservableCollection<Entity> recordList
+        private Entity _entity = null!;
+        public Entity entity
         {
             get
             {
-                if (_recordList == null)
-                    _recordList = new ObservableCollection<Entity>();
-                return _recordList;
+                return _entity;
             }
             set
             {
-                _recordList = value;
-                OnPropertyChanged(nameof(recordList));
+                _entity = value;
+                OnPropertyChanged(nameof(entity));
             }
         }
-        public ICommand loadListRecordsCommand { get; set; } = null!;
 
 
 

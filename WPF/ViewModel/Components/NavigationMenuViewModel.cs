@@ -30,14 +30,15 @@ namespace WPF.ViewModel.Components
             (
                 INavigationService navigateHomeCommand,
                 INavigationService navigateProductCommand,
-                INavigationService navigateProviderCommand
+                INavigationService navigateProviderCommand,
+                INavigationService navigateEmployeeCommand
             )
         {
             isMenuOpen = true;
             this.navigateHomeCommand = new NavigateCommand(navigateHomeCommand);
             this.navigateProductCommand = new NavigateCommand(navigateProductCommand);
             this.navigateProviderCommand = new NavigateCommand(navigateProviderCommand);
-
+            this.navigateEmployeeCommand = new NavigateCommand(navigateEmployeeCommand);
         }
     }
 }

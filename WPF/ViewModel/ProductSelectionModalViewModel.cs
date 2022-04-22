@@ -21,7 +21,7 @@ namespace WPF.ViewModel
         public ProductSelectionModalViewModel(BaseLogic<Product> _logic, INavigationService closeModalNavigationService )
         {
             logic = _logic;
-            logic.loadListRecordsCommand = new LoadRecordListCommand<Stock>(this);
+            logic.LoadCatalogueCommand = new LoadRecordListCommand<Stock>(this);
             exitCommand = new ExitModalCommand(closeModalNavigationService);
             titleBar = "Selecionar un producto";
         }
@@ -31,7 +31,7 @@ namespace WPF.ViewModel
         {
             ProductSelectionModalViewModel viewModel = new ProductSelectionModalViewModel(_logic, closeModalNavigationService);
 
-            viewModel.logic.loadListRecordsCommand.Execute(null);
+            viewModel.logic.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
@@ -39,7 +39,7 @@ namespace WPF.ViewModel
 
         public override async Task Initialize()
         {
-            logic.getListUpdates(await logic.getAll());
+            logic.RefreshCatalogue(await logic.getAll());
         }
 
 
@@ -56,7 +56,7 @@ namespace WPF.ViewModel
 
         public void go( Product parameter )
         {
-            logic.currentDTO = parameter;
+            logic.entity = parameter;
             exitCommand.Execute(-1);
         }
 

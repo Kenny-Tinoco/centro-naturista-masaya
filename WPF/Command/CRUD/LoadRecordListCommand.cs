@@ -16,7 +16,7 @@ namespace WPF.Command.Crud
             Contract.Requires(parameter != null);
             viewModel = (ViewModelGeneric)parameter;
         }
-        public override async Task ExecuteAsync( object parameter )
+        public override async Task ExecuteAsync( object parameter = null )
         {
             viewModel.IsLoading = true;
             await viewModel.Initialize();

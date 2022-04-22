@@ -75,7 +75,7 @@
 
             <DataGrid
                 x:Name="elementDataGrid"
-                ItemsSource="{Binding logic.recordList}"
+                ItemsSource="{Binding logic.catalogue}"
                 Style="{DynamicResource ElementsDataGrid}"
                 >
                 <DataGrid.Resources>

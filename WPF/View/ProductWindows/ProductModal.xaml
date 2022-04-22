@@ -42,7 +42,7 @@
                                     Text="Código"
                                     Style="{DynamicResource TextBlockStyle}"/>
                             <TextBox
-                                    Text="{Binding logic.currentDTO.idProduct, Mode=TwoWay}"
+                                    Text="{Binding logic.entity.idProduct, Mode=TwoWay}"
                                     FontSize="17"
                                     TextAlignment="Center"
                                     IsEnabled="False"

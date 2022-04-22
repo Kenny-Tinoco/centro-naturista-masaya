@@ -34,7 +34,7 @@
                     Grid.Row="2">
 
                         <DataGrid
-                        ItemsSource="{Binding logic.recordList}"
+                        ItemsSource="{Binding logic.catalogue}"
                         Style="{DynamicResource ElementsDataGrid}">
 
                             <DataGrid.Resources>

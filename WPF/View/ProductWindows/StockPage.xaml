@@ -42,7 +42,7 @@
             <userControls:CustomButton
                 Title="Agregar Existencia"
                 buttonCommand="{Binding addCommand}"
-                buttonParameter="{Binding logic.currentDTO}"
+                buttonParameter="{Binding logic.entity}"
                 ImageSource="/Resource/Image/plus.png"/>
         </StackPanel>
 

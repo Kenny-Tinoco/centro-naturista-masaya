@@ -55,8 +55,8 @@ namespace WPF.ViewModel
                 exitCommand.Execute(1);
             else
             {
-                name = logic.currentDTO.name;
-                description = logic.currentDTO.description;
+                name = logic.entity.name;
+                description = logic.entity.description;
             }
         }
 
@@ -76,7 +76,7 @@ namespace WPF.ViewModel
             _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
         }
 
-        private void ErrorsViewModel_ErrorsChanged( object sender, DataErrorsChangedEventArgs e )
+        private void ErrorsViewModel_ErrorsChanged( object? sender, DataErrorsChangedEventArgs e )
         {
             ErrorsChanged?.Invoke(this, e);
             OnPropertyChanged(nameof(canCreate));
@@ -96,17 +96,17 @@ namespace WPF.ViewModel
         {
             get
             {
-                if (string.IsNullOrEmpty(logic.currentDTO.name))
+                if (string.IsNullOrEmpty(logic.entity.name))
                     _errorsViewModel.AddError(nameof(name), "El nombre es nulo o vacio");
 
-                return logic.currentDTO.name;
+                return logic.entity.name;
             }
             set
             {
-                logic.currentDTO.name = value;
+                logic.entity.name = value;
                 _errorsViewModel.ClearErrors(nameof(name));
                 
-                if (string.IsNullOrEmpty(logic.currentDTO.name))
+                if (string.IsNullOrEmpty(logic.entity.name))
                     _errorsViewModel.AddError(nameof(name), "Debe ingresar un nombre");
                 
                 OnPropertyChanged(nameof(name));
@@ -117,17 +117,17 @@ namespace WPF.ViewModel
         {
             get
             {
-                if (string.IsNullOrEmpty(logic.currentDTO.description))
+                if (string.IsNullOrEmpty(logic.entity.description))
                     _errorsViewModel.AddError(nameof(description), "El nombre es nulo o vacio");
 
-                return logic.currentDTO.description;
+                return logic.entity.description;
             }
             set
             {
-                logic.currentDTO.description = value;
+                logic.entity.description = value;
                 _errorsViewModel.ClearErrors(nameof(description));
 
-                if (string.IsNullOrEmpty(logic.currentDTO.description))
+                if (string.IsNullOrEmpty(logic.entity.description))
                     _errorsViewModel.AddError(nameof(description), "Debe ingresar una descripción");
                 
                 OnPropertyChanged(nameof(description));

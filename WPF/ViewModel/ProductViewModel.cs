@@ -30,7 +30,7 @@ namespace WPF.ViewModel
             _navigationService = modalNavigationService;
             logic = parameter;
 
-            logic.loadListRecordsCommand = new LoadRecordListCommand<Product>(this);
+            logic.LoadCatalogueCommand = new LoadRecordListCommand<Product>(this);
             openModalCommand = new NavigateCommand(_navigationService);
         }
 
@@ -39,7 +39,7 @@ namespace WPF.ViewModel
         {
             ProductViewModel viewModel = new ProductViewModel(parameter, navigationService);
 
-            viewModel.logic.loadListRecordsCommand.Execute(null);
+            viewModel.logic.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
@@ -47,7 +47,7 @@ namespace WPF.ViewModel
 
         public override async Task Initialize()
         {
-            logic.getListUpdates(await logic.getAll());
+            logic.RefreshCatalogue(await logic.getAll());
         }
 
 
@@ -102,7 +102,7 @@ namespace WPF.ViewModel
         {
             get
             {
-                return CollectionViewSource.GetDefaultView(logic.recordList);
+                return CollectionViewSource.GetDefaultView(logic.catalogue);
             }
         }
 
@@ -122,7 +122,7 @@ namespace WPF.ViewModel
         public void add()
         {
             logic.isEditable = false;
-            logic.resetCurrentDTO();
+            logic.resetEntity();
             openModalCommand.Execute(-1);
         }
 
@@ -142,7 +142,7 @@ namespace WPF.ViewModel
 
         public void edit( Product parameter )
         {
-            logic.currentDTO = parameter;
+            logic.entity = parameter;
             logic.isEditable = true;
             openModalCommand.Execute(-1);
         }

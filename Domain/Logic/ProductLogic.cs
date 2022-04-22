@@ -26,7 +26,7 @@ namespace Domain.Logic
 
             return ok;
         }
-        public override void resetCurrentDTO()
+        public override void resetEntity()
         {
             var element = new Product
             {
@@ -34,7 +34,7 @@ namespace Domain.Logic
                 name = "",
                 description = ""
             };
-            currentDTO = element;
+            entity = element;
             isEditable = false;
         }
 

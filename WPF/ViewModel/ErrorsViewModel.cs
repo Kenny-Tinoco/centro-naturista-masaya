@@ -9,12 +9,11 @@ namespace WPF.ViewModel
     public class ErrorsViewModel : INotifyDataErrorInfo
     {
         private readonly Dictionary<string, List<string>> _propertyErrors = new Dictionary<string, List<string>>();
-
         public bool HasErrors => _propertyErrors.Any();
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-        public IEnumerable GetErrors(string propertyName)
+        public IEnumerable GetErrors(string? propertyName)
         {
             return _propertyErrors.GetValueOrDefault(propertyName, null);
         }

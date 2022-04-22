@@ -45,14 +45,14 @@ namespace WPF.ViewModel
             get
             {
 
-                return stockLogic.currentDTO.price;
+                return stockLogic.entity.price;
             }
             set
             {
-                stockLogic.currentDTO.price = value;
+                stockLogic.entity.price = value;
                 _errorsViewModel.ClearErrors(nameof(price));
 
-                if (stockLogic.currentDTO.price < 0)
+                if (stockLogic.entity.price < 0)
                     _errorsViewModel.AddError(nameof(price), "Ingrese un precio positivo");
 
                 OnPropertyChanged(nameof(price));
@@ -64,11 +64,11 @@ namespace WPF.ViewModel
             get
             {
 
-                return stockLogic.currentDTO.quantity;
+                return stockLogic.entity.quantity;
             }
             set
             {
-                stockLogic.currentDTO.quantity = value;
+                stockLogic.entity.quantity = value;
                 OnPropertyChanged(nameof(quantity));
             }
         }

@@ -1,136 +1,155 @@
-﻿using Domain.Logic;
-using WPF.Command.Crud;
-using System.Windows.Input;
-using WPF.MVVMEssentials.Services;
-using WPF.Command.Navigation;
-using WPF.Command.CRUD;
+﻿using Domain.Entities;
+using Domain.Logic;
+using System;
+using System.Collections;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows;
-using Domain.Entities;
+using System.Windows.Input;
+using WPF.Command.Crud;
+using WPF.Command.CRUD;
+using WPF.Command.Navigation;
+using WPF.MVVMEssentials.Services;
 
 namespace WPF.ViewModel
 {
-    public class PresentationModalViewModel : ViewModelGeneric
+    public class PresentationModalViewModel : ViewModelGeneric, INotifyDataErrorInfo
     {
+        private readonly ErrorsViewModel _errorsViewModel;
 
-        public string titleBar
-        {
-            get
-            {
-                return "Presentaciones";
-            }
-        }
+        public string titleBar => "Presentaciones";
 
-        public ICommand saveCommand { get; }
-        public BaseLogic<Presentation> logic { get; }
-        public INavigationService closeModalNavigationService;
+        private ICommand Save;
+        public PresentationLogic logic { get; }
+
+        private ICommand CloseModalCommand;
 
         public PresentationModalViewModel( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
-            logic = parameter;
-            this.closeModalNavigationService = closeModalNavigationService;
-            saveCommand = new SaveCommand<Presentation>(logic, this.canCreate);
-            //deleteCommand = new DeleteCommand<Presentation>(logic);
+            logic = parameter as PresentationLogic;
 
-            logic.loadListRecordsCommand = new LoadRecordListCommand<Presentation>(this);
+            _errorsViewModel = new ErrorsViewModel();
+            _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
+
+            InitializeCommands(closeModalNavigationService);
         }
+        private void InitializeCommands( INavigationService closeModalNavigationService )
+        {
+            Save = new SaveCommand<Presentation>(logic, canCreate); 
+            CloseModalCommand = new ExitModalCommand(closeModalNavigationService);
+            logic.LoadCatalogueCommand = new LoadRecordListCommand<Presentation>(this);
+
+            SaveCommand = new RelayCommand(parameter => save((bool)parameter), null);
+            ResetCommand = new RelayCommand(parameter => reset(), null);
+            EditCommand = new RelayCommand(parameter => edit((Presentation)parameter), null);
+            DeleteCommand = new RelayCommand(parameter => delete((Presentation)parameter), null);
+        }
+
 
         public static PresentationModalViewModel LoadViewModel
         ( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
             PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, closeModalNavigationService);
 
-            viewModel.logic.loadListRecordsCommand.Execute(null);
+            viewModel.logic.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
 
-
-
         public override async Task Initialize()
         {
-            logic.getListUpdates(await logic.getAll());
+            logic.RefreshCatalogue(await logic.getAll());
+        }
+
+        public ICommand SaveCommand { get; set; }
+        private async void save(bool parameter)
+        {
+            await (Save as SaveCommand<Presentation>).ExecuteAsync(parameter);
+            reset();
+        }
+
+        public ICommand ExitCommand => new RelayCommand(parameter => exit(), null);
+        private void exit()
+        {
+            logic.isEditable = false;
+            reset();
+            CloseModalCommand.Execute(null);
         }
 
 
-        private ICommand _resetCommand;
-        public ICommand resetCommand
+        public ICommand ResetCommand { get; set; }
+        private void reset()
         {
-            get
-            {
-                if (_resetCommand == null)
-                    _resetCommand = new RelayCommand(parameter => reset(), null);
-
-                return _resetCommand;
-            }
-        }
-        public void reset()
-        {
-            logic.resetCurrentDTO();
+            logic.resetEntity();
+            name = logic.entity.name;
         }
 
 
-        private ICommand _editCommand;
-        public ICommand editCommand
+        public ICommand EditCommand { get; set; }
+        private void edit( Presentation parameter )
         {
-            get
-            {
-                if (_editCommand == null)
-                    _editCommand = new RelayCommand(parameter => edit((Presentation)parameter), null);
+            name = parameter.name;
 
-                return _editCommand;
-            }
-        }
-        public void edit(in Presentation parameter )
-        {
-            logic.currentDTO = new Presentation
+            logic.entity = new Presentation
             {
                 idPresentation = parameter.idPresentation,
                 name = parameter.name
-            }; 
+            };
 
             logic.isEditable = true;
         }
 
-        private ICommand _addCommand;
-        public ICommand exitCommand
-        {
-            get
-            {
-                if (_addCommand == null)
-                    _addCommand = new RelayCommand(parameter => add(), null);
 
-                return _addCommand;
-            }
-        }
-
-        public void add()
-        {
-            logic.isEditable = false;
-            logic.resetCurrentDTO(); 
-            new ExitModalCommand(closeModalNavigationService).Execute(1);
-        }
-
-
-        private ICommand _deleteCommand;
-        public ICommand deleteCommand
-        {
-            get
-            {
-                if (_deleteCommand == null)
-                    _deleteCommand = new RelayCommand(parameter => delete((Presentation)parameter), null);
-
-                return _deleteCommand;
-            }
-        }
-
-        public async void delete( Presentation parameter )
+        public ICommand DeleteCommand { get; set; }
+        private async void delete( Presentation parameter )
         {
             var result = MessageBox
                 .Show("¿Está seguro de eliminar esta presentación?", "Confirmar Eliminación", MessageBoxButton.YesNo);
 
             if (result == MessageBoxResult.Yes)
                 await new DeleteCommand<Presentation>(logic).ExecuteAsync(parameter);
+        }
+
+
+        public string name
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(logic.entity.name))
+                    _errorsViewModel.AddError(nameof(name), "El nombre es nulo o vacio");
+
+                return logic.entity.name;
+            }
+            set
+            {
+                logic.entity.name = value;
+                _errorsViewModel.ClearErrors(nameof(name));
+
+                if (string.IsNullOrEmpty(logic.entity.name))
+                    _errorsViewModel.AddError(nameof(name), "Debe ingresar un nombre");
+
+                OnPropertyChanged(nameof(name));
+            }
+        }
+
+        public override bool canCreate
+        {
+            get => !HasErrors;
+            set { }
+        }
+
+        public bool HasErrors => _errorsViewModel.HasErrors;
+
+        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
+        private void ErrorsViewModel_ErrorsChanged( object? sender, DataErrorsChangedEventArgs e )
+        {
+            ErrorsChanged?.Invoke(this, e);
+            OnPropertyChanged(nameof(canCreate));
+        }
+
+        public IEnumerable GetErrors( string? propertyName )
+        {
+            return _errorsViewModel.GetErrors(propertyName);
         }
     }
 }

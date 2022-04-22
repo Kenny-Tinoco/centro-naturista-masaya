@@ -7,17 +7,17 @@ namespace Domain.Logic
     {
         public PresentationLogic( DAOFactory parameter ) : base(parameter.presentationDAO)
         {
-            currentDTO = new Presentation();
+            entity = new Presentation();
         }
 
-        public override void resetCurrentDTO()
+        public override void resetEntity()
         {
             var element = new Presentation
             {
                 idPresentation = 0,
                 name = ""
             };
-            currentDTO = element;
+            entity = element;
             isEditable = false;
         }
         public override int getId(Presentation parameter)

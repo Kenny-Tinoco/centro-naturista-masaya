@@ -139,7 +139,7 @@ namespace WPF.ViewModel
                 if (_dataGridSource == null)
                 {
                     _dataGridSource = new CollectionViewSource();
-                    _dataGridSource.Source = logic.recordList;
+                    _dataGridSource.Source = logic.catalogue;
                 }
                 return _dataGridSource;
             }

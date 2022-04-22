@@ -180,7 +180,8 @@ namespace WPF
             (
                 createHomeNavigationService(serviceProvider),
                 createProductWindowsNavigationService(serviceProvider),
-                createProviderNavigationService(serviceProvider)
+                createProviderNavigationService(serviceProvider), 
+                createEmployeeNavigationService(serviceProvider)
             );
         }
 
@@ -204,6 +205,10 @@ namespace WPF
         }
 
         private INavigationService createProviderNavigationService( IServiceProvider serviceProvider )
+        {
+            return createHomeNavigationService(serviceProvider);
+        }
+        private INavigationService createEmployeeNavigationService( IServiceProvider serviceProvider )
         {
             return createHomeNavigationService(serviceProvider);
         }

@@ -12,7 +12,7 @@ namespace WPF.Command.Navigation
             _navigationService = navigationService;
         }
 
-        public override void Execute( object parameter )
+        public override void Execute( object parameter = null)
         {
             _navigationService.Navigate();
         }
