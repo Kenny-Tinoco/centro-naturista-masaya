@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Windows;
+using System.Windows.Input;
 using WPF.Command.Navigation;
 using WPF.MVVMEssentials.Stores;
 using WPF.MVVMEssentials.ViewModels;

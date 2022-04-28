@@ -16,7 +16,7 @@ namespace WPF.ViewModel
     public class PresentationModalViewModel : ViewModelGeneric, INotifyDataErrorInfo
     {
         private readonly ErrorsViewModel _errorsViewModel;
-
+        public ViewModelHelper<Presentation> _helper { get; set; }
         public string titleBar => "Presentaciones";
 
         private ICommand Save;
@@ -27,6 +27,7 @@ namespace WPF.ViewModel
         public PresentationModalViewModel( BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService )
         {
             logic = parameter as PresentationLogic;
+            _helper = new ViewModelHelper<Presentation>(logic);
 
             _errorsViewModel = new ErrorsViewModel();
             _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
@@ -37,7 +38,7 @@ namespace WPF.ViewModel
         {
             Save = new SaveCommand<Presentation>(logic, canCreate); 
             CloseModalCommand = new ExitModalCommand(closeModalNavigationService);
-            logic.LoadCatalogueCommand = new LoadRecordListCommand<Presentation>(this);
+            _helper.LoadCatalogueCommand = new LoadRecordListCommand<Presentation>(this);
 
             SaveCommand = new RelayCommand(parameter => save((bool)parameter), null);
             ResetCommand = new RelayCommand(parameter => reset(), null);
@@ -51,14 +52,14 @@ namespace WPF.ViewModel
         {
             PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, closeModalNavigationService);
 
-            viewModel.logic.LoadCatalogueCommand.Execute(null);
+            viewModel._helper.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
 
         public override async Task Initialize()
         {
-            logic.RefreshCatalogue(await logic.getAll());
+            _helper.RefreshCatalogue(await logic.getAll());
         }
 
         public ICommand SaveCommand { get; set; }
@@ -71,7 +72,7 @@ namespace WPF.ViewModel
         public ICommand ExitCommand => new RelayCommand(parameter => exit(), null);
         private void exit()
         {
-            logic.isEditable = false;
+            _helper.isEditable = false;
             reset();
             CloseModalCommand.Execute(null);
         }
@@ -96,7 +97,7 @@ namespace WPF.ViewModel
                 name = parameter.name
             };
 
-            logic.isEditable = true;
+            _helper.isEditable = true;
         }
 
 

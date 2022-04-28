@@ -11,13 +11,16 @@ using WPF.Command.Navigation;
 using WPF.Command.CRUD;
 using System.Windows;
 using Domain.Entities;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WPF.ViewModel
 {
     public class ProductViewModel : ViewModelGeneric
     {
         public INavigationService _navigationService;
-        
+
         public BaseLogic<Product> logic { get; }
 
         public ICommand openModalCommand { get; }
@@ -29,8 +32,8 @@ namespace WPF.ViewModel
 
             _navigationService = modalNavigationService;
             logic = parameter;
-
-            logic.LoadCatalogueCommand = new LoadRecordListCommand<Product>(this);
+            
+            LoadCatalogueCommand = new LoadRecordListCommand<Product>(this);
             openModalCommand = new NavigateCommand(_navigationService);
         }
 
@@ -39,7 +42,7 @@ namespace WPF.ViewModel
         {
             ProductViewModel viewModel = new ProductViewModel(parameter, navigationService);
 
-            viewModel.logic.LoadCatalogueCommand.Execute(null);
+            viewModel.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
@@ -47,7 +50,7 @@ namespace WPF.ViewModel
 
         public override async Task Initialize()
         {
-            logic.RefreshCatalogue(await logic.getAll());
+            RefreshCatalogue(await logic.getAll());
         }
 
 
@@ -102,7 +105,7 @@ namespace WPF.ViewModel
         {
             get
             {
-                return CollectionViewSource.GetDefaultView(logic.catalogue);
+                return CollectionViewSource.GetDefaultView(catalogue);
             }
         }
 
@@ -121,7 +124,7 @@ namespace WPF.ViewModel
 
         public void add()
         {
-            logic.isEditable = false;
+            isEditable = false;
             logic.resetEntity();
             openModalCommand.Execute(-1);
         }
@@ -143,7 +146,7 @@ namespace WPF.ViewModel
         public void edit( Product parameter )
         {
             logic.entity = parameter;
-            logic.isEditable = true;
+            isEditable = true;
             openModalCommand.Execute(-1);
         }
 
@@ -169,5 +172,49 @@ namespace WPF.ViewModel
             if (result == MessageBoxResult.Yes)
                 await new DeleteCommand<Product>(logic).ExecuteAsync(parameter);
         }
+
+        public void RefreshCatalogue( IEnumerable<Product> list )
+        {
+            catalogue.Clear();
+
+            var auxiliaryList = new ObservableCollection<Product>();
+            list.ToList().ForEach(element => auxiliaryList.Add(element));
+
+            catalogue = auxiliaryList;
+        }
+
+
+        public ICommand LoadCatalogueCommand { get; set; } = null!;
+
+        private ObservableCollection<Product> _catalogue = null!;
+        public ObservableCollection<Product> catalogue
+        {
+            get
+            {
+                if (_catalogue == null)
+                    _catalogue = new ObservableCollection<Product>();
+                return _catalogue;
+            }
+            set
+            {
+                _catalogue = value;
+                OnPropertyChanged(nameof(catalogue));
+            }
+        }
+
+        private bool _isEditable;
+        public bool isEditable
+        {
+            get
+            {
+                return _isEditable;
+            }
+            set
+            {
+                _isEditable = value;
+                OnPropertyChanged(nameof(isEditable));
+            }
+        }
+
     }
 }

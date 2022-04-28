@@ -11,10 +11,10 @@
     <Compile Update="ViewComponents\Menus\NavigationMenu.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\PresentationModal.xaml.cs">
+    <Compile Update="View\ProductWindows\Modals\PresentationModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\ProductModal.xaml.cs">
+    <Compile Update="View\ProductWindows\Modals\ProductModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\ProductPage.xaml.cs">
@@ -26,7 +26,7 @@
     <Compile Update="View\ProductWindows\StockForm.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="View\ProductWindows\ProductSelectionModal.xaml.cs">
+    <Compile Update="View\ProductWindows\Modals\ProductSelectionModal.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="View\ProductWindows\StockPage.xaml.cs">
@@ -79,10 +79,10 @@
     <Page Update="ViewComponents\Menus\NavigationMenu.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\PresentationModal.xaml">
+    <Page Update="View\ProductWindows\Modals\PresentationModal.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\ProductModal.xaml">
+    <Page Update="View\ProductWindows\Modals\ProductModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\ProductPage.xaml">
@@ -94,7 +94,7 @@
     <Page Update="View\ProductWindows\StockForm.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="View\ProductWindows\ProductSelectionModal.xaml">
+    <Page Update="View\ProductWindows\Modals\ProductSelectionModal.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\ProductWindows\StockPage.xaml">

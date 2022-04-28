@@ -21,6 +21,7 @@ namespace WPF.ViewModel
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
         public StockLogic logic { get; }
+        public ViewModelHelper<Stock> _helper;
 
         public IEnumerable<StockView> StockViewCatalog { get; set; } 
 
@@ -32,6 +33,7 @@ namespace WPF.ViewModel
         {
             Contract.Requires(parameter != null);
             logic = parameter as StockLogic;
+            _helper = new ViewModelHelper<Stock>(logic);
 
             addCommand = new NavigateCommand(addStockNavigationService);
             saveCommand = new SaveCommand<Stock>(parameter,this.canCreate);
@@ -139,7 +141,7 @@ namespace WPF.ViewModel
                 if (_dataGridSource == null)
                 {
                     _dataGridSource = new CollectionViewSource();
-                    _dataGridSource.Source = logic.catalogue;
+                    _dataGridSource.Source = _helper.catalogue;
                 }
                 return _dataGridSource;
             }

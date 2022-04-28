@@ -7,9 +7,9 @@ namespace WPF.View
         public Startup()
         {
             InitializeComponent();
-            MaximizarVentana();
+            MaximizeWindow();
         }
-        private void MaximizarVentana()
+        private void MaximizeWindow()
         {
             #region Sentencias de para el agrandado de la pantalla
             Width = SystemParameters.WorkArea.Width;

@@ -13,11 +13,12 @@ namespace WPF.ViewModel
     public class ProductModalViewModel : ViewModelGeneric, INotifyDataErrorInfo
     {
         private readonly ErrorsViewModel _errorsViewModel;
+        public ViewModelHelper<Product> _helper { get; set; }
         public string titleBar
         {
             get
             {
-                if (logic.isEditable)
+                if (true)
                     return "Editar Producto";
                 else
                     return "Agregar Producto";
@@ -70,6 +71,7 @@ namespace WPF.ViewModel
         public ProductModalViewModel( BaseLogic<Product> parameter, INavigationService closeModalNavigationService )
         {
             logic = parameter;
+            _helper = new ViewModelHelper<Product>(logic);
             _exitCommand = new ExitModalCommand(closeModalNavigationService);
 
             _errorsViewModel = new ErrorsViewModel();

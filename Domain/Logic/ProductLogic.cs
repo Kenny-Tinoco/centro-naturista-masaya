@@ -35,7 +35,6 @@ namespace Domain.Logic
                 description = ""
             };
             entity = element;
-            isEditable = false;
         }
 
         public override int getId(Product parameter)

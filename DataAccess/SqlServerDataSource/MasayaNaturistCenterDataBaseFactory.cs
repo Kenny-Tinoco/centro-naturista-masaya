@@ -21,12 +21,5 @@ namespace DataAccess.SqlServerDataSource
 
             return new MasayaNaturistCenterDataBase(options.Options);
         }
-        public Action<DbContextOptionsBuilder> getConfigureDbContext()
-        {
-
-            Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlServer("Data Source=DESKTOP-IHM40D4\\SQLEXPRESS;initial catalog=MasayaNaturistCenter;integrated security=True");
-
-            return configureDbContext;
-        }
     }
 }

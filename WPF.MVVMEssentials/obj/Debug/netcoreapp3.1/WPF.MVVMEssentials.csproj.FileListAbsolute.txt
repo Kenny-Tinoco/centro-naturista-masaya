@@ -1,9 +1,0 @@
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\bin\Debug\netcoreapp3.1\WPF.MVVMEssentials.deps.json
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\bin\Debug\netcoreapp3.1\WPF.MVVMEssentials.dll
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\bin\Debug\netcoreapp3.1\WPF.MVVMEssentials.pdb
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.AssemblyInfoInputs.cache
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.AssemblyInfo.cs
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.csproj.CoreCompileInputs.cache
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.dll
-C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\WPF.MVVMEssentials\obj\Debug\netcoreapp3.1\WPF.MVVMEssentials.pdb

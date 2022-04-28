@@ -78,7 +78,7 @@ namespace WPF.ViewComponents.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;component/viewcomponents/usercontrols/custombutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF;V1.0.0.0;component/viewcomponents/usercontrols/custombutton.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\UserControls\CustomButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

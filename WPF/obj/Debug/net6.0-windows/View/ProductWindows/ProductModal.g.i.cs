@@ -62,7 +62,7 @@ namespace WPF.View.ProductWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;component/view/productwindows/productmodal.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPF;V1.0.0.0;component/view/productwindows/productmodal.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\ProductWindows\ProductModal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

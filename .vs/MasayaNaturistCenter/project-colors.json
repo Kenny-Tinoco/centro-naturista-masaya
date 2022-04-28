@@ -70,7 +70,12 @@
       "ProjectGuid": "15c479da-a0ff-4a4d-b2a0-5dd9c70a209f",
       "DisplayName": "WPF.MVVMEssentials",
       "ColorIndex": 12
+    },
+    "a6d673b3-d131-437a-86f6-e9bd45e0e24a": {
+      "ProjectGuid": "a6d673b3-d131-437a-86f6-e9bd45e0e24a",
+      "DisplayName": "WpfApp1",
+      "ColorIndex": 13
     }
   },
-  "NextColorIndex": 13
+  "NextColorIndex": 14
 }

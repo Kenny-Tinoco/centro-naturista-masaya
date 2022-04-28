@@ -1,60 +1,59 @@
-﻿using System.Diagnostics.Contracts;
+﻿using Domain.Entities;
+using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
     public class StockPost
     {
-        //private DataAccess.SqlServerDataSource.Stock _stock;
+        private Stock _stock;
 
 
-        //public Stock()
-        //{
-        //}
+        public StockPost()
+        {
+        }
 
-    
-        //public void associateStockToProduct(DataAccess.SqlServerDataSource.Product productDTO)
-        //{
-        //    Contract.Requires(productDTO != null);
-        //    stock.IdProduct = productDTO.IdProduct;
-        //    stock.Name = productDTO.Name;
-        //    stock.Description = productDTO.Description;
-        //}
 
-        //public DataAccess.SqlServerDataSource.Stock stock
-        //{
-        //    get
-        //    {
-        //        return _stock;
-        //    }
-        //    set
-        //    {
-        //        Contract.Requires(value != null);
-        //        _stock = value;
-        //    }
-        //}
+        public void associateStockToProduct(Product productDTO)
+        {
+            Contract.Requires(productDTO != null);
+            stock.idProduct = productDTO.idProduct;
+        }
 
-        //public double price
-        //{
-        //    get
-        //    {
-        //        return stock.price;
-        //    }
+        public Stock stock
+        {
+            get
+            {
+                return _stock;
+            }
+            set
+            {
+                Contract.Requires(value != null);
+                _stock = value;
+            }
+        }
 
-        //    set
-        //    {
-        //        Contract.Requires(value >= 0);
-        //        stock.price = value;
-        //    }
-        //}
-        //public void reduceQuantity()
-        //{
-        //    if(stock.quantity > 0)
-        //        stock.quantity--;
-        //}
+        public double price
+        {
+            get
+            {
+                return stock.price;
+            }
 
-        //public void increaseQuantity()
-        //{
-        //    stock.quantity++;
-        //}
+            set
+            {
+                Contract.Requires(value >= 0);
+                stock.price = value;
+            }
+        }
+        public void reduceQuantity()
+        {
+            if (stock.quantity > 0)
+                stock.quantity--;
+        }
+
+        public void increaseQuantity()
+        {
+            stock.quantity++;
+        }
     }
 }

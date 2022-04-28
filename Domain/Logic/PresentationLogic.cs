@@ -18,8 +18,8 @@ namespace Domain.Logic
                 name = ""
             };
             entity = element;
-            isEditable = false;
         }
+
         public override int getId(Presentation parameter)
         {
             return parameter.idPresentation;

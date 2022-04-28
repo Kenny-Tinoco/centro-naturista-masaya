@@ -108,7 +108,7 @@
                         <custom:HamburgerMenuItem Command="{Binding navigateProviderCommand}">
                             <TextBlock Text="Proveedor" />
                         </custom:HamburgerMenuItem>
-                        <custom:HamburgerMenuItem>
+                        <custom:HamburgerMenuItem Command="{Binding navigateEmployeeCommand}">
                             <TextBlock Text="Empleado" />
                         </custom:HamburgerMenuItem>
                     </StackPanel>

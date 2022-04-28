@@ -1,0 +1,11 @@
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\bin\Debug\net6.0\MVVMGenericStructure.deps.json
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\bin\Debug\net6.0\MVVMGenericStructure.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\bin\Debug\net6.0\ref\MVVMGenericStructure.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\bin\Debug\net6.0\MVVMGenericStructure.pdb
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.AssemblyInfoInputs.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.AssemblyInfo.cs
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.csproj.CoreCompileInputs.cache
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\ref\MVVMGenericStructure.dll
+C:\Users\Kenny Tinoco\Proyectos\Visual Studio\MasayaNaturistCenter\MVVMGenericStructure\obj\Debug\net6.0\MVVMGenericStructure.pdb

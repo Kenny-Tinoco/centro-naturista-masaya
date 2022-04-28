@@ -1,23 +1,14 @@
-﻿using Domain.Utilities;
-using System.Diagnostics.Contracts;
-
-namespace Domain.Logic
+﻿namespace Domain.Logic
 {
-    public class Employee
+    public class Employee : User
     {
-        private PersonalInformation personalInformation;
-        private Position position;
-
-        public Employee()
+        public void makeSale()
         {
+
         }
-
-        public Employee(PersonalInformation personalInformation, Position position)
+        public void makeConsultation()
         {
-            Contract.Requires(personalInformation != null);
 
-            this.personalInformation = personalInformation;
-            this.position = position;
         }
     }
 }
