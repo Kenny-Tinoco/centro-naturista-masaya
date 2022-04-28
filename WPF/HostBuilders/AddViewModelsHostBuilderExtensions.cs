@@ -1,9 +1,9 @@
 ﻿using Domain.Logic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MVVMGenericStructure.Services;
+using MVVMGenericStructure.Stores;
 using System;
-using WPF.MVVMEssentials.Services;
-using WPF.MVVMEssentials.Stores;
 using WPF.Services;
 using WPF.ViewModel;
 using WPF.ViewModel.Components;

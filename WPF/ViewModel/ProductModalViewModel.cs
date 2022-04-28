@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Windows.Input;
 using WPF.Command.CRUD;
 using WPF.Command.Navigation;
-using WPF.MVVMEssentials.Services;
+using MVVMGenericStructure.Services;
 
 namespace WPF.ViewModel
 {

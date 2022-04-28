@@ -1,5 +1,5 @@
-﻿using WPF.MVVMEssentials.Commands;
-using WPF.MVVMEssentials.Services;
+﻿using MVVMGenericStructure.Commands;
+using MVVMGenericStructure.Services;
 
 namespace WPF.Command.Navigation
 {

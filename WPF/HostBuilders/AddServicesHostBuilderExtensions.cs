@@ -6,7 +6,7 @@ using Domain.Logic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using WPF.MVVMEssentials.Services;
+using MVVMGenericStructure.Services;
 
 namespace WPF.HostBuilders
 {

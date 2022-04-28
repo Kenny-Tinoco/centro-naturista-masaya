@@ -2,15 +2,15 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.ComponentModel;
 using System.Diagnostics.Contracts;
-using Domain.Logic;
 using WPF.Command.Crud;
-using WPF.MVVMEssentials.Services;
-using WPF.MVVMEssentials.Commands;
 using WPF.Command.CRUD;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using MVVMGenericStructure.Services;
+using MVVMGenericStructure.Commands;
+using Domain.Logic;
 using Domain.Entities;
 using Domain.Entities.Views;
-using System.Collections.Generic;
 
 namespace WPF.ViewModel
 {

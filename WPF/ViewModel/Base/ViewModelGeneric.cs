@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using WPF.MVVMEssentials.ViewModels;
+using MVVMGenericStructure.ViewModels;
 
 namespace WPF.ViewModel
 {

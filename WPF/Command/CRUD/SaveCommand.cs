@@ -1,8 +1,8 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
+using MVVMGenericStructure.Commands;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using WPF.MVVMEssentials.Commands;
 
 namespace WPF.Command.CRUD
 {

@@ -5,8 +5,6 @@ using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 using System.Windows.Data;
 using System.Windows.Input;
-using WPF.MVVMEssentials.Services;
-using WPF.MVVMEssentials.Commands;
 using WPF.Command.Navigation;
 using WPF.Command.CRUD;
 using System.Windows;
@@ -14,6 +12,8 @@ using Domain.Entities;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using MVVMGenericStructure.Services;
+using MVVMGenericStructure.Commands;
 
 namespace WPF.ViewModel
 {

@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
+using MVVMGenericStructure.Services;
 using System;
 using System.Collections;
 using System.ComponentModel;
@@ -9,7 +10,6 @@ using System.Windows.Input;
 using WPF.Command.Crud;
 using WPF.Command.CRUD;
 using WPF.Command.Navigation;
-using WPF.MVVMEssentials.Services;
 
 namespace WPF.ViewModel
 {

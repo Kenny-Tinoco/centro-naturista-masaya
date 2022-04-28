@@ -37,6 +37,15 @@ using WPF.ViewComponents.Menus;
 using WPF.ViewComponents.UserControls;
 using WPF.ViewModel;
 using WPF.ViewModel.Components;
+using Windows.UI.Text;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Documents;
+using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Media.Animation;
+using Windows.UI.Xaml.Shapes;
 
 
 namespace WPF.View {

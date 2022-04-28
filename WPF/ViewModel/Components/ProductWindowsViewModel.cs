@@ -1,4 +1,4 @@
-﻿using WPF.MVVMEssentials.ViewModels;
+﻿using MVVMGenericStructure.ViewModels;
 
 namespace WPF.ViewModel.Components
 {
@@ -8,9 +8,9 @@ namespace WPF.ViewModel.Components
         public ViewModelBase contentViewModel { get; }
 
         public ProductWindowsViewModel
-            ( 
-                TabControlMenuViewModel tabControlBarMenuViewModel, 
-                ViewModelBase contentViewModel 
+            (
+                TabControlMenuViewModel tabControlBarMenuViewModel,
+                ViewModelBase contentViewModel
             )
         {
             this.tabControlBarMenuViewModel = tabControlBarMenuViewModel;

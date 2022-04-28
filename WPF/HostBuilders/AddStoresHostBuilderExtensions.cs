@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using WPF.MVVMEssentials.Stores;
+using MVVMGenericStructure.Stores;
 
 namespace WPF.HostBuilders
 {

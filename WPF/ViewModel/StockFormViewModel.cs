@@ -4,8 +4,8 @@ using System;
 using System.Collections;
 using System.ComponentModel;
 using System.Windows.Input;
-using WPF.MVVMEssentials.Commands;
-using WPF.MVVMEssentials.Services;
+using MVVMGenericStructure.Commands;
+using MVVMGenericStructure.Services;
 
 namespace WPF.ViewModel
 {

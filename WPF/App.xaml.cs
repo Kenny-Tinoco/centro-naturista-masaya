@@ -1,9 +1,9 @@
 ﻿using WPF.View;
 using Microsoft.Extensions.DependencyInjection;
-using WPF.MVVMEssentials.Services;
 using Microsoft.Extensions.Hosting;
 using WPF.HostBuilders;
 using System.Windows;
+using MVVMGenericStructure.Services;
 
 namespace WPF
 {

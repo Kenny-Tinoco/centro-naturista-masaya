@@ -1,11 +1,11 @@
-﻿using System.Windows;
-using WPF.MVVMEssentials.Commands;
+﻿using MVVMGenericStructure.Commands;
+using System.Windows;
 
 namespace WPF.Command.Navigation
 {
     public class StateBarCommand : CommandBase
     {
-        public override void Execute( object parameter )
+        public override void Execute(object parameter)
         {
             if (parameter.ToString() == "exit")
                 Application.Current.Shutdown();

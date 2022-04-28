@@ -1,10 +1,10 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
+using MVVMGenericStructure.Services;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using WPF.Command.Crud;
 using WPF.Command.Navigation;
-using WPF.MVVMEssentials.Services;
 
 namespace WPF.ViewModel
 {

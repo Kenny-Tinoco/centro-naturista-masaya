@@ -1,8 +1,7 @@
-﻿using System.Windows;
+﻿using MVVMGenericStructure.Stores;
+using MVVMGenericStructure.ViewModels;
 using System.Windows.Input;
 using WPF.Command.Navigation;
-using WPF.MVVMEssentials.Stores;
-using WPF.MVVMEssentials.ViewModels;
 
 namespace WPF.ViewModel.Components
 {
@@ -20,7 +19,7 @@ namespace WPF.ViewModel.Components
         public NavigationMenuViewModel navigationMenuViewModel { get; }
 
 
-        public StartupViewModel( NavigationStore navigationStore, ModalNavigationStore modalNavigationStore, NavigationMenuViewModel navigationMenuViewModel )
+        public StartupViewModel(NavigationStore navigationStore, ModalNavigationStore modalNavigationStore, NavigationMenuViewModel navigationMenuViewModel)
         {
             _navigationStore = navigationStore;
             _modalNavigationStore = modalNavigationStore;

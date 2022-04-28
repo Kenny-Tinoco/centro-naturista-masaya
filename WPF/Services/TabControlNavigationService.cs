@@ -1,8 +1,8 @@
 ﻿using WPF.ViewModel.Components;
 using System;
-using WPF.MVVMEssentials.Services;
-using WPF.MVVMEssentials.Stores;
-using WPF.MVVMEssentials.ViewModels;
+using MVVMGenericStructure.ViewModels;
+using MVVMGenericStructure.Services;
+using MVVMGenericStructure.Stores;
 
 namespace WPF.Services
 {

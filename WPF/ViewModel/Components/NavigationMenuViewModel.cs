@@ -1,7 +1,7 @@
-﻿using System.Windows.Input;
-using WPF.MVVMEssentials.ViewModels;
-using WPF.MVVMEssentials.Services;
-using WPF.MVVMEssentials.Commands;
+﻿using MVVMGenericStructure.Commands;
+using MVVMGenericStructure.Services;
+using MVVMGenericStructure.ViewModels;
+using System.Windows.Input;
 
 namespace WPF.ViewModel.Components
 {

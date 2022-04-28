@@ -1,8 +1,8 @@
 ﻿using Domain.Entities;
+using MVVMGenericStructure.Commands;
+using MVVMGenericStructure.ViewModels;
 using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
-using WPF.MVVMEssentials.Commands;
-using WPF.MVVMEssentials.ViewModels;
 using WPF.ViewModel;
 
 namespace WPF.Command.Crud
