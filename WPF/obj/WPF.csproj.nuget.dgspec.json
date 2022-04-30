@@ -117,12 +117,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Uno.UI": {
-              "target": "Package",
-              "version": "[4.1.9, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RNDCYd+HeDb4cr/okv2YsO2RTPeaU043s1LChk4hRvtrDI1ZWAclE34p25AyvLnQImpHOwoh8M2xoLlw/b0rOQ==",
+  "dgSpecHash": "/CAcXa188eCKp+ju6P/4MAKlXMxI433mxTLyxCpVdERKnZR/6oz1QgqwWK19qURdFD3qa/BW1hKiRdx7VP2gUg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF\\WPF.csproj",
   "expectedPackageFiles": [
@@ -46,7 +46,6 @@
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.8.0\\microsoft.identitymodel.protocols.openidconnect.6.8.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.8.0\\microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\mvvmgenericstructure\\1.0.0\\mvvmgenericstructure.1.0.0.nupkg.sha512",
@@ -56,12 +55,8 @@
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.diagnostics.eventlog\\6.0.0\\system.diagnostics.eventlog.6.0.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.8.0\\system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.memory\\4.5.2\\system.memory.4.5.2.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.runtime.caching\\4.7.0\\system.runtime.caching.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.security.accesscontrol\\4.7.0\\system.security.accesscontrol.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.security.cryptography.cng\\4.5.0\\system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.security.cryptography.protecteddata\\4.7.0\\system.security.cryptography.protecteddata.4.7.0.nupkg.sha512",
@@ -70,11 +65,7 @@
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
     "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\uno.diagnostics.eventing\\2.0.1\\uno.diagnostics.eventing.2.0.1.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\uno.foundation.logging\\4.1.9\\uno.foundation.logging.4.1.9.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\uno.sourcegenerationtasks\\4.0.2\\uno.sourcegenerationtasks.4.0.2.nupkg.sha512",
-    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\uno.ui\\4.1.9\\uno.ui.4.1.9.nupkg.sha512"
+    "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\system.windows.extensions\\4.7.0\\system.windows.extensions.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }
