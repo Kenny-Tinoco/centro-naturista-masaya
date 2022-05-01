@@ -32,15 +32,6 @@ using System.Windows.Shapes;
 using System.Windows.Shell;
 using WPF.View.HomeWindows;
 using WPF.ViewComponents.UserControls;
-using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Shapes;
 
 
 namespace WPF.View.HomeWindows {
@@ -63,7 +54,7 @@ namespace WPF.View.HomeWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;V1.0.0.0;component/view/homewindows/sellview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Centro Naturista Masaya;V1.0.0.0;component/view/homewindows/sellview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\View\HomeWindows\SellView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

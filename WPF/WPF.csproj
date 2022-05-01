@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows7.0</TargetFramework>
+    <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
 	  <LangVersion>preview</LangVersion>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <UseWPF>True</UseWPF>
     <StartupObject>WPF.App</StartupObject>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -13,6 +13,10 @@
     <ProduceReferenceAssembly>True</ProduceReferenceAssembly>
     <ApplicationIcon>Resource\logo-cnm.ico</ApplicationIcon>
     <UseWindowsForms>False</UseWindowsForms>
+    <AssemblyName>Centro Naturista Masaya</AssemblyName>
+    <AnalysisLevel>6.0</AnalysisLevel>
+    <SupportedOSPlatformVersion>10.0.17763.0</SupportedOSPlatformVersion>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -157,20 +161,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

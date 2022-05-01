@@ -80,7 +80,7 @@
                                     FontWeight="Normal"
                                     IsEnabled="{Binding canCreate}"
                                     Command="{Binding SaveCommand}"
-                                    CommandParameter="{Binding _helper.isEditable}"
+                                    CommandParameter="{Binding isEditable}"
                                     Style="{DynamicResource CustomButtonStyle}"
                                     Foreground="White"
                                     Width="75"/>
@@ -93,7 +93,7 @@
                                     Style="{DynamicResource CustomButtonStyle}"
                                     Foreground="White"
                                     Width="75"
-                                    Visibility="{Binding _helper.isEditable, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    Visibility="{Binding isEditable, Converter={StaticResource BooleanToVisibilityConverter}}"/>
                                 
                             </StackPanel>
 
@@ -124,7 +124,7 @@
                                 Visibility="{Binding IsLoading, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
                                 
                                 <DataGrid
-                                    ItemsSource="{Binding _helper.catalogue}"
+                                    ItemsSource="{Binding catalogue}"
                                     Style="{DynamicResource ElementsDataGrid}"
                                     Margin="5 20 5 5"
                                     Height="135"

@@ -6,10 +6,11 @@ using System.ComponentModel;
 using System.Windows.Input;
 using MVVMGenericStructure.Commands;
 using MVVMGenericStructure.Services;
+using MVVMGenericStructure.ViewModels;
 
 namespace WPF.ViewModel
 {
-    public class StockFormViewModel : ViewModelGeneric, INotifyDataErrorInfo
+    public class StockFormViewModel : ViewModelBase, INotifyDataErrorInfo
     {
         private readonly ErrorsViewModel _errorsViewModel;
 

@@ -1,17 +1,21 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
 using MVVMGenericStructure.Services;
+using MVVMGenericStructure.ViewModels;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using WPF.Command.Crud;
+using WPF.Command.CRUD;
 using WPF.Command.Navigation;
+using WPF.ViewModel.Base;
 
 namespace WPF.ViewModel
 {
-    public class ProductSelectionModalViewModel : ViewModelGeneric
+    public class ProductSelectionModalViewModel : ViewModelCatalogue<Product>
     {
         public string titleBar { get; }
-        public ViewModelHelper<Product> _helper;
 
         public ICommand exitCommand { get; }
         public ICommand _goCommand;
@@ -19,12 +23,8 @@ namespace WPF.ViewModel
         public BaseLogic<Product> logic { get; }
 
 
-        public ProductSelectionModalViewModel(BaseLogic<Product> _logic, INavigationService closeModalNavigationService )
+        public ProductSelectionModalViewModel(BaseLogic<Product> parameter, INavigationService closeModalNavigationService ) : base((ProductLogic)parameter)
         {
-            logic = _logic;
-            _helper = new ViewModelHelper<Product>(logic);
-
-            _helper.LoadCatalogueCommand = new LoadRecordListCommand<Stock>(this);
             exitCommand = new ExitModalCommand(closeModalNavigationService);
             titleBar = "Selecionar un producto";
         }
@@ -34,15 +34,9 @@ namespace WPF.ViewModel
         {
             ProductSelectionModalViewModel viewModel = new ProductSelectionModalViewModel(_logic, closeModalNavigationService);
 
-            viewModel._helper.LoadCatalogueCommand.Execute(null);
+            viewModel.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
-        }
-
-
-        public override async Task Initialize()
-        {
-            _helper.RefreshCatalogue(await logic.getAll());
         }
 
 
@@ -62,6 +56,8 @@ namespace WPF.ViewModel
             logic.entity = parameter;
             exitCommand.Execute(-1);
         }
+
+
 
     }
 }

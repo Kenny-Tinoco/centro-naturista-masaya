@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {
+    "net6.0-windows10.0.17763": {
       "Microsoft.CSharp/4.5.0": {
         "type": "package",
         "compile": {
@@ -2666,7 +2666,7 @@
     }
   },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": [
+    "net6.0-windows10.0.17763": [
       "DataAccess >= 1.0.0",
       "MVVMGenericStructure >= 1.0.0",
       "Microsoft.Extensions.Hosting >= 6.0.1"
@@ -2680,7 +2680,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF\\WPF.csproj",
-      "projectName": "WPF",
+      "projectName": "Centro Naturista Masaya",
       "projectPath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF\\WPF.csproj",
       "packagesPath": "C:\\Users\\Kenny Tinoco\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\WPF\\obj\\",
@@ -2694,15 +2694,15 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net6.0-windows7.0"
+        "net6.0-windows10.0.17763"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net6.0-windows7.0": {
-          "targetAlias": "net6.0-windows7.0",
+        "net6.0-windows10.0.17763": {
+          "targetAlias": "net6.0-windows10.0.17763.0",
           "projectReferences": {
             "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\DataAccess\\DataAccess.csproj": {
               "projectPath": "C:\\Users\\Kenny Tinoco\\Proyectos\\Visual Studio\\MasayaNaturistCenter\\DataAccess\\DataAccess.csproj"
@@ -2717,8 +2717,8 @@
       }
     },
     "frameworks": {
-      "net6.0-windows7.0": {
-        "targetAlias": "net6.0-windows7.0",
+      "net6.0-windows10.0.17763": {
+        "targetAlias": "net6.0-windows10.0.17763.0",
         "dependencies": {
           "MVVMGenericStructure": {
             "target": "Package",
@@ -2739,8 +2739,17 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.Windows.SDK.NET.Ref",
+            "version": "[10.0.17763.23, 10.0.17763.23]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.Windows.SDK.NET.Ref": {
             "privateAssets": "all"
           },
           "Microsoft.WindowsDesktop.App.WPF": {

@@ -13,18 +13,10 @@ namespace Domain.Logic
         public bool searchLogic( Product element, string parameter )
         {
             Contract.Requires(parameter != null && element != null);
-            bool ok = false;
-
-            if
-            (
+            
+            return 
                 element.idProduct.ToString().Contains(parameter.Trim()) ||
-                element.name.ToLower().StartsWith(parameter.Trim().ToLower())
-            )
-            {
-                ok = true;
-            }
-
-            return ok;
+                element.name.ToLower().StartsWith(parameter.Trim().ToLower());
         }
         public override void resetEntity()
         {

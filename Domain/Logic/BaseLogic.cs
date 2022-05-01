@@ -39,14 +39,7 @@ namespace Domain.Logic
             return await _dao.getAll();
         }
 
-
-
-        private Entity _entity = null!;
-        public Entity entity
-        {
-            get => _entity;
-            set => _entity = value;
-        }
+        public Entity entity { get; set; }
 
         public virtual void resetEntity() {}
     }

@@ -20,19 +20,11 @@ namespace Domain.Logic
         public bool searchLogic(StockView element, string parameter)
         {
             Contract.Requires(parameter != null && element != null);
-            bool ok = false;
 
-            if
-            (
+            return
                 element.idStock.ToString().Contains(parameter.Trim()) ||
                 element.name.ToLower().StartsWith(parameter.Trim().ToLower()) ||
-                element.presentation.ToLower().StartsWith(parameter.Trim().ToLower())
-            )
-            {
-                ok = true;
-            }
-
-            return ok;
+                element.presentation.ToLower().StartsWith(parameter.Trim().ToLower());
         }
     }
 }

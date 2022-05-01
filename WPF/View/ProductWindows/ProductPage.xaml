@@ -75,7 +75,7 @@
 
             <DataGrid
                 x:Name="elementDataGrid"
-                ItemsSource="{Binding catalogue}"
+                ItemsSource="{Binding catalogue, UpdateSourceTrigger=PropertyChanged}"
                 Style="{DynamicResource ElementsDataGrid}"
                 >
                 <DataGrid.Resources>

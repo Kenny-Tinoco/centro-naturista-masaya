@@ -53,7 +53,8 @@ namespace WPF.View.ProductWindows {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;component/view/productwindows/modals/productmodal.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Centro Naturista Masaya;V1.0.0.0;component/view/productwindows/modals/productmod" +
+                    "al.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\..\View\ProductWindows\Modals\ProductModal.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

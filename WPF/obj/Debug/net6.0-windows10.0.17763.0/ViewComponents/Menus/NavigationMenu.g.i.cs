@@ -31,15 +31,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
 using WPF.ViewComponents.CustomControls;
-using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Shapes;
 
 
 namespace WPF.ViewComponents.Menus {
@@ -78,7 +69,8 @@ namespace WPF.ViewComponents.Menus {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;V1.0.0.0;component/viewcomponents/menus/navigationmenu.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Centro Naturista Masaya;V1.0.0.0;component/viewcomponents/menus/navigationmenu.x" +
+                    "aml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\Menus\NavigationMenu.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

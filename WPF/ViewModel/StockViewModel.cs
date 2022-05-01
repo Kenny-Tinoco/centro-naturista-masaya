@@ -1,52 +1,43 @@
-using System.Windows.Data;
-using System.Windows.Input;
-using System.ComponentModel;
-using System.Diagnostics.Contracts;
-using WPF.Command.Crud;
-using WPF.Command.CRUD;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using MVVMGenericStructure.Services;
-using MVVMGenericStructure.Commands;
-using Domain.Logic;
 using Domain.Entities;
 using Domain.Entities.Views;
+using Domain.Logic;
+using MVVMGenericStructure.Commands;
+using MVVMGenericStructure.Services;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Threading.Tasks;
+using System.Windows.Data;
+using System.Windows.Input;
+using WPF.Command.CRUD;
+using WPF.ViewModel.Base;
 
 namespace WPF.ViewModel
 {
-    public class StockViewModel : ViewModelGeneric
+    public class StockViewModel : ViewModelGeneric<Stock>
     {
 
         public ICommand addCommand { get; }
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
-        public StockLogic logic { get; }
-        public ViewModelHelper<Stock> _helper;
 
-        public IEnumerable<StockView> StockViewCatalog { get; set; } 
+        public IEnumerable<StockView> StockViewCatalog { get; set; }
 
         public INavigationService navigationService;
 
 
-        public StockViewModel
-        ( BaseLogic<Stock> parameter, INavigationService addStockNavigationService )
+        public StockViewModel(BaseLogic<Stock> parameter, INavigationService addStockNavigationService) :  base((StockLogic)parameter)
         {
-            Contract.Requires(parameter != null);
-            logic = parameter as StockLogic;
-            _helper = new ViewModelHelper<Stock>(logic);
-
             addCommand = new NavigateCommand(addStockNavigationService);
-            saveCommand = new SaveCommand<Stock>(parameter,this.canCreate);
-            deleteCommand = new DeleteCommand<Stock>(parameter);
+            saveCommand = new SaveCommand<Stock>(logic, canCreate);
+            deleteCommand = new DeleteCommand<Stock>(logic);
         }
 
         public static StockViewModel LoadViewModel
-        ( BaseLogic<Stock> parameter, INavigationService addStockNavigationService )
+        (BaseLogic<Stock> parameter, INavigationService addStockNavigationService)
         {
-
             StockViewModel viewModel = new StockViewModel(parameter, addStockNavigationService);
 
-            new LoadRecordListCommand<StockView>(viewModel).Execute(null);
+            viewModel.LoadCatalogueCommand.Execute(null);   
 
             return viewModel;
         }
@@ -55,7 +46,7 @@ namespace WPF.ViewModel
 
         public override async Task Initialize()
         {
-            StockViewCatalog = await logic.viewsCollections.StockViewCatalog();
+            StockViewCatalog = await ((StockLogic)logic).viewsCollections.StockViewCatalog();
             DataGridSource.Source = StockViewCatalog;
             dataGridSource = DataGridSource.View;
         }
@@ -94,7 +85,7 @@ namespace WPF.ViewModel
             StockView element = e.Item as StockView;
             if (element != null)
             {
-                if(logic.searchLogic(element, searchText))
+                if (((StockLogic)logic).searchLogic(element, searchText))
                 {
                     e.Accepted = true;
                 }
@@ -105,21 +96,8 @@ namespace WPF.ViewModel
             }
         }
 
-        private bool validateSearchString(string parameter)
-        {
-            Contract.Requires(parameter != null);
-            bool ok = true;
 
-            if (parameter.Trim().Equals("Búscar") || parameter.Trim().Equals(""))
-            {
-                ok = false;
-            }
-
-            return ok;
-        }
-
-
-        private ICollectionView _dataGridSourceView; 
+        private ICollectionView _dataGridSourceView;
         public ICollectionView dataGridSource
         {
             get
@@ -141,7 +119,7 @@ namespace WPF.ViewModel
                 if (_dataGridSource == null)
                 {
                     _dataGridSource = new CollectionViewSource();
-                    _dataGridSource.Source = _helper.catalogue;
+                    _dataGridSource.Source = catalogue;
                 }
                 return _dataGridSource;
             }
@@ -150,6 +128,5 @@ namespace WPF.ViewModel
                 _dataGridSource = value;
             }
         }
-
     }
 }

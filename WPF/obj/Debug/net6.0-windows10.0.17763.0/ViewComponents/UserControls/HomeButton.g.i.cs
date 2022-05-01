@@ -30,15 +30,6 @@ using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Shell;
-using Windows.UI.Text;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Documents;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Shapes;
 
 
 namespace WPF.ViewComponents.UserControls {
@@ -77,7 +68,8 @@ namespace WPF.ViewComponents.UserControls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPF;V1.0.0.0;component/viewcomponents/usercontrols/homebutton.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Centro Naturista Masaya;V1.0.0.0;component/viewcomponents/usercontrols/homebutto" +
+                    "n.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\..\ViewComponents\UserControls\HomeButton.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

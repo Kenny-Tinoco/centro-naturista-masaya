@@ -1,8 +1,5 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
-using System;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Input;
 using WPF.Command.CRUD;
 using WPF.Command.Navigation;
@@ -10,48 +7,41 @@ using MVVMGenericStructure.Services;
 
 namespace WPF.ViewModel
 {
-    public class ProductModalViewModel : ViewModelGeneric, INotifyDataErrorInfo
+    public class ProductModalViewModel : ViewModelGeneric<Product>
     {
-        private readonly ErrorsViewModel _errorsViewModel;
-        public ViewModelHelper<Product> _helper { get; set; }
+
+
+        public ProductModalViewModel(BaseLogic<Product> parameter, INavigationService closeModalNavigationService) : base((ProductLogic)parameter)
+        {
+            exitCommand = new ExitModalCommand(closeModalNavigationService);
+
+            _save = new SaveCommand<Product>(logic, canCreate);
+            saveCommand = new RelayCommand(parameter => save((bool)parameter));
+        }
+
+
+
         public string titleBar
         {
             get
             {
-                if (true)
+                if (isEditable)
                     return "Editar Producto";
-                else
-                    return "Agregar Producto";
+                
+                return "Agregar Producto";
             }
         }
 
-        private ICommand _exitCommand;
-        public ICommand exitCommand 
-        { 
-            get
-            {
-                return _exitCommand;
-            }
-        }
+        public ICommand exitCommand { get; }
 
 
-        private ICommand _saveCommand;
-
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-
-        public ICommand saveCommand 
-        { 
-            get
-            {
-                if (_saveCommand == null)
-                    _saveCommand = new RelayCommand( parameter => save((bool)parameter), null);
-
-                return _saveCommand;
-            }
-        }
-        public async void save( bool isEdition )
+        private ICommand _save;
+        public ICommand saveCommand { get; }
+        public void save( bool isEdition )
         {
-            await new SaveCommand<Product>(logic, canCreate).ExecuteAsync(isEdition);
+            _save.Execute(isEdition);
+            LoadCatalogueCommand.Execute(null);
+
             if (isEdition)
                 exitCommand.Execute(1);
             else
@@ -59,40 +49,8 @@ namespace WPF.ViewModel
                 name = logic.entity.name;
                 description = logic.entity.description;
             }
+
         }
-
-        public IEnumerable GetErrors( string propertyName )
-        {
-            return _errorsViewModel.GetErrors(propertyName);
-        }
-
-        public BaseLogic<Product> logic { get; }
-
-        public ProductModalViewModel( BaseLogic<Product> parameter, INavigationService closeModalNavigationService )
-        {
-            logic = parameter;
-            _helper = new ViewModelHelper<Product>(logic);
-            _exitCommand = new ExitModalCommand(closeModalNavigationService);
-
-            _errorsViewModel = new ErrorsViewModel();
-            _errorsViewModel.ErrorsChanged += ErrorsViewModel_ErrorsChanged;
-        }
-
-        private void ErrorsViewModel_ErrorsChanged( object? sender, DataErrorsChangedEventArgs e )
-        {
-            ErrorsChanged?.Invoke(this, e);
-            OnPropertyChanged(nameof(canCreate));
-        }
-
-
-        public override bool canCreate
-        {
-            get => !HasErrors;
-            set{}
-        }       
-        
-
-        public bool HasErrors => _errorsViewModel.HasErrors;
 
         public string name
         {
