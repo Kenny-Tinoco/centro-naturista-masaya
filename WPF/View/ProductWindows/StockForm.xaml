@@ -1,9 +1,9 @@
 ﻿<UserControl x:Class="WPF.View.ProductWindows.StockForm"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:userControls="clr-namespace:WPF.ViewComponents.UserControls">
+             xmlns:userControls="clr-namespace:WPF.ViewComponents.UserControls"
+             xml:lang="es-ES"
+             >
 
     <Grid
         Width="740">
@@ -31,7 +31,7 @@
             
             <userControls:BackButton
                 Margin="0 0 10 0"
-                buttonCommand="{Binding backCommand}"/>
+                buttonCommand="{Binding BackCommand}"/>
             
             <TextBlock
                 Grid.Column="1"
@@ -53,7 +53,7 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="20"/>
-                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="20"/>
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
@@ -70,7 +70,7 @@
                     >
                     <userControls:CustomButton
                         Title="Buscar Producto"
-                        buttonCommand="{Binding searchCommand}"
+                        buttonCommand="{Binding SearchCommand}"
                         ImageSource="/Resource/Image/product.png"
                         />
                 </StackPanel>
@@ -86,13 +86,15 @@
                         VerticalAlignment="Center"/>
 
                     <TextBox 
-                        Text="{Binding productLogic.idProduct}"
+                        Text="{Binding currentProduct.idProduct}"
                         Width="50"
-                        Height="20"
+                        Height="25"
                         TextBlock.Foreground="Black"
                         FontWeight="Normal"
                         TextBlock.FontSize="{DynamicResource fontSizeTextBlock}"
-                        IsEnabled="false"/>
+                        IsEnabled="false"
+                        TextAlignment="Center"
+                        />
 
                 </StackPanel>
 
@@ -107,7 +109,7 @@
                         VerticalAlignment="Center"
                         />
                     <TextBlock
-                        Text="{Binding productLogic.name}"
+                        Text="{Binding productName}"
                         Style="{DynamicResource TextBlockStyle}"
                         Background="White"
                         TextAlignment="Center"
@@ -117,26 +119,37 @@
                         />
                 </StackPanel>
 
-                <StackPanel
+                <Grid
                     Grid.Column="0"
                     Grid.ColumnSpan="5"
                     Grid.Row="2"
                     >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                     <TextBlock
+                        Grid.Row="0" 
                         Text="Descripción:"
                         Style="{DynamicResource TextBlockStyle}"
                         />
-                    <TextBlock
-                        Text="{Binding productLogic.description}"
+                    <TextBox
+                        Grid.Row="1" 
+                        Text="{Binding currentProduct.description}"
+                        IsReadOnly="True"
                         Background="White"
-                        Style="{DynamicResource TextBlockStyle}"
                         ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                         ScrollViewer.VerticalScrollBarVisibility="Auto"
                         TextWrapping="Wrap"
-                        Height="60"
+                        TextAlignment="Justify"
+                        Height="70"
                         Margin="2"
+                        Padding="5 1"
+                        FontSize="17"
+                        Foreground="Black"
+                        FontWeight="Normal"
                         />
-                </StackPanel>
+                </Grid>
             </Grid>
         </GroupBox>
 
@@ -153,8 +166,11 @@
                     VerticalAlignment="Center"/>
 
                 <ComboBox
-                    Text=""
-                    Style="{DynamicResource ComboBoxStyle}"/>
+                    Width="auto"
+                    ItemsSource="{Binding presentations}"
+                    DisplayMemberPath="name"
+                    Style="{DynamicResource ComboBoxStyle}"
+                    SelectedItem="{Binding currentPresentation, Mode=TwoWay}"/>
 
             </StackPanel>
 
@@ -165,7 +181,7 @@
             Header="Existencia"
             Style="{DynamicResource GroupBoxStyle}">
 
-            <Grid Margin="5">
+            <Grid Margin="18, 5">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
@@ -189,7 +205,7 @@
                         VerticalAlignment="Center"/>
 
                     <TextBox
-                        Text="{Binding stock.price, Mode=TwoWay, StringFormat={}{0:C}}"
+                        Text="{Binding price, UpdateSourceTrigger=PropertyChanged}"
                         TextBlock.Foreground="Black"
                         FontWeight="Normal"
                         TextBlock.FontSize="{DynamicResource fontSizeTextBlock}"
@@ -210,7 +226,7 @@
                         VerticalAlignment="Center"/>
 
                     <userControls:SpinBox
-                        value="{Binding stock.quantity, Mode=TwoWay}"/>
+                        value="{Binding quantity, Mode=TwoWay}"/>
 
                 </StackPanel>
 
@@ -226,8 +242,13 @@
                         VerticalAlignment="Center"/>
 
                     <DatePicker
-                        Text="{Binding dateConvertEntryDate, Mode=TwoWay}"
-                        Style="{DynamicResource DatePickerStyle}"/>
+                        Margin="5 0 0 1"
+                        SelectedDate="{Binding entryDate,
+                                        UpdateSourceTrigger=PropertyChanged, 
+                                        ValidatesOnNotifyDataErrors=True,
+                                        ValidatesOnDataErrors=True}"
+                        Style="{DynamicResource DatePickerStyle}"
+                        />
 
                 </StackPanel>
 
@@ -242,7 +263,12 @@
                         VerticalAlignment="Center"/>
 
                     <DatePicker
-                        Text="{Binding dateConvertExpiration, Mode=TwoWay}"
+                        Margin="5 0 0 1"
+                        SelectedDate = 
+                        "{Binding expiration,
+                        UpdateSourceTrigger=PropertyChanged,
+                        ValidatesOnNotifyDataErrors=True,
+                        ValidatesOnDataErrors=True}"
                         Style="{DynamicResource DatePickerStyle}"/>
 
                 </StackPanel>
@@ -254,7 +280,10 @@
             Grid.Row="8"
             Width="130"
             Title="Guardar"
+            buttonCommand="{Binding SaveCommand}"
+            buttonParameter="{Binding isEdition}"
             ImageSource="/Resource/Image/save.png"
+            IsEnabled="{Binding canCreate}"
             />
 
     </Grid>
@@ -265,12 +294,42 @@
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
+        
         <Style x:Key="TextBlockStyle"
                TargetType="TextBlock">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="#2196F3" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                            <Border Background="#2196F3"
+                                    DockPanel.Dock="Right"
+                                    Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Right"
+                                    CornerRadius="10"
+                                    >
+                                <Border.ToolTip>
+                                    <ToolTip>
+                                        <TextBlock Text="{Binding ErrorContent}" FontSize="16" Foreground="Black"/>
+                                    </ToolTip>
+                                </Border.ToolTip>
+                                <TextBlock Text="!" 
+                                           VerticalAlignment="center" 
+                                           HorizontalAlignment="center" 
+                                           FontWeight="Bold" Foreground="white"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
+        
         <Style x:Key="ComboBoxStyle"
                TargetType="ComboBox">
             <Setter Property="FontSize" Value="17"/>
@@ -280,15 +339,65 @@
             <Setter Property="Margin" Value="5 0 0 0"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="#2196F3" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                            <Border Background="#2196F3"
+                                    DockPanel.Dock="Right"
+                                    Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Right"
+                                    CornerRadius="10"
+                                    >
+                                <Border.ToolTip>
+                                    <ToolTip>
+                                        <TextBlock Text="{Binding ErrorContent}" FontSize="16" Foreground="Black"/>
+                                    </ToolTip>
+                                </Border.ToolTip>
+                                <TextBlock Text="!" 
+                                           VerticalAlignment="center" 
+                                           HorizontalAlignment="center" 
+                                           FontWeight="Bold" Foreground="white"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
-        <Style x:Key="DatePickerStyle"
-               TargetType="DatePicker">
-            <Setter Property="FontSize" Value="17"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="FontWeight" Value="Normal"/>
-            <Setter Property="Margin" Value="5 0 0 1"/>
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
+        
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="#2196F3" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                            <Border Background="#2196F3"
+                                    DockPanel.Dock="Right"
+                                    Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Right"
+                                    CornerRadius="10"
+                                    >
+                                <Border.ToolTip>
+                                    <ToolTip>
+                                        <TextBlock Text="{Binding ErrorContent}" FontSize="16" Foreground="Black"/>
+                                    </ToolTip>
+                                </Border.ToolTip>
+                                <TextBlock Text="!" 
+                                           VerticalAlignment="center" 
+                                           HorizontalAlignment="center" 
+                                           FontWeight="Bold" Foreground="white"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
 </UserControl>

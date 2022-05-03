@@ -40,7 +40,7 @@
             <DataTemplate DataType="{x:Type viewmodel:PresentationModalViewModel}">
                 <viewsProductWindows:PresentationModal/>
             </DataTemplate>
-            <DataTemplate DataType="{x:Type viewmodel:ProductModalViewModel}">
+            <DataTemplate DataType="{x:Type viewmodel:ProductModalFormViewModel}">
                 <viewsProductWindows:ProductModal/>
             </DataTemplate>
         </Grid.Resources>

@@ -16,7 +16,7 @@ namespace WPF.Command.CRUD
             logicElement = parameter;
         }
 
-        public override async Task ExecuteAsync( object? parameter )
+        public override async Task ExecuteAsync( object parameter )
         {
             await logicElement.delete((Entity)parameter);
         }

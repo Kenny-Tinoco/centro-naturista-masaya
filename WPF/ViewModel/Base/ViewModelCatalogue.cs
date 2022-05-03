@@ -27,7 +27,7 @@ namespace WPF.ViewModel.Base
             await updateCatalogue();
         }
 
-        private ObservableCollection<Entity> _catalogue = null!;
+        private ObservableCollection<Entity> _catalogue;
         public ObservableCollection<Entity> catalogue
         {
             get
@@ -75,8 +75,8 @@ namespace WPF.ViewModel.Base
         protected bool validateSearchString(string parameter)
         {
             return
-                parameter.Trim().Equals("Búscar") ||
-                parameter.Trim().Equals("");
+                !parameter.Trim().Equals("Búscar") &&
+                !parameter.Trim().Equals("");
         }
 
     }

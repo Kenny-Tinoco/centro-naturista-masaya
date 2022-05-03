@@ -10,7 +10,7 @@
         <userControls:Popup
             titleBar="{Binding titleBar}"
             iconBar="/Resource/Image/product.png"
-            buttonExitCommand="{Binding exitCommand}">
+            buttonExitCommand="{Binding ExitCommand}">
 
             <userControls:Popup.popupContent>
                 <Grid>
@@ -34,7 +34,7 @@
                     Grid.Row="2">
 
                         <DataGrid
-                        ItemsSource="{Binding catalogue}"
+                        ItemsSource="{Binding entityStore._catalogue}"
                         Style="{DynamicResource ElementsDataGrid}">
 
                             <DataGrid.Resources>
@@ -43,7 +43,7 @@
                                     HorizontalAlignment="Center"
                                     Orientation="Horizontal">
                                         <Button Content="Ir"
-                                            Command="{Binding Path=DataContext.goCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                            Command="{Binding Path=DataContext.GoCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                             CommandParameter="{Binding}"
                                             Style="{DynamicResource ButtonStyle}"
                                             Background="#2196F3"/>

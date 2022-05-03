@@ -1,7 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
 using MVVMGenericStructure.Commands;
-using System.Diagnostics.Contracts;
 using System.Threading.Tasks;
 
 namespace WPF.Command.CRUD
@@ -13,17 +12,16 @@ namespace WPF.Command.CRUD
 
         public SaveCommand( BaseLogic<Entity> parameter, bool _canSave)
         {
-            Contract.Requires(parameter != null);
             logicElement = parameter;
             canSave = _canSave;
         }
 
-        public override bool CanExecute( object? parameter )
+        public override bool CanExecute( object parameter )
         {
             return canSave && base.CanExecute(parameter);
         }
 
-        public override async Task ExecuteAsync( object? parameter )
+        public override async Task ExecuteAsync( object parameter )
         {
             var isUpdateOperation = (bool)parameter;
             if (isUpdateOperation)

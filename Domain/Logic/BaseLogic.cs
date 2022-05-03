@@ -22,6 +22,7 @@ namespace Domain.Logic
         public async Task edit()
         {
             await _dao.update(entity);
+            resetEntity();
         }
 
         public async Task delete(Entity parameter)

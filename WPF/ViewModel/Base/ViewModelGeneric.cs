@@ -39,14 +39,14 @@ namespace WPF.ViewModel
 
         public bool HasErrors => _errorsViewModel.HasErrors;
 
-        public IEnumerable GetErrors(string? propertyName)
+        public IEnumerable GetErrors(string propertyName)
         {
             return _errorsViewModel.GetErrors(propertyName);
         }
 
-        public event EventHandler<DataErrorsChangedEventArgs>? ErrorsChanged;
-        private void ErrorsViewModel_ErrorsChanged(object? sender, DataErrorsChangedEventArgs e)
-        {
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+        private void ErrorsViewModel_ErrorsChanged(object sender, DataErrorsChangedEventArgs e)
+        { 
             ErrorsChanged?.Invoke(this, e);
             OnPropertyChanged(nameof(canCreate));
         }

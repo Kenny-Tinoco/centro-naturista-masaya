@@ -32,7 +32,7 @@
             Style="{DynamicResource StackPanelStyle}">
             <userControls:CustomButton
                 Title="Nuevo Producto"
-                buttonCommand="{Binding addCommand}"
+                buttonCommand="{Binding AddModalCommand}"
                 ImageSource="/Resource/Image/plus.png"/>
         </StackPanel>
 
@@ -84,12 +84,12 @@
                             HorizontalAlignment="Center"
                             Orientation="Horizontal">
                             <Button Content="Editar"
-                                    Command="{Binding Path=DataContext.editCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                    Command="{Binding Path=DataContext.EditModalCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
                                     CommandParameter="{Binding}" 
                                     Style="{DynamicResource ButtonStyle}"
                                     Background="#2196F3"/>
                             <Button Content="Eliminar"
-                                    Command="{Binding Path=DataContext.deleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
+                                    Command="{Binding Path=DataContext.DeleteCommand,RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}" 
                                     CommandParameter="{Binding}"
                                     Style="{DynamicResource ButtonStyle}"
                                     Margin="4 0 0 0"

@@ -13,7 +13,7 @@ namespace WPF.ViewModel
 
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
-        public IEnumerable GetErrors(string? propertyName)
+        public IEnumerable GetErrors(string propertyName)
         {
             return _propertyErrors.GetValueOrDefault(propertyName, null);
         }

@@ -9,7 +9,7 @@
         <userControls:Popup
             titleBar="{Binding titleBar}"
             iconBar="/Resource/Image/product.png"
-            buttonExitCommand="{Binding exitCommand}">
+            buttonExitCommand="{Binding ExitCommand}">
 
             <userControls:Popup.popupContent>
 
@@ -20,7 +20,7 @@
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
 
-                    <Grid Margin="5"
+                    <Grid Margin="12"
                           Grid.Row="1"
                           Width="350"
                           Height="200">
@@ -42,7 +42,7 @@
                                     Text="Código"
                                     Style="{DynamicResource TextBlockStyle}"/>
                             <TextBox
-                                    Text="{Binding logic.entity.idProduct, Mode=TwoWay}"
+                                    Text="{Binding entity.idProduct, Mode=TwoWay}"
                                     FontSize="17"
                                     TextAlignment="Center"
                                     IsEnabled="False"
@@ -99,8 +99,8 @@
                             <Button
                                 Content="Guardar"
                                 FontWeight="Normal"
-                                Command="{Binding saveCommand}"
-                                CommandParameter="{Binding isEditable}"
+                                Command="{Binding EntityStoreCommand}"
+                                CommandParameter="{Binding _entityStore.isEdition}"
                                 Style="{DynamicResource CustomButtonStyle}"
                                 Foreground="White"
                                 FontSize="15"
@@ -116,6 +116,7 @@
         </userControls:Popup>
     </Grid>
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style x:Key="GroupBoxStyle"
                TargetType="GroupBox">
             <Setter Property="FontSize" Value="16.5"/>
@@ -127,6 +128,32 @@
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="Foreground" Value="Black"/>
             <Setter Property="FontWeight" Value="Normal"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="true">
+                            <AdornedElementPlaceholder Name="customAdorner" VerticalAlignment="Center" >
+                                <Border BorderBrush="#2196F3" BorderThickness="1" />
+                            </AdornedElementPlaceholder>
+                            <Border Background="#2196F3"
+                                    DockPanel.Dock="Right"
+                                    Width="18"
+                                    Height="18"
+                                    HorizontalAlignment="Right"
+                                    CornerRadius="10"
+                                    ToolTip="{Binding ErrorContent}"
+                                    >
+                                <TextBlock Text="!" 
+                                           VerticalAlignment="center" 
+                                           HorizontalAlignment="center" 
+                                           FontWeight="Bold" Foreground="white"/>
+                            </Border>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
 </UserControl>

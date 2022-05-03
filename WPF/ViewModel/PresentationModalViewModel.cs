@@ -1,19 +1,11 @@
 ﻿using Domain.Entities;
 using Domain.Logic;
 using MVVMGenericStructure.Services;
-using MVVMGenericStructure.ViewModels;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using WPF.Command.CRUD;
 using WPF.Command.Navigation;
-using WPF.ViewModel.Base;
+using WPF.Stores;
 
 namespace WPF.ViewModel
 {
@@ -24,9 +16,12 @@ namespace WPF.ViewModel
         private ICommand Save;
 
         private ICommand CloseModalCommand;
+        
+        private EntityStore entityStore;
 
-        public PresentationModalViewModel(BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService) : base((PresentationLogic)parameter)
+        public PresentationModalViewModel(BaseLogic<Presentation> parameter, EntityStore _entityStore, INavigationService closeModalNavigationService) : base((PresentationLogic)parameter)
         {
+            entityStore = _entityStore;
             InitializeCommands(closeModalNavigationService);
         }
 
@@ -42,29 +37,29 @@ namespace WPF.ViewModel
         }
 
 
-        public static PresentationModalViewModel LoadViewModel
-        (BaseLogic<Presentation> parameter, INavigationService closeModalNavigationService)
+        public static PresentationModalViewModel LoadViewModel(BaseLogic<Presentation> parameter, EntityStore _entityStore, INavigationService closeModalNavigationService)
         {
-            PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, closeModalNavigationService);
+            PresentationModalViewModel viewModel = new PresentationModalViewModel(parameter, _entityStore, closeModalNavigationService);
 
             viewModel.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
 
-     
+
 
         public ICommand SaveCommand { get; set; }
         private async void save(bool parameter)
         {
             await ((SaveCommand<Presentation>)Save).ExecuteAsync(parameter);
             reset();
+            await updateCatalogue();
+            entityStore.RefreshChanges();
         }
 
         public ICommand ExitCommand => new RelayCommand(parameter => exit());
         private void exit()
         {
-            isEditable = false;
             reset();
             CloseModalCommand.Execute(null);
         }
@@ -75,6 +70,7 @@ namespace WPF.ViewModel
         {
             logic.resetEntity();
             name = logic.entity.name;
+            isEditable = false;
         }
 
 
@@ -101,6 +97,8 @@ namespace WPF.ViewModel
 
             if (result == MessageBoxResult.Yes)
                 await new DeleteCommand<Presentation>(logic).ExecuteAsync(parameter);
+
+            await updateCatalogue();
         }
 
 
@@ -124,12 +122,5 @@ namespace WPF.ViewModel
                 OnPropertyChanged(nameof(name));
             }
         }
-
-        public override bool canCreate
-        {
-            get => !HasErrors;
-            set { }
-        }
-
     }
 }

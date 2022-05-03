@@ -3,13 +3,15 @@ using Domain.Entities.Views;
 using Domain.Logic;
 using MVVMGenericStructure.Commands;
 using MVVMGenericStructure.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using WPF.Command.CRUD;
-using WPF.ViewModel.Base;
+using WPF.Stores;
 
 namespace WPF.ViewModel
 {
@@ -20,24 +22,27 @@ namespace WPF.ViewModel
         public ICommand saveCommand { get; }
         public ICommand deleteCommand { get; }
 
+        private EntityStore entityStore;
         public IEnumerable<StockView> StockViewCatalog { get; set; }
 
         public INavigationService navigationService;
 
 
-        public StockViewModel(BaseLogic<Stock> parameter, INavigationService addStockNavigationService) :  base((StockLogic)parameter)
+        public StockViewModel(BaseLogic<Stock> parameter, EntityStore _entityStore, INavigationService addStockNavigationService) : base((StockLogic)parameter)
         {
             addCommand = new NavigateCommand(addStockNavigationService);
             saveCommand = new SaveCommand<Stock>(logic, canCreate);
             deleteCommand = new DeleteCommand<Stock>(logic);
+
+            entityStore = _entityStore;
+            entityStore.Refresh += RefreshChanges;
         }
 
-        public static StockViewModel LoadViewModel
-        (BaseLogic<Stock> parameter, INavigationService addStockNavigationService)
+        public static StockViewModel LoadViewModel(BaseLogic<Stock> parameter, EntityStore _entityStore, INavigationService addStockNavigationService)
         {
-            StockViewModel viewModel = new StockViewModel(parameter, addStockNavigationService);
+            StockViewModel viewModel = new StockViewModel(parameter, _entityStore, addStockNavigationService);
 
-            viewModel.LoadCatalogueCommand.Execute(null);   
+            viewModel.LoadCatalogueCommand.Execute(null);
 
             return viewModel;
         }
@@ -128,5 +133,11 @@ namespace WPF.ViewModel
                 _dataGridSource = value;
             }
         }
+
+        private async void RefreshChanges()
+        {
+            await Initialize();
+        }
+
     }
 }

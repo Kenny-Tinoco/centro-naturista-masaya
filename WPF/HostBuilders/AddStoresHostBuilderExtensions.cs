@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MVVMGenericStructure.Stores;
+using WPF.Stores;
 
 namespace WPF.HostBuilders
 {
@@ -12,6 +13,7 @@ namespace WPF.HostBuilders
             {
                 services.AddSingleton<NavigationStore>();
                 services.AddSingleton<ModalNavigationStore>();
+                services.AddSingleton<EntityStore>();
             });
 
             return host;

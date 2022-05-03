@@ -8,6 +8,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using WPF.Command.CRUD;
 using WPF.Command.Navigation;
+using WPF.Stores;
 
 namespace WPF.ViewModel
 {
@@ -15,23 +16,30 @@ namespace WPF.ViewModel
     {
         public INavigationService _navigationService;
 
-        public ICommand openModalCommand { get; }
+        private ICommand OpenModalCommand { get; }
+
+        public EntityStore entityStore { get; set; }
 
 
-        public ProductViewModel(BaseLogic<Product> parameter, INavigationService modalNavigationService) : base((ProductLogic)parameter)
+        public ProductViewModel(BaseLogic<Product> parameter, EntityStore _entityStore, INavigationService modalNavigationService) : base((ProductLogic)parameter)
         {
             _navigationService = modalNavigationService;
-            openModalCommand = new NavigateCommand(_navigationService);
+            OpenModalCommand = new NavigateCommand(_navigationService);
 
-            addCommand = new RelayCommand(parameter => addModal());
-            editCommand = new RelayCommand(parameter => editModal((Product)parameter)); 
-            deleteCommand = new RelayCommand(parameter => delete((Product)parameter));
+            AddModalCommand = new RelayCommand(parameter => addModal());
+            EditModalCommand = new RelayCommand(parameter => editModal((Product)parameter)); 
+            DeleteCommand = new RelayCommand(parameter => delete((Product)parameter));
+
+
+            entityStore = _entityStore;
+            entityStore.EntityEdited += OnEntityEdited;
+            entityStore.EntityCreated += OnEntityCreated;
         }
 
 
-        public static ProductViewModel LoadViewModel(BaseLogic<Product> parameter, INavigationService navigationService)
+        public static ProductViewModel LoadViewModel(BaseLogic<Product> parameter, EntityStore _entityStore, INavigationService navigationService)
         {
-            ProductViewModel viewModel = new ProductViewModel(parameter, navigationService);
+            ProductViewModel viewModel = new ProductViewModel(parameter, _entityStore, navigationService);
 
             viewModel.LoadCatalogueCommand.Execute(null);
 
@@ -77,25 +85,25 @@ namespace WPF.ViewModel
         public ICollectionView dataGridSource => CollectionViewSource.GetDefaultView(catalogue);
            
    
-        public ICommand addCommand { get; }
+        public ICommand AddModalCommand { get; }
         public void addModal()
         {
-            isEditable = false;
-            logic.resetEntity();
-            openModalCommand.Execute(-1);
+            entityStore.isEdition = false;
+            entityStore.entity = null;
+            OpenModalCommand.Execute(-1);
         }
 
 
-        public ICommand editCommand { get; }
+        public ICommand EditModalCommand { get; }
         public void editModal(Product parameter)
         {
-            logic.entity = parameter;
-            isEditable = true;
-            openModalCommand.Execute(-1);
+            entityStore.entity = parameter;
+            entityStore.isEdition = true;
+            OpenModalCommand.Execute(-1);
         }
 
 
-        public ICommand deleteCommand { get; }
+        public ICommand DeleteCommand { get; }
         public async void delete(Product parameter)
         {
             var result = MessageBox
@@ -103,6 +111,31 @@ namespace WPF.ViewModel
 
             if (result == MessageBoxResult.Yes)
                 await new DeleteCommand<Product>(logic).ExecuteAsync(parameter);
+
+            await updateCatalogue();
+        }
+
+        public override void Dispose()
+        {
+            entityStore.EntityEdited -= OnEntityEdited;
+            entityStore.EntityCreated -= OnEntityCreated;
+            base.Dispose();
+        }
+
+        private void OnEntityEdited(BaseEntity parameter)
+        {
+            SaveCommand((Product)parameter);
+        }
+
+        private void OnEntityCreated(BaseEntity parameter)
+        {
+            SaveCommand((Product)parameter);
+        }
+        private async void SaveCommand(Product parameter)
+        {
+            logic.entity = parameter;
+            await new SaveCommand<Product>(logic, canCreate).ExecuteAsync(entityStore.isEdition);
+            await updateCatalogue();
         }
     }
 }

@@ -1,20 +1,17 @@
 ﻿using Domain.DAO;
 using Domain.Entities;
-using System.Diagnostics.Contracts;
 
 namespace Domain.Logic
 {
     public class ProductLogic : BaseLogic<Product>
     {
-        public ProductLogic( DAOFactory parameter ) : base(parameter.productDAO)
+        public ProductLogic(DAOFactory parameter) : base(parameter.productDAO)
         {
         }
 
-        public bool searchLogic( Product element, string parameter )
+        public bool searchLogic(Product element, string parameter)
         {
-            Contract.Requires(parameter != null && element != null);
-            
-            return 
+            return
                 element.idProduct.ToString().Contains(parameter.Trim()) ||
                 element.name.ToLower().StartsWith(parameter.Trim().ToLower());
         }
